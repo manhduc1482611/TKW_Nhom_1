@@ -1,0 +1,354 @@
+/* =======================
+   VARIABLES & RESET
+======================= */
+:root {
+    --primary-color: #ff4d8d;       
+    --primary-hover: #e03c7a;       
+    --primary-light: #ffe6f0;       
+    --text-color: #333;
+    --bg-light: #fff;
+    --bg-page: #f5f7fa;             
+    --bg-dark: #222;                
+    --text-gray: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =======================
+   TOP BAR (Thanh liên hệ trên cùng)
+======================= */
+.topbar {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 10px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.topbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-left span i {
+    margin-right: 5px;
+}
+
+.topbar-right {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-right a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.topbar-right a:hover {
+    opacity: 0.8;
+}
+
+/* =======================
+   MAIN HEADER (Logo, Tìm kiếm, Giỏ hàng)
+======================= */
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 18px 60px 10px; 
+    background: #ffffff; 
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.site-logo {
+    max-height: 80px;
+    width: auto;
+    display: block;
+}
+
+/* TÌM KIẾM & GIỎ HÀNG */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 3px 3px 3px 15px;
+    width: 250px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+.search-box button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: var(--primary-hover);
+}
+
+.cart-btn {
+    position: relative;
+    background: var(--primary-color);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    transform: translateY(-2px);
+    background: var(--primary-hover);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ffc107;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =======================
+   MENU CHÍNH (Bo tròn + Dàn đều sang chảnh)
+======================= */
+.page-menu {
+    background: #ffffff;
+    padding: 10px 60px 25px; 
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03); 
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.page-menu ul {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-menu ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 28px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.page-menu ul li a:hover {
+    color: var(--primary-color);
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.page-menu ul li a.active {
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 77, 141, 0.4);
+}
+
+/* =======================
+   FOOTER (Bố cục 4 cột)
+======================= */
+.footer {
+    background: var(--bg-dark);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: auto;
+    font-size: 15px;
+}
+
+.footer-container {
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.footer-col h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.text-gray {
+    color: var(--text-gray);
+}
+
+.contact-info li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--text-gray);
+}
+
+.contact-info li i {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+/* =======================
+   RESPONSIVE (Cho Máy tính bảng & Điện thoại)
+======================= */
+@media (max-width: 1024px) {
+    .header-main {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .page-menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .page-menu ul li a {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
