@@ -1,0 +1,83 @@
+/* =======================
+   VARIABLES & RESET
+======================= */
+:root {
+    --primary-color: #ff4d8d;
+    --primary-hover: #e03c7a;
+    --primary-light: #ffe6f0;
+    --text-color: #333;
+    --bg-light: #fff;
+    --bg-page: #f5f7fa;
+    --bg-dark: #222;
+    --text-gray: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg-page);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =======================
+   TOP BAR (Thanh liên hệ trên cùng)
+======================= */
+.topbar {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 10px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.topbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-left span i {
+    margin-right: 5px;
+}
+
+.topbar-right {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-right a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.topbar-right a:hover {
+    opacity: 0.8;
+}
+
+/* =======================
+   IFRAME COMPONENTS RESET
+======================= */
+iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    overflow: hidden;
+}
