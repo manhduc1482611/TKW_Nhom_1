@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" style="display: block;">
+            <form id="loginForm">
+                <h2>Đăng nhập</h2>
+                
+                <input type="email" id="loginEmail" name="email" placeholder="Địa chỉ Email" required>
+                <input type="password" id="loginPassword" name="password" placeholder="Mật khẩu" required>
+                
+                <button type="submit">Đăng nhập</button>
+
+                <div class="form-footer">
+                    <p>Chưa có tài khoản? <a href="dangky.html">Đăng ký ngay</a></p>
+                </div>
+
+                <div class="divider">
+                    <span>Hoặc</span>
+                </div>
+
+                <!-- đăng nhập bằng Google và Facebook -->
+                <div class="social-login">
+                    <button type="button" class="social-btn google" onclick="loginWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        <span>Đăng nhập với Google</span>
+                    </button>
+                    <button type="button" class="social-btn facebook" onclick="loginWithFacebook()">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Đăng nhập với Facebook</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
