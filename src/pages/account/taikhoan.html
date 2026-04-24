@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="taikhoan.css">
+</head>
+<body>
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="user-info">
+            <div class="avatar"><span>67</span></div>
+            <h3 id="user-name">user_67</h3>
+            <p id="user-email">user67@gmail.com</p>
+        </div>
+        <nav class="menu">
+            <a class="menu-item active" data-tab="thongtin">Thông tin chung</a>
+            <a class="menu-item" data-tab="giohang">Giỏ hàng</a>
+            <a class="menu-item" data-tab="chinhsua">Chỉnh sửa hồ sơ</a>
+            <a class="menu-item logout">Đăng xuất</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <div class="header-content">
+            <div class="welcome-text">
+                <h2>Xin chào, user_67!</h2>
+                <p>Chào mừng bạn đến bảng điều khiển.</p>
+            </div>
+            <a href="/index.html" class="home-btn">
+                <i class="fas fa-arrow-left"></i>
+                Trở về trang chủ
+            </a>
+        </div>
+
+        <!-- TAB: THÔNG TIN CHUNG -->
+        <div class="tab-page active" id="tab-thongtin">
+            <section class="section">
+                <h3 class="section-title"><i class="fas fa-user-circle"></i> Thông tin chung</h3>
+                <div class="info-col"><label>Họ và tên:</label><span id="display-name">Chưa cập nhật</span></div>
+                <div class="info-col"><label>Email:</label><span id="display-email">Chưa cập nhật</span></div>
+                <div class="info-col"><label>Số điện thoại:</label><span id="display-phone">Chưa cập nhật</span></div>
+                <div class="info-col"><label>Địa chỉ:</label><span id="display-address">Chưa cập nhật</span></div>
+                <button class="btn-text" onclick="switchTab('chinhsua')">
+                    <i class="fas fa-pen"></i> Chỉnh sửa hồ sơ
+                </button>
+            </section>
+            <section class="section">
+                <h3 class="section-title"><i class="fas fa-receipt"></i> Mua gần đây</h3>
+                <div class="empty-state">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Chưa có đơn hàng nào.</p>
+                    <a href="/sanpham.html" class="action-link">Mua hàng</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB: GIỎ HÀNG -->
+        <div class="tab-page" id="tab-giohang">
+            <section class="section">
+                <h3 class="section-title"><i class="fas fa-shopping-cart"></i> Giỏ hàng</h3>
+                <div class="empty-state">
+                    <i class="fas fa-cart-shopping"></i>
+                    <p>Giỏ hàng của bạn đang trống.</p>
+                    <a href="/sanpham.html" class="action-link">Mua hàng ngay</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB: CHỈNH SỬA HỒ SƠ -->
+        <div class="tab-page" id="tab-chinhsua">
+            <section class="section">
+                <h3 class="section-title"><i class="fas fa-user-pen"></i> Chỉnh sửa hồ sơ</h3>
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="input-name" placeholder="Nhập họ và tên...">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="input-email" placeholder="Nhập email...">
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="tel" id="input-phone" placeholder="Nhập số điện thoại...">
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="input-address" placeholder="Nhập địa chỉ...">
+                </div>
+                <button class="btn-save" onclick="saveProfile()">
+                    <i class="fas fa-check"></i> Lưu thay đổi
+                </button>
+            </section>
+        </div>
+
+    </main>
+</div>
+
+<script src="taikhoan.js"></script>
+</body>
+</html>
