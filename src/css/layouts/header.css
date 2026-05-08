@@ -1,8 +1,42 @@
-
-
 /* =======================
-   MAIN HEADER (Logo, Tìm kiếm, Giỏ hàng)
+   TOP BAR (Thanh liên hệ trên cùng)
 ======================= */
+.topbar {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 10px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.topbar-left {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-left span i {
+    margin-right: 5px;
+}
+
+.topbar-right {
+    display: flex;
+    gap: 20px;
+}
+
+.topbar-right a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.topbar-right a:hover {
+    opacity: 0.8;
+}
 .header-main {
     display: flex;
     align-items: center;
@@ -146,108 +180,10 @@
     box-shadow: 0 4px 12px rgba(255, 77, 141, 0.4);
 }
 
-/* =======================
-   FOOTER (Bố cục 4 cột)
-======================= */
-.footer {
-    background: var(--bg-dark);
-    color: white;
-    padding: 50px 0 20px;
-    margin-top: auto;
-    font-size: 15px;
-    width: 100%;
-    height: 425px;
-    border: none;
-    overflow: hidden;
+.header-frame {
+    height: 252px;
 }
 
-.footer-container {
-    padding: 0 60px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-}
-
-.footer-logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.footer-col h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.text-gray {
-    color: var(--text-gray);
-}
-
-.contact-info li {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    color: var(--text-gray);
-}
-
-.contact-info li i {
-    color: var(--primary-color);
-    font-size: 18px;
-    margin-top: 3px;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: var(--text-gray);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--primary-color);
-}
-
-.social-links {
-    display: flex;
-    gap: 10px;
-}
-
-.social-links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.social-links a:hover {
-    background: white;
-    color: var(--primary-color);
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    color: var(--text-gray);
-    font-size: 14px;
-}
-
-/* =======================
-   RESPONSIVE (Cho Máy tính bảng & Điện thoại)
-======================= */
 @media (max-width: 1024px) {
     .header-main {
         flex-direction: column;
@@ -280,22 +216,4 @@
         font-size: 14px; /* Tăng cỡ chữ trên mobile để dễ bấm */
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
-}
-
-/* =======================
-   IFRAME LAYOUT SIZES
-======================= */
-.header-frame {
-    height: 252px;
-}
-.footer-frame {
-    height: 425px;
-}
-.page-menu ul li a.active {
-    color: #ff0000; /* Thay màu theo ý bạn */
-    font-weight: bold;
 }
