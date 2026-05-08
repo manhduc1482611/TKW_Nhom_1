@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box" style="display: block;">
+            <div id="messageBox" class="message"></div>
+            
+            <form id="registerForm">
+                <h2>Đăng ký</h2>
+                
+                <input type="text" id="fullname" name="fullname" placeholder="Họ và tên" required>
+                <input type="email" id="email" name="email" placeholder="Địa chỉ Email" required>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu" required>
+                
+                <button type="submit">Tạo tài khoản</button>
+
+                <div class="form-footer">
+                    <p>Đã có tài khoản? <a href="dangnhap.html">Đăng nhập ngay</a></p>
+                </div>
+
+                <div class="divider">
+                    <span>Hoặc</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google" onclick="signupWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        <span>Đăng ký với Google</span>
+                    </button>
+                    <button type="button" class="social-btn facebook" onclick="signupWithFacebook()">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Đăng ký với Facebook</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
