@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tất cả sản phẩm</title>
+
+<link rel="stylesheet" href="/src/pages/product/css/products.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>BeautyCare</h1>
+    </header>
+
+    <!-- MAIN -->
+    <main class="products-page">
+
+        <!-- breadcrumb -->
+        <section class="breadcrumb">
+            <a href="../../../index.html">Trang chủ</a>
+            <span>/</span>
+            <span>Sản phẩm</span>
+        </section>
+
+        <!-- title -->
+        <section class="page-title">
+            <h2>TẤT CẢ SẢN PHẨM</h2>
+            <p>Khám phá các sản phẩm chăm sóc da chính hãng</p>
+        </section>
+
+        <!-- filter -->
+        <section class="products-toolbar">
+
+            <!-- search -->
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput"
+                    placeholder="Tìm sản phẩm..."
+                >
+            </div>
+
+            <!-- category -->
+            <div class="filter-box">
+                <select id="categoryFilter">
+                    <option value="all">Tất cả danh mục</option>
+                    <option value="Sữa rửa mặt">Sữa rửa mặt</option>
+                    <option value="Kem dưỡng">Kem dưỡng</option>
+                    <option value="Tonner">Tonner</option>
+                    <option value="Kem chống nắng">Kem chống nắng</option>
+                    <option value="Nước tẩy trang">Nước tẩy trang</option>
+                </select>
+            </div>
+
+            <!-- sort -->
+            <div class="sort-box">
+                <select id="sortPrice">
+                    <option value="default">Sắp xếp giá</option>
+                    <option value="low-high">Giá tăng dần</option>
+                    <option value="high-low">Giá giảm dần</option>
+                </select>
+            </div>
+
+        </section>
+
+        <!-- products -->
+        <section class="products-container">
+
+            <!-- render bằng JS -->
+            <div class="products-grid" id="productsGrid">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 BeautyCare</p>
+    </footer>
+
+<script src="/src/js/products.js"></script>
+</body>
+</html>

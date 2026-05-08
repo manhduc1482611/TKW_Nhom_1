@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+
+    <link rel="stylesheet" href="../css/product-detail.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>BeautyCare</h1>
+    </header>
+
+    <main class="product-detail-page">
+
+        <!-- breadcrumb -->
+        <section class="breadcrumb">
+            <a href="../../../index.html">Trang chủ</a>
+            <span>/</span>
+            <a href="./products.html">Sản phẩm</a>
+            <span>/</span>
+            <span id="breadcrumbName">Tên sản phẩm</span>
+        </section>
+
+        <!-- top -->
+        <section class="product-top">
+
+            <!-- gallery -->
+            <div class="product-gallery">
+
+                <!-- ảnh lớn -->
+                <div class="main-image">
+                    <img 
+                        id="mainImage"
+                        src=""
+                        alt="product image"
+                    >
+                </div>
+
+                <!-- thumbnail -->
+                <div class="thumbnail-list" id="thumbnailList">
+
+                </div>
+
+            </div>
+
+            <!-- info -->
+            <div class="product-info">
+
+                <h2 id="productName">
+                    Tên sản phẩm
+                </h2>
+
+                <!-- brand -->
+                <div class="product-meta">
+                    <p>
+                        <strong>Thương hiệu:</strong>
+                        <span id="productBrand"></span>
+                    </p>
+
+                    <p>
+                        <strong>Xuất xứ:</strong>
+                        <span id="productOrigin"></span>
+                    </p>
+                </div>
+
+                <!-- rating -->
+                <div class="product-rating">
+                    ★★★★★
+                    <span>(128 đánh giá)</span>
+                </div>
+
+                <!-- price -->
+                <div class="product-price">
+
+                    <span class="sale-price" id="salePrice">
+                        0đ
+                    </span>
+
+                    <span class="old-price" id="oldPrice">
+                        0đ
+                    </span>
+
+                </div>
+
+                <!-- characteristics -->
+                <div class="product-characteristics">
+                    <strong>Đặc điểm:</strong>
+                    <span id="productCharacteristics"></span>
+                </div>
+
+                <!-- volume -->
+                <div class="product-volume">
+
+                    <h4>Dung tích</h4>
+
+                    <div class="volume-options" id="volumeOptions">
+
+                    </div>
+
+                </div>
+
+                <!-- quantity -->
+                <div class="quantity-box">
+
+                    <button id="minusBtn">-</button>
+
+                    <input 
+                        type="number"
+                        id="quantityInput"
+                        value="1"
+                        min="1"
+                    >
+
+                    <button id="plusBtn">+</button>
+
+                </div>
+
+                <!-- stock -->
+                <div class="stock-info">
+                    Còn lại:
+                    <span id="productStock"></span>
+                    sản phẩm
+                </div>
+
+                <!-- buttons -->
+                <div class="product-actions">
+
+                    <button class="add-cart-btn">
+                        Thêm vào giỏ hàng
+                    </button>
+
+                    <button class="buy-now-btn">
+                        Mua ngay
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- bottom -->
+        <section class="product-bottom">
+
+            <!-- desc -->
+            <div class="detail-section">
+
+                <h3>Mô tả sản phẩm</h3>
+
+                <p id="productDesc"></p>
+
+            </div>
+
+            <!-- ingredients -->
+            <div class="detail-section">
+
+                <h3>Thành phần</h3>
+
+                <p id="productIngredients"></p>
+
+            </div>
+
+            <!-- usage -->
+            <div class="detail-section">
+
+                <h3>Hướng dẫn sử dụng</h3>
+
+                <p id="productUsage"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 BeautyCare</p>
+    </footer>
+
+<script src="../../../js/product-detail.js"></script>
+</body>
+</html>
