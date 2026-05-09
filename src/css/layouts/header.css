@@ -37,6 +37,9 @@
 .topbar-right a:hover {
     opacity: 0.8;
 }
+/* =======================
+   HEADER CHÍNH (Logo + Tìm kiếm + Giỏ hàng)
+======================= */
 .header-main {
     display: flex;
     align-items: center;
@@ -180,10 +183,65 @@
     box-shadow: 0 4px 12px rgba(255, 77, 141, 0.4);
 }
 
-.header-frame {
-    height: 252px;
+
+/* Container chính của mục có menu con */
+.dropdown {
+    position: relative;
 }
 
+/* Ẩn danh sách con và định dạng hàng dọc */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* Đẩy xuống để tạo hiệu ứng trượt */
+    background: #ffffff;
+    min-width: 220px; /* Độ rộng menu */
+    border-radius: 20px; /* Bo góc tròn như ảnh mẫu */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+    
+    /* Đảm bảo các phần tử con xếp hàng dọc */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hiển thị khi hover vào mục Sản phẩm */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(8px);
+}
+
+/* Định dạng từng item trong hàng dọc */
+.dropdown-menu li {
+    width: 100%;
+    display: block; /* Ép buộc xuống dòng */
+}
+
+.dropdown-menu li a {
+    display: block; /* Chiếm hết chiều ngang */
+    padding: 12px 20px !important;
+    color: #444 !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    text-transform: none !important;
+    text-align: center; /* Căn giữa chữ giống ảnh */
+    background: transparent !important;
+    transition: 0.2s;
+}
+
+/* Hiệu ứng khi hover vào từng món đồ (ví dụ: Sữa rửa mặt) */
+.dropdown-menu li a:hover {
+    color: var(--primary-color) !important;
+    background: #fdf2f5 !important; /* Màu nền hồng nhạt nhẹ */
+}
 @media (max-width: 1024px) {
     .header-main {
         flex-direction: column;
