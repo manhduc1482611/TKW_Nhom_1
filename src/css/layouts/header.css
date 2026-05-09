@@ -183,7 +183,9 @@
     box-shadow: 0 4px 12px rgba(255, 77, 141, 0.4);
 }
 
-
+.header-frame {
+    height: 252px;
+}
 /* Container chính của mục có menu con */
 .dropdown {
     position: relative;

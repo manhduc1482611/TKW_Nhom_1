@@ -29,18 +29,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-function updateHeaderHeight() {
-    const header = document.querySelector('.site-header');
-    const body = document.body;
-    
-    if (header) {
-        // Lấy chiều cao thực tế của header tại thời điểm hiện tại
-        const headerHeight = header.offsetHeight;
-        // Đẩy toàn bộ nội dung body xuống một khoảng đúng bằng header
-        body.style.paddingTop = headerHeight + 'px';
-    }
-}
-
-// Chạy khi trang tải xong và khi thay đổi kích thước màn hình
-window.addEventListener('load', updateHeaderHeight);
-window.addEventListener('resize', updateHeaderHeight);
