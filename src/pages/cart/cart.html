@@ -1,0 +1,229 @@
+/* ============================
+   GIỎ HÀNG — Nghien Beauty
+   ============================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FDE8EF;
+    color: #333;
+}
+
+.trang-gio-hang {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Quay lại */
+.quay-lai {
+    display: inline-block;
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.quay-lai:hover { color: #C2185B; }
+
+/* Tiêu đề */
+.tieu-de-bar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(194, 24, 91, 0.08);
+}
+.tieu-de-bar h1 { font-size: 24px; color: #C2185B; }
+.so-san-pham {
+    background: #C2185B;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Layout 2 cột */
+.layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.cot-trai { flex: 2; }
+
+/* Danh sách sản phẩm */
+.danh-sach {
+    display: none; /* ẩn mặc định, JS sẽ bật lên */
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Giỏ trống */
+.gio-trong {
+    background: #fff;
+    border-radius: 12px;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(194, 24, 91, 0.08);
+}
+.trong-icon { font-size: 64px; opacity: 0.3; margin-bottom: 16px; }
+.gio-trong h3 { font-size: 20px; color: #C2185B; margin-bottom: 8px; }
+.gio-trong p  { font-size: 14px; color: #888; margin-bottom: 24px; }
+
+.btn-them-mau {
+    background: linear-gradient(135deg, #E91E8C, #C2185B);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: opacity 0.2s;
+}
+.btn-them-mau:hover { opacity: 0.85; }
+
+/* Thẻ sản phẩm */
+.san-pham {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 2px 12px rgba(194, 24, 91, 0.08);
+    transition: transform 0.2s;
+}
+.san-pham:hover { transform: translateY(-2px); }
+
+.anh {
+    width: 90px; height: 90px;
+    border-radius: 8px;
+    border: 2px solid #F8BBD9;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.thong-tin { flex: 1; }
+.thuong-hieu {
+    font-size: 12px; font-weight: 700;
+    color: #E91E8C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.ten  { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.loai { font-size: 13px; color: #888; margin-bottom: 12px; }
+
+.hang-duoi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Số lượng */
+.so-luong {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #F8BBD9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.so-luong button {
+    background: #FDE8EF; border: none;
+    width: 32px; height: 32px;
+    font-size: 18px; font-weight: 700;
+    color: #C2185B; cursor: pointer;
+}
+.so-luong button:hover { background: #F8BBD9; }
+.so-luong span { width: 34px; text-align: center; font-weight: 700; }
+
+/* Giá */
+.gia-moi { font-size: 16px; font-weight: 700; color: #C2185B; }
+
+/* Xóa */
+.xoa {
+    background: none; border: none;
+    color: #aaa; font-size: 14px; cursor: pointer;
+    width: 28px; height: 28px;
+    border-radius: 50%; flex-shrink: 0;
+}
+.xoa:hover { background: #ffe0eb; color: #C2185B; }
+
+/* Tóm tắt */
+.tom-tat {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(194, 24, 91, 0.08);
+    position: sticky;
+    top: 20px;
+}
+.tom-tat h2 { font-size: 18px; color: #C2185B; margin-bottom: 16px; }
+
+.dong {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px; color: #888;
+    margin-bottom: 10px;
+}
+.giam-gia span:last-child { color: #4CAF7D; font-weight: 700; }
+
+hr { border: none; border-top: 1px solid #F8BBD9; margin: 14px 0; }
+
+/* Mã giảm giá */
+.ma-giam { display: flex; gap: 8px; }
+.ma-giam input {
+    flex: 1; border: 1.5px solid #F8BBD9;
+    border-radius: 8px; padding: 9px 12px;
+    font-size: 13px; font-family: 'Nunito', sans-serif;
+    background: #FFF5F8; outline: none; color: #333;
+}
+.ma-giam input:focus { border-color: #E91E8C; }
+.ma-giam button {
+    background: #C2185B; color: #fff;
+    border: none; border-radius: 8px;
+    padding: 9px 16px; font-size: 13px;
+    font-weight: 700; cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+}
+.ma-giam button:hover { opacity: 0.85; }
+
+/* Tổng */
+.tong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.tong span:first-child { font-size: 16px; font-weight: 700; }
+.tong-tien { font-size: 22px; font-weight: 700; color: #C2185B; }
+
+/* Nút thanh toán */
+.thanh-toan {
+    width: 100%;
+    background: linear-gradient(135deg, #E91E8C, #C2185B);
+    color: #fff; border: none;
+    border-radius: 12px; padding: 14px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: opacity 0.2s;
+}
+.thanh-toan:hover:not(:disabled) { opacity: 0.88; }
+.thanh-toan:disabled {
+    background: linear-gradient(135deg, #f4a0c0, #e8a0b8);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .layout { flex-direction: column; }
+    .tom-tat { position: static; }
+}
