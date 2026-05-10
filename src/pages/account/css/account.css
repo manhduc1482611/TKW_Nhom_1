@@ -388,16 +388,6 @@ body {
     .info-col { flex-direction: column; gap: 4px; }
 }
 
-/* ===== HẠNG THÀNH VIÊN ===== */
-.member-rank-card {
-    background: linear-gradient(135deg, #fff9f2 0%, #fff5ea 100%);
-    border-radius: 20px;
-    padding: 20px 24px;
-    margin-top: 28px;
-    border: 1px solid rgba(212, 163, 115, 0.2);
-    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.08);
-}
-
 .rank-header {
     display: flex;
     align-items: center;

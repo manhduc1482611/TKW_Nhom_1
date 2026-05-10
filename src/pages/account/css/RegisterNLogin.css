@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('images/LoginBackground.png');
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('../../../assets/images/background/LoginBackground.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
