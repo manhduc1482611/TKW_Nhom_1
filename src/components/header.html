@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <base target="_parent">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../src/css/global.css">
-    <link rel="stylesheet" href="../css/layout/layout.css">
+    <link rel="stylesheet" href="../../src/css/main.css">
 </head>
 
 <body>
@@ -15,11 +14,11 @@
         <div class="topbar">
             <div class="topbar-left">
                 <span><i class="fa-solid fa-phone"></i> 0966 969 726</span>
-                <span><i class="fa-solid fa-envelope"></i> manhduc114488g@gmail.com</span>
+                <span><i class="fa-solid fa-envelope"></i> manhduc114488@gmail.com</span>
             </div>
             <div class="topbar-right">
-                <a href="../pages/account/login.html"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập</a>
-                <a href="../pages/account/register.html"><i class="fa-solid fa-user-plus"></i> Đăng ký</a>
+                <a href="../pages/account/html/login.html"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập</a>
+                <a href="../pages/account/html/register.html"><i class="fa-solid fa-user-plus"></i> Đăng ký</a>
             </div>
         </div>
 
@@ -35,24 +34,36 @@
                     <input type="text" placeholder="Tìm kiếm sản phẩm...">
                     <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-                <a href="../pages/cart.html" class="cart-btn" aria-label="Giỏ hàng">
+                <a href="../pages/cart/cart.html" class="cart-btn" aria-label="Giỏ hàng">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-count">3</span>
                 </a>
             </div>
         </div>
-        <nav class="page-menu">
-            <ul>
-                <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../pages/about.html">Giới thiệu</a></li>
-                <li><a href="../pages/product/products.html">Sản phẩm</a></li>
-                <li><a href="../pages/promotion.html">Khuyến mãi</a></li>
-                <li><a href="../pages/new/news.html">Tin tức</a></li>
-                <li><a href="../pages/contact.html">Liên hệ</a></li>
-            </ul>
-        </nav>
     </header>
+<nav class="page-menu">
+    <ul>
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../pages/about/about.html">Giới thiệu</a></li>
+        
+        <li class="dropdown">
+            <a href="../pages/product/html/products.html" class="dropdown-toggle">
+                Sản phẩm <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Sữa rửa mặt</a></li>
+                <li><a href="#">Kem dưỡng</a></li>
+                <li><a href="#">Nước tẩy trang</a></li>
+                <li><a href="#">Kem chống nắng</a></li>
+                <li><a href="#">Toner</a></li>
+            </ul>
+        </li>
 
+        <li><a href="../pages/promotion/promotion.html">Khuyến mãi</a></li>
+        <li><a href="../pages/news/html/news.html">Tin tức</a></li>
+        <li><a href="../pages/contact/contact.html">Liên hệ</a></li>
+    </ul>
+</nav>
 </body>
-
+<script src="../../src/js/main.js"></script>
 </html>
