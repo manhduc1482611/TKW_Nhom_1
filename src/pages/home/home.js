@@ -20,56 +20,7 @@ window.addEventListener("scroll", () => {
 
 });
 
-// SCROLL REVEAL
-const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll() {
-
-  reveals.forEach((item) => {
-
-    const top = item.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (top < windowHeight - 100) {
-      item.classList.add("visible");
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", revealOnScroll);
-
-revealOnScroll();
-
-// NEWSLETTER VALIDATION
-const form = document.getElementById("newsletterForm");
-const emailInput = document.getElementById("emailInput");
-const formError = document.getElementById("formError");
-
-form.addEventListener("submit", (e) => {
-
-  e.preventDefault();
-
-  const email = emailInput.value.trim();
-
-  if (email === "") {
-    formError.textContent = "Please enter email";
-    return;
-  }
-
-  if (!email.includes("@")) {
-    formError.textContent = "Invalid email";
-    return;
-  }
-
-  formError.textContent = "";
-
-  alert("Subscribed successfully!");
-
-  form.reset();
-
-});
 // BANNER SLIDER
 
 const slider = document.getElementById("slider");
