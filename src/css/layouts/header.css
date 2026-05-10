@@ -145,10 +145,11 @@
     display: flex;
     justify-content: center;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-    margin-bottom: 40px;
+    margin-bottom: 0; /* Giảm margin để không tạo khoảng cách trắng với nội dung */
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 999; /* Đảm bảo menu luôn nằm trên cùng */
+    /* Tuyệt đối KHÔNG có overflow: hidden ở đây */
 }
 
 .page-menu ul {
@@ -194,31 +195,27 @@
 /* Ẩn danh sách con và định dạng hàng dọc */
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Sát mép dưới của mục "Sản phẩm" */
     left: 50%;
-    transform: translateX(-50%) translateY(20px); /* Đẩy xuống để tạo hiệu ứng trượt */
+    transform: translateX(-50%) translateY(0); 
     background: #ffffff;
-    min-width: 220px; /* Độ rộng menu */
-    border-radius: 20px; /* Bo góc tròn như ảnh mẫu */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Tăng bóng đổ để nổi bật trên nền trang */
     list-style: none;
-    padding: 15px 0;
+    padding: 10px 0;
     margin: 0;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease-in-out;
-    z-index: 1000;
-    
-    /* Đảm bảo các phần tử con xếp hàng dọc */
-    display: flex;
-    flex-direction: column;
+    transition: all 0.3s ease;
+    z-index: 1001; /* Phải cao hơn .page-menu */
 }
 
-/* Hiển thị khi hover vào mục Sản phẩm */
+/* Hiển thị khi hover */
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(8px);
+    transform: translateX(-50%) translateY(10px); /* Hiệu ứng rơi xuống nhẹ */
 }
 
 /* Định dạng từng item trong hàng dọc */
