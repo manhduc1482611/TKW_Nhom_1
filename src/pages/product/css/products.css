@@ -16,17 +16,7 @@ body{
 }
 
 
-/* HEADER */
 
-header{
-    background-color: #2e7d5a;
-    color: white;
-    padding: 20px 40px;
-}
-
-header h1{
-    font-size: 32px;
-}
 
 
 /* MAIN */
@@ -211,13 +201,7 @@ header h1{
 }
 
 
-/* FOOTER */
 
-footer{
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
-}
 
 
 /* RESPONSIVE */
