@@ -7,14 +7,12 @@
 
 <link rel="stylesheet" href="/src/pages/product/css/products.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../../src/css/main.css">
+<link rel="stylesheet" href="../../../css/main.css">
 </head>
 <body>
 
     <!-- HEADER -->
-    <header>
-        <h1>BeautyCare</h1>
-    </header>
+     <iframe src="../../../components/header.html" class="header-frame"></iframe>
 
     <!-- MAIN -->
     <main class="products-page">
@@ -55,7 +53,70 @@
                     <option value="Nước tẩy trang">Nước tẩy trang</option>
                 </select>
             </div>
+            <!-- brand -->
+<div class="filter-box">
 
+<select id="brandFilter">
+
+    <option value="all">
+        Tất cả thương hiệu
+    </option>
+
+    <option value="Skin1004">
+        Skin1004
+    </option>
+
+    <option value="La Roche-Posay">
+        La Roche-Posay
+    </option>
+
+    <option value="Bioderma">
+        Bioderma
+    </option>
+
+    <option value="CeraVe">
+        CeraVe
+    </option>
+
+    <option value="SVR">
+        SVR
+    </option>
+
+    <option value="Avène">
+        Avène
+    </option>
+
+    <option value="Eucerin">
+        Eucerin
+    </option>
+
+    <option value="Senka">
+        Senka
+    </option>
+
+    <option value="Vichy">
+        Vichy
+    </option>
+
+    <option value="Some By Mi">
+        Some By Mi
+    </option>
+
+    <option value="Cocoon">
+        Cocoon
+    </option>
+
+    <option value="Hada Labo">
+        Hada Labo
+    </option>
+    <option value="Innisfree">
+        Innisfree
+    </option>
+    <option value="Simple">
+        Simple
+    </option>
+</select>
+</div>
             <!-- sort -->
             <div class="sort-box">
                 <select id="sortPrice">
@@ -80,9 +141,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <p>© 2026 BeautyCare</p>
-    </footer>
+    <iframe src="../../../components/footer.html" class="footer-frame"></iframe>
 
 <script src="../js/products.js"></script>
 </body>
