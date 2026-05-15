@@ -1,64 +1,231 @@
-// HAMBURGER MENU
-const hamburger = document.getElementById("hamburger");
-const mobileNav = document.getElementById("mobileNav");
+document.addEventListener("DOMContentLoaded", () => {
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("open");
-  mobileNav.classList.toggle("open");
-});
+  /* =========================================
+     DATA
+  ========================================= */
 
-// HEADER SHADOW WHEN SCROLL
-const header = document.querySelector(".site-header");
+  const categories = [
+    { name: "Cleanser",      img: "pic/srm.jpg" },
+    { name: "Micellar Water",img: "pic/nuoctaytrang.jpg" },
+    { name: "Toner",         img: "pic/toner.jpg" },
+    { name: "Sunscreen",     img: "pic/kcn.jpg" },
+    { name: "Moisturizer",   img: "pic/kemduong.jpg" },
+  ];
 
-window.addEventListener("scroll", () => {
+  const brands = [
+    { name: "La Roche-Posay", img: "pic/LRP.jpg" },
+    { name: "Vichy",          img: "pic/vichi.jpg" },
+    { name: "Eucerin",        img: "pic/ecurin.jpg" },
+    { name: "Avène",          img: "pic/avene.jpg" },
+    { name: "SVR",            img: "pic/svr.jpg" },
+    { name: "Bioderma",       img: "pic/bioderma.jpg" },
+    { name: "Cetaphil",       img: "pic/cetaphil.jpg" },
+    { name: "CeraVe",         img: "pic/cerave.jpg" },
+    { name: "Hada Labo",      img: "pic/hadalabo.jpg" },
+    { name: "Senka",          img: "pic/senka.jpg" },
+    { name: "Innisfree",      img: "pic/Innisfree.jpg" },
+    { name: "Some By Mi",     img: "pic/Some By Mi.jpg" },
+    { name: "Skin1004",       img: "pic/Skin1004.jpg" },
+    { name: "Cocoon",         img: "pic/Cocoon.jpg" },
+    { name: "Simple",         img: "pic/Simple.jpg" },
+  ];
 
-  if (window.scrollY > 20) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
+  const bestSellers = [
+    { name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "pic/srmbest.jpg" },
+    { name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "pic/nuoctaytragbest.jpg" },
+    { name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "pic/tonerbest.jpg" },
+    { name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "pic/kcnbest.jpg" },
+    { name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "pic/kemduongbest.jpg" },
+  ];
+
+  const news = [
+    {
+      id: 1,
+      img: "pic/tintuc1.png",
+      title: "Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp",
+      desc: "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
+    },
+    {
+      id: 2,
+      img: "pic/tintuc2.png",
+      title: 'Serum Vitamin C - "Thần dược" cho làn da sáng khỏe',
+      desc: "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
+    },
+    {
+      id: 3,
+      img: "pic/tintuc3.jpg",
+      title: "Quy trình skincare cho làn da nhạy cảm",
+      desc: "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
+    },
+  ];
+
+
+  /* =========================================
+     RENDER HELPERS
+  ========================================= */
+
+  // Tạo 1 element với class + innerHTML tuỳ chọn
+  function el(tag, cls, html = "") {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html) e.innerHTML = html;
+    return e;
   }
 
-});
+  /* =========================================
+     CATEGORIES
+  ========================================= */
 
+  const categoriesGrid = document.getElementById("categoriesGrid");
 
-// BANNER SLIDER
-
-const slider = document.getElementById("slider");
-
-const banners = document.querySelectorAll(".banner-img");
-
-let currentBanner = 0;
-
-let autoSlide;
-
-
-// đổi banner
-function changeBanner(){
-
-  banners[currentBanner].classList.remove("active");
-
-  currentBanner++;
-
-  if(currentBanner >= banners.length){
-    currentBanner = 0;
+  if (categoriesGrid) {
+    categories.forEach(({ name, img }) => {
+      const item = el("div", "category-item", `
+        <div class="category-circle">
+          <img src="${img}" class="category-img" alt="${name}">
+        </div>
+        <p class="category-name">${name}</p>
+      `);
+      categoriesGrid.appendChild(item);
+    });
   }
 
-  banners[currentBanner].classList.add("active");
 
-}
+  /* =========================================
+     BRANDS (tự duplicate để loop vô hạn)
+  ========================================= */
+
+  const brandsTrack = document.getElementById("brandsTrack");
+
+  if (brandsTrack) {
+    // Render bản gốc
+    brands.forEach(({ name, img }) => {
+      brandsTrack.insertAdjacentHTML("beforeend", `
+        <div class="brand-card">
+          <div class="brand-img-wrap">
+            <img src="${img}" class="brand-img" alt="${name}">
+          </div>
+          <p class="brand-name">${name}</p>
+        </div>
+      `);
+    });
+
+    // Clone để loop vô hạn
+    brandsTrack.querySelectorAll(".brand-card").forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      brandsTrack.appendChild(clone);
+    });
+
+    // JS scroll: dùng requestAnimationFrame thay CSS keyframe
+    // → luôn đúng dù số brand thay đổi
+    let pos = 0;
+    let paused = false;
+    const speed = 0.5; // px mỗi frame
+
+    brandsTrack.parentElement.addEventListener("mouseenter", () => paused = true);
+    brandsTrack.parentElement.addEventListener("mouseleave", () => paused = false);
+
+    function scrollBrands() {
+      if (!paused) {
+        pos += speed;
+        // Reset về 0 khi đi hết nửa đầu (bản gốc)
+        const half = brandsTrack.scrollWidth / 2;
+        if (pos >= half) pos = 0;
+        brandsTrack.style.transform = `translateX(-${pos}px)`;
+      }
+      requestAnimationFrame(scrollBrands);
+    }
+
+    requestAnimationFrame(scrollBrands);
+  }
 
 
-// hover vào
-slider.addEventListener("mouseenter", ()=>{
+  /* =========================================
+     BEST SELLERS
+  ========================================= */
 
-  autoSlide = setInterval(changeBanner, 1500);
+  const bestGrid = document.getElementById("bestGrid");
 
-});
+  if (bestGrid) {
+    bestSellers.forEach(({ name, price, badge, img }) => {
+      const card = el("article", "best-card", `
+        <div class="best-img-wrap">
+          <img src="${img}" class="best-img" alt="${name}">
+          <span class="best-badge">${badge}</span>
+        </div>
+        <div class="best-info">
+          <h3 class="best-name">${name}</h3>
+          <p class="best-price">${price}</p>
+          <div class="best-stars">★★★★★</div>
+        </div>
+      `);
+      bestGrid.appendChild(card);
+    });
+  }
 
 
-// hover ra
-slider.addEventListener("mouseleave", ()=>{
+  /* =========================================
+     NEWS
+  ========================================= */
 
-  clearInterval(autoSlide);
+  const newsGrid = document.getElementById("newsGrid");
+
+  if (newsGrid) {
+    news.forEach(({ id, img, title, desc }) => {
+      const card = el("a", "news-card");
+      card.href = `news-detail.html?id=${id}`;
+      card.innerHTML = `
+        <div class="news-img-wrap">
+          <img src="${img}" class="news-img" alt="${title}">
+        </div>
+        <div class="news-content">
+          <h3 class="news-title">${title}</h3>
+          <p class="news-desc">${desc}</p>
+        </div>
+      `;
+      newsGrid.appendChild(card);
+    });
+  }
+
+
+  /* =========================================
+     HAMBURGER
+  ========================================= */
+
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobileNav");
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      mobileNav.classList.toggle("open");
+    });
+  }
+
+
+  /* =========================================
+     HEADER SCROLL
+  ========================================= */
+
+  const header = document.querySelector(".site-header");
+
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("scrolled", window.scrollY > 20);
+  });
+
+
+  /* =========================================
+     BANNER SLIDER
+  ========================================= */
+
+  const banners = document.querySelectorAll(".banner-img");
+  let currentBanner = 0;
+
+  setInterval(() => {
+    banners[currentBanner].classList.remove("active");
+    currentBanner = (currentBanner + 1) % banners.length;
+    banners[currentBanner].classList.add("active");
+  }, 2500);
 
 });
