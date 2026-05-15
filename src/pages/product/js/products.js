@@ -8,7 +8,7 @@ const productsGrid = document.getElementById("productsGrid");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortPrice = document.getElementById("sortPrice");
-
+const brandFilter = document.getElementById("brandFilter");
 
 // =======================
 // FETCH PRODUCTS
@@ -121,16 +121,7 @@ function renderProducts(products) {
 
                     </div>
 
-                    <!-- volume -->
-                    <div class="product-volume">
 
-                        ${product.volumes.map(volume => `
-                            <span class="volume-item">
-                                ${volume}
-                            </span>
-                        `).join("")}
-
-                    </div>
 
                     <!-- action -->
                     <div class="product-actions">
@@ -196,7 +187,18 @@ function filterAndSort(productsArray = allProducts) {
         });
 
     }
+// brand filter
+const selectedBrand = brandFilter.value;
 
+if(selectedBrand !== "all"){
+
+    result = result.filter(product => {
+
+        return product.brand === selectedBrand;
+
+    });
+
+}
     // sort
     const sortValue = sortPrice.value;
 
@@ -234,7 +236,11 @@ sortPrice.addEventListener("change", () => {
     filterAndSort();
 
 });
+brandFilter.addEventListener("change", () => {
 
+    filterAndSort();
+
+});
 
 // =======================
 // INIT
