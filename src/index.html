@@ -1,773 +1,144 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Nghien Beauty</title>
-
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="pages/home/home.css" />
+  <link rel="stylesheet" href="src/pages/home/home.css">
 </head>
-
 <body>
 
-    <iframe src="components/header.html" class="header-frame"></iframe>
-
-<section class="hero">
-
-  <div class="container">
-
-    <div class="slider" id="slider">
-
-      <img
-        src="pic/logomoi.png"
-        class="banner-img active"
-      >
-
-      <img
-        src="pic/banner2.png"
-        class="banner-img"
-      >
-
-      <img
-        src="pic/bannerfreeship.png"
-        class="banner-img"
-      >
-
-    </div>
-
-  </div>
-
-</section>
-<!-- CATEGORY -->
-<section class="categories-section">
-
-  <div class="container">
-
-    <div class="section-header">
-
-      <p class="section-tag">
-        Categories
-      </p>
-
-      <h2>
-        Shop By Category
-      </h2>
-
-      <p class="section-sub">
-        Discover skincare essentials for every routine.
-      </p>
-
-    </div>
-
-    <div class="categories-grid">
-
-      <!-- CLEANSER -->
-      <div class="category-item">
-
-        <div class="category-circle">
-
-          <img
-            src="pic/srm.jpg"
-            class="category-img"
-          >
-
-        </div>
-
-        <p class="category-name">
-          Cleanser
-        </p>
-
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="pic/logo.jpg" alt="Nghien Beauty Logo" class="logo-img">
+        <span class="logo-text">Nghien Beauty</span>
       </div>
-
-      <!-- MICELLAR -->
-      <div class="category-item">
-
-        <div class="category-circle">
-
-          <img
-            src="pic/nuoctaytrang.jpg"
-            class="category-img"
-          >
-
-        </div>
-
-        <p class="category-name">
-          Micellar Water
-        </p>
-
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Home</a></li>
+          <li><a href="#" class="nav-link">Shop</a></li>
+          <li><a href="#" class="nav-link">About</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="search-btn">🔍</button>
+        </form>
+        <a href="tintuc.html" class="cart-btn">🛒<span class="cart-count">2</span></a>
+        <button class="hamburger" id="hamburger">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
       </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <ul class="mobile-nav-list">
+        <li><a href="#" class="mobile-nav-link">Home</a></li>
+        <li><a href="#" class="mobile-nav-link">Shop</a></li>
+        <li><a href="#" class="mobile-nav-link">About</a></li>
+        <li><a href="#" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-      <!-- TONER -->
-      <div class="category-item">
-
-        <div class="category-circle">
-
-          <img
-            src="pic/toner.jpg"
-            class="category-img"
-          >
-
-        </div>
-
-        <p class="category-name">
-          Toner
-        </p>
-
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="slider" id="slider">
+       <img src="src/assets/images/home_pic/logomoi.png" class="banner-img active">
+       <img src="src/assets/images/home_pic/banner2.png" class="banner-img">
+       <img src="src/assets/images/home_pic/bannerfreeship.png" class="banner-img">
       </div>
+    </div>
+  </section>
 
-      <!-- SUNSCREEN -->
-      <div class="category-item">
-
-        <div class="category-circle">
-
-          <img
-            src="pic/kcn.jpg"
-            class="category-img"
-          >
-
-        </div>
-
-        <p class="category-name">
-          Sunscreen
-        </p>
-
+  <!-- CATEGORY -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Categories</p>
+        <h2>Shop By Category</h2>
+        <p class="section-sub">Discover skincare essentials for every routine.</p>
       </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
 
-      <!-- MOISTURIZER -->
-      <div class="category-item">
-
-        <div class="category-circle">
-
-          <img
-            src="pic/kemduong.jpg"
-            class="category-img"
-          >
-
-        </div>
-
-        <p class="category-name">
-          Moisturizer
-        </p>
-
+  <!-- BRANDS -->
+  <section class="brands-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Brands</p>
+        <h2>Trusted Skincare Brands</h2>
+        <p class="section-sub">Discover famous skincare brands loved worldwide.</p>
       </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- BRAND SLIDER -->
-<section class="brands-section">
-
-  <div class="container">
-
-    <div class="section-header">
-
-      <p class="section-tag">
-        Brands
-      </p>
-
-      <h2>
-        Trusted Skincare Brands
-      </h2>
-
-      <p class="section-sub">
-        Discover famous skincare brands loved worldwide.
-      </p>
-
-    </div>
-
-    <div class="brands-slider">
-
-      <div class="brands-track">
-
-        <!-- 1 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/LRP.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">La Roche-Posay</p>
-        </div>
-
-        <!-- 2 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/vichi.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Vichy</p>
-        </div>
-
-        <!-- 3 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/ecurin.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Eucerin</p>
-        </div>
-
-        <!-- 4 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/avene.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Avène</p>
-        </div>
-
-        <!-- 5 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/svr.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">SVR</p>
-        </div>
-
-        <!-- 6 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/bioderma.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Bioderma</p>
-        </div>
-
-        <!-- 7 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/cetaphil.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Cetaphil</p>
-        </div>
-
-        <!-- 8 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/cerave.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">CeraVe</p>
-        </div>
-
-        <!-- 9 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/hadalabo.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Hada Labo</p>
-        </div>
-
-        <!-- 10 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/senka.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Senka</p>
-        </div>
-
-        <!-- 11 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/Innisfree.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Innisfree</p>
-        </div>
-
-        <!-- 12 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/Some By Mi.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Some By Mi</p>
-        </div>
-
-        <!-- 13 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/Skin1004.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Skin1004</p>
-        </div>
-
-        <!-- 14 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/Cocoon.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Cocoon</p>
-        </div>
-
-        <!-- 15 -->
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/Simple.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Simple</p>
-        </div>
-
-        <!-- duplicate để chạy vô hạn -->
-
-        <!-- repeat -->
-
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/LRP.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">La Roche-Posay</p>
-        </div>
-
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/vichy.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Vichy</p>
-        </div>
-
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/ecurin.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Eucerin</p>
-        </div>
-
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/avene.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">Avène</p>
-        </div>
-
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="pic/svr.jpg" class="brand-img">
-          </div>
-          <p class="brand-name">SVR</p>
-        </div>
-
+      <div class="brands-slider">
+        <div class="brands-track" id="brandsTrack"></div>
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-<!-- PROMO BANNERS -->
-<section class="promo-section">
-
-  <div class="container">
-
-    <div class="promo-grid">
-
-      <!-- BANNER 1 -->
-      <div class="promo-banner promo-banner-1">
-
-        <div class="promo-content">
-
-          <p class="promo-sale">
-            Up to 25% Off
-          </p>
-
-          <h3>
-            Eucerin Skincare
-            <br>
-            For Healthy Skin
-          </h3>
-
-          <button class="promo-btn">
-            Shop Now
-          </button>
-
+  <!-- PROMO BANNERS -->
+  <section class="promo-section">
+    <div class="container">
+      <div class="promo-grid">
+        <div class="promo-banner promo-banner-1">
+          <div class="promo-content">
+            <p class="promo-sale">Up to 25% Off</p>
+            <h3>Eucerin Skincare<br>For Healthy Skin</h3>
+            <button class="promo-btn">Shop Now</button>
+          </div>
+          <div class="promo-image">
+           <img src="src/assets/images/home_pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
+          </div>
         </div>
-
-        <div class="promo-image">
-
-          <img
-            src="pic/ecurin1.jpg"
-            alt="Eucerin Banner"
-            class="promo-img"
-          >
-
+        <div class="promo-banner promo-banner-2">
+          <div class="promo-content">
+            <p class="promo-sale">Up to 30% Off</p>
+            <h3>Senka Skincare<br>For Dewy Skin</h3>
+            <button class="promo-btn">Shop Now</button>
+          </div>
+          <div class="promo-image">
+           <img src="src/assets/images/home_pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
+          </div>
         </div>
-
       </div>
+    </div>
+  </section>
 
-      <!-- BANNER 2 -->
-      <div class="promo-banner promo-banner-2">
-
-        <div class="promo-content">
-
-          <p class="promo-sale">
-            Up to 30% Off
-          </p>
-
-          <h3>
-            Senka Skincare
-            <br>
-            For Dewy Skin
-          </h3>
-
-          <button class="promo-btn">
-            Shop Now
-          </button>
-
-        </div>
-
-        <div class="promo-image">
-
-          <img
-            src="pic/senka_1.jpg"
-            alt="Senka Banner"
-            class="promo-img"
-          >
-
-        </div>
-
+  <!-- BEST SELLERS -->
+  <section class="best-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Best Sellers</p>
+        <h2>Featured Skincare Products</h2>
+        <p class="section-sub">Top 5 best-selling skincare essentials loved by customers.</p>
       </div>
-
+      <div class="best-grid" id="bestGrid"></div>
     </div>
+  </section>
 
-  </div>
-
-</section>
-<!-- BEST SELLERS -->
-<section class="best-section">
-
-  <div class="container">
-
-    <div class="section-header">
-
-      <p class="section-tag">
-        Best Sellers
-      </p>
-
-      <h2>
-        Featured Skincare Products
-      </h2>
-
-      <p class="section-sub">
-        Top 5 best-selling skincare essentials loved by customers.
-      </p>
-
+  <!-- NEWS -->
+  <section class="news-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Tin tức</p>
+        <h2>Bài Viết & Khuyến Mãi</h2>
+        <p class="section-sub">Cập nhật xu hướng skincare và ưu đãi mới nhất.</p>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+      <div class="news-btn-wrap">
+        <a href="src/pages/news/html/news.html" class="news-btn">Tất cả bài viết</a> 
+      </div>
     </div>
-
-    <div class="best-grid">
-
-      <!-- ITEM 1 -->
-      <article class="best-card">
-
-        <div class="best-img-wrap">
-
-          <img
-            src="pic/srmbest.jpg"
-            class="best-img"
-          >
-
-          <span class="best-badge">
-            Best Seller
-          </span>
-
-        </div>
-
-        <div class="best-info">
-
-          <h3 class="best-name">
-            Gentle Cleanser
-          </h3>
-
-          <p class="best-price">
-            $22.00
-          </p>
-
-          <div class="best-stars">
-            ★★★★★
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- ITEM 2 -->
-      <article class="best-card">
-
-        <div class="best-img-wrap">
-
-          <img
-            src="pic/nuoctaytragbest.jpg"
-            class="best-img"
-          >
-
-          <span class="best-badge">
-            Hot
-          </span>
-
-        </div>
-
-        <div class="best-info">
-
-          <h3 class="best-name">
-            Micellar Water
-          </h3>
-
-          <p class="best-price">
-            $18.00
-          </p>
-
-          <div class="best-stars">
-            ★★★★★
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- ITEM 3 -->
-      <article class="best-card">
-
-        <div class="best-img-wrap">
-
-          <img
-            src="pic/tonerbest.jpg"
-            class="best-img"
-          >
-
-          <span class="best-badge">
-            Trending
-          </span>
-
-        </div>
-
-        <div class="best-info">
-
-          <h3 class="best-name">
-            Hydrating Toner
-          </h3>
-
-          <p class="best-price">
-            $25.00
-          </p>
-
-          <div class="best-stars">
-            ★★★★★
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- ITEM 4 -->
-      <article class="best-card">
-
-        <div class="best-img-wrap">
-
-          <img
-            src="pic/kcnbest.jpg"
-            class="best-img"
-          >
-
-          <span class="best-badge">
-            Popular
-          </span>
-
-        </div>
-
-        <div class="best-info">
-
-          <h3 class="best-name">
-            Sunscreen SPF50+
-          </h3>
-
-          <p class="best-price">
-            $29.00
-          </p>
-
-          <div class="best-stars">
-            ★★★★★
-          </div>
-
-        </div>
-
-      </article>
-
-      <!-- ITEM 5 -->
-      <article class="best-card">
-
-        <div class="best-img-wrap">
-
-          <img
-            src="pic/kemduongbest.jpg"
-            class="best-img"
-          >
-
-          <span class="best-badge">
-            New
-          </span>
-
-        </div>
-
-        <div class="best-info">
-
-          <h3 class="best-name">
-            Moisturizing Cream
-          </h3>
-
-          <p class="best-price">
-            $35.00
-          </p>
-
-          <div class="best-stars">
-            ★★★★★
-          </div>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-<!-- NEWS SECTION -->
-<section class="news-section">
-
-  <div class="container">
-
-    <!-- TITLE -->
-    <div class="section-header">
-
-      <p class="section-tag">
-        Tin tức
-      </p>
-
-      <h2>
-        Bài Viết & Khuyến Mãi
-      </h2>
-
-      <p class="section-sub">
-        Cập nhật xu hướng skincare và ưu đãi mới nhất.
-      </p>
-
-    </div>
-
-    <!-- NEWS GRID -->
-    <div class="news-grid">
-
-      <!-- NEWS 1 -->
-      <a
-        href="news-detail.html?id=1"
-        class="news-card"
-      >
-
-        <div class="news-img-wrap">
-
-          <img
-            src="pic/tintuc1.png"
-            class="news-img"
-          >
-
-        </div>
-
-        <div class="news-content">
-
-          <h3 class="news-title">
-            Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp
-          </h3>
-
-          <p class="news-desc">
-            Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh,
-            hạn chế lão hóa và bảo vệ da trước tia UV.
-          </p>
-
-        </div>
-
-      </a>
-
-      <!-- NEWS 2 -->
-      <a
-        href="news-detail.html?id=2"
-        class="news-card"
-      >
-
-        <div class="news-img-wrap">
-
-          <img
-            src="pic/tintuc2.png"
-            class="news-img"
-          >
-
-        </div>
-
-        <div class="news-content">
-
-          <h3 class="news-title">
-            Serum Vitamin C - “Thần dược” cho làn da sáng khỏe
-          </h3>
-
-          <p class="news-desc">
-            Serum Vitamin C hỗ trợ phục hồi da, làm sáng da
-            và giúp da căng bóng tự nhiên hơn mỗi ngày.
-          </p>
-
-        </div>
-
-      </a>
-
-      <!-- NEWS 3 -->
-      <a
-        href="news-detail.html?id=3"
-        class="news-card"
-      >
-
-        <div class="news-img-wrap">
-
-          <img
-            src="pic/tintuc3.jpg"
-            class="news-img"
-          >
-
-        </div>
-
-        <div class="news-content">
-
-          <h3 class="news-title">
-            Quy trình skincare cho làn da nhạy cảm
-          </h3>
-
-          <p class="news-desc">
-            Các bước chăm sóc da cơ bản giúp giảm kích ứng,
-            phục hồi và bảo vệ làn da nhạy cảm hiệu quả.
-          </p>
-
-        </div>
-
-      </a>
-
-    </div>
-
-    <!-- BUTTON -->
-    <div class="news-btn-wrap">
-
-      <a
-        href="news.html"
-        class="news-btn"
-      >
-        Tất cả bài viết
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
+  </section>
+  <footer class="site-footer"></footer>
+<script src="src/pages/home/home.js"></script>
 </body>
-    <iframe src="components/footer.html" class="footer-frame"></iframe>
-</body>
-
 </html>
