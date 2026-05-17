@@ -21,21 +21,6 @@ body{
 
 
 /* =========================
-   IFRAME
-========================= */
-
-.header-frame{
-    width: 100%;
-    height: 120px;
-    border: none;
-}
-
-.footer-frame{
-    width: 100%;
-    height: 420px;
-    border: none;
-    margin-top: 60px;
-}
 
 
 /* =========================

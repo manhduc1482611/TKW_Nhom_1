@@ -18,16 +18,8 @@ body{
 
 /* HEADER */
 
-header{
-    background-color: #2e7d5a;
-    color: white;
-    padding: 20px 40px;
-}
-
-header h1{
-    font-size: 32px;
-}
-
+/* Header hiện tại được gọi từ component chung hoặc iframe. 
+   Xóa bỏ style cũ để tránh xung đột màu sắc. */
 
 /* MAIN */
 
@@ -47,7 +39,7 @@ header h1{
 
 .breadcrumb a{
     text-decoration: none;
-    color: #2e7d5a;
+    color: #ff4f8b;
 }
 
 
@@ -107,7 +99,7 @@ header h1{
 }
 
 .thumbnail-item:hover{
-    border-color: #2e7d5a;
+    border-color: #ff4f8b;
     transform: scale(1.05);
 }
 
@@ -201,21 +193,21 @@ header h1{
 
 .volume-btn{
     padding: 10px 20px;
-    border: 1px solid #2e7d5a;
+    border: 1px solid #ff4f8b;
     background-color: white;
-    color: #2e7d5a;
+    color: #ff4f8b;
     border-radius: 30px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .volume-btn:hover{
-    background-color: #2e7d5a;
+    background-color: #ff4f8b;
     color: white;
 }
 
 .volume-btn.active{
-    background-color: #2e7d5a;
+    background-color: #ff4f8b;
     color: white;
 }
 
@@ -233,7 +225,7 @@ header h1{
     width: 45px;
     height: 45px;
     border: none;
-    background-color: #2e7d5a;
+    background-color: #ff4f8b;
     color: white;
     font-size: 20px;
     border-radius: 8px;
@@ -282,7 +274,7 @@ header h1{
 }
 
 .buy-now-btn{
-    background-color: #2e7d5a;
+    background-color: #ff4f8b;
     color: white;
 }
 
@@ -311,7 +303,7 @@ header h1{
 .detail-section h3{
     font-size: 28px;
     margin-bottom: 20px;
-    color: #2e7d5a;
+    color: #ff4f8b;
 }
 
 .detail-section p{
