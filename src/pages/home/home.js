@@ -5,61 +5,59 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================= */
 
   const categories = [
-    { name: "Cleanser",      img: "pic/srm.jpg" },
-    { name: "Micellar Water",img: "pic/nuoctaytrang.jpg" },
-    { name: "Toner",         img: "pic/toner.jpg" },
-    { name: "Sunscreen",     img: "pic/kcn.jpg" },
-    { name: "Moisturizer",   img: "pic/kemduong.jpg" },
+    { name: "Cleanser",      img: "assets/images/home/pic/srm.jpg" },
+    { name: "Micellar Water",img: "assets/images/home/pic/nuoctaytrang.jpg" },
+    { name: "Toner",         img: "assets/images/home/pic/toner.jpg"},
+    { name: "Sunscreen",     img: "assets/images/home/pic/kcn.jpg" },
+    { name: "Moisturizer",   img: "assets/images/home/pic/kemduong.jpg" },
   ];
 
   const brands = [
-    { name: "La Roche-Posay", img: "pic/LRP.jpg" },
-    { name: "Vichy",          img: "pic/vichi.jpg" },
-    { name: "Eucerin",        img: "pic/ecurin.jpg" },
-    { name: "Avène",          img: "pic/avene.jpg" },
-    { name: "SVR",            img: "pic/svr.jpg" },
-    { name: "Bioderma",       img: "pic/bioderma.jpg" },
-    { name: "Cetaphil",       img: "pic/cetaphil.jpg" },
-    { name: "CeraVe",         img: "pic/cerave.jpg" },
-    { name: "Hada Labo",      img: "pic/hadalabo.jpg" },
-    { name: "Senka",          img: "pic/senka.jpg" },
-    { name: "Innisfree",      img: "pic/Innisfree.jpg" },
-    { name: "Some By Mi",     img: "pic/Some By Mi.jpg" },
-    { name: "Skin1004",       img: "pic/Skin1004.jpg" },
-    { name: "Cocoon",         img: "pic/Cocoon.jpg" },
-    { name: "Simple",         img: "pic/Simple.jpg" },
+    { name: "La Roche-Posay", img: "assets/images/home/pic/LRP.jpg" },
+    { name: "Vichy",          img: "assets/images/home/pic/vichi.jpg" },
+    { name: "Eucerin",        img: "assets/images/home/pic/ecurin.jpg" },
+    { name: "Avène",          img: "assets/images/home/pic/avene.jpg" },
+    { name: "SVR",            img: "assets/images/home/pic/svr.jpg" },
+    { name: "Bioderma",       img: "assets/images/home/pic/bioderma.jpg" },
+    { name: "Cetaphil",       img: "assets/images/home/pic/cetaphil.jpg" },
+    { name: "CeraVe",         img: "assets/images/home/pic/cerave.jpg" },
+    { name: "Hada Labo",      img: "assets/images/home/pic/hadalabo.jpg" },
+    { name: "Senka",          img: "assets/images/home/pic/senka.jpg" },
+    { name: "Innisfree",      img: "assets/images/home/pic/Innisfree.jpg" },
+    { name: "Some By Mi",     img: "assets/images/home/pic/Some By Mi.jpg" },
+    { name: "Skin1004",       img: "assets/images/home/pic/Skin1004.jpg" },
+    { name: "Cocoon",         img: "assets/images/home/pic/Cocoon.jpg" },
+    { name: "Simple",         img: "assets/images/home/pic/Simple.jpg" },
   ];
 
   const bestSellers = [
-    { name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "pic/srmbest.jpg" },
-    { name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "pic/nuoctaytragbest.jpg" },
-    { name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "pic/tonerbest.jpg" },
-    { name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "pic/kcnbest.jpg" },
-    { name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "pic/kemduongbest.jpg" },
+    { name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
+    { name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "assets/images/home/pic/nuoctaytragbest.jpg" },
+    { name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
+    { name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "assets/images/home/pic/kcnbest.jpg" },
+    { name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "assets/images/home/pic/kemduongbest.jpg" },
   ];
 
   const news = [
     {
       id: 1,
-      img: "pic/tintuc1.png",
+      img: "assets/images/home/pic/tintuc1.png",
       title: "Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp",
       desc: "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
     },
     {
       id: 2,
-      img: "pic/tintuc2.png",
+      img: "assets/images/home/pic/tintuc2.png",
       title: 'Serum Vitamin C - "Thần dược" cho làn da sáng khỏe',
       desc: "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
     },
     {
       id: 3,
-      img: "pic/tintuc3.jpg",
+      img: "assets/images/home/pic/tintuc3.jpg",
       title: "Quy trình skincare cho làn da nhạy cảm",
       desc: "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
     },
   ];
-
-
   /* =========================================
      RENDER HELPERS
   ========================================= */
@@ -71,11 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (html) e.innerHTML = html;
     return e;
   }
-
   /* =========================================
      CATEGORIES
   ========================================= */
-
   const categoriesGrid = document.getElementById("categoriesGrid");
 
   if (categoriesGrid) {
@@ -89,8 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
       categoriesGrid.appendChild(item);
     });
   }
-
-
   /* =========================================
      BRANDS (tự duplicate để loop vô hạn)
   ========================================= */
@@ -139,12 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(scrollBrands);
   }
-
-
   /* =========================================
      BEST SELLERS
   ========================================= */
-
   const bestGrid = document.getElementById("bestGrid");
 
   if (bestGrid) {
@@ -163,12 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
       bestGrid.appendChild(card);
     });
   }
-
-
   /* =========================================
      NEWS
   ========================================= */
-
   const newsGrid = document.getElementById("newsGrid");
 
   if (newsGrid) {
@@ -187,8 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
       newsGrid.appendChild(card);
     });
   }
-
-
   /* =========================================
      HAMBURGER
   ========================================= */
@@ -202,8 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileNav.classList.toggle("open");
     });
   }
-
-
   /* =========================================
      HEADER SCROLL
   ========================================= */
@@ -213,8 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     header.classList.toggle("scrolled", window.scrollY > 20);
   });
-
-
   /* =========================================
      BANNER SLIDER
   ========================================= */
