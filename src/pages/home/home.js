@@ -1,15 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
+     HELPER: tạo slug từ tên
+  ========================================= */
+  function toSlug(str) {
+    return str
+      .toLowerCase()
+      .replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, "a")
+      .replace(/[èéẹẻẽêềếệểễ]/g, "e")
+      .replace(/[ìíịỉĩ]/g, "i")
+      .replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, "o")
+      .replace(/[ùúụủũưừứựửữ]/g, "u")
+      .replace(/[ýỳỵỷỹ]/g, "y")
+      .replace(/đ/g, "d")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+  }
+
+  /* =========================================
      DATA
   ========================================= */
 
   const categories = [
-    { name: "Cleanser",      img: "assets/images/home/pic/srm.jpg" },
-    { name: "Micellar Water",img: "assets/images/home/pic/nuoctaytrang.jpg" },
-    { name: "Toner",         img: "assets/images/home/pic/toner.jpg"},
-    { name: "Sunscreen",     img: "assets/images/home/pic/kcn.jpg" },
-    { name: "Moisturizer",   img: "assets/images/home/pic/kemduong.jpg" },
+    { name: "Cleanser",       img: "assets/images/home/pic/srm.jpg",        category: "Sữa rửa mặt"    },
+    { name: "Micellar Water", img: "assets/images/home/pic/nuoctaytrang.jpg", category: "Nước tẩy trang" },
+    { name: "Toner",          img: "assets/images/home/pic/toner.jpg",       category: "Tonner"          },
+    { name: "Sunscreen",      img: "assets/images/home/pic/kcn.jpg",         category: "Kem chống nắng" },
+    { name: "Moisturizer",    img: "assets/images/home/pic/kemduong.jpg",    category: "Kem dưỡng"      },
   ];
 
   const brands = [
@@ -31,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bestSellers = [
-    { name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
-    { name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "assets/images/home/pic/nuoctaytragbest.jpg" },
-    { name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
-    { name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "assets/images/home/pic/kcnbest.jpg" },
-    { name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "assets/images/home/pic/kemduongbest.jpg" },
+    { id: 1,  name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
+    { id: 2,  name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "assets/images/home/pic/nuoctaytragbest.jpg" },
+    { id: 3,  name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
+    { id: 4,  name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "assets/images/home/pic/kcnbest.jpg" },
+    { id: 5,  name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "assets/images/home/pic/kemduongbest.jpg" },
   ];
 
   const news = [
@@ -58,64 +76,73 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
     },
   ];
+
   /* =========================================
      RENDER HELPERS
   ========================================= */
-
-  // Tạo 1 element với class + innerHTML tuỳ chọn
   function el(tag, cls, html = "") {
     const e = document.createElement(tag);
     if (cls) e.className = cls;
     if (html) e.innerHTML = html;
     return e;
   }
+
   /* =========================================
      CATEGORIES
   ========================================= */
   const categoriesGrid = document.getElementById("categoriesGrid");
 
   if (categoriesGrid) {
-    categories.forEach(({ name, img }) => {
-      const item = el("div", "category-item", `
+    categories.forEach(({ name, img, category }) => {
+      const item = document.createElement("a");
+      item.className = "category-item";
+      item.href = `pages/product/html/products.html?category=${encodeURIComponent(category)}`;
+      item.title = name;
+      item.innerHTML = `
         <div class="category-circle">
           <img src="${img}" class="category-img" alt="${name}">
         </div>
         <p class="category-name">${name}</p>
-      `);
+      `;
       categoriesGrid.appendChild(item);
     });
   }
-  /* =========================================
-     BRANDS (tự duplicate để loop vô hạn)
-  ========================================= */
 
+  /* =========================================
+     BRANDS
+     Click → pages/product/html/products.html?brand=La Roche-Posay
+  ========================================= */
   const brandsTrack = document.getElementById("brandsTrack");
 
+  function createBrandCard(name, img, isClone = false) {
+    const card = document.createElement("a");
+    card.className = "brand-card";
+    // Dùng tên gốc (không slug) để match đúng với brandFilter trong products.js
+    card.href = `pages/product/html/products.html?brand=${encodeURIComponent(name)}`;
+    card.title = name;
+    if (isClone) card.setAttribute("aria-hidden", "true");
+    card.innerHTML = `
+      <div class="brand-img-wrap">
+        <img src="${img}" class="brand-img" alt="${name}">
+      </div>
+      <p class="brand-name">${name}</p>
+    `;
+    return card;
+  }
+
   if (brandsTrack) {
-    // Render bản gốc
     brands.forEach(({ name, img }) => {
-      brandsTrack.insertAdjacentHTML("beforeend", `
-        <div class="brand-card">
-          <div class="brand-img-wrap">
-            <img src="${img}" class="brand-img" alt="${name}">
-          </div>
-          <p class="brand-name">${name}</p>
-        </div>
-      `);
+      brandsTrack.appendChild(createBrandCard(name, img));
     });
 
     // Clone để loop vô hạn
-    brandsTrack.querySelectorAll(".brand-card").forEach(card => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      brandsTrack.appendChild(clone);
+    brands.forEach(({ name, img }) => {
+      brandsTrack.appendChild(createBrandCard(name, img, true));
     });
 
-    // JS scroll: dùng requestAnimationFrame thay CSS keyframe
-    // → luôn đúng dù số brand thay đổi
     let pos = 0;
     let paused = false;
-    const speed = 0.5; // px mỗi frame
+    const speed = 0.5;
 
     brandsTrack.parentElement.addEventListener("mouseenter", () => paused = true);
     brandsTrack.parentElement.addEventListener("mouseleave", () => paused = false);
@@ -123,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function scrollBrands() {
       if (!paused) {
         pos += speed;
-        // Reset về 0 khi đi hết nửa đầu (bản gốc)
         const half = brandsTrack.scrollWidth / 2;
         if (pos >= half) pos = 0;
         brandsTrack.style.transform = `translateX(-${pos}px)`;
@@ -133,14 +159,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(scrollBrands);
   }
+
   /* =========================================
      BEST SELLERS
+     Click → pages/product/html/product-detail.html?id=1
   ========================================= */
   const bestGrid = document.getElementById("bestGrid");
 
   if (bestGrid) {
-    bestSellers.forEach(({ name, price, badge, img }) => {
-      const card = el("article", "best-card", `
+    bestSellers.forEach(({ id, name, price, badge, img }) => {
+      const card = document.createElement("a");
+      card.className = "best-card";
+      card.href = `pages/product/html/product-detail.html?id=${id}`;
+      card.title = name;
+      card.innerHTML = `
         <div class="best-img-wrap">
           <img src="${img}" class="best-img" alt="${name}">
           <span class="best-badge">${badge}</span>
@@ -150,10 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="best-price">${price}</p>
           <div class="best-stars">★★★★★</div>
         </div>
-      `);
+      `;
       bestGrid.appendChild(card);
     });
   }
+
   /* =========================================
      NEWS
   ========================================= */
@@ -162,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (newsGrid) {
     news.forEach(({ id, img, title, desc }) => {
       const card = el("a", "news-card");
-      card.href = `news-detail.html?id=${id}`;
+      card.href = `pages/news/html/news-detail.html?id=${id}`;
       card.innerHTML = `
         <div class="news-img-wrap">
           <img src="${img}" class="news-img" alt="${title}">
@@ -175,10 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
       newsGrid.appendChild(card);
     });
   }
+
   /* =========================================
      HAMBURGER
   ========================================= */
-
   const hamburger = document.getElementById("hamburger");
   const mobileNav = document.getElementById("mobileNav");
 
@@ -188,19 +221,19 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileNav.classList.toggle("open");
     });
   }
+
   /* =========================================
      HEADER SCROLL
   ========================================= */
-
   const header = document.querySelector(".site-header");
 
   window.addEventListener("scroll", () => {
     header.classList.toggle("scrolled", window.scrollY > 20);
   });
+
   /* =========================================
      BANNER SLIDER
   ========================================= */
-
   const banners = document.querySelectorAll(".banner-img");
   let currentBanner = 0;
 

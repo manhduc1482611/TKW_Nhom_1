@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp",
+    "category": "Skincare Tips",
+    "date": "15/05/2025",
+    "author": "Nghien Beauty",
+    "img": "../../../assets/images/home/pic/tintuc1.png",
+    "desc": "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
+    "content": [
+      {
+        "heading": "Tại sao kem chống nắng lại quan trọng?",
+        "text": "Tia UV từ ánh mặt trời là nguyên nhân hàng đầu gây lão hóa da sớm, nám, tàn nhang và thậm chí ung thư da. Sử dụng kem chống nắng hàng ngày — kể cả khi trời흐m hay ở trong nhà — là bước không thể bỏ qua trong chu trình skincare của bạn."
+      },
+      {
+        "heading": "Chọn SPF bao nhiêu là đủ?",
+        "text": "SPF 30 chặn khoảng 97% tia UVB, trong khi SPF 50 chặn khoảng 98%. Với điều kiện khí hậu nhiệt đới nắng gắt như Việt Nam, các chuyên gia da liễu khuyên nên dùng tối thiểu SPF 50+, PA+++ để bảo vệ toàn diện cả tia UVA lẫn UVB."
+      },
+      {
+        "heading": "Cách thoa kem chống nắng đúng chuẩn",
+        "text": "Thoa kem chống nắng là bước cuối cùng trong chu trình skincare buổi sáng, sau dưỡng ẩm. Lượng kem cần thiết cho mặt tương đương 2 đốt ngón tay (khoảng 1/4 thìa cà phê). Thoa đều lên toàn mặt, cổ và tai — những vùng dễ bị bỏ sót. Nhớ thoa lại sau mỗi 2-3 tiếng nếu bạn ở ngoài trời."
+      },
+      {
+        "heading": "Sai lầm thường gặp khi dùng kem chống nắng",
+        "text": "Nhiều người chỉ thoa kem chống nắng khi trời nắng to, nhưng tia UVA có thể xuyên qua mây và kính. Một sai lầm khác là thoa quá ít — thoa nửa lượng cần thiết chỉ cho hiệu quả bảo vệ bằng căn bậc hai của SPF. Ngoài ra, không nên bỏ qua bước tẩy trang kỹ vào cuối ngày để tránh bít tắc lỗ chân lông."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Serum Vitamin C - \"Thần dược\" cho làn da sáng khỏe",
+    "category": "Thành Phần",
+    "date": "10/05/2025",
+    "author": "Nghien Beauty",
+    "img": "../../../assets/images/home/pic/tintuc2.png",
+    "desc": "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
+    "content": [
+      {
+        "heading": "Vitamin C hoạt động như thế nào trên da?",
+        "text": "Vitamin C (L-Ascorbic Acid) là một chất chống oxy hóa mạnh mẽ, trung hòa các gốc tự do gây hại từ tia UV và ô nhiễm môi trường. Quan trọng hơn, Vitamin C kích thích sản sinh collagen — protein tạo nên độ đàn hồi và săn chắc của da — đồng thời ức chế enzyme tyrosinase, ngăn chặn sự hình thành melanin gây nám và thâm."
+      },
+      {
+        "heading": "Nồng độ Vitamin C phù hợp cho từng loại da",
+        "text": "Với người mới bắt đầu hoặc da nhạy cảm, nên chọn sản phẩm chứa 5-10% Vitamin C để da làm quen dần. Da thường hoặc da dầu có thể dùng nồng độ 15-20% để đạt hiệu quả tốt hơn. Nồng độ trên 20% thường không tăng thêm hiệu quả mà còn tăng nguy cơ kích ứng."
+      },
+      {
+        "heading": "Cách dùng serum Vitamin C hiệu quả nhất",
+        "text": "Vitamin C hoạt động tốt nhất vào buổi sáng — kết hợp với kem chống nắng, nó tạo ra lớp bảo vệ kép chống tia UV. Thoa serum lên da sạch, khô trước bước dưỡng ẩm. Tránh kết hợp với Niacinamide nồng độ cao vì có thể giảm hiệu quả. Bảo quản sản phẩm trong hộp tối màu, tránh ánh sáng và nhiệt độ cao."
+      },
+      {
+        "heading": "Dấu hiệu nhận biết Vitamin C đã bị oxy hóa",
+        "text": "Serum Vitamin C nguyên chất (L-Ascorbic Acid) rất dễ bị oxy hóa và mất tác dụng. Khi sản phẩm chuyển sang màu vàng đậm hoặc cam nâu, đó là dấu hiệu đã bị oxy hóa và bạn nên thay sản phẩm mới. Để kéo dài tuổi thọ, đậy nắp kín sau mỗi lần dùng và bảo quản trong ngăn mát tủ lạnh."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Quy trình skincare cho làn da nhạy cảm",
+    "category": "Skincare Routine",
+    "date": "05/05/2025",
+    "author": "Nghien Beauty",
+    "img": "../../../assets/images/home/pic/tintuc3.jpg",
+    "desc": "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
+    "content": [
+      {
+        "heading": "Da nhạy cảm là gì và nguyên nhân do đâu?",
+        "text": "Da nhạy cảm là tình trạng da dễ phản ứng với các tác nhân bên ngoài như hóa chất, nhiệt độ, hoặc ma sát, biểu hiện qua đỏ, ngứa, rát hoặc bong tróc. Nguyên nhân có thể do lớp màng bảo vệ da (skin barrier) bị tổn thương, di truyền, hoặc lạm dụng sản phẩm chứa hương liệu và cồn."
+      },
+      {
+        "heading": "Quy trình buổi sáng cho da nhạy cảm",
+        "text": "Bước 1 - Rửa mặt: Chỉ dùng nước ấm hoặc sữa rửa mặt dịu nhẹ không chứa xà phòng (pH 5.5). Bước 2 - Toner: Chọn toner không cồn, có thành phần làm dịu như Panthenol, Allantoin, rau má. Bước 3 - Dưỡng ẩm: Ưu tiên sản phẩm chứa Ceramide, Hyaluronic Acid để phục hồi màng ẩm. Bước 4 - Kem chống nắng: Bắt buộc dùng kem chống nắng vật lý (Zinc Oxide, Titanium Dioxide) để tránh kích ứng."
+      },
+      {
+        "heading": "Quy trình buổi tối cho da nhạy cảm",
+        "text": "Tối là thời điểm da phục hồi tốt nhất. Bước 1 - Tẩy trang: Dùng nước tẩy trang micellar không cồn. Bước 2 - Rửa mặt: Tương tự buổi sáng. Bước 3 - Dưỡng phục hồi: Dùng sản phẩm chứa Centella Asiatica (rau má), Panthenol 5%, Madecassoside để tái tạo và củng cố skin barrier. Tránh dùng retinol hay acid vào giai đoạn da đang kích ứng."
+      },
+      {
+        "heading": "Những thành phần cần tránh với da nhạy cảm",
+        "text": "Da nhạy cảm nên tránh: cồn biến tính (Alcohol Denat.), hương liệu tổng hợp (Fragrance/Parfum), Sodium Lauryl Sulfate (SLS), tinh dầu nguyên chất nồng độ cao, và các acid mạnh như AHA/BHA khi da đang bùng phát. Luôn patch test sản phẩm mới trên cổ tay 24 giờ trước khi dùng cho mặt."
+      }
+    ]
+  }
+]

@@ -1,4 +1,17 @@
 // =========================
+// GET BRAND FROM URL
+// (khi click từ trang chủ vào)
+// =========================
+
+const urlParams = new URLSearchParams(
+    window.location.search
+);
+
+const brandFromUrl    = urlParams.get("brand");    // vd: "La Roche-Posay"
+const categoryFromUrl = urlParams.get("category"); // vd: "Sữa rửa mặt"
+
+
+// =========================
 // ELEMENTS
 // =========================
 
@@ -84,6 +97,65 @@ async function fetchProducts(){
         const data = await response.json();
 
         allProducts = data;
+
+        // ================================
+        // NẾU CÓ BRAND TỪ URL → set vào
+        // dropdown và cập nhật tiêu đề
+        // ================================
+        if(brandFromUrl){
+
+            // Tìm option khớp với tên brand (so sánh không phân biệt hoa thường)
+            const matchedOption = Array.from(brandFilter.options).find(opt =>
+                opt.value.toLowerCase() === brandFromUrl.toLowerCase()
+            );
+
+            if(matchedOption){
+
+                brandFilter.value = matchedOption.value;
+
+                // Cập nhật tiêu đề trang
+                pageTitle.textContent = matchedOption.value.toUpperCase();
+                toolbarTitle.textContent = matchedOption.value;
+                breadcrumbTitle.textContent = matchedOption.value;
+
+            }
+
+        }
+
+        // ================================
+        // NẾU CÓ CATEGORY TỪ URL → set vào
+        // sidebar và cập nhật tiêu đề
+        // ================================
+        if(categoryFromUrl){
+
+            // Map tên category → text sidebar
+            const categoryMap = {
+                "Sữa rửa mặt":   "Sữa rửa mặt",
+                "Nước tẩy trang": "Nước tẩy trang",
+                "Tonner":         "Toner",
+                "Kem chống nắng": "Kem chống nắng",
+                "Kem dưỡng":      "Kem dưỡng",
+            };
+
+            currentCategory = categoryFromUrl;
+
+            // Active đúng li trong sidebar
+            categoryItems.forEach(item => {
+                item.classList.remove("active-category");
+                const text = item.innerText.trim();
+                // match tên hiển thị sidebar với category
+                const matchText = categoryMap[categoryFromUrl];
+                if(text === matchText || text === categoryFromUrl){
+                    item.classList.add("active-category");
+                }
+            });
+
+            const displayName = categoryMap[categoryFromUrl] || categoryFromUrl;
+            pageTitle.textContent    = displayName.toUpperCase();
+            toolbarTitle.textContent = displayName;
+            breadcrumbTitle.textContent = displayName;
+
+        }
 
         applyFilters();
 
@@ -524,47 +596,44 @@ categoryItems.forEach(item => {
         // category
         const text = item.innerText.trim();
 
-switch(text){
+        switch(text){
 
-    case "Sữa rửa mặt":
-        currentCategory = "Sữa rửa mặt";
-        break;
+            case "Sữa rửa mặt":
+                currentCategory = "Sữa rửa mặt";
+                break;
 
-    case "Toner":
-        currentCategory = "Tonner";
-        break;
+            case "Toner":
+                currentCategory = "Tonner";
+                break;
 
-    case "Kem dưỡng":
-        currentCategory = "Kem dưỡng";
-        break;
+            case "Kem dưỡng":
+                currentCategory = "Kem dưỡng";
+                break;
 
-    case "Kem chống nắng":
-        currentCategory = "Kem chống nắng";
-        break;
+            case "Kem chống nắng":
+                currentCategory = "Kem chống nắng";
+                break;
 
-    case "Nước tẩy trang":
-        currentCategory = "Nước tẩy trang";
-        break;
+            case "Nước tẩy trang":
+                currentCategory = "Nước tẩy trang";
+                break;
 
-    default:
-        currentCategory = "all";
+            default:
+                currentCategory = "all";
 
-}
-// update titles
+        }
 
-let displayTitle = text;
+        // update titles
+        let displayTitle = text;
 
-if(text === "Tất cả sản phẩm"){
+        if(text === "Tất cả sản phẩm"){
+            displayTitle = "Tất cả sản phẩm";
+        }
 
-    displayTitle = "Tất cả sản phẩm";
+        pageTitle.textContent = displayTitle.toUpperCase();
+        toolbarTitle.textContent = displayTitle;
+        breadcrumbTitle.textContent = displayTitle;
 
-}
-
-pageTitle.textContent = displayTitle.toUpperCase();
-
-toolbarTitle.textContent = displayTitle;
-
-breadcrumbTitle.textContent = displayTitle;
         currentPage = 1;
 
         applyFilters();
@@ -589,6 +658,19 @@ searchInput.addEventListener("input", () => {
 brandFilter.addEventListener("change", () => {
 
     currentPage = 1;
+
+    // Cập nhật tiêu đề khi đổi brand thủ công
+    const selectedBrand = brandFilter.value;
+
+    if(selectedBrand === "all"){
+        pageTitle.textContent = "TẤT CẢ SẢN PHẨM";
+        toolbarTitle.textContent = "Tất cả sản phẩm";
+        breadcrumbTitle.textContent = "Sản phẩm";
+    } else {
+        pageTitle.textContent = selectedBrand.toUpperCase();
+        toolbarTitle.textContent = selectedBrand;
+        breadcrumbTitle.textContent = selectedBrand;
+    }
 
     applyFilters();
 
