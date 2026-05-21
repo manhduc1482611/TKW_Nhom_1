@@ -91,7 +91,7 @@ async function fetchProducts(){
         renderLoading();
 
         const response = await fetch(
-            "../../../data/products.json"
+            "/data/products.json"
         );
 
         const data = await response.json();
@@ -132,7 +132,7 @@ async function fetchProducts(){
             const categoryMap = {
                 "Sữa rửa mặt":   "Sữa rửa mặt",
                 "Nước tẩy trang": "Nước tẩy trang",
-                "Tonner":         "Toner",
+                "Tonner":         "Tonner",
                 "Kem chống nắng": "Kem chống nắng",
                 "Kem dưỡng":      "Kem dưỡng",
             };
@@ -602,7 +602,7 @@ categoryItems.forEach(item => {
                 currentCategory = "Sữa rửa mặt";
                 break;
 
-            case "Toner":
+            case "Tonner":
                 currentCategory = "Tonner";
                 break;
 

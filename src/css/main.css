@@ -1,8 +1,23 @@
-@import url(../css/layouts/breadcrumb.css);
-@import url(../css/layouts/footer.css);
-@import url(../css/layouts/header.css);
-@import url(../css/layouts/chatbot.css);
+/* =========================================
+   1. IMPORT THƯ VIỆN BÊN NGOÀI
+   (Font Awesome & Google Fonts)
+========================================= */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com');
 
+/* =========================================
+   2. IMPORT CSS HỆ THỐNG
+========================================= */
 @import url(../css/base/reset.css);
 @import url(../css/base/variables.css);
 @import url(../css/base/typography.css);
+
+/* =========================================
+   3. IMPORT CSS LAYOUTS
+========================================= */
+@import url(../css/layouts/header.css);
+@import url(../css/layouts/breadcrumb.css);
+@import url(../css/layouts/footer.css);
+@import url(../css/layouts/chatbot.css);

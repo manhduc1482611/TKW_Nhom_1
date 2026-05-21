@@ -5,42 +5,18 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Chi tiết sản phẩm</title>
 
     <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="../css/product-detail.css"
-    >
-
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- ICON -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    >
-
+    <link rel="stylesheet" href="../css/product-detail.css">
+    <link rel="stylesheet" href="/src/css/main.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <iframe
-        src="../../../components/header.html"
-        class="header-frame"
-    ></iframe>
-
+    <div id="header"></div>
     <!-- BREADCRUMB -->
     <section class="detail-banner">
 
@@ -84,21 +60,14 @@
             <div class="gallery-section">
 
                 <!-- THUMBNAILS -->
-                <div
-                    class="thumbnail-list"
-                    id="thumbnailList"
-                >
+                <div class="thumbnail-list" id="thumbnailList">
 
                 </div>
 
                 <!-- MAIN IMAGE -->
                 <div class="main-image">
 
-                    <img
-                        id="mainProductImage"
-                        src=""
-                        alt=""
-                    >
+                    <img id="mainProductImage" src="" alt="">
 
                 </div>
 
@@ -108,26 +77,17 @@
             <div class="info-section">
 
                 <!-- BRAND -->
-                <p
-                    class="product-brand"
-                    id="productBrand"
-                >
+                <p class="product-brand" id="productBrand">
 
                 </p>
 
                 <!-- NAME -->
-                <h1
-                    class="product-name"
-                    id="productName"
-                >
+                <h1 class="product-name" id="productName">
 
                 </h1>
 
                 <!-- CHARACTERISTICS -->
-                <p
-                    class="product-characteristics"
-                    id="productCharacteristics"
-                >
+                <p class="product-characteristics" id="productCharacteristics">
 
                 </p>
 
@@ -153,27 +113,18 @@
                 <!-- PRICE -->
                 <div class="product-price">
 
-                    <span
-                        class="sale-price"
-                        id="salePrice"
-                    >
+                    <span class="sale-price" id="salePrice">
 
                     </span>
 
-                    <span
-                        class="old-price"
-                        id="oldPrice"
-                    >
+                    <span class="old-price" id="oldPrice">
 
                     </span>
 
                 </div>
 
                 <!-- STOCK -->
-                <div
-                    class="stock-status"
-                    id="stockStatus"
-                >
+                <div class="stock-status" id="stockStatus">
 
                 </div>
 
@@ -186,10 +137,7 @@
 
                     </h3>
 
-                    <div
-                        class="volume-options"
-                        id="volumeOptions"
-                    >
+                    <div class="volume-options" id="volumeOptions">
 
                     </div>
 
@@ -260,10 +208,7 @@
 
             </h2>
 
-            <div
-                class="related-list"
-                id="relatedProducts"
-            >
+            <div class="related-list" id="relatedProducts">
 
             </div>
 
@@ -317,14 +262,8 @@
         </div>
 
     </section>
-
-    <!-- FOOTER -->
-    <iframe
-        src="../../../components/footer.html"
-        class="footer-frame"
-    ></iframe>
-
-<script src="../js/product-detail.js"></script>
-
-</body>
+    <div id="footer"></div>
+    <script type="module" src="/src/js/main.js"></script>
+    <script src="../js/product-detail.js"></script>
+    </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +9,27 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/products.css">
-<link rel="stylesheet" href="../../../css/main.css">
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- GOOGLE FONT -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/main.css">
 </head>
-<main-header></main-header>
+
 <body>
+    <div id="header"></div>
 
     <!-- PAGE BANNER -->
     <section class="products-banner">
-
         <!-- breadcrumb -->
         <div class="breadcrumb">
-
             <a href="../../../index.html">
                 <i class="fa-solid fa-house"></i>
                 Trang chủ
             </a>
-
             <span>/</span>
-
-<span id="breadcrumbTitle">
-    Sản phẩm
-</span>
+            <span id="breadcrumbTitle">
+                Sản phẩm
+            </span>
         </div>
-
         <!-- title -->
         <h1 id="pageTitle">TẤT CẢ SẢN PHẨM</h1>
-
     </section>
 
     <!-- MAIN -->
@@ -62,7 +50,7 @@
 
                     <li>Sữa rửa mặt</li>
 
-                    <li>Toner</li>
+                    <li>Tonner</li>
 
                     <li>Kem dưỡng</li>
 
@@ -97,11 +85,7 @@
 
                         <i class="fa-solid fa-magnifying-glass"></i>
 
-                        <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Tìm sản phẩm..."
-                        >
+                        <input type="text" id="searchInput" placeholder="Tìm sản phẩm...">
 
                     </div>
 
@@ -191,26 +175,18 @@
             </div>
 
             <!-- PRODUCTS -->
-            <div 
-                class="products-grid"
-                id="productsGrid"
-            >
+            <div class="products-grid" id="productsGrid">
 
             </div>
-<!-- PAGINATION -->
+            <!-- PAGINATION -->
 
-<div class="pagination" id="pagination">
-
-</div>
+            <div class="pagination" id="pagination"></div>
         </section>
-
     </main>
-
-    <!-- FOOTER -->
-    <iframe src="../../../components/footer.html" class="footer-frame"></iframe>
-<script src="../../../js/main.js"></script>
-<script src="../../../js/layouts/call.js"></script>
-<script src="../js/products.js"></script>
+    <div id="footer"></div>
+    <script type="module" src="/src/js/main.js"></script>
+    <script src="../js/products.js"></script>
 
 </body>
+
 </html>

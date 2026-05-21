@@ -134,7 +134,7 @@ async function fetchProduct(){
     try{
 
         const response = await fetch(
-            "../../../data/products.json"
+            "/data/products.json"
         );
 
         const products = await response.json();

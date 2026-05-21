@@ -22,7 +22,7 @@ const breadcrumbTitle = document.getElementById("breadcrumbTitle");
 // =========================
 async function fetchNews() {
   try {
-    const res = await fetch("../../../data/news.json");
+    const res = await fetch("/data/news.json");
     const news = await res.json();
 
     const article = news.find(n => n.id === newsId);

@@ -1,124 +1,131 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="checkout.css">
+
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <title>Giỏ hàng - BeautyStore</title>
+<link rel="stylesheet" href="/src/css/main.css">
+<link rel="stylesheet" href="checkout.css">
 </head>
-
 <body>
-<div class="checkout-container">
-    <div class="checkout-grid">
-        <section class="checkout-section">
-            <h2 class="section-title"><i class="fa-solid fa-location-dot"></i> Thông tin giao hàng</h2>
-            <div class="form-group">
-                <label>Người nhận</label>
-                <input type="text" class="checkout-input" value="google_user_100">
-            </div>
-            <div class="form-row">
+    <div id="header"></div>
+    <div class="checkout-container">
+        <div class="checkout-grid">
+            <section class="checkout-section">
+                <h2 class="section-title"><i class="fa-solid fa-location-dot"></i> Thông tin giao hàng</h2>
                 <div class="form-group">
-                    <label>Số điện thoại</label>
-                    <input type="text" class="checkout-input" placeholder="09xxxxxxxx">
+                    <label>Người nhận</label>
+                    <input type="text" class="checkout-input" value="google_user_100">
                 </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="checkout-input" value="user@gmail.com">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Thành phố</label>
-                    <input type="text" class="checkout-input" value="Hà Nội">
-                </div>
-                <div class="form-group">
-                    <label>Quận (Nội thành)</label>
-                    <select class="checkout-input">
-                        <option>-- Chọn Quận --</option>
-                    </select>
-                    <small class="note-text">Chú ý: Tiệm chỉ giao trong bán kính 5km</small>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Địa chỉ chi tiết</label>
-                <input type="text" class="checkout-input" placeholder="Số nhà, ngõ, tên tòa nhà...">
-            </div>
-            <div class="form-group">
-                <label>Ghi chú cho tài xế</label>
-                <textarea class="checkout-input" rows="3"></textarea>
-            </div>
-        </section>
-
-        <section class="checkout-section">
-            <h2 class="section-title"><i class="fa-solid fa-credit-card"></i> Thanh toán</h2>
-            
-            <label class="sub-label">Đơn vị vận chuyển</label>
-            <div class="method-card active">
-                <input type="radio" checked>
-                <div class="method-info">
-                    <strong>Giao Hàng Hỏa Tốc</strong>
-                    <span>Đồng giá nội thành: 20.000đ</span>
-                </div>
-            </div>
-
-            <label class="sub-label">Phương thức thanh toán</label>
-            <div class="method-card">
-                <input type="radio" name="payment">
-                <div class="method-info">
-                    <strong>Thanh toán tiền mặt (COD)</strong>
-                    <span>Thanh toán khi nhận hàng</span>
-                </div>
-            </div>
-            
-            <div class="method-card selected">
-                <input type="radio" name="payment" checked>
-                <div class="method-info">
-                    <strong>Chuyển khoản Ngân hàng</strong>
-                    <span>Quét mã VietQR (24/7)</span>
-                    <div class="bank-details">
-                        <p>Ngân hàng: <strong>TECHCOMBANK</strong></p>
-                        <p>STK: <strong>3023022006</strong></p>
-                        <p>Chủ TK: <strong>NGUYEN MANH DUC</strong></p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="text" class="checkout-input" placeholder="09xxxxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="checkout-input" value="user@gmail.com">
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <aside class="checkout-section summary-section">
-            <h2 class="section-title"><i class="fa-solid fa-bag-shopping"></i> Đơn hàng (1)</h2>
-            <div class="order-item">
-                <img src="../assets/images/product-sample.jpg" alt="Mì cay">
-                <div class="item-info">
-                    <div class="item-header">
-                        <strong>Mì cay hải sản</strong>
-                        <span>157.950đ</span>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Thành phố</label>
+                        <input type="text" class="checkout-input" value="Hà Nội">
                     </div>
-                    <small>Độ cay: Cấp 0</small>
-                    <div class="item-footer">
-                        <span>SL: 3</span>
-                        <button class="btn-remove"><i class="fa-solid fa-trash"></i> Xóa</button>
+                    <div class="form-group">
+                        <label>Quận (Nội thành)</label>
+                        <select class="checkout-input">
+                            <option>-- Chọn Quận --</option>
+                        </select>
+                        <small class="note-text">Chú ý: Tiệm chỉ giao trong bán kính 5km</small>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label>Địa chỉ chi tiết</label>
+                    <input type="text" class="checkout-input" placeholder="Số nhà, ngõ, tên tòa nhà...">
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú cho tài xế</label>
+                    <textarea class="checkout-input" rows="3"></textarea>
+                </div>
+            </section>
 
-            <div class="promo-box">
-                <input type="text" placeholder="Mã giảm giá">
-                <button class="btn-apply">Áp dụng</button>
-            </div>
+            <section class="checkout-section">
+                <h2 class="section-title"><i class="fa-solid fa-credit-card"></i> Thanh toán</h2>
 
-            <div class="price-row">
-                <span>Tạm tính</span>
-                <span>157.950đ</span>
-            </div>
-            <div class="price-row">
-                <span>Phí vận chuyển</span>
-                <span>20.000đ</span>
-            </div>
-            <div class="price-row total">
-                <span>Tổng cộng</span>
-                <span class="total-price">177.950đ</span>
-            </div>
+                <label class="sub-label">Đơn vị vận chuyển</label>
+                <div class="method-card active">
+                    <input type="radio" checked>
+                    <div class="method-info">
+                        <strong>Giao Hàng Hỏa Tốc</strong>
+                        <span>Đồng giá nội thành: 20.000đ</span>
+                    </div>
+                </div>
 
-            <button class="btn-order-now">ĐẶT HÀNG NGAY</button>
-        </aside>
+                <label class="sub-label">Phương thức thanh toán</label>
+                <div class="method-card">
+                    <input type="radio" name="payment">
+                    <div class="method-info">
+                        <strong>Thanh toán tiền mặt (COD)</strong>
+                        <span>Thanh toán khi nhận hàng</span>
+                    </div>
+                </div>
+
+                <div class="method-card selected">
+                    <input type="radio" name="payment" checked>
+                    <div class="method-info">
+                        <strong>Chuyển khoản Ngân hàng</strong>
+                        <span>Quét mã VietQR (24/7)</span>
+                        <div class="bank-details">
+                            <p>Ngân hàng: <strong>TECHCOMBANK</strong></p>
+                            <p>STK: <strong>3023022006</strong></p>
+                            <p>Chủ TK: <strong>NGUYEN MANH DUC</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="checkout-section summary-section">
+                <h2 class="section-title"><i class="fa-solid fa-bag-shopping"></i> Đơn hàng (1)</h2>
+                <div class="order-item">
+                    <img src="../assets/images/product-sample.jpg" alt="Mì cay">
+                    <div class="item-info">
+                        <div class="item-header">
+                            <strong>Mì cay hải sản</strong>
+                            <span>157.950đ</span>
+                        </div>
+                        <small>Độ cay: Cấp 0</small>
+                        <div class="item-footer">
+                            <span>SL: 3</span>
+                            <button class="btn-remove"><i class="fa-solid fa-trash"></i> Xóa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="promo-box">
+                    <input type="text" placeholder="Mã giảm giá">
+                    <button class="btn-apply">Áp dụng</button>
+                </div>
+
+                <div class="price-row">
+                    <span>Tạm tính</span>
+                    <span>157.950đ</span>
+                </div>
+                <div class="price-row">
+                    <span>Phí vận chuyển</span>
+                    <span>20.000đ</span>
+                </div>
+                <div class="price-row total">
+                    <span>Tổng cộng</span>
+                    <span class="total-price">177.950đ</span>
+                </div>
+
+                <button class="btn-order-now">ĐẶT HÀNG NGAY</button>
+            </aside>
+        </div>
     </div>
-</div>
+    <div id="footer"></div>
+    <script type="module" src="/src/js/main.js"></script>
+    <script src="checkout.js"></script>
+</body>
+

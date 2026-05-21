@@ -1,74 +1,23 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nghien Beauty</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./pages/home/home.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="/pages/home/home.css">
+  <link rel="stylesheet" href="/src/css/main.css">
 </head>
+
 <body>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo">
-        <img src="./assets/images/home/pic/logo.jpg" alt="Nghien Beauty Logo" class="logo-img">
-        <span class="logo-text">Nghien Skincare</span>
-      </div>
-      <nav class="main-nav">
-        <ul class="nav-list">
-        <li><a href="../index.html">Trang chủ</a></li>
-        <li><a href="../pages/about/about.html">Giới thiệu</a></li>        
-                    <li id="shop-menu" class="has-submenu">
-                        <a href="../pages/product/html/products.html">Sản phẩm <i class="fa-solid fa-chevron-down menu-icon"></i></a>
-                        <ul class="submenu">
-                            <li><a href="../pages/product/html/products.html?category=skincare">Chăm sóc da</a></li>
-                            <li><a href="../pages/product/html/products.html?category=makeup">Trang điểm</a></li>
-                            <li><a href="../pages/product/html/products.html?category=fragrance">Nước hoa</a></li>
-                            <li><a href="../pages/product/html/products.html?category=haircare">Chăm sóc tóc</a></li>
-                            <li><a href="../pages/product/html/products.html?category=bodycare">Chăm sóc cơ thể</a></li>
-                        </ul>
-                    </li>
-
-        <li><a href="../pages/promotion/promotion.html">Khuyến mãi</a></li>
-        <li><a href="../pages/news/html/news.html">Tin tức</a></li>
-        <li><a href="../pages/contact/contact.html">Liên hệ</a></li>
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <form class="search-form">
-          <input type="text" class="search-input" placeholder="Search...">
-          <button class="search-btn">🔍</button>
-        </form>
-        <a href="tintuc.html" class="cart-btn">🛒<span class="cart-count">2</span></a>
-        <button class="hamburger" id="hamburger">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-      </div>
-    </div>
-    <div class="mobile-nav" id="mobileNav">
-      <ul class="mobile-nav-list">
-               <li><a href="../index.html">Trang chủ</a></li>
-        <li><a href="../pages/about/about.html">Giới thiệu</a></li>        
-        <li><a href="../pages/product/html/products.html">Sản phẩm</a></li>
-        <li><a href="../pages/promotion/promotion.html">Khuyến mãi</a></li>
-        <li><a href="../pages/news/html/news.html">Tin tức</a></li>
-        <li><a href="../pages/contact/contact.html">Liên hệ</a></li>
-      </ul>
-    </div>
-  </header>
-
+  <div id="header"></div>
   <!-- HERO -->
   <section class="hero">
     <div class="container">
       <div class="slider" id="slider">
-        <img src="./assets/images/home/pic/logomoi.png" class="banner-img active">
-        <img src="./assets/images/home/pic/banner2.png" class="banner-img">
-        <img src="./assets/images/home/pic/bannerfreeship.png" class="banner-img">
+        <img src="/assets/images/home/pic/logomoi.png" class="banner-img active">
+        <img src="/assets/images/home/pic/banner2.png" class="banner-img">
+        <img src="/assets/images/home/pic/bannerfreeship.png" class="banner-img">
       </div>
     </div>
   </section>
@@ -110,7 +59,7 @@
             <button class="promo-btn">Shop Now</button>
           </div>
           <div class="promo-image">
-            <img src="./assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
+            <img src="/src/assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
           </div>
         </div>
         <div class="promo-banner promo-banner-2">
@@ -120,7 +69,7 @@
             <button class="promo-btn">Shop Now</button>
           </div>
           <div class="promo-image">
-            <img src="./assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
+            <img src="/src/assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
           </div>
         </div>
       </div>
@@ -149,13 +98,14 @@
       </div>
       <div class="news-grid" id="newsGrid"></div>
       <div class="news-btn-wrap">
-        <a href="news.html" class="news-btn">Tất cả bài viết</a>
+        <a href="/pages/news/html/news.html" class="news-btn">Tất cả bài viết</a>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer"></footer>
-
-<script src="./pages/home/home.js"></script>
+  <div id="footer"></div>
+  <script type="module" src="/src/js/main.js"></script>
+  <script src="/pages/home/home.js"></script>
 </body>
+
 </html>
