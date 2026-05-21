@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./pages/home/home.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 
@@ -20,10 +21,22 @@
       </div>
       <nav class="main-nav">
         <ul class="nav-list">
-          <li><a href="#" class="nav-link active">Home</a></li>
-          <li><a href="#" class="nav-link">Shop</a></li>
-          <li><a href="#" class="nav-link">About</a></li>
-          <li><a href="#" class="nav-link">Contact</a></li>
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../pages/about/about.html">Giới thiệu</a></li>        
+                    <li id="shop-menu" class="has-submenu">
+                        <a href="../pages/product/html/products.html">Sản phẩm <i class="fa-solid fa-chevron-down menu-icon"></i></a>
+                        <ul class="submenu">
+                            <li><a href="../pages/product/html/products.html?category=skincare">Chăm sóc da</a></li>
+                            <li><a href="../pages/product/html/products.html?category=makeup">Trang điểm</a></li>
+                            <li><a href="../pages/product/html/products.html?category=fragrance">Nước hoa</a></li>
+                            <li><a href="../pages/product/html/products.html?category=haircare">Chăm sóc tóc</a></li>
+                            <li><a href="../pages/product/html/products.html?category=bodycare">Chăm sóc cơ thể</a></li>
+                        </ul>
+                    </li>
+
+        <li><a href="../pages/promotion/promotion.html">Khuyến mãi</a></li>
+        <li><a href="../pages/news/html/news.html">Tin tức</a></li>
+        <li><a href="../pages/contact/contact.html">Liên hệ</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -39,10 +52,12 @@
     </div>
     <div class="mobile-nav" id="mobileNav">
       <ul class="mobile-nav-list">
-        <li><a href="#" class="mobile-nav-link">Home</a></li>
-        <li><a href="#" class="mobile-nav-link">Shop</a></li>
-        <li><a href="#" class="mobile-nav-link">About</a></li>
-        <li><a href="#" class="mobile-nav-link">Contact</a></li>
+               <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="../pages/about/about.html">Giới thiệu</a></li>        
+        <li><a href="../pages/product/html/products.html">Sản phẩm</a></li>
+        <li><a href="../pages/promotion/promotion.html">Khuyến mãi</a></li>
+        <li><a href="../pages/news/html/news.html">Tin tức</a></li>
+        <li><a href="../pages/contact/contact.html">Liên hệ</a></li>
       </ul>
     </div>
   </header>
