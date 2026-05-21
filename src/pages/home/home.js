@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bestSellers = [
-    { id: 1,  name: "Gentle Cleanser",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
-    { id: 2,  name: "Micellar Water",     price: "$18.00", badge: "Hot",         img: "assets/images/home/pic/nuoctaytragbest.jpg" },
-    { id: 3,  name: "Hydrating Toner",    price: "$25.00", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
-    { id: 4,  name: "Sunscreen SPF50+",   price: "$29.00", badge: "Popular",     img: "assets/images/home/pic/kcnbest.jpg" },
-    { id: 5,  name: "Moisturizing Cream", price: "$35.00", badge: "New",         img: "assets/images/home/pic/kemduongbest.jpg" },
+    { id: 1,  name: "Sữa rửa mặt",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
+    { id: 21,  name:"Kem dưỡng La Roche-Posay Cicaplast Baume B5+",     price: "365.000", badge: "Hot",         img: "assets/images/products/kem-duong/21.1.jpg" },
+    { id: 41,  name: "Nước cân bằng Bioderma", price: "360.000", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
+    { id: 61, name: "Kem Chống Nắng Skin1004 Madagascar Centella Air-Fit Suncream Plus", price: "465000",badge: "Popular",     img: "assets/images/products/kem-chong-nang/61.1.jpg" },
+    { id: 81,name: "Nước Tẩy Trang Cocoon Bí Đao" ,price: "299000", badge: "New",         img: "assets/images/products/nuoc-tay-trang/81.1.jpg" },
   ];
 
   const news = [
