@@ -1,140 +1,248 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Chi tiết sản phẩm</title>
 
-    <link rel="stylesheet" href="../css/product-detail.css">
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/product-detail.css"
+    >
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ICON -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
 </head>
+
 <body>
 
     <!-- HEADER -->
-    <header>
-        <h1>BeautyCare</h1>
-    </header>
+    <iframe
+        src="../../../components/header.html"
+        class="header-frame"
+    ></iframe>
 
-    <main class="product-detail-page">
+    <!-- BREADCRUMB -->
+    <section class="detail-banner">
 
-        <!-- breadcrumb -->
-        <section class="breadcrumb">
-            <a href="../../../index.html">Trang chủ</a>
+        <div class="breadcrumb">
+
+            <a href="../../../index.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                Trang chủ
+
+            </a>
+
             <span>/</span>
-            <a href="./products.html">Sản phẩm</a>
+
+            <a href="./products.html">
+
+                Sản phẩm
+
+            </a>
+
             <span>/</span>
-            <span id="breadcrumbName">Tên sản phẩm</span>
-        </section>
 
-        <!-- top -->
-        <section class="product-top">
+            <span id="breadcrumbProduct">
 
-            <!-- gallery -->
-            <div class="product-gallery">
+                Chi tiết sản phẩm
 
-                <!-- ảnh lớn -->
-                <div class="main-image">
-                    <img 
-                        id="mainImage"
-                        src=""
-                        alt="product image"
-                    >
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- MAIN -->
+    <main class="detail-layout">
+
+        <!-- LEFT -->
+        <section class="product-detail-wrapper">
+
+            <!-- GALLERY -->
+            <div class="gallery-section">
+
+                <!-- THUMBNAILS -->
+                <div
+                    class="thumbnail-list"
+                    id="thumbnailList"
+                >
+
                 </div>
 
-                <!-- thumbnail -->
-                <div class="thumbnail-list" id="thumbnailList">
+                <!-- MAIN IMAGE -->
+                <div class="main-image">
+
+                    <img
+                        id="mainProductImage"
+                        src=""
+                        alt=""
+                    >
 
                 </div>
 
             </div>
 
-            <!-- info -->
-            <div class="product-info">
+            <!-- INFO -->
+            <div class="info-section">
 
-                <h2 id="productName">
-                    Tên sản phẩm
-                </h2>
+                <!-- BRAND -->
+                <p
+                    class="product-brand"
+                    id="productBrand"
+                >
 
-                <!-- brand -->
-                <div class="product-meta">
-                    <p>
-                        <strong>Thương hiệu:</strong>
-                        <span id="productBrand"></span>
-                    </p>
+                </p>
 
-                    <p>
-                        <strong>Xuất xứ:</strong>
-                        <span id="productOrigin"></span>
-                    </p>
-                </div>
+                <!-- NAME -->
+                <h1
+                    class="product-name"
+                    id="productName"
+                >
 
-                <!-- rating -->
+                </h1>
+
+                <!-- CHARACTERISTICS -->
+                <p
+                    class="product-characteristics"
+                    id="productCharacteristics"
+                >
+
+                </p>
+
+                <!-- RATING -->
                 <div class="product-rating">
-                    ★★★★★
-                    <span>(128 đánh giá)</span>
+
+                    <div class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <span id="ratingText">
+
+                    </span>
+
                 </div>
 
-                <!-- price -->
+                <!-- PRICE -->
                 <div class="product-price">
 
-                    <span class="sale-price" id="salePrice">
-                        0đ
+                    <span
+                        class="sale-price"
+                        id="salePrice"
+                    >
+
                     </span>
 
-                    <span class="old-price" id="oldPrice">
-                        0đ
+                    <span
+                        class="old-price"
+                        id="oldPrice"
+                    >
+
                     </span>
 
                 </div>
 
-                <!-- characteristics -->
-                <div class="product-characteristics">
-                    <strong>Đặc điểm:</strong>
-                    <span id="productCharacteristics"></span>
+                <!-- STOCK -->
+                <div
+                    class="stock-status"
+                    id="stockStatus"
+                >
+
                 </div>
 
-                <!-- volume -->
-                <div class="product-volume">
+                <!-- VOLUME -->
+                <div class="volume-section">
 
-                    <h4>Dung tích</h4>
+                    <h3>
 
-                    <div class="volume-options" id="volumeOptions">
+                        Dung tích
+
+                    </h3>
+
+                    <div
+                        class="volume-options"
+                        id="volumeOptions"
+                    >
 
                     </div>
 
                 </div>
 
-                <!-- quantity -->
-                <div class="quantity-box">
+                <!-- QUANTITY -->
+                <div class="quantity-section">
 
-                    <button id="minusBtn">-</button>
+                    <h3>
 
-                    <input 
-                        type="number"
-                        id="quantityInput"
-                        value="1"
-                        min="1"
-                    >
+                        Số lượng
 
-                    <button id="plusBtn">+</button>
+                    </h3>
+
+                    <div class="quantity-box">
+
+                        <button id="minusBtn">
+
+                            -
+
+                        </button>
+
+                        <span id="quantityValue">
+
+                            1
+
+                        </span>
+
+                        <button id="plusBtn">
+
+                            +
+
+                        </button>
+
+                    </div>
 
                 </div>
 
-                <!-- stock -->
-                <div class="stock-info">
-                    Còn lại:
-                    <span id="productStock"></span>
-                    sản phẩm
-                </div>
-
-                <!-- buttons -->
-                <div class="product-actions">
+                <!-- BUTTONS -->
+                <div class="detail-buttons">
 
                     <button class="add-cart-btn">
-                        Thêm vào giỏ hàng
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Thêm vào giỏ
+
                     </button>
 
                     <button class="buy-now-btn">
+
                         Mua ngay
+
                     </button>
 
                 </div>
@@ -143,45 +251,80 @@
 
         </section>
 
-        <!-- bottom -->
-        <section class="product-bottom">
+        <!-- RIGHT SIDEBAR -->
+        <aside class="related-sidebar">
 
-            <!-- desc -->
-            <div class="detail-section">
+            <h2>
 
-                <h3>Mô tả sản phẩm</h3>
+                Sản phẩm gợi ý
 
-                <p id="productDesc"></p>
+            </h2>
 
-            </div>
-
-            <!-- ingredients -->
-            <div class="detail-section">
-
-                <h3>Thành phần</h3>
-
-                <p id="productIngredients"></p>
+            <div
+                class="related-list"
+                id="relatedProducts"
+            >
 
             </div>
 
-            <!-- usage -->
-            <div class="detail-section">
-
-                <h3>Hướng dẫn sử dụng</h3>
-
-                <p id="productUsage"></p>
-
-            </div>
-
-        </section>
+        </aside>
 
     </main>
 
+    <!-- CONTENT -->
+    <section class="detail-content">
+
+        <div class="content-box">
+
+            <h2>
+
+                Mô tả sản phẩm
+
+            </h2>
+
+            <p id="productDescription">
+
+            </p>
+
+        </div>
+
+        <div class="content-box">
+
+            <h2>
+
+                Thành phần nổi bật
+
+            </h2>
+
+            <p id="productIngredients">
+
+            </p>
+
+        </div>
+
+        <div class="content-box">
+
+            <h2>
+
+                Hướng dẫn sử dụng
+
+            </h2>
+
+            <p id="productUsage">
+
+            </p>
+
+        </div>
+
+    </section>
+
     <!-- FOOTER -->
-    <footer>
-        <p>© 2026 BeautyCare</p>
-    </footer>
+    <iframe
+        src="../../../components/footer.html"
+        class="footer-frame"
+    ></iframe>
 
 <script src="../js/product-detail.js"></script>
+
 </body>
 </html>

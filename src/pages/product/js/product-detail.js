@@ -1,136 +1,163 @@
-// =======================
-// GET HTML ELEMENTS
-// =======================
+// =========================
+// GET PRODUCT ID
+// =========================
 
-const mainImage = document.getElementById("mainImage");
+const params = new URLSearchParams(
+    window.location.search
+);
 
-const thumbnailList = document.getElementById("thumbnailList");
-
-const breadcrumbName = document.getElementById("breadcrumbName");
-
-const productName = document.getElementById("productName");
-
-const productBrand = document.getElementById("productBrand");
-
-const productOrigin = document.getElementById("productOrigin");
-
-const salePrice = document.getElementById("salePrice");
-
-const oldPrice = document.getElementById("oldPrice");
-
-const productCharacteristics = document.getElementById("productCharacteristics");
-
-const volumeOptions = document.getElementById("volumeOptions");
-
-const productStock = document.getElementById("productStock");
-
-const productDesc = document.getElementById("productDesc");
-
-const productIngredients = document.getElementById("productIngredients");
-
-const productUsage = document.getElementById("productUsage");
-
-const minusBtn = document.getElementById("minusBtn");
-
-const plusBtn = document.getElementById("plusBtn");
-
-const quantityInput = document.getElementById("quantityInput");
+const productId = Number(
+    params.get("id")
+);
 
 
-// =======================
-// GET PRODUCT ID FROM URL
-// =======================
+// =========================
+// ELEMENTS
+// =========================
 
-const params = new URLSearchParams(window.location.search);
+const breadcrumbProduct = document.getElementById(
+    "breadcrumbProduct"
+);
 
-const productId = Number(params.get("id"));
+const productBrand = document.getElementById(
+    "productBrand"
+);
+
+const productName = document.getElementById(
+    "productName"
+);
+
+const productCharacteristics = document.getElementById(
+    "productCharacteristics"
+);
+
+const salePrice = document.getElementById(
+    "salePrice"
+);
+
+const oldPrice = document.getElementById(
+    "oldPrice"
+);
+
+const stockStatus = document.getElementById(
+    "stockStatus"
+);
+
+const mainProductImage = document.getElementById(
+    "mainProductImage"
+);
+
+const thumbnailList = document.getElementById(
+    "thumbnailList"
+);
+
+const volumeOptions = document.getElementById(
+    "volumeOptions"
+);
+
+const quantityValue = document.getElementById(
+    "quantityValue"
+);
+
+const minusBtn = document.getElementById(
+    "minusBtn"
+);
+
+const plusBtn = document.getElementById(
+    "plusBtn"
+);
+
+const productDescription = document.getElementById(
+    "productDescription"
+);
+
+const productIngredients = document.getElementById(
+    "productIngredients"
+);
+
+const productUsage = document.getElementById(
+    "productUsage"
+);
+
+const relatedProducts = document.getElementById(
+    "relatedProducts"
+);
+
+const ratingText = document.getElementById(
+    "ratingText"
+);
 
 
-// =======================
+// =========================
+// GLOBAL
+// =========================
+
+let currentQuantity = 1;
+
+
+// =========================
 // FORMAT PRICE
-// =======================
+// =========================
 
-function formatPrice(price) {
+function formatPrice(price){
 
     return price.toLocaleString("vi-VN") + "đ";
 
 }
 
 
-// =======================
-// CALCULATE PRICE BY SIZE
-// =======================
+// =========================
+// RANDOM RATING
+// =========================
 
-function calculatePrice(basePrice, volumes, currentIndex) {
+function generateRandomRating(){
 
-    // chỉ có 1 dung tích
-    if(volumes.length === 1){
+    const rating = (
+        Math.random() * (5 - 4.5) + 4.5
+    ).toFixed(1);
 
-        return basePrice;
+    const reviews = Math.floor(
+        Math.random() * (200 - 50) + 50
+    );
 
-    }
+    return `${rating} | ${reviews} đánh giá`;
 
-    // có 2 dung tích
-    if(volumes.length === 2){
-
-        if(currentIndex === 0){
-
-            return basePrice;
-
-        }
-
-        if(currentIndex === 1){
-
-            return Math.round(basePrice * 1.25);
-
-        }
-
-    }
-
-    // có 3 dung tích
-    if(volumes.length === 3){
-
-        if(currentIndex === 0){
-
-            return basePrice;
-
-        }
-
-        if(currentIndex === 1){
-
-            return Math.round(basePrice * 1.25);
-
-        }
-
-        if(currentIndex === 2){
-
-            return Math.round(basePrice * 1.4);
-
-        }
-
-    }
-
-    return basePrice;
 }
 
-// =======================
+
+// =========================
 // FETCH PRODUCT
-// =======================
+// =========================
 
-async function fetchProductDetail() {
+async function fetchProduct(){
 
-    try {
+    try{
 
-        const response = await fetch("../../../data/products.json");
+        const response = await fetch(
+            "../../../data/products.json"
+        );
 
         const products = await response.json();
 
-        const product = products.find(item => item.id === productId);
+        const product = products.find(item => {
 
-        if(!product) {
+            return item.id === productId;
+
+        });
+
+        // no product
+        if(!product){
 
             document.body.innerHTML = `
-                <h1>Không tìm thấy sản phẩm</h1>
+            
+                <h1 style="
+                    text-align:center;
+                    margin-top:100px;
+                    font-family:Montserrat;
+                ">
+                    Không tìm thấy sản phẩm
+                </h1>
+
             `;
 
             return;
@@ -139,135 +166,221 @@ async function fetchProductDetail() {
 
         renderProduct(product);
 
-    } catch(error) {
+        renderRelatedProducts(
+            products,
+            product
+        );
 
-        console.log("Lỗi:", error);
+    }
+
+    catch(error){
+
+        console.log(error);
 
     }
 
 }
 
 
-// =======================
+// =========================
 // RENDER PRODUCT
-// =======================
+// =========================
 
-function renderProduct(product) {
+function renderProduct(product){
 
     // breadcrumb
-    breadcrumbName.innerText = product.name;
+    breadcrumbProduct.textContent =
+        product.name;
 
     // info
-    productName.innerText = product.name;
+    productBrand.textContent =
+        product.brand;
 
-    productBrand.innerText = product.brand;
+    productName.textContent =
+        product.name;
 
-    productOrigin.innerText = product.origin;
+    productCharacteristics.textContent =
+        product.characteristics;
 
-    productCharacteristics.innerText = product.characteristics;
+    salePrice.textContent = formatPrice(
+        product.salePrice
+    );
 
-    productStock.innerText = product.stock;
+    oldPrice.textContent = formatPrice(
+        product.price
+    );
 
-    productDesc.innerText = product.desc;
+    stockStatus.textContent =
+        `Còn ${product.stock} sản phẩm`;
 
-    productIngredients.innerText = product.ingredients;
+    // random rating
+    ratingText.textContent =
+        generateRandomRating();
 
-    productUsage.innerText = product.usage;
+    // content
+    productDescription.textContent =
+        product.desc || "Đang cập nhật.";
+
+    productIngredients.textContent =
+        product.ingredients || "Đang cập nhật.";
+
+    productUsage.textContent =
+        product.usage || "Đang cập nhật.";
 
     // image
-    mainImage.src = product.images[0];
+    mainProductImage.src =
+        product.images[0];
 
-    // thumbnail
-    renderThumbnails(product.images);
+    // thumbnails
+    renderThumbnails(product);
 
-    // price
-    updatePrice(product, 0);
-
-    // volumes
+    // volume
     renderVolumes(product);
 
 }
 
 
-// =======================
-// RENDER THUMBNAILS
-// =======================
+// =========================
+// THUMBNAILS
+// =========================
 
-function renderThumbnails(images) {
+function renderThumbnails(product){
 
     thumbnailList.innerHTML = "";
 
-    images.forEach(image => {
+    product.images.forEach((image, index) => {
 
-        const thumbnail = document.createElement("img");
+        const div = document.createElement("div");
 
-        thumbnail.src = image;
+        div.classList.add(
+            "thumbnail-item"
+        );
 
-        thumbnail.classList.add("thumbnail-item");
+        if(index === 0){
 
-        thumbnail.addEventListener("click", () => {
+            div.classList.add(
+                "active-thumbnail"
+            );
 
-            mainImage.src = image;
+        }
+
+        div.innerHTML = `
+        
+            <img src="${image}" alt="">
+        
+        `;
+
+        div.addEventListener("click", () => {
+
+            mainProductImage.src = image;
+
+            document
+                .querySelectorAll(
+                    ".thumbnail-item"
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "active-thumbnail"
+                    );
+
+                });
+
+            div.classList.add(
+                "active-thumbnail"
+            );
 
         });
 
-        thumbnailList.appendChild(thumbnail);
+        thumbnailList.appendChild(div);
 
     });
 
 }
 
 
-// =======================
-// RENDER VOLUME OPTIONS
-// =======================
+// =========================
+// VOLUME
+// =========================
 
-function renderVolumes(product) {
+function renderVolumes(product){
 
     volumeOptions.innerHTML = "";
 
-    // copy mảng volumes
-const sortedVolumes = [...product.volumes];
+    // nếu không có volumes
+    if(
+        !product.volumes
+        ||
+        product.volumes.length === 0
+    ){
 
-// sort từ nhỏ -> lớn
-sortedVolumes.sort((a, b) => {
+        const button = document.createElement(
+            "button"
+        );
 
-    return parseInt(a) - parseInt(b);
+        button.classList.add(
+            "volume-btn",
+            "active-volume"
+        );
 
-});
+        button.innerText =
+            product.volume || "50ml";
 
+        volumeOptions.appendChild(button);
 
-sortedVolumes.forEach((volume, index) => {
+        return;
 
-        const button = document.createElement("button");
+    }
 
-        button.innerText = volume;
+    // render volumes
+    product.volumes.forEach(
+        (volume, index) => {
 
-        button.classList.add("volume-btn");
+        const button = document.createElement(
+            "button"
+        );
 
-        // active mặc định
-        if(index === 0) {
+        button.classList.add(
+            "volume-btn"
+        );
 
-            button.classList.add("active");
+        if(index === 0){
+
+            button.classList.add(
+                "active-volume"
+            );
 
         }
 
+        button.innerText = volume.size;
+
         button.addEventListener("click", () => {
 
-            // remove active
-            const allButtons = document.querySelectorAll(".volume-btn");
+            document
+                .querySelectorAll(
+                    ".volume-btn"
+                )
+                .forEach(btn => {
 
-            allButtons.forEach(btn => {
+                    btn.classList.remove(
+                        "active-volume"
+                    );
 
-                btn.classList.remove("active");
+                });
 
-            });
+            button.classList.add(
+                "active-volume"
+            );
 
-            // add active
-            button.classList.add("active");
+            salePrice.textContent =
+                formatPrice(
+                    volume.salePrice
+                );
 
-            // update price
-            updatePrice(product, index);
+            oldPrice.textContent =
+                formatPrice(
+                    volume.price
+                );
 
         });
 
@@ -278,59 +391,105 @@ sortedVolumes.forEach((volume, index) => {
 }
 
 
-// =======================
-// UPDATE PRICE
-// =======================
+// =========================
+// RELATED PRODUCTS
+// =========================
 
-function updatePrice(product, index) {
+function renderRelatedProducts(
+    products,
+    currentProduct
+){
 
-  const newPrice = calculatePrice(
-    product.price,
-    product.volumes,
-    index
-);
+    relatedProducts.innerHTML = "";
 
-const newSalePrice = calculatePrice(
-    product.salePrice,
-    product.volumes,
-    index
-);
+    const related = products.filter(product => {
 
-    oldPrice.innerText = formatPrice(newPrice);
+        return (
+            product.category ===
+            currentProduct.category
 
-    salePrice.innerText = formatPrice(newSalePrice);
+            &&
+
+            product.id !==
+            currentProduct.id
+        );
+
+    });
+
+    // lấy 5 sản phẩm
+    const slicedProducts = related.slice(0, 5);
+
+    slicedProducts.forEach(product => {
+
+        relatedProducts.innerHTML += `
+        
+            <a
+                href="./product-detail.html?id=${product.id}"
+                class="related-card"
+            >
+
+                <img
+                    src="${product.images[0]}"
+                    alt="${product.name}"
+                >
+
+                <div class="related-info">
+
+                    <h3>
+
+                        ${product.name}
+
+                    </h3>
+
+                    <div class="related-price">
+
+                        ${formatPrice(
+                            product.salePrice
+                        )}
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        `;
+
+    });
 
 }
 
 
-// =======================
-// QUANTITY BUTTONS
-// =======================
+// =========================
+// QUANTITY
+// =========================
+
+plusBtn.addEventListener("click", () => {
+
+    currentQuantity++;
+
+    quantityValue.textContent =
+        currentQuantity;
+
+});
+
 
 minusBtn.addEventListener("click", () => {
 
-    let currentValue = Number(quantityInput.value);
+    if(currentQuantity > 1){
 
-    if(currentValue > 1) {
+        currentQuantity--;
 
-        quantityInput.value = currentValue - 1;
+        quantityValue.textContent =
+            currentQuantity;
 
     }
 
 });
 
 
-plusBtn.addEventListener("click", () => {
-
-    let currentValue = Number(quantityInput.value);
-
-    quantityInput.value = currentValue + 1;
-
-});
-
-
-// =======================
+// =========================
 // INIT
-// =======================
+// =========================
 
-fetchProductDetail();
+fetchProduct();
