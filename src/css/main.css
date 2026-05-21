@@ -6,3 +6,51 @@
 @import url(../css/base/reset.css);
 @import url(../css/base/variables.css);
 @import url(../css/base/typography.css);
+/* Đảm bảo menu chính có vị trí tương đối */
+.page-menu ul {
+    position: relative;
+    display: flex; /* Hoặc giữ nguyên định dạng hàng ngang của bạn */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-menu ul li {
+    position: relative; /* Quan trọng: Làm gốc tọa độ cho menu con */
+}
+
+/* Cấu hình menu con xếp dọc xuống */
+.submenu {
+    display: none; /* Mặc định ẩn đi, JS sẽ điều khiển hiển thị */
+    position: absolute;
+    top: 100%; /* Xuất hiện ngay dưới mục cha */
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px; /* Độ rộng của menu dọc */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Tạo bóng đổ cho đẹp */
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    z-index: 999; /* Luôn nổi lên trên các thành phần khác */
+}
+
+/* Định dạng các mục con bên trong */
+.submenu li {
+    width: 100%;
+    display: block; /* Ép các mục con xếp dọc xuống */
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333333;
+    text-decoration: none;
+    text-align: left;
+    transition: background 0.2s ease;
+}
+
+/* Hiệu ứng khi di chuột vào từng mục con */
+.submenu li a:hover {
+    background-color: #f5f5f5;
+    color: #ff66a1; /* Thay đổi màu chữ tùy style của BeautyStore */
+}
