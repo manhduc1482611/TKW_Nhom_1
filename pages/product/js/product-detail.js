@@ -14,7 +14,9 @@ const productId = Number(
 // =========================
 // ELEMENTS
 // =========================
-
+const buyNowBtn = document.getElementById(
+    "buyNowBtn"
+);
 const breadcrumbProduct = document.getElementById(
     "breadcrumbProduct"
 );
@@ -86,14 +88,18 @@ const relatedProducts = document.getElementById(
 const ratingText = document.getElementById(
     "ratingText"
 );
-
-
+const addCartBtn = document.getElementById(
+    "addCartBtn"
+);
+const toast = document.querySelector(
+    "#toast"
+);
 // =========================
 // GLOBAL
 // =========================
 
 let currentQuantity = 1;
-
+let currentProduct = null;
 
 // =========================
 // FORMAT PRICE
@@ -165,7 +171,7 @@ async function fetchProduct(){
         }
 
         renderProduct(product);
-
+        currentProduct = product;
         renderRelatedProducts(
             products,
             product
@@ -307,7 +313,7 @@ function renderVolumes(product){
 
     volumeOptions.innerHTML = "";
 
-    // nếu không có volumes
+    // nếu không có volume
     if(
         !product.volumes
         ||
@@ -323,8 +329,7 @@ function renderVolumes(product){
             "active-volume"
         );
 
-        button.innerText =
-            product.volume || "50ml";
+        button.innerText = "Default";
 
         volumeOptions.appendChild(button);
 
@@ -332,7 +337,12 @@ function renderVolumes(product){
 
     }
 
-    // render volumes
+    // giá gốc
+    const basePrice = product.salePrice;
+
+    const baseOldPrice = product.price;
+
+    // render volume
     product.volumes.forEach(
         (volume, index) => {
 
@@ -352,7 +362,7 @@ function renderVolumes(product){
 
         }
 
-        button.innerText = volume.size;
+        button.innerText = volume;
 
         button.addEventListener("click", () => {
 
@@ -372,14 +382,31 @@ function renderVolumes(product){
                 "active-volume"
             );
 
+            // =====================
+            // PRICE LOGIC
+            // =====================
+
+            const multiplier =
+                1 + (index * 0.5);
+
+            const newSalePrice =
+                Math.round(
+                    basePrice * multiplier
+                );
+
+            const newOldPrice =
+                Math.round(
+                    baseOldPrice * multiplier
+                );
+
             salePrice.textContent =
                 formatPrice(
-                    volume.salePrice
+                    newSalePrice
                 );
 
             oldPrice.textContent =
                 formatPrice(
-                    volume.price
+                    newOldPrice
                 );
 
         });
@@ -491,5 +518,116 @@ minusBtn.addEventListener("click", () => {
 // =========================
 // INIT
 // =========================
+// =========================
+// ADD TO CART
+// =========================
+
+addCartBtn.addEventListener("click", () => {
+
+    if(!currentProduct){
+
+        return;
+
+    }
+
+    // lấy cart hiện tại
+    let cart = JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+    // check tồn tại
+    const existingProduct = cart.find(item => {
+
+        return item.id === currentProduct.id;
+
+    });
+
+    // nếu đã có
+    if(existingProduct){
+
+        existingProduct.quantity += currentQuantity;
+
+    }
+
+    // nếu chưa có
+    else{
+
+        cart.push({
+
+            id: currentProduct.id,
+
+            name: currentProduct.name,
+
+            brand: currentProduct.brand,
+
+            image: currentProduct.images[0],
+
+            price: currentProduct.salePrice,
+
+            quantity: currentQuantity
+
+        });
+
+    }
+
+    // lưu localStorage
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    // update badge
+    updateCartBadge();
+
+// show toast
+
+toast.textContent =
+    "Đã thêm vào giỏ hàng";
+
+toast.classList.add(
+    "show-toast"
+);
+
+setTimeout(() => {
+
+    toast.classList.remove(
+        "show-toast"
+    );
+
+}, 2500);
+});
+
+
+// =========================
+// CART BADGE
+// =========================
+
+function updateCartBadge(){
+
+    const cart = JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+    const totalQuantity = cart.reduce(
+        (total, item) => {
+
+            return total + item.quantity;
+
+        },
+        0
+    );
+
+    // tìm badge
+    const badge = parent.document.querySelector(
+        ".cart-count"
+    );
+
+    if(badge){
+
+        badge.textContent = totalQuantity;
+
+    }
+
+}
 
 fetchProduct();
