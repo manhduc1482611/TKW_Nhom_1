@@ -6,10 +6,14 @@
     <title>Liên hệ | Nghien Beauty</title>
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/typography.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <iframe src="../../components/header.html" class="header-frame"></iframe>
+    <iframe src="../../components/header.html"></iframe>
+
     <section class="banner">
         <div class="banner-content">
             <h1>Liên hệ</h1>
@@ -28,24 +32,27 @@
 
                 <div class="contact-form">
                     <h3>Bạn cần hỗ trợ?</h3>
-                    <!-- Thuộc tính required là bắt buộc để hiện thông báo -->
-                    <input type="text" id="name" placeholder="Họ và tên" required>
-                    
-                    <input type="email" id="email" placeholder="Địa chỉ Email" required>
-                    
-                    <textarea id="message" placeholder="Nội dung tin nhắn..." required></textarea>
-                    
-                    <button id="sendBtn">Gửi</button>
-
+                    <form id="contactForm" novalidate>
+                        <input type="text" id="name" placeholder="Họ và tên" required>
+                        <input type="email" id="email" placeholder="Địa chỉ Email" required>
+                        <textarea id="message" placeholder="Nội dung tin nhắn..." required></textarea>
+                        <button type="submit" id="sendBtn">Gửi</button>
+                    </form>
                 </div>
             </div>
 
             <div class="map-box">
-                <iframe src="https://www.google.com/maps?q=21.008748,105.826121&z=15&output=embed" allowfullscreen=""></iframe>
+                <iframe
+                    src="https://www.google.com/maps?q=21.008748,105.826121&z=15&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
-<iframe src="../../components/footer.html" class="footer-frame"></iframe>
+
+    <iframe src="../../components/footer.html" class="footer-frame"></iframe>
     <script src="../../js/main.js"></script>
     <script src="contact.js"></script>
 </body>
