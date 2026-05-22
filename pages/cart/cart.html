@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - BeautyStore</title>
+    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="cart.css"> </head>
+<body class="bg-gray">
+    <div id="header"></div>
+
+    <main class="cart-container">
+        <a href="/pages/product/html/products.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Tiếp tục mua sắm
+        </a>
+
+        <div class="cart-header">
+            <h1>Giỏ hàng</h1>
+            <div class="cart-badge">
+                <i class="fa-solid fa-bag-shopping"></i> <span id="cartTotalItems">0</span> sản phẩm
+            </div>
+        </div>
+
+        <div class="cart-layout">
+            
+            <section class="cart-left-column">
+                
+                <div id="emptyCartState" class="empty-cart-box">
+                    <i class="fa-solid fa-cart-arrow-down cart-icon-large"></i>
+                    <h2>Giỏ hàng trống</h2>
+                    <p>Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+                    <a href="/pages/product/html/products.html" class="btn-primary">Mua sắm ngay</a>
+                </div>
+
+                <div id="filledCartState" class="filled-cart-box" style="display: none;">
+                    <div id="cartItemsContainer">
+                        </div>
+                </div>
+
+            </section>
+
+            <aside class="cart-right-column">
+                <div class="summary-card">
+                    <h3>Tóm tắt đơn hàng</h3>
+                    
+                    <div class="summary-list">
+                        <div class="summary-row">
+                            <span class="label">Tạm tính</span>
+                            <span class="value" id="subtotalPrice">0đ</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="label">Vận chuyển</span>
+                            <span class="value">0đ</span>
+                        </div>
+                        <div class="summary-row discount">
+                            <span class="label">Giảm giá</span>
+                            <span class="value">-0đ</span>
+                        </div>
+                    </div>
+
+                    <div class="promo-code-box">
+                        <input type="text" placeholder="MÃ ƯU ĐÃI">
+                        <button type="button">Áp dụng</button>
+                    </div>
+
+                    <div class="summary-total">
+                        <span class="label">Tổng thanh toán</span>
+                        <span class="value highlight" id="totalPrice">0đ</span>
+                    </div>
+
+                    <button class="btn-checkout" id="checkoutBtn" disabled>
+                        Tiến hành thanh toán
+                    </button>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="/src/js/main.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

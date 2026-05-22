@@ -1,184 +1,204 @@
 /* =========================================
-   HEADER CSS - BEAUTYSTORE (Đã tối ưu bố cục)
+   SITE HEADER - ĐẦY ĐỦ VÀ ĐỒNG BỘ NỀN TẢNG
    ========================================= */
 
-/* --- 1. Topbar (Thanh thông tin trên cùng) --- */
-.site-header .topbar {
+.site-header {
+    background-color: var(--bg-light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- Topbar (Thanh tiện ích trên cùng) --- */
+.topbar {
     background-color: var(--bg-dark);
     color: var(--text-gray);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 5%;
-    font-size: 13px;
+    padding: 10px 5%;
+    font-size: 0.85rem;
 }
 
-.site-header .topbar a {
-    color: var(--text-gray);
-    text-decoration: none;
-    margin-left: 20px;
-    transition: color 0.3s ease;
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.site-header .topbar a:hover {
+.topbar-left span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.topbar-left i {
     color: var(--primary-color);
 }
 
-.site-header .topbar-left span {
-    margin-right: 20px;
-}
-
-.site-header .topbar i {
-    margin-right: 5px;
-}
-
-/* --- 2. Header Main (Thanh công cụ chính) --- */
-.site-header .header-main {
-    background-color: var(--bg-light);
-    display: flex;
-    justify-content: space-between; /* Đẩy Logo - Menu - Giỏ hàng ra 3 góc cân bằng */
-    align-items: center;
-    padding: 10px 5%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Luôn nằm trên cùng lớp của trang */
-}
-
-/* Kích thước Logo */
-.site-header .logo .site-logo {
-    height: 55px;
-    width: auto;
-    display: block;
-}
-
-/* --- 3. Menu Navigation chính --- */
-.site-header .page-menu > ul {
+.topbar-right {
     display: flex;
     align-items: center;
-    gap: 35px; /* Khoảng cách giữa các mục menu */
+    gap: 20px;
 }
 
-.site-header .page-menu a {
-    color: var(--text-color);
+.topbar-right a {
+    color: var(--text-gray);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    text-transform: uppercase;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 15px 0; /* Tăng diện tích hover dọc */
 }
 
-.site-header .page-menu a:hover,
-.site-header .page-menu a.active {
+.topbar-right a:hover {
     color: var(--primary-color);
 }
 
-/* --- 4. Xử lý Submenu ĐÈ LÊN TRANG DƯỚI --- */
-.site-header .has-submenu {
-    position: relative; /* Gốc tọa độ cố định cho menu con */
+/* --- Header Main (Thanh menu chính) --- */
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
 }
 
-.site-header .submenu {
-    position: absolute;
-    top: 100%; /* Xuất hiện ngay sát cạnh dưới thanh Header */
-    left: 50%;
-    transform: translateX(-50%) translateY(15px); /* Căn giữa theo menu cha và hạ thấp xuống tạo hiệu ứng */
-    background-color: var(--bg-light);
-    min-width: 220px;
-    
-    /* Đổ bóng đậm hơn để tạo cảm giác tách lớp nổi hẳn lên trên trang sau */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
-    border-top: 3px solid var(--primary-color);
-    border-radius: 0 0 4px 4px;
-    
-    /* Ẩn trạng thái mặc định */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    
-    z-index: 9999; /* Chỉ số lớp cực cao để đè lên mọi phần tử của trang bên dưới */
+/* --- Logo --- */
+.logo, .logo a {
+    display: flex;
+    align-items: center;
 }
 
-/* Hiệu ứng hiển thị Submenu mượt mà khi di chuột vào */
-.site-header .has-submenu:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0); /* Đẩy lên vị trí chuẩn */
+.site-logo {
+    height: 55px; /* Chiều cao tối ưu theo logo thực tế của bạn */
+    width: auto;
+    object-fit: contain;
 }
 
-/* Từng dòng trong menu con */
-.site-header .submenu li {
-    border-bottom: 1px solid var(--bg-page);
+/* --- Navigation Menu --- */
+.page-menu {
+    display: flex;
+    align-items: center;
 }
 
-.site-header .submenu li:last-child {
-    border-bottom: none;
+.page-menu > ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
-.site-header .submenu a {
-    padding: 12px 20px;
-    text-transform: none; /* Menu con viết thường mềm mại hơn */
-    font-weight: 500;
-    font-size: 14.5px;
-    transition: all 0.25s ease;
-    display: block;
+.page-menu a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700; /* Chữ đậm nổi bật như trong ảnh mẫu */
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-/* Hiệu ứng di chuột trong menu con */
-.site-header .submenu a:hover {
-    background-color: var(--primary-light);
-    color: var(--primary-color);
-    padding-left: 25px; /* Chữ dịch chuyển nhẹ sang phải */
-}
-
-/* Hiệu ứng xoay icon mũi tên khi mở menu */
-.site-header .has-submenu:hover .menu-icon {
-    transform: rotate(180deg);
+.page-menu a:hover {
     color: var(--primary-color);
 }
 
-.site-header .menu-icon {
-    font-size: 11px;
+.menu-icon {
+    font-size: 0.75rem;
     transition: transform 0.3s ease;
 }
 
-/* --- 5. Nút Giỏ hàng bên phải --- */
-.site-header .header-actions {
+/* --- Dropdown Submenu (Menu con) --- */
+.has-submenu {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background-color: var(--bg-light);
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1001;
+    padding: 6px 0;
+    border: 1px solid var(--bg-page);
+}
+
+.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+}
+
+.has-submenu:hover .menu-icon {
+    transform: rotate(180deg);
+}
+
+.submenu li a {
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.submenu a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    padding-left: 24px;
+}
+
+/* --- Header Actions (Giỏ hàng nổi bật luôn luôn hồng) --- */
+.header-actions {
     display: flex;
     align-items: center;
 }
 
-.site-header .cart-btn {
+.cart-btn {
     position: relative;
-    color: var(--text-color);
-    font-size: 24px;
     text-decoration: none;
-    transition: color 0.3s ease;
-    padding: 5px;
-}
-
-.site-header .cart-btn:hover {
-    color: var(--primary-color);
-}
-
-/* Badge số lượng giỏ hàng */
-.site-header .cart-count {
-    position: absolute;
-    top: -5px;
-    right: -8px;
-    background-color: var(--primary-color);
-    color: var(--bg-light);
-    font-size: 11px;
-    font-weight: bold;
-    height: 18px;
-    width: 18px;
+    
+    /* Tạo khối tròn hoàn hảo cho nút giỏ hàng */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+
+    /* Luôn luôn hiển thị màu hồng nổi bật */
+    background-color: var(--primary-color);
+    color: var(--bg-light); /* Biểu tượng giỏ hàng màu trắng */
+    font-size: 1.3rem;
+    box-shadow: 0 4px 12px rgba(255, 77, 141, 0.4); /* Bóng đổ hồng phát sáng giống ảnh mẫu */
+}
+
+/* Hiệu ứng tương tác nhẹ khi hover */
+.cart-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(255, 77, 141, 0.6); /* Phát sáng mạnh hơn khi hover */
+}
+
+/* Badge số lượng sản phẩm */
+.cart-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    height: 22px;
+    width: 22px;
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(255, 77, 141, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--bg-light); /* Viền trắng tách biệt chuẩn UI cao cấp */
 }
