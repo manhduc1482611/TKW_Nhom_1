@@ -1,114 +1,170 @@
-/* =======================
-   FOOTER (Bố cục 4 cột)
-======================= */
+/* =========================================
+   SITE FOOTER (Chân trang cao cấp)
+   ========================================= */
 .footer {
-    background: var(--bg-dark);
-    color: white;
-    padding: 50px 0 20px;
-    margin-top: auto;
-    font-size: 15px;
-    width: 100%;
-    height: 425px;
-    border: none;
-    overflow: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-gray);
+    padding-top: 60px;
+    margin-top: auto; /* Đẩy footer xuống đáy trang nếu nội dung ngắn */
+    border-top: 3px solid var(--primary-color); /* Đường viền hồng tinh tế ở trên cùng */
 }
 
+/* --- Bố cục dạng Grid chia đều 4 cột --- */
 .footer-container {
-    padding: 0 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 40px;
 }
 
+/* --- Từng cột trong Footer --- */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tiêu đề các mục */
+.footer-col h3 {
+    color: var(--bg-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Đường gạch chân trang trí dưới tiêu đề */
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 35px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* Cột 1: Logo và Thông tin liên hệ */
 .footer-logo {
-    font-size: 26px;
+    font-size: 1.6rem;
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 20px;
+    font-family: 'Playfair Display', Arial, sans-serif; /* Hoặc font chữ thương hiệu của bạn */
+    letter-spacing: 1px;
 }
 
-.footer-col h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.text-gray {
-    color: var(--text-gray);
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .contact-info li {
     display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    color: var(--text-gray);
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.contact-info li i {
+.contact-info i {
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 1rem;
     margin-top: 3px;
+    width: 16px; /* Giúp các icon thẳng hàng dọc cố định */
+    text-align: center;
 }
 
-.footer-links li {
-    margin-bottom: 12px;
+/* Cột 2: Giờ mở cửa & Class dùng chung */
+.text-gray {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* Cột 3 & 4: Danh sách liên kết (Chính sách & Hướng dẫn) */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .footer-links a {
     color: var(--text-gray);
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
+/* Hiệu ứng hover đổi màu hồng và dịch nhẹ sang phải */
 .footer-links a:hover {
     color: var(--primary-color);
+    padding-left: 6px;
 }
 
+/* Mạng xã hội (Social Links) */
 .social-links {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .social-links a {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    background-color: #2a2a2a; /* Nền tối nhẹ cho icon nổi bật */
+    color: var(--bg-light);
+    border-radius: 50%; /* Bo tròn khối mạng xã hội */
     text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
 }
 
+/* Hover mạng xã hội phát sáng hồng và nảy nhẹ lên */
 .social-links a:hover {
-    background: white;
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(255, 77, 141, 0.3);
 }
 
+/* --- Bản quyền phía dưới cùng (Footer Bottom) --- */
 .footer-bottom {
+    margin-top: 60px;
+    padding: 20px 5%;
+    border-top: 1px solid #2a2a2a; /* Đường ngăn cách mỏng */
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #444;
-    color: var(--text-gray);
-    font-size: 14px;
 }
 
-.footer-frame {
-    height: 425px;
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: #888;
 }
 
-/* =======================
-   RESPONSIVE (Cho Máy tính bảng & Điện thoại)
-======================= */
-
-
+/* --- Tối ưu giao diện trên Điện thoại & Máy tính bảng (Responsive) --- */
 @media (max-width: 768px) {
+    .footer {
+        padding-top: 40px;
+    }
+    
     .footer-container {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
+        gap: 30px;
+    }
+    
+    .footer-col h3 {
+        margin-bottom: 18px;
+    }
+    
+    .footer-bottom {
+        margin-top: 40px;
     }
 }
