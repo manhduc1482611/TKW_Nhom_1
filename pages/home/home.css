@@ -1,0 +1,177 @@
+
+
+
+/* HERO */
+.hero{padding:8px 0 10px;}
+.slider{
+  position:relative;width:100%;height:420px;
+  border-radius:18px;overflow:hidden;cursor:pointer;
+}
+.banner-img{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;opacity:0;
+  transition:opacity 0.6s ease;z-index:1;
+}
+.banner-img.active{opacity:1;z-index:2;}
+
+/* SECTION HEADER */
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-tag{color:var(--pink-dark);text-transform:uppercase;margin-bottom:.5rem;}
+.section-sub{color:#777;}
+
+/* CATEGORIES */
+.categories-section{padding:.5rem 0 4rem;}
+.categories-grid{
+  display:flex;justify-content:space-between;align-items:center;
+  width:100%;gap:1.5rem;flex-wrap:wrap;
+}
+.category-item{text-align:center;}
+.category-circle{
+  width:150px;height:150px;border-radius:50%;
+  overflow:hidden;background:#fff1f4;border:2px solid #f3d7dd;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;transition:.3s;cursor:pointer;
+}
+.category-circle:hover{transform:translateY(-8px);box-shadow:0 10px 25px rgba(212,120,142,.18);}
+.category-img{width:100%;height:100%;object-fit:cover;transition:.3s;}
+.category-circle:hover .category-img{transform:scale(1.08);}
+.category-name{font-size:1rem;color:var(--pink-dark);font-weight:500;}
+
+/* BRANDS */
+.brands-section{padding:1rem 0 5rem;overflow:hidden;}
+.brands-slider{width:100%;overflow:hidden;position:relative;}
+.brands-track{
+  display:flex;gap:1.5rem;width:max-content;
+  /* animation tắt - JS dùng rAF scroll */
+  will-change:transform;
+}
+.brands-slider:hover .brands-track{}
+.brand-card{
+  width:170px;flex-shrink:0;background:#fff;
+  border-radius:22px;padding:1rem;text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);transition:.35s;cursor:pointer;
+}
+.brand-card:hover{transform:translateY(-8px);}
+.brand-img-wrap{
+  width:100%;aspect-ratio:1/1;overflow:hidden;
+  border-radius:18px;background:#f8f1f3;margin-bottom:1rem;
+}
+.brand-img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+.brand-card:hover .brand-img{transform:scale(1.08);}
+.brand-name{font-size:1rem;font-weight:500;color:var(--pink-dark);}
+
+@keyframes scrollBrands{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* PROMO */
+.promo-section{margin-top:5rem;padding:2rem 0 5rem;}
+.promo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.promo-banner{
+  position:relative;height:320px;border-radius:24px;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem;transition:.35s;
+}
+.promo-banner:hover{transform:translateY(-6px);box-shadow:0 15px 35px rgba(0,0,0,.08);}
+.promo-banner-1{background:#f5efe5;}
+.promo-banner-2{background:linear-gradient(90deg,#fff5f7,#ffd9e4);}
+.promo-banner-2 .promo-img{mix-blend-mode:darken;opacity:.92;}
+.promo-content{width:40%;z-index:2;}
+.promo-sale{font-size:1.2rem;color:#666;margin-bottom:1rem;}
+.promo-content h3{
+  font-size:2.4rem;line-height:1.15;margin-bottom:1.5rem;
+  font-family:'Cormorant Garamond',serif;
+}
+.promo-btn{
+  border:none;background:var(--pink-dark);color:#fff;
+  padding:.9rem 1.7rem;border-radius:40px;cursor:pointer;
+  font-size:1rem;transition:.3s;
+}
+.promo-btn:hover{background:#912f4d;}
+.promo-image{width:60%;height:100%;display:flex;align-items:center;justify-content:flex-end;overflow:hidden;}
+.promo-img{
+  width:120%;height:100%;object-fit:cover;
+  transform:scale(1.08);mix-blend-mode:multiply;opacity:.96;
+}
+
+/* BEST SELLERS */
+.best-section{padding:5rem 0;background:#fffaf8;}
+.best-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;}
+.best-card{
+  background:#fff;border-radius:24px;overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.05);transition:.35s;
+}
+.best-card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,.08);}
+.best-img-wrap{position:relative;padding:1rem;}
+.best-img{
+  width:100%;height:230px;object-fit:cover;
+  border-radius:18px;transition:.4s;
+}
+.best-card:hover .best-img{transform:scale(1.04);}
+.best-badge{
+  position:absolute;top:1.5rem;left:1.5rem;
+  background:#fff6df;color:#444;
+  font-size:.72rem;font-weight:600;
+  padding:.45rem .9rem;border-radius:30px;
+}
+.best-info{padding:0 1.2rem 1.5rem;}
+.best-name{font-size:1.05rem;font-weight:600;margin-bottom:.5rem;line-height:1.4;}
+.best-price{font-size:1.4rem;font-weight:700;color:#222;margin-bottom:.5rem;}
+.best-stars{color:#f4b400;letter-spacing:2px;}
+
+/* NEWS */
+.news-section{padding:5rem 0;background:#fff;}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.news-card{display:block;background:transparent;transition:.35s;}
+.news-card:hover{transform:translateY(-6px);}
+.news-img-wrap{overflow:hidden;border-radius:18px;margin-bottom:1.2rem;}
+.news-img{width:100%;height:320px;object-fit:cover;transition:.4s;}
+.news-card:hover .news-img{transform:scale(1.05);}
+.news-content{padding:0 .2rem;}
+.news-title{font-size:1.8rem;line-height:1.35;font-weight:500;color:#111;margin-bottom:.8rem;}
+.news-desc{font-size:1.08rem;color:#666;line-height:1.8;}
+.news-btn-wrap{text-align:center;margin-top:3rem;}
+.news-btn{
+  display:inline-block;padding:1rem 2.4rem;
+  border:2px solid #111;border-radius:40px;
+  font-size:1rem;font-weight:500;transition:.3s;
+}
+.news-btn:hover{background:#111;color:#fff;}
+
+/* FOOTER */
+.site-footer{background:#ead7d0;padding-top:4rem;}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media(max-width:1200px){
+  .best-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:992px){
+  .promo-grid{grid-template-columns:1fr;}
+  .news-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .main-nav,.search-form{display:none;}
+  .hamburger{display:flex;}
+  .slider{height:220px;}
+  .categories-grid{gap:1.2rem;}
+  .category-circle{width:95px;height:95px;}
+  .category-img{width:50px;height:50px;}
+  .brand-card{width:120px;padding:.8rem;}
+  .brand-name{font-size:.85rem;}
+  .promo-banner{flex-direction:column;height:auto;text-align:center;padding:2rem 1.5rem;}
+  .promo-content{width:100%;}
+  .promo-content h3{font-size:1.8rem;}
+  .promo-image{width:100%;margin-top:1rem;justify-content:center;}
+  .promo-img{width:100%;transform:none;}
+  .best-grid{grid-template-columns:repeat(2,1fr);}
+  .news-img{height:240px;}
+  .news-title{font-size:1.4rem;}
+  .news-desc{font-size:1rem;}
+}
+@media(max-width:500px){
+  .best-grid{grid-template-columns:1fr;}
+}
