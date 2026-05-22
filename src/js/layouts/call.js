@@ -1,29 +1,25 @@
-/**
- * Hàm nạp thành phần HTML vào một thẻ chỉ định
- * @param {string} elementId - ID của thẻ HTML sẽ chứa nội dung
- * @param {string} filePath - Đường dẫn đến file .html cần nạp
- */
-async function loadComponent(elementId, filePath) {
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) {
-            throw new Error(`Không thể tải file: ${filePath} (Status: ${response.status})`);
-        }
-        const data = await response.text();
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.innerHTML = data;
-        } else {
-            console.warn(`Cảnh báo: Không tìm thấy thẻ HTML có ID "${elementId}" để chèn nội dung.`);
-        }
-    } catch (error) {
-        console.error('Lỗi khi nạp thành phần:', error);
-    }
-}
-
-// Thực thi nạp Header và Footer
-document.addEventListener("DOMContentLoaded", () => {
-    // Đường dẫn tương đối tính từ index.html (nằm trong thư mục src)
-    loadComponent('header-placeholder', '../../components/header.html');
-    loadComponent('footer-placeholder', '../../components/footer.html');
-});
+fetch('/src/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById('header').innerHTML = html;
+        // Nạp kèm file script xử lý active menu & giỏ hàng của header
+        const s = document.createElement('script');
+        s.src = '/src/js/layouts/header.js';
+        document.body.appendChild(s);
+    });
+fetch('/src/components/footer.html')
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById('footer').innerHTML = html;
+        const s = document.createElement('script');
+        s.src = '/src/js/layouts/footer.js';
+        document.body.appendChild(s);
+    });
+fetch('/src/components/chatbot.html')
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById('chatbot').innerHTML = html;
+        const s = document.createElement('script');
+        s.src = '/src/js/layouts/chatbot.js';
+        document.body.appendChild(s);
+    });

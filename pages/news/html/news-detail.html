@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết bài viết - Nghien Beauty</title>
+  <link rel="stylesheet" href="../css/news-detail.css">
+    <link rel="stylesheet" href="/src/css/main.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div id="header"></div>
+
+  <!-- BANNER -->
+  <section class="detail-banner">
+    <div class="breadcrumb">
+      <a href="../../../index.html">
+        <i class="fa-solid fa-house"></i>
+        Trang chủ
+      </a>
+      <span>/</span>
+      <a href="./news.html">Tin tức</a>
+      <span>/</span>
+      <span id="breadcrumbTitle">Chi tiết bài viết</span>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="detail-layout">
+
+    <!-- ARTICLE -->
+    <article class="article-main">
+
+      <!-- HERO IMAGE -->
+      <div class="article-hero">
+        <img id="articleImg" src="" alt="">
+        <span class="article-category" id="articleCategory"></span>
+      </div>
+
+      <!-- META -->
+      <div class="article-meta">
+        <span><i class="fa-regular fa-calendar"></i> <span id="articleDate"></span></span>
+        <span><i class="fa-regular fa-user"></i> <span id="articleAuthor"></span></span>
+      </div>
+
+      <!-- TITLE -->
+      <h1 class="article-title" id="articleTitle"></h1>
+
+      <!-- DESC -->
+      <p class="article-desc" id="articleDesc"></p>
+
+      <!-- CONTENT -->
+      <div class="article-content" id="articleContent"></div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="detail-sidebar">
+      <h2>Bài viết khác</h2>
+      <div class="related-news" id="relatedNews"></div>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer"></div>
+    <script type="module" src="/src/js/main.js"></script>
+    <script src="../js/news-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+{
+    "main_questions": [
+        {
+            "id": "1",
+            "q": "🌸 Tư vấn chọn sản phẩm chăm sóc da phù hợp?",
+            "a": "Chào bạn! Đức Tùng Beauty sẵn sàng hỗ trợ. Để chọn skincare chính xác, chúng ta cần xác định loại da và tình trạng da. Dưới đây là các câu hỏi chi tiết giúp bạn chọn lựa dễ dàng hơn:"
+        },
+        {
+            "id": "2",
+            "q": "🛒 Làm sao để đặt hàng và thanh toán trên website?",
+            "a": "Chào bạn! Việc mua sắm tại shop rất nhanh chóng. Bạn chỉ cần chọn sản phẩm, thêm vào giỏ hàng và thanh toán. Để biết rõ chi tiết về quy trình duyệt đơn hoặc các cổng thanh toán, vui lòng xem dưới đây:"
+        },
+        {
+            "id": "3",
+            "q": "🚚 Chính sách giao hàng và thời gian nhận hàng?",
+            "a": "Chào bạn! Shop hỗ trợ giao hàng toàn quốc với cước phí cực ưu đãi và có cả dịch vụ giao hỏa tốc. Thời gian nhận hàng thông thường từ 1-4 ngày. Bạn có thể tìm hiểu thêm chi tiết qua các lựa chọn sau:"
+        },
+        {
+            "id": "4",
+            "q": "🔄 Chính sách đổi trả và bảo hành kích ứng da?",
+            "a": "Chào bạn! Đức Tùng Beauty cam kết đặt quyền lợi khách hàng lên hàng đầu với chính sách đổi trả trong vòng 7 ngày và bảo hành kích ứng da uy tín. Vui lòng chọn các mục dưới đây để xem chi tiết:"
+        },
+        {
+            "id": "5",
+            "q": "🎁 Shop có những chương trình ưu đãi và VIP nào?",
+            "a": "Chào bạn! Shop luôn có nhiều chương trình khuyến mãi hấp dẫn cùng hệ thống tích điểm tự động nâng hạng VIP tri ân khách hàng thân thiết. Khám phá ngay các ưu đãi cụ thể phía dưới:"
+        }
+    ],
+    "sub_questions": {
+        "1": [
+            {
+                "id": "1.1",
+                "q": "Da dầu mụn nên dùng bộ sản phẩm skincare nào?",
+                "a": "Đối với làn da dầu mụn, bạn nên dùng Combo gồm Sữa rửa mặt chứa BHA làm sạch sâu, Nước hoa hồng Centella rau má làm dịu da và Serum Niacinamide kiềm dầu, giảm thâm mụn hiệu quả nhé!"
+            },
+            {
+                "id": "1.2",
+                "q": "Da khô bong tróc cần cấp ẩm thế nào cho đúng cách?",
+                "a": "Da khô cần cấp nước đa tầng. Bạn nên dùng Sữa rửa mặt dạng gel dịu nhẹ, Serum HA (Hyaluronic Acid) thoa trên nền da ẩm và khóa ẩm bằng kem dưỡng chứa Ceramide nha!"
+            },
+            {
+                "id": "1.3",
+                "q": "Mỹ phẩm của shop có an toàn dùng được cho bà bầu không?",
+                "a": "Đức Tùng Beauty có dòng sản phẩm thuần chay hữu cơ thiên nhiên, hoàn toàn không chứa Retinol, Hydroquinone hay Paraben, cam kết an toàn tuyệt đối cho mẹ bầu và mẹ bỉm sữa ạ!"
+            },
+            {
+                "id": "1.4",
+                "q": "Làm sao để phân biệt được loại da của mình tại nhà dễ nhất?",
+                "a": "Bạn hãy rửa sạch mặt, không thoa gì và đợi 45 phút. Nếu đổ dầu toàn mặt là Da Dầu; khô căng là Da Khô; chỉ đổ dầu vùng chữ T là Da Hỗn Hợp; mịn màng bình thường là Da Thường nha!"
+            },
+            {
+                "id": "1.5",
+                "q": "Shop có sản phẩm nào trị thâm mụn và làm trắng tốt không?",
+                "a": "Để trị thâm và làm sáng da an toàn, bạn nên chọn Serum Vitamin C tinh khiết vào buổi sáng (trước kem chống nắng) hoặc Serum Alpha Arbutin kết hợp Niacinamide vào buổi tối nhé!"
+            }
+        ],
+        "2": [
+            {
+                "id": "2.1",
+                "q": "Làm thế nào để tôi đặt mua hàng trực tuyến trên website?",
+                "a": "Rất đơn giản ạ! Bạn chọn mỹ phẩm yêu thích -> bấm 'Thêm vào giỏ hàng' hoặc 'Mua ngay' -> Vào Giỏ hàng kiểm tra -> Điền địa chỉ nhận hàng và SĐT -> Chọn phương thức thanh toán -> Bấm 'Đặt hàng' là hoàn tất!"
+            },
+            {
+                "id": "2.2",
+                "q": "Shop hiện đang hỗ trợ những hình thức thanh toán nào?",
+                "a": "Shop hỗ trợ 3 hình thức linh hoạt: 1. Thanh toán tiền mặt khi nhận hàng (COD); 2. Chuyển khoản ngân hàng qua quét mã QR nhanh; 3. Thanh toán qua ví điện tử MoMo/VNPay nha bạn!"
+            },
+            {
+                "id": "2.3",
+                "q": "Tôi muốn hủy đơn hàng hoặc thay đổi địa chỉ thì làm sao?",
+                "a": "Nếu đơn hàng chưa gửi đi, bạn vui lòng liên hệ ngay hotline khẩn cấp: 0966 969 726 hoặc để lại thông tin Mã đơn hàng kèm địa chỉ mới tại đây, tư vấn viên sẽ xử lý ngay cho bạn!"
+            },
+            {
+                "id": "2.4",
+                "q": "Sau khi đặt mua thành công thì bao lâu đơn hàng được duyệt?",
+                "a": "Hệ thống sẽ gửi email xác nhận tự động. Trong vòng 15-30 phút (giờ hành chính 8:00 - 21:00), chuyên viên của shop sẽ gọi điện thoại hoặc gửi SMS xác nhận đơn hàng chính xác trước khi xuất kho."
+            },
+            {
+                "id": "2.5",
+                "q": "Làm sao để tôi có thể tự kiểm tra tình trạng đơn hàng của mình?",
+                "a": "Bạn có thể vào mục 'Đơn hàng của tôi' trên website để xem. Hoặc chỉ cần nhắn Số điện thoại/Mã đơn hàng vào ô chat này, admin online sẽ tra cứu lộ trình vận chuyển thời gian thực gửi bạn ngay!"
+            }
+        ],
+        "3": [
+            {
+                "id": "3.1",
+                "q": "Phí vận chuyển giao hàng được tính cụ thể như thế nào?",
+                "a": "Shop áp dụng phí ship đồng giá toàn quốc siêu rẻ chỉ 25.000đ. Đặc biệt, đơn hàng có tổng giá trị từ 499.000đ trở lên sẽ được MIỄN PHÍ VẬN CHUYỂN hoàn toàn ạ!"
+            },
+            {
+                "id": "3.2",
+                "q": "Giao hàng tại các quận nội thành Hà Nội hoặc TP.HCM mất bao lâu?",
+                "a": "Đối với khu vực nội thành Hà Nội và TP.HCM, tốc độ ship cực nhanh: Bạn sẽ nhận được hàng chỉ trong vòng 12 đến 24 tiếng đồng hồ kể từ khi đơn hàng được duyệt thành công!"
+            },
+            {
+                "id": "3.3",
+                "q": "Shop có dịch vụ giao hàng siêu tốc hỏa tốc nhận liền không?",
+                "a": "Dạ có ạ! Shop hỗ trợ ship hỏa tốc qua GrabExpress/Ahamove nhận hàng ngay sau 1-2 tiếng tại nội thành Hà Nội & TP.HCM. Bạn vui lòng ghi chú đơn hàng hoặc alo hotline để được đi đơn gấp nhé!"
+            },
+            {
+                "id": "3.4",
+                "q": "Tôi có được mở gói bưu kiện ra xem hàng trước khi thanh toán không?",
+                "a": "Dạ hoàn toàn ĐƯỢC ạ! Shop rất khuyến khích bạn đồng kiểm với shipper: Mở hộp kiểm tra đúng sản phẩm, đủ số lượng, nguyên vẹn tem mác chống giả rồi mới tiến hành thanh toán tiền."
+            },
+            {
+                "id": "3.5",
+                "q": "Nếu giao hàng đi các tỉnh thành vùng xa khác thì mất mấy ngày?",
+                "a": "Các đơn hàng đi tỉnh hoặc tuyến huyện xã xa sẽ mất trung bình khoảng từ 2 đến 4 ngày làm việc (không tính Chủ Nhật và ngày lễ) tùy thuộc vào tiến độ của các bên vận chuyển."
+            }
+        ],
+        "4": [
+            {
+                "id": "4.1",
+                "q": "Nếu tôi mua về dùng sản phẩm bị kích ứng da thì shop xử lý ra sao?",
+                "a": "Shop cam kết Bảo Hành Kích Ứng trọn vẹn: Trong vòng 3 ngày đầu sử dụng nếu da bị đỏ rát, mẩn ngứa (có ảnh chụp sản phẩm và da), shop sẽ thu hồi sản phẩm đã mở nắp và hoàn trả tiền 100%!"
+            },
+            {
+                "id": "4.2",
+                "q": "Thời gian quy định tối đa cho phép đổi trả sản phẩm là bao lâu?",
+                "a": "Shop hỗ trợ đổi trả hàng linh hoạt trong vòng 7 ngày kể từ khi nhận hàng thành công. Điều kiện: Sản phẩm còn nguyên tem mác chống giả, chưa bị mở nắp, bóc seal bảo vệ bọc ngoài."
+            },
+            {
+                "id": "4.3",
+                "q": "Sản phẩm bị lỗi móp méo, vỡ hỏng do vận chuyển có được đổi mới?",
+                "a": "Bạn hoàn toàn yên tâm nha! Nếu gặp lỗi do vận chuyển, bạn chỉ cần quay clip mở hàng hoặc chụp ảnh gửi qua fanpage/zalo shop. Shop sẽ lập tức ship bù sản phẩm mới nguyên vẹn MIỄN PHÍ tận nhà!"
+            },
+            {
+                "id": "4.4",
+                "q": "Tôi có phải chịu tốn tiền phí vận chuyển khi gửi hàng đổi trả không?",
+                "a": "Nếu lỗi từ phía shop (giao sai mẫu, thiếu hàng, đổ vỡ bưu kiện), shop chịu 100% phí ship. Nếu bạn đổi ý muốn đổi sang dòng sản phẩm khác, vui lòng hỗ trợ thanh toán phí ship 2 chiều giúp shop nha!"
+            },
+            {
+                "id": "4.5",
+                "q": "Làm cách nào để tôi gửi yêu cầu đổi trả một cách nhanh nhất?",
+                "a": "Cách nhanh nhất là bạn gọi trực tiếp đến bộ phận bảo hành qua Hotline: 0966 969 726, hoặc cung cấp Số điện thoại mua hàng tại ô chat này, tư vấn viên sẽ tiếp nhận và xử lý thỏa đáng sau 2 phút."
+            }
+        ],
+        "5": [
+            {
+                "id": "5.1",
+                "q": "Làm sao để tôi được đăng ký tham gia trở thành khách hàng VIP?",
+                "a": "Hệ thống tự động tích điểm theo SĐT. Khi tổng chi tiêu đạt mốc từ 2.000.000đ, tài khoản của bạn sẽ kích hoạt hạng thẻ VIP 1, nhận đặc quyền giảm trực tiếp 5% cho mọi hóa đơn trọn đời!"
+            },
+            {
+                "id": "5.2",
+                "q": "Shop có áp dụng quà tặng hoặc ưu đãi vào tháng sinh nhật không?",
+                "a": "Dạ có ạ! Tri ân khách hàng, shop tặng riêng bạn 1 Mã voucher GIẢM 15% tổng hóa đơn mua sắm áp dụng trong suốt tháng sinh nhật, kèm theo một phần quà mỹ phẩm mini bí mật gửi tận nhà!"
+            },
+            {
+                "id": "5.3",
+                "q": "Điểm tích lũy khi mua mỹ phẩm của tôi được quy đổi như thế nào?",
+                "a": "Mỗi 100.000đ mua hàng tích được 1 điểm thưởng (tương đương 5.000đ). Điểm số này được cộng dồn vô thời hạn trên hệ thống và bạn được quyền dùng trừ trực tiếp vào tiền thanh toán đơn sau."
+            },
+            {
+                "id": "5.4",
+                "q": "Hiện tại hệ thống shop đang triển khai chương trình khuyến mãi nào?",
+                "a": "Shop đang diễn ra chương trình 'Săn Deal Chào Hè': Giảm đến 30% toàn bộ kem chống nắng, xịt khoáng từ các brand Hàn, Pháp. Đồng thời tặng 1 hộp bông tẩy trang Ipek cho mọi đơn hàng từ 299k!"
+            },
+            {
+                "id": "5.5",
+                "q": "Tôi nhập mã giảm giá hoặc Voucher ưu đãi ở bước nào khi đặt hàng?",
+                "a": "Tại trang 'Thanh toán', bạn nhìn xuống phần tóm tắt giỏ hàng sẽ thấy ô trống 'Nhập mã giảm giá / Code khuyến mãi'. Bạn điền mã vào rồi nhấn nút 'Áp dụng', hệ thống sẽ trừ tiền ngay lập tức!"
+            }
+        ]
+    }
+}

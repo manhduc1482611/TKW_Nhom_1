@@ -1,0 +1,186 @@
+/* ==================== RESET & CHUNG ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fefaf7;
+    color: #4a3b2f;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+/* ==================== HEADER ==================== */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #5d4037;
+    margin-bottom: 20px;
+}
+
+.page-divider {
+    width: 70px;
+    height: 3px;
+    background: #d4a373;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* ==================== CARD NỘI DUNG ==================== */
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 50px 45px;
+    box-shadow: 0 12px 30px rgba(212, 163, 115, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 20px 40px rgba(212, 163, 115, 0.15);
+}
+
+/* ==================== TEXT STYLES ==================== */
+.text-muted {
+    color: #6d5d52;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.text-strong {
+    color: #d4a373;
+    font-weight: 600;
+}
+
+/* ==================== CÁC MỤC (STEP) ==================== */
+.step {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f0e4da;
+}
+
+.step:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #5d4037;
+    margin-bottom: 15px;
+}
+
+/* ==================== DANH SÁCH UL ==================== */
+ul {
+    margin-top: 12px;
+    padding-left: 24px;
+    list-style: none;
+}
+
+li {
+    color: #6d5d52;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #d4a373;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+
+/* ==================== QUY TRÌNH (KHÔNG CÓ Ô, CHỈ TEXT) ==================== */
+.process-item {
+    margin-bottom: 18px;
+}
+
+.process-item p {
+    margin-bottom: 0;
+}
+
+/* ==================== HỖ TRỢ CUỐI TRANG ==================== */
+.support {
+    text-align: center;
+    margin-top: 40px;
+    padding: 25px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.08);
+}
+
+.support-link {
+    color: #d4a373;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.support-link:hover {
+    color: #5d4037;
+    border-bottom-color: #d4a373;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 30px 25px;
+    }
+    
+    .step-title {
+        font-size: 1.2rem;
+    }
+    
+    .text-muted {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 25px 18px;
+    }
+    
+    li {
+        font-size: 0.85rem;
+    }
+    
+    .intro-text::after {
+        width: 60px;
+    }
+}
