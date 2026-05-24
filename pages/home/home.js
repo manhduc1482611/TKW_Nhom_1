@@ -21,13 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================
      DATA
   ========================================= */
-
   const categories = [
-    { name: "Cleanser",       img: "assets/images/home/pic/srm.jpg",        category: "Sữa rửa mặt"    },
+    { name: "Cleanser",       img: "assets/images/home/pic/srm.jpg",         category: "Sữa rửa mặt"    },
     { name: "Micellar Water", img: "assets/images/home/pic/nuoctaytrang.jpg", category: "Nước tẩy trang" },
-    { name: "Toner",          img: "assets/images/home/pic/toner.jpg",       category: "Tonner"          },
-    { name: "Sunscreen",      img: "assets/images/home/pic/kcn.jpg",         category: "Kem chống nắng" },
-    { name: "Moisturizer",    img: "assets/images/home/pic/kemduong.jpg",    category: "Kem dưỡng"      },
+    { name: "Toner",          img: "assets/images/home/pic/toner.jpg",        category: "Tonner"          },
+    { name: "Sunscreen",      img: "assets/images/home/pic/kcn.jpg",          category: "Kem chống nắng" },
+    { name: "Moisturizer",    img: "assets/images/home/pic/kemduong.jpg",     category: "Kem dưỡng"      },
   ];
 
   const brands = [
@@ -49,29 +48,29 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bestSellers = [
-    { id: 1,  name: "Sữa rửa mặt",    price: "$22.00", badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
-    { id: 21,  name:"Kem dưỡng La Roche-Posay Cicaplast Baume B5+",     price: "365.000", badge: "Hot",         img: "assets/images/products/kem-duong/21.1.jpg" },
-    { id: 41,  name: "Nước cân bằng Bioderma", price: "360.000", badge: "Trending",    img: "assets/images/products/toner/41.1.jpg" },
-    { id: 61, name: "Kem Chống Nắng Skin1004 Madagascar Centella Air-Fit Suncream Plus", price: "465000",badge: "Popular",     img: "assets/images/products/kem-chong-nang/61.1.jpg" },
-    { id: 81,name: "Nước Tẩy Trang Cocoon Bí Đao" ,price: "299000", badge: "New",         img: "assets/images/products/nuoc-tay-trang/81.1.jpg" },
+    { id: 1,  name: "Sữa rửa mặt",                                                               price: "$22.00",  badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
+    { id: 21, name: "Kem dưỡng La Roche-Posay Cicaplast Baume B5+",                              price: "365.000", badge: "Hot",          img: "assets/images/products/kem-duong/21.1.jpg" },
+    { id: 41, name: "Nước cân bằng Bioderma",                                                    price: "360.000", badge: "Trending",     img: "assets/images/products/toner/41.1.jpg" },
+    { id: 61, name: "Kem Chống Nắng Skin1004 Madagascar Centella Air-Fit Suncream Plus",          price: "465.000", badge: "Popular",      img: "assets/images/products/kem-chong-nang/61.1.jpg" },
+    { id: 81, name: "Nước Tẩy Trang Cocoon Bí Đao",                                              price: "299.000", badge: "New",          img: "assets/images/products/nuoc-tay-trang/81.1.jpg" },
   ];
 
   const news = [
     {
       id: 1,
-      img: "assets/images/home/pic/tintuc1.png",
+      img: "assets/images/news/tintuc1.png",
       title: "Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp",
       desc: "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
     },
     {
       id: 2,
-      img: "assets/images/home/pic/tintuc2.png",
+      img: "assets/images/news/tintuc2.png",
       title: 'Serum Vitamin C - "Thần dược" cho làn da sáng khỏe',
       desc: "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
     },
     {
       id: 3,
-      img: "assets/images/home/pic/tintuc3.jpg",
+      img: "assets/images/news/tintuc3.jpg",
       title: "Quy trình skincare cho làn da nhạy cảm",
       desc: "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
     },
@@ -110,14 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
      BRANDS
-     Click → pages/product/html/products.html?brand=La Roche-Posay
   ========================================= */
   const brandsTrack = document.getElementById("brandsTrack");
 
   function createBrandCard(name, img, isClone = false) {
     const card = document.createElement("a");
     card.className = "brand-card";
-    // Dùng tên gốc (không slug) để match đúng với brandFilter trong products.js
     card.href = `pages/product/html/products.html?brand=${encodeURIComponent(name)}`;
     card.title = name;
     if (isClone) card.setAttribute("aria-hidden", "true");
@@ -131,14 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (brandsTrack) {
-    brands.forEach(({ name, img }) => {
-      brandsTrack.appendChild(createBrandCard(name, img));
-    });
-
-    // Clone để loop vô hạn
-    brands.forEach(({ name, img }) => {
-      brandsTrack.appendChild(createBrandCard(name, img, true));
-    });
+    brands.forEach(({ name, img }) => brandsTrack.appendChild(createBrandCard(name, img)));
+    brands.forEach(({ name, img }) => brandsTrack.appendChild(createBrandCard(name, img, true)));
 
     let pos = 0;
     let paused = false;
@@ -162,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================
      BEST SELLERS
-     Click → pages/product/html/product-detail.html?id=1
   ========================================= */
   const bestGrid = document.getElementById("bestGrid");
 
@@ -179,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="best-info">
           <h3 class="best-name">${name}</h3>
-          <p class="best-price">${price}</p>
+          <p class="best-price">${price}đ</p>
           <div class="best-stars">★★★★★</div>
         </div>
       `;
@@ -227,20 +217,50 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================= */
   const header = document.querySelector(".site-header");
 
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 20);
-  });
+  if (header) {
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    });
+  }
 
   /* =========================================
      BANNER SLIDER
   ========================================= */
   const banners = document.querySelectorAll(".banner-img");
+  const dotsContainer = document.getElementById("sliderDots");
+  const btnPrev = document.getElementById("sliderPrev");
+  const btnNext = document.getElementById("sliderNext");
   let currentBanner = 0;
+  let sliderTimer;
 
-  setInterval(() => {
-    banners[currentBanner].classList.remove("active");
-    currentBanner = (currentBanner + 1) % banners.length;
-    banners[currentBanner].classList.add("active");
-  }, 2500);
+  if (banners.length && dotsContainer) {
+    // Tạo dots
+    banners.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "slider-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Banner ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+      banners[currentBanner].classList.remove("active");
+      dotsContainer.children[currentBanner].classList.remove("active");
+      currentBanner = (index + banners.length) % banners.length;
+      banners[currentBanner].classList.add("active");
+      dotsContainer.children[currentBanner].classList.add("active");
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => goTo(currentBanner + 1), 2500);
+    }
+
+    if (btnPrev) btnPrev.addEventListener("click", () => goTo(currentBanner - 1));
+    if (btnNext) btnNext.addEventListener("click", () => goTo(currentBanner + 1));
+
+    resetTimer();
+  }
 
 });

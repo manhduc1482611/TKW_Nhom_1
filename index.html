@@ -11,13 +11,19 @@
 
 <body>
   <div id="header"></div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="slider" id="slider">
-        <img src="/assets/images/home/pic/logomoi.png" class="banner-img active">
-        <img src="/assets/images/home/pic/banner2.png" class="banner-img">
-        <img src="/assets/images/home/pic/bannerfreeship.png" class="banner-img">
+      <div class="slider-wrapper">
+        <div class="slider" id="slider">
+          <img src="/assets/images/banner/banner1.png" class="banner-img active" alt="Banner 1">
+          <img src="assets/images/banner/banner3.png" class="banner-img" alt="Banner 2">
+          <img src="/assets/images/banner/banner_2.png" class="banner-img" alt="Banner 3">
+        </div>
+        <button class="slider-btn slider-btn--prev" id="sliderPrev" aria-label="Banner trước">&#8249;</button>
+        <button class="slider-btn slider-btn--next" id="sliderNext" aria-label="Banner tiếp">&#8250;</button>
+        <div class="slider-dots" id="sliderDots"></div>
       </div>
     </div>
   </section>
@@ -25,25 +31,29 @@
   <!-- CATEGORY -->
   <section class="categories-section">
     <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Categories</p>
-        <h2>Shop By Category</h2>
-        <p class="section-sub">Discover skincare essentials for every routine.</p>
+      <div class="section-box section-box--pink">
+        <div class="section-header">
+          <p class="section-tag">Categories</p>
+          <h2>Shop By Category</h2>
+          <p class="section-sub">Discover skincare essentials for every routine.</p>
+        </div>
+        <div class="categories-grid" id="categoriesGrid"></div>
       </div>
-      <div class="categories-grid" id="categoriesGrid"></div>
     </div>
   </section>
 
   <!-- BRANDS -->
   <section class="brands-section">
     <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Brands</p>
-        <h2>Trusted Skincare Brands</h2>
-        <p class="section-sub">Discover famous skincare brands loved worldwide.</p>
-      </div>
-      <div class="brands-slider">
-        <div class="brands-track" id="brandsTrack"></div>
+      <div class="section-box">
+        <div class="section-header">
+          <p class="section-tag">Brands</p>
+          <h2>Trusted Skincare Brands</h2>
+          <p class="section-sub">Discover famous skincare brands loved worldwide.</p>
+        </div>
+        <div class="brands-slider">
+          <div class="brands-track" id="brandsTrack"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -51,25 +61,31 @@
   <!-- PROMO BANNERS -->
   <section class="promo-section">
     <div class="container">
-      <div class="promo-grid">
-        <div class="promo-banner promo-banner-1">
-          <div class="promo-content">
-            <p class="promo-sale">Up to 25% Off</p>
-            <h3>Eucerin Skincare<br>For Healthy Skin</h3>
-            <button class="promo-btn">Shop Now</button>
-          </div>
-          <div class="promo-image">
-            <img src="/src/assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
-          </div>
+      <div class="section-box section-box--gray">
+        <div class="section-header">
+          <p class="section-tag">Promotions</p>
+          <h2>Ưu Đãi Đặc Biệt</h2>
         </div>
-        <div class="promo-banner promo-banner-2">
-          <div class="promo-content">
-            <p class="promo-sale">Up to 30% Off</p>
-            <h3>Senka Skincare<br>For Dewy Skin</h3>
-            <button class="promo-btn">Shop Now</button>
+        <div class="promo-grid">
+          <div class="promo-banner promo-banner-1">
+            <div class="promo-content">
+              <p class="promo-sale">Up to 25% Off</p>
+              <h3>Eucerin Skincare<br>For Healthy Skin</h3>
+              <button class="promo-btn">Shop Now</button>
+            </div>
+            <div class="promo-image">
+              <img src="/src/assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
+            </div>
           </div>
-          <div class="promo-image">
-            <img src="/src/assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
+          <div class="promo-banner promo-banner-2">
+            <div class="promo-content">
+              <p class="promo-sale">Up to 30% Off</p>
+              <h3>Senka Skincare<br>For Dewy Skin</h3>
+              <button class="promo-btn">Shop Now</button>
+            </div>
+            <div class="promo-image">
+              <img src="/src/assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
+            </div>
           </div>
         </div>
       </div>
@@ -79,26 +95,30 @@
   <!-- BEST SELLERS -->
   <section class="best-section">
     <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Best Sellers</p>
-        <h2>Featured Skincare Products</h2>
-        <p class="section-sub">Top 5 best-selling skincare essentials loved by customers.</p>
+      <div class="section-box section-box--pink">
+        <div class="section-header">
+          <p class="section-tag">Best Sellers</p>
+          <h2>Featured Skincare Products</h2>
+          <p class="section-sub">Top 5 best-selling skincare essentials loved by customers.</p>
+        </div>
+        <div class="best-grid" id="bestGrid"></div>
       </div>
-      <div class="best-grid" id="bestGrid"></div>
     </div>
   </section>
 
   <!-- NEWS -->
   <section class="news-section">
     <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Tin tức</p>
-        <h2>Bài Viết & Khuyến Mãi</h2>
-        <p class="section-sub">Cập nhật xu hướng skincare và ưu đãi mới nhất.</p>
-      </div>
-      <div class="news-grid" id="newsGrid"></div>
-      <div class="news-btn-wrap">
-        <a href="/pages/news/html/news.html" class="news-btn">Tất cả bài viết</a>
+      <div class="section-box">
+        <div class="section-header">
+          <p class="section-tag">Tin tức</p>
+          <h2>Bài Viết & Khuyến Mãi</h2>
+          <p class="section-sub">Cập nhật xu hướng skincare và ưu đãi mới nhất.</p>
+        </div>
+        <div class="news-grid" id="newsGrid"></div>
+        <div class="news-btn-wrap">
+          <a href="/pages/news/html/news.html" class="news-btn">Tất cả bài viết</a>
+        </div>
       </div>
     </div>
   </section>
