@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên hệ | Nghien Beauty</title>
+    <title>Nghien Beauty - Liên hệ</title>
+    <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/typography.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <iframe src="../../components/header.html"></iframe>
 
-    <section class="banner">
-        <div class="banner-content">
-            <h1>Liên hệ</h1>
+<div id="header"></div>
+
+<main>
+    <div class="page-header">
+        <div class="breadcrumb">
+            <a href="../../../index.html">
+                <i class="fa-solid fa-house"></i>
+                Trang chủ
+            </a>
+            <span>/</span>
+            <span>Liên hệ</span>
         </div>
-    </section>
+        <h1>LIÊN HỆ</h1>
+    </div>
 
     <section class="contact">
         <div class="contact-container">
@@ -36,7 +41,10 @@
                         <input type="text" id="name" placeholder="Họ và tên" required>
                         <input type="email" id="email" placeholder="Địa chỉ Email" required>
                         <textarea id="message" placeholder="Nội dung tin nhắn..." required></textarea>
-                        <button type="submit" id="sendBtn">Gửi</button>
+                        <div class="form-footer">
+                            <button type="submit" id="sendBtn">Gửi</button>
+                            <div id="formMessage" class="form-message hidden"></div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -51,9 +59,10 @@
             </div>
         </div>
     </section>
+</main>
 
-    <iframe src="../../components/footer.html" class="footer-frame"></iframe>
-    <script src="../../js/main.js"></script>
-    <script src="contact.js"></script>
+<div id="footer"></div>
+<script type="module" src="/src/js/main.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

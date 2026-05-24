@@ -1,0 +1,278 @@
+/* ==================== RESET & CHUNG ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fefaf7;
+    color: #4a3b2f;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: white;
+    padding: 12px 22px;
+    border-radius: 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    font-size: 14px;
+}
+
+.breadcrumb-wrapper {
+    text-align: center;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: #ff4f8b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.breadcrumb span{
+    color: #777;
+}
+
+/* ==================== HEADER ==================== */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #5d4037;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.page-divider {
+    width: 70px;
+    height: 3px;
+    background: #d4a373;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+/* ==================== CARD NỘI DUNG ==================== */
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 50px 45px;
+    box-shadow: 0 12px 30px rgba(212, 163, 115, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 20px 40px rgba(212, 163, 115, 0.15);
+}
+
+/* ==================== TEXT STYLES ==================== */
+.text-muted {
+    color: #6d5d52;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.text-strong {
+    color: #d4a373;
+    font-weight: 600;
+}
+
+/* ==================== CÁC MỤC (STEP) ==================== */
+.step {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f0e4da;
+}
+
+.step:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #5d4037;
+    margin-bottom: 15px;
+    letter-spacing: -0.2px;
+}
+
+/* ==================== BẢNG PHƯƠNG THỨC THANH TOÁN ==================== */
+.payment-table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0 10px;
+    border-radius: 16px;
+    border: 1px solid #f0e4da;
+    background-color: #ffffff;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.payment-table th,
+.payment-table td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.payment-table th {
+    background-color: #fefaf7;
+    color: #5d4037;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid #f0e4da;
+}
+
+.payment-table td {
+    color: #6d5d52;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-bottom: 1px solid #f0e4da;
+}
+
+.payment-table tr:last-child td {
+    border-bottom: none;
+}
+
+.payment-table .method-name {
+    font-weight: 600;
+    color: #5d4037;
+    white-space: nowrap;
+}
+
+/* Highlight hàng ví điện tử */
+.payment-table .method-highlight td {
+    background-color: #fefaf7;
+}
+
+/* Bo góc cho bảng */
+.payment-table th:first-child {
+    border-top-left-radius: 16px;
+}
+
+.payment-table th:last-child {
+    border-top-right-radius: 16px;
+}
+
+.payment-table tr:last-child td:first-child {
+    border-bottom-left-radius: 16px;
+}
+
+.payment-table tr:last-child td:last-child {
+    border-bottom-right-radius: 16px;
+}
+
+/* ==================== HỖ TRỢ CUỐI TRANG ==================== */
+.support {
+    text-align: center;
+    margin-top: 40px;
+    padding: 25px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.08);
+}
+
+.support-link {
+    color: #d4a373;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.support-link:hover {
+    color: #5d4037;
+    border-bottom-color: #d4a373;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .card {
+        padding: 30px 25px;
+    }
+    
+    .step-title {
+        font-size: 1.25rem;
+    }
+    
+    .text-muted {
+        font-size: 0.92rem;
+    }
+    
+    .payment-table th,
+    .payment-table td {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 25px 18px;
+    }
+    
+    .step-title {
+        font-size: 1.15rem;
+    }
+    
+    .text-muted {
+        font-size: 0.88rem;
+    }
+    
+    .payment-table th,
+    .payment-table td {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .payment-table-wrapper,
+    .payment-table {
+        border-radius: 12px;
+    }
+    
+    .payment-table th:first-child { border-top-left-radius: 12px; }
+    .payment-table th:last-child { border-top-right-radius: 12px; }
+    .payment-table tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+    .payment-table tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+}

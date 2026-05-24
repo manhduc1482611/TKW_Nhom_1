@@ -18,6 +18,39 @@ body {
     padding: 60px 24px;
 }
 
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: white;
+    padding: 12px 22px;
+    border-radius: 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    font-size: 14px;
+}
+
+.breadcrumb-wrapper {
+    text-align: center;
+}
+
+.breadcrumb a{
+    text-decoration: none;
+    color: #ff4f8b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.breadcrumb span{
+    color: #777;
+}
+
+
 /* ==================== HEADER ==================== */
 .page-header {
     text-align: center;
