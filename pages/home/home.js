@@ -58,19 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const news = [
     {
       id: 1,
-      img: "assets/images/home/pic/tintuc1.png",
+      img: "assets/images/news/tintuc1.png",
       title: "Cách sử dụng kem chống nắng để sở hữu làn da khỏe đẹp",
       desc: "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
     },
     {
       id: 2,
-      img: "assets/images/home/pic/tintuc2.png",
+      img: "assets/images/news/tintuc2.png",
       title: 'Serum Vitamin C - "Thần dược" cho làn da sáng khỏe',
       desc: "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
     },
     {
       id: 3,
-      img: "assets/images/home/pic/tintuc3.jpg",
+      img: "assets/images/news/tintuc3.jpg",
       title: "Quy trình skincare cho làn da nhạy cảm",
       desc: "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
     },
