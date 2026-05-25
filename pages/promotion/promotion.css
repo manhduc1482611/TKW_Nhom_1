@@ -1,18 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #fcf8f7;
-    color: #4a4a4a;
-    line-height: 1.6;
-}
+/* =========================================
+   Sử dụng CSS Variables từ variables.css 
+   Reset & Typography đã được nhúng từ các file gốc
+========================================= */
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 .container {
@@ -21,7 +14,7 @@ a {
     padding: 20px;
 }
 
-/* Banner & Header */
+/* --- Banner & Header --- */
 .promo-banner-area {
     width: auto;
     overflow: hidden;
@@ -43,20 +36,21 @@ a {
 .page-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
-    color: #b88645;
+    color: var(--primary-hover);
     margin-bottom: 10px;
     font-weight: 700;
 }
 
 .page-description {
     font-size: 1rem;
-    color: #777;
+    color: var(--text-color);
+    opacity: 0.7;
 }
 
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: #333;
+    color: var(--text-color);
     margin: 40px 0 25px;
     display: flex;
     align-items: center;
@@ -64,18 +58,18 @@ a {
 }
 
 .section-title i {
-    color: #ff8e8b;
+    color: var(--primary-color);
 }
 
 .page-divider {
     width: 200px;
     height: 3px;
-    background: #d4a373;
+    background: var(--primary-color);
     margin: 20px auto 0 auto;
     border-radius: 5px;
 }
 
-/* Grid & Box Khuyến mãi */
+/* --- Grid & Box Khuyến mãi --- */
 .promo-grid {
     display: grid;
     flex-wrap: nowrap;
@@ -85,28 +79,28 @@ a {
 }
 
 .promo-box {
-    background: #fff;
+    background: var(--bg-light);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    border: 1px solid #f2e6e6;
+    border: 1px solid var(--bg-page);
     transition: transform 0.2s, box-shadow 0.2s;
     flex: 0 0 320px;
 }
 
 .promo-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(230, 118, 115, 0.15);
+    box-shadow: 0 8px 25px var(--primary-light);
 }
 
 .promo-box.flash {
-    border: 2px solid #ff8e8b;
-    background: #fffaf9;
+    border: 2px solid var(--primary-color);
+    background: var(--primary-light);
 }
 
-/* Cấu trúc bên trong Box */
+/* --- Cấu trúc bên trong Box --- */
 .box-img {
     width: 100%; 
     height: 180px;
@@ -136,11 +130,11 @@ a {
 
 .box-header h3 {
     font-size: 1.15rem;
-    color: #333;
+    color: var(--text-color);
     font-weight: 700;
 }
 
-/* Trạng thái */
+/* --- Trạng thái --- */
 .promo-status {
     font-size: 0.7rem;
     padding: 3px 8px;
@@ -164,27 +158,28 @@ a {
     color: #757575;
 }
 
-/* Text thông tin */
+/* --- Text thông tin --- */
 .time-text {
     font-size: 0.85rem;
-    color: #b88645;
+    color: var(--primary-hover);
     font-weight: 500;
     margin-bottom: 5px;
 }
 
 .desc-text {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     margin-bottom: 15px;
 }
 
-/* Nút và Mã */
+/* --- Nút và Mã --- */
 .box-action {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff4f3;
-    border: 1px dashed #ff8e8b;
+    background: var(--primary-light);
+    border: 1px dashed var(--primary-color);
     padding: 8px 12px;
     border-radius: 6px;
 }
@@ -200,7 +195,7 @@ a {
 
 .code-text {
     font-size: 1.1rem;
-    color: #e55350;
+    color: var(--primary-color);
     font-weight: 700;
     letter-spacing: 1px;
     user-select: all;
@@ -208,8 +203,8 @@ a {
 }
 
 .btn-copy {
-    background: #ff8e8b;
-    color: #fff;
+    background: var(--primary-color);
+    color: var(--bg-light);
     border: none;
     padding: 6px 15px;
     font-size: 0.85rem;
@@ -220,16 +215,16 @@ a {
 }
 
 .btn-copy:hover {
-    background: #e67673;
+    background: var(--primary-hover);
 }
 
-/* Box bị mờ khi không hoạt động */
+/* --- Box bị mờ khi không hoạt động --- */
 .disabled-box .box-img { 
     filter: grayscale(100%) opacity(0.7); 
 }
 
 .disabled-box .code-text { 
-    color: #999; 
+    color: var(--text-gray); 
     text-decoration: line-through; 
     user-select: none; 
 }
@@ -239,11 +234,11 @@ a {
 }
 
 .disabled-box .box-action { 
-    border-color: #ccc; 
-    background: #f9f9f9; 
+    border-color: var(--text-gray); 
+    background: var(--bg-page); 
 }
 
-/* Sản phẩm */
+/* --- Sản phẩm --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -252,9 +247,9 @@ a {
 
 .product-card {
     display: block;
-    background: #fff;
+    background: var(--bg-light);
     border-radius: 12px;
-    border: 1px solid #f2e6e6;
+    border: 1px solid var(--bg-page);
     overflow: hidden;
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -263,15 +258,15 @@ a {
 .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
-    border-color: #ff8e8b;
+    border-color: var(--primary-color);
 }
 
 .badge {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: linear-gradient(135deg, #ff6b6b, #e55350);
-    color: #fff;
+    background: var(--primary-color);
+    color: var(--bg-light);
     font-size: 0.85rem;
     font-weight: 700;
     padding: 5px 12px;
@@ -302,7 +297,7 @@ a {
 
 .product-name {
     font-size: 1.05rem;
-    color: #333;
+    color: var(--text-color);
     font-weight: 600;
     margin-bottom: 12px;
     line-height: 1.4;
@@ -318,61 +313,57 @@ a {
     align-items: baseline;
     gap: 10px;
     padding-top: 10px;
-    border-top: 1px dashed #f2e6e6;
+    border-top: 1px dashed var(--text-gray);
 }
 
 .new-price {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #e55350;
+    color: var(--primary-color);
 }
 
 .old-price {
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--text-gray);
     text-decoration: line-through;
 }
 
+/* --- Modal --- */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
 }
 
-/* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    background-color: var(--bg-light);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid var(--text-gray);
+    width: 80%; 
 }
 
-/* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: var(--text-gray);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
 }
 
-
-
-/* Điện thoại */
+/* --- Responsive Điện thoại --- */
 @media (max-width: 768px) {
     .promo-grid {
         grid-template-columns: 1fr;

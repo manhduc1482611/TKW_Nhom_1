@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nghien Beauty - Khuyến Mãi</title>
     <link rel="stylesheet" href="promotion.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/main.css">
 </head>
-<body>
 
+<body>
+    <div id="header"></div>
     <div class="promo-banner-area">
-        <img src="../../assets/images/banners/BannerPromo/BannerPromotion.png" alt="Siêu Sale Beauty" class="promo-banner">
+        <img src="../../assets/images/banners/BannerPromo/BannerPromotion.png" alt="Siêu Sale Beauty"
+            class="promo-banner">
     </div>
-    
+
     <div class="page-header">
         <h1 class="page-title">Ưu Đãi Đặc Quyền</h1>
-        <p class="page-description">Lưu mã giảm giá thông minh và mua sắm các sản phẩm làm đẹp hot nhất tại Nghien Beauty.</p>
+        <p class="page-description">Lưu mã giảm giá thông minh và mua sắm các sản phẩm làm đẹp hot nhất tại Nghien
+            Beauty.</p>
         <div class="page-divider"></div>
     </div>
 
     <main class="container">
-        
+
         <section class="promo-section">
             <h2 class="section-title"><i class="fas fa-ticket-alt"></i> Mã Giảm Giá Độc Quyền</h2>
             <div class="promo-grid">
-                
+
                 <div class="promo-box" data-type="always">
                     <div class="box-img">
                         <img src="../../assets/images/Promotion/LANDAU.png" alt="Lần đầu">
@@ -55,14 +58,15 @@
                         </div>
                         <p class="time-text"><i class="far fa-calendar-alt"></i> Mùng 1 - 10 hàng tháng</p>
                         <p class="time-text"><i class="far fa-user"></i> Khách mua SP La Roche-Posay</p>
-                        <p class="desc-text">Giảm 15% trên tổng giá trị các sản phẩm thuộc hãng này có trong giỏ hàng.</p>
+                        <p class="desc-text">Giảm 15% trên tổng giá trị các sản phẩm thuộc hãng này có trong giỏ hàng.
+                        </p>
                         <div class="box-action">
                             <strong class="code-text" id="code-laroche">LAROCHE</strong>
                             <button class="btn-copy" onclick="copyCode('code-laroche')">Copy mã</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="promo-box" data-type="yearly" data-month="2" data-date="14">
                     <div class="box-img">
                         <img src="../../assets/images/Promotion/VALENTINE.png" alt="Valentine">
@@ -209,11 +213,14 @@
                         </div>
                     </div>
                 </a>
-                
+
             </div>
         </section>
     </main>
-
+    <div id="chatbot"></div>
+    <div id="footer"></div>
+    <script type="module" src="/src/js/main.js"></script>
     <script src="promotion.js"></script>
 </body>
+
 </html>

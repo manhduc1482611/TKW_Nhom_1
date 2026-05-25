@@ -630,4 +630,58 @@ function updateCartBadge(){
 
 }
 
-fetchProduct();
+fetchProduct();let toastTimeout = null;
+
+// Tự động hiển thị số lượng trên badge ngay khi tải lại trang
+document.addEventListener("DOMContentLoaded", updateCartBadge);
+
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // Ép kiểu ép số trực tiếp tại đây để phòng trường hợp dữ liệu trong giỏ bị lưu sai dạng chuỗi
+    const totalQuantity = cart.reduce((total, item) => {
+        const qty = parseInt(item.quantity, 10) || 0; 
+        return total + qty;
+    }, 0);
+
+    const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
+    if (badge) {
+        badge.textContent = totalQuantity;
+    }
+}
+
+addCartBtn.addEventListener("click", () => {
+    if (!currentProduct) return;
+
+    // Ép kiểu số để tránh lỗi cộng chuỗi (ví dụ: "1" + 1 = "11")
+    const quantityToAdd = parseInt(currentQuantity, 10) || 1;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Chuyển ID về chuỗi (String) để tránh lỗi lệch kiểu dữ liệu khi so sánh số với chuỗi
+    const existingProduct = cart.find(item => String(item.id) === String(currentProduct.id));
+
+    if (existingProduct) {
+        existingProduct.quantity += quantityToAdd;
+    } else {
+        cart.push({
+            id: currentProduct.id,
+            name: currentProduct.name,
+            brand: currentProduct.brand,
+            image: currentProduct.images?.[0] || "", // Tránh lỗi nếu sản phẩm thiếu ảnh
+            price: currentProduct.salePrice,
+            quantity: quantityToAdd
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartBadge();
+
+    // Xử lý hiển thị Toast (clearTimeout để tránh lỗi chớp tắt khi click nhanh)
+    toast.textContent = "Đã thêm vào giỏ hàng";
+    toast.classList.add("show-toast");
+
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("show-toast");
+    }, 2500);
+});

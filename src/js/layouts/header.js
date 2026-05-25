@@ -1,57 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // 1. CẬP NHẬT SỐ LƯỢNG GIỎ HÀNG TỪ LOCALSTORAGE
-    function updateCartCount() {
-        const cartCountElement = document.querySelector(".cart-count");
-        if (!cartCountElement) return;
+// ==========================================
+// HÀM ĐỒNG BỘ BADGE GIỎ HÀNG (DÙNG CHUNG)
+// ==========================================
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    // SỬA LỖI 1: Lấy số lượng loại sản phẩm (Ví dụ: 3 sản phẩm khác nhau -> hiện số 3)
+    const totalItems = cart.length; 
 
-        try {
-            // Giả sử giỏ hàng của bạn lưu trong localStorage dưới key là 'cart'
-            // Dữ liệu mẫu: [{id: 1, name: 'Sữa rửa mặt', quantity: 2}]
-            const cart = JSON.parse(localStorage.getItem("cart")) || [];
-            
-            // Tính tổng số lượng tất cả sản phẩm trong giỏ
-            const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
-            
-            // Hiển thị số lượng lên badge
-            cartCountElement.textContent = totalItems;
-        } catch (error) {
-            console.error("Lỗi khi đọc giỏ hàng từ localStorage:", error);
-            cartCountElement.textContent = 0;
-        }
+    // Nếu bạn muốn hiện tổng số món (1+1+4=6) thì mở comment dòng dưới và xóa dòng trên:
+    // const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity, 10) || 0), 0);
+
+    const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
+    if (badge) {
+        badge.textContent = totalItems;
     }
+}
 
-    // 2. HIGHLIGHT MENU TRANG HIỆN TẠI (ACTIVE STATE)
-    function setActiveMenu() {
-        const currentPath = window.location.pathname;
-        const menuLinks = document.querySelectorAll(".page-menu a");
+// SỬA LỖI 2: Cơ chế tự động kiểm tra và nạp số giỏ hàng liên tục khi load trang
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartBadge();
 
-        menuLinks.forEach(link => {
-            const href = link.getAttribute("href");
-            
-            // Xóa class active cũ nếu có
-            link.classList.remove("active");
-
-            // Kiểm tra xem href của thẻ a có khớp với đường dẫn hiện tại không
-            if (currentPath === href || 
-               (currentPath === "/" && href === "/index.html") || 
-               (currentPath.includes("/pages/product/") && href.includes("/pages/product/"))) {
-                link.classList.add("active");
-            }
-        });
-    }
-
-    // 3. LẮNG NGHE SỰ KIỆN THAY ĐỔI GIỎ HÀNG GIỮA CÁC TAB (MULTI-TAB SYNC)
-    window.addEventListener("storage", function (event) {
-        if (event.key === "cart") {
-            updateCartCount();
+    // Đề phòng Header được load chậm bằng async/fetch: Cứ 200ms kiểm tra lại, thấy thẻ badge là nạp số ngay
+    let checkExist = setInterval(() => {
+        const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
+        if (badge) {
+            updateCartBadge();
+            clearInterval(checkExist); // Tìm thấy rồi thì dừng lại
         }
-    });
+    }, 200);
 
-    // 4. TẠO MỘT SỰ KIỆN TÙY BIẾN (CUSTOM EVENT) ĐỂ GỌI KHI THÊM VÀO GIỎ HÀNG TRÊN CÙNG MỘT TRANG
-    // Khi bạn làm code trang Chi tiết sản phẩm, chỉ cần gọi: window.dispatchEvent(new Event('cartUpdated'));
-    window.addEventListener("cartUpdated", updateCartCount);
-
-    // CHẠY KHỞI TẠO BAN ĐẦU
-    updateCartCount();
-    setActiveMenu();
+    // Tự động dừng kiểm tra sau 3 giây để tránh tốn tài nguyên máy
+    setTimeout(() => clearInterval(checkExist), 3000);
 });

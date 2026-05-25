@@ -2,14 +2,9 @@
 <html lang="vi">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Chi tiết sản phẩm</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/product-detail.css">
     <link rel="stylesheet" href="/src/css/main.css">
 </head>
@@ -17,262 +12,99 @@
 <body>
 
     <div id="header"></div>
-    <!-- BREADCRUMB -->
+
     <section class="detail-banner">
-
         <div class="breadcrumb">
-
             <a href="../../../index.html">
-
-                <i class="fa-solid fa-house"></i>
-
-                Trang chủ
-
+                <i class="fa-solid fa-house"></i> Trang chủ
             </a>
-
             <span>/</span>
-
-            <a href="./products.html">
-
-                Sản phẩm
-
-            </a>
-
+            <a href="products.html">Sản phẩm</a>
             <span>/</span>
-
-            <span id="breadcrumbProduct">
-
-                Chi tiết sản phẩm
-
-            </span>
-
+            <span id="breadcrumbProduct">Chi tiết sản phẩm</span>
         </div>
-
     </section>
 
-    <!-- MAIN -->
     <main class="detail-layout">
-
-        <!-- LEFT -->
         <section class="product-detail-wrapper">
-
-            <!-- GALLERY -->
             <div class="gallery-section">
-
-                <!-- THUMBNAILS -->
-                <div class="thumbnail-list" id="thumbnailList">
-
-                </div>
-
-                <!-- MAIN IMAGE -->
+                <div class="thumbnail-list" id="thumbnailList"></div>
                 <div class="main-image">
-
-                    <img id="mainProductImage" src="" alt="">
-
+                    <img id="mainProductImage" src="" alt="Hình ảnh sản phẩm">
                 </div>
-
             </div>
 
-            <!-- INFO -->
             <div class="info-section">
+                <p class="product-brand" id="productBrand"></p>
+                <h1 class="product-name" id="productName"></h1>
+                <p class="product-characteristics" id="productCharacteristics"></p>
 
-                <!-- BRAND -->
-                <p class="product-brand" id="productBrand">
-
-                </p>
-
-                <!-- NAME -->
-                <h1 class="product-name" id="productName">
-
-                </h1>
-
-                <!-- CHARACTERISTICS -->
-                <p class="product-characteristics" id="productCharacteristics">
-
-                </p>
-
-                <!-- RATING -->
                 <div class="product-rating">
-
                     <div class="stars">
-
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-
                     </div>
-
-                    <span id="ratingText">
-
-                    </span>
-
+                    <span id="ratingText"></span>
                 </div>
 
-                <!-- PRICE -->
                 <div class="product-price">
-
-                    <span class="sale-price" id="salePrice">
-
-                    </span>
-
-                    <span class="old-price" id="oldPrice">
-
-                    </span>
-
+                    <span class="sale-price" id="salePrice"></span>
+                    <span class="old-price" id="oldPrice"></span>
                 </div>
 
-                <!-- STOCK -->
-                <div class="stock-status" id="stockStatus">
+                <div class="stock-status" id="stockStatus"></div>
 
-                </div>
-
-                <!-- VOLUME -->
                 <div class="volume-section">
-
-                    <h3>
-
-                        Dung tích
-
-                    </h3>
-
-                    <div class="volume-options" id="volumeOptions">
-
-                    </div>
-
+                    <h3>Dung tích</h3>
+                    <div class="volume-options" id="volumeOptions"></div>
                 </div>
 
-                <!-- QUANTITY -->
                 <div class="quantity-section">
-
-                    <h3>
-
-                        Số lượng
-
-                    </h3>
-
+                    <h3>Số lượng</h3>
                     <div class="quantity-box">
-
-                        <button id="minusBtn">
-
-                            -
-
-                        </button>
-
-                        <span id="quantityValue">
-
-                            1
-
-                        </span>
-
-                        <button id="plusBtn">
-
-                            +
-
-                        </button>
-
+                        <button id="minusBtn">-</button>
+                        <span id="quantityValue">1</span>
+                        <button id="plusBtn">+</button>
                     </div>
-
                 </div>
 
-                <!-- BUTTONS -->
                 <div class="detail-buttons">
-
-<button
-    class="add-cart-btn"
-    id="addCartBtn"
->
-                        Thêm vào giỏ
-
-                    </button>
-
-                    <button class="buy-now-btn">
-
-                        Mua ngay
-
-                    </button>
-
+                    <button class="add-cart-btn" id="addCartBtn">Thêm vào giỏ</button>
+                    <button class="buy-now-btn">Mua ngay</button>
                 </div>
-
             </div>
-
         </section>
 
-        <!-- RIGHT SIDEBAR -->
         <aside class="related-sidebar">
-
-            <h2>
-
-                Sản phẩm gợi ý
-
-            </h2>
-
-            <div class="related-list" id="relatedProducts">
-
-            </div>
-
+            <h2>Sản phẩm gợi ý</h2>
+            <div class="related-list" id="relatedProducts"></div>
         </aside>
-
     </main>
 
-    <!-- CONTENT -->
     <section class="detail-content">
-
         <div class="content-box">
-
-            <h2>
-
-                Mô tả sản phẩm
-
-            </h2>
-
-            <p id="productDescription">
-
-            </p>
-
+            <h2>Mô tả sản phẩm</h2>
+            <p id="productDescription"></p>
         </div>
-
         <div class="content-box">
-
-            <h2>
-
-                Thành phần nổi bật
-
-            </h2>
-
-            <p id="productIngredients">
-
-            </p>
-
+            <h2>Thành phần nổi bật</h2>
+            <p id="productIngredients"></p>
         </div>
-
         <div class="content-box">
-
-            <h2>
-
-                Hướng dẫn sử dụng
-
-            </h2>
-
-            <p id="productUsage">
-
-            </p>
-
+            <h2>Hướng dẫn sử dụng</h2>
+            <p id="productUsage"></p>
         </div>
-
     </section>
+    <div id="chatbot"></div>
     <div id="footer"></div>
+
+    <div class="toast" id="toast">Đã thêm vào giỏ hàng</div>
+
     <script type="module" src="/src/js/main.js"></script>
-<!-- TOAST -->
-<div
-    class="toast"
-    id="toast"
->
-    Đã thêm vào giỏ hàng
-</div>
+    <script src="../js/product-detail.js"></script>
+</body>
 
-<script src="../js/product-detail.js"></script>
-
-</body>    </body>
 </html>
