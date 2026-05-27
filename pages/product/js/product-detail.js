@@ -105,7 +105,7 @@ let currentProduct = null;
 // FORMAT PRICE
 // =========================
 
-function formatPrice(price){
+function formatPrice(price) {
 
     return price.toLocaleString("vi-VN") + "đ";
 
@@ -116,7 +116,7 @@ function formatPrice(price){
 // RANDOM RATING
 // =========================
 
-function generateRandomRating(){
+function generateRandomRating() {
 
     const rating = (
         Math.random() * (5 - 4.5) + 4.5
@@ -135,9 +135,9 @@ function generateRandomRating(){
 // FETCH PRODUCT
 // =========================
 
-async function fetchProduct(){
+async function fetchProduct() {
 
-    try{
+    try {
 
         const response = await fetch(
             "/data/products.json"
@@ -152,7 +152,7 @@ async function fetchProduct(){
         });
 
         // no product
-        if(!product){
+        if (!product) {
 
             document.body.innerHTML = `
             
@@ -179,7 +179,7 @@ async function fetchProduct(){
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.log(error);
 
@@ -192,7 +192,7 @@ async function fetchProduct(){
 // RENDER PRODUCT
 // =========================
 
-function renderProduct(product){
+function renderProduct(product) {
 
     // breadcrumb
     breadcrumbProduct.textContent =
@@ -250,7 +250,7 @@ function renderProduct(product){
 // THUMBNAILS
 // =========================
 
-function renderThumbnails(product){
+function renderThumbnails(product) {
 
     thumbnailList.innerHTML = "";
 
@@ -262,7 +262,7 @@ function renderThumbnails(product){
             "thumbnail-item"
         );
 
-        if(index === 0){
+        if (index === 0) {
 
             div.classList.add(
                 "active-thumbnail"
@@ -309,16 +309,16 @@ function renderThumbnails(product){
 // VOLUME
 // =========================
 
-function renderVolumes(product){
+function renderVolumes(product) {
 
     volumeOptions.innerHTML = "";
 
     // nếu không có volume
-    if(
+    if (
         !product.volumes
         ||
         product.volumes.length === 0
-    ){
+    ) {
 
         const button = document.createElement(
             "button"
@@ -346,74 +346,74 @@ function renderVolumes(product){
     product.volumes.forEach(
         (volume, index) => {
 
-        const button = document.createElement(
-            "button"
-        );
-
-        button.classList.add(
-            "volume-btn"
-        );
-
-        if(index === 0){
-
-            button.classList.add(
-                "active-volume"
+            const button = document.createElement(
+                "button"
             );
 
-        }
+            button.classList.add(
+                "volume-btn"
+            );
 
-        button.innerText = volume;
+            if (index === 0) {
 
-        button.addEventListener("click", () => {
+                button.classList.add(
+                    "active-volume"
+                );
 
-            document
-                .querySelectorAll(
-                    ".volume-btn"
-                )
-                .forEach(btn => {
+            }
 
-                    btn.classList.remove(
-                        "active-volume"
+            button.innerText = volume;
+
+            button.addEventListener("click", () => {
+
+                document
+                    .querySelectorAll(
+                        ".volume-btn"
+                    )
+                    .forEach(btn => {
+
+                        btn.classList.remove(
+                            "active-volume"
+                        );
+
+                    });
+
+                button.classList.add(
+                    "active-volume"
+                );
+
+                // =====================
+                // PRICE LOGIC
+                // =====================
+
+                const multiplier =
+                    1 + (index * 0.5);
+
+                const newSalePrice =
+                    Math.round(
+                        basePrice * multiplier
                     );
 
-                });
+                const newOldPrice =
+                    Math.round(
+                        baseOldPrice * multiplier
+                    );
 
-            button.classList.add(
-                "active-volume"
-            );
+                salePrice.textContent =
+                    formatPrice(
+                        newSalePrice
+                    );
 
-            // =====================
-            // PRICE LOGIC
-            // =====================
+                oldPrice.textContent =
+                    formatPrice(
+                        newOldPrice
+                    );
 
-            const multiplier =
-                1 + (index * 0.5);
+            });
 
-            const newSalePrice =
-                Math.round(
-                    basePrice * multiplier
-                );
-
-            const newOldPrice =
-                Math.round(
-                    baseOldPrice * multiplier
-                );
-
-            salePrice.textContent =
-                formatPrice(
-                    newSalePrice
-                );
-
-            oldPrice.textContent =
-                formatPrice(
-                    newOldPrice
-                );
+            volumeOptions.appendChild(button);
 
         });
-
-        volumeOptions.appendChild(button);
-
-    });
 
 }
 
@@ -425,7 +425,7 @@ function renderVolumes(product){
 function renderRelatedProducts(
     products,
     currentProduct
-){
+) {
 
     relatedProducts.innerHTML = "";
 
@@ -471,8 +471,8 @@ function renderRelatedProducts(
                     <div class="related-price">
 
                         ${formatPrice(
-                            product.salePrice
-                        )}
+            product.salePrice
+        )}
 
                     </div>
 
@@ -503,7 +503,7 @@ plusBtn.addEventListener("click", () => {
 
 minusBtn.addEventListener("click", () => {
 
-    if(currentQuantity > 1){
+    if (currentQuantity > 1) {
 
         currentQuantity--;
 
@@ -516,172 +516,89 @@ minusBtn.addEventListener("click", () => {
 
 
 // =========================
-// INIT
+// KHỞI TẠO BIẾN TOÀN CỤC
 // =========================
-// =========================
-// ADD TO CART
-// =========================
-
-addCartBtn.addEventListener("click", () => {
-
-    if(!currentProduct){
-
-        return;
-
-    }
-
-    // lấy cart hiện tại
-    let cart = JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-
-    // check tồn tại
-    const existingProduct = cart.find(item => {
-
-        return item.id === currentProduct.id;
-
-    });
-
-    // nếu đã có
-    if(existingProduct){
-
-        existingProduct.quantity += currentQuantity;
-
-    }
-
-    // nếu chưa có
-    else{
-
-        cart.push({
-
-            id: currentProduct.id,
-
-            name: currentProduct.name,
-
-            brand: currentProduct.brand,
-
-            image: currentProduct.images[0],
-
-            price: currentProduct.salePrice,
-
-            quantity: currentQuantity
-
-        });
-
-    }
-
-    // lưu localStorage
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-    // update badge
-    updateCartBadge();
-
-// show toast
-
-toast.textContent =
-    "Đã thêm vào giỏ hàng";
-
-toast.classList.add(
-    "show-toast"
-);
-
-setTimeout(() => {
-
-    toast.classList.remove(
-        "show-toast"
-    );
-
-}, 2500);
-});
-
-
-// =========================
-// CART BADGE
-// =========================
-
-function updateCartBadge(){
-
-    const cart = JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-
-    const totalQuantity = cart.reduce(
-        (total, item) => {
-
-            return total + item.quantity;
-
-        },
-        0
-    );
-
-    // tìm badge
-    const badge = parent.document.querySelector(
-        ".cart-count"
-    );
-
-    if(badge){
-
-        badge.textContent = totalQuantity;
-
-    }
-
-}
-
-fetchProduct();let toastTimeout = null;
+let toastTimeout = null;
 
 // Tự động hiển thị số lượng trên badge ngay khi tải lại trang
-document.addEventListener("DOMContentLoaded", updateCartBadge);
-
-function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-    // Ép kiểu ép số trực tiếp tại đây để phòng trường hợp dữ liệu trong giỏ bị lưu sai dạng chuỗi
-    const totalQuantity = cart.reduce((total, item) => {
-        const qty = parseInt(item.quantity, 10) || 0; 
-        return total + qty;
-    }, 0);
-
-    const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
-    if (badge) {
-        badge.textContent = totalQuantity;
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartBadge();
+    // Kiểm tra nếu có hàm fetchProduct thì mới gọi để tránh lỗi crash code
+    if (typeof fetchProduct === "function") {
+        fetchProduct();
     }
-}
+});
 
+// =========================
+// ADD TO CART (THÊM VÀO GIỎ)
+// =========================
 addCartBtn.addEventListener("click", () => {
     if (!currentProduct) return;
 
-    // Ép kiểu số để tránh lỗi cộng chuỗi (ví dụ: "1" + 1 = "11")
-    const quantityToAdd = parseInt(currentQuantity, 10) || 1;
+    // Lấy giỏ hàng hiện tại
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Chuyển ID về chuỗi (String) để tránh lỗi lệch kiểu dữ liệu khi so sánh số với chuỗi
-    const existingProduct = cart.find(item => String(item.id) === String(currentProduct.id));
+    // Ép kiểu currentQuantity về số để tránh lỗi cộng chuỗi (Ví dụ: 1 + "2" = "12")
+    const quantityToAdd = parseInt(currentQuantity, 10) || 1;
 
+    // Kiểm tra sản phẩm đã tồn tại trong giỏ chưa
+    const existingProduct = cart.find(item => item.id === currentProduct.id);
+
+    // Nếu đã có trong giỏ
     if (existingProduct) {
-        existingProduct.quantity += quantityToAdd;
-    } else {
+        const currentQty = parseInt(existingProduct.quantity, 10) || 0;
+        existingProduct.quantity = currentQty + quantityToAdd;
+    }
+    // Nếu chưa có
+    else {
         cart.push({
             id: currentProduct.id,
             name: currentProduct.name,
             brand: currentProduct.brand,
-            image: currentProduct.images?.[0] || "", // Tránh lỗi nếu sản phẩm thiếu ảnh
+            image: currentProduct.images ? currentProduct.images[0] : "", // Phòng hờ nếu mảng images bị rỗng
             price: currentProduct.salePrice,
             quantity: quantityToAdd
         });
     }
 
+    // Lưu lại vào localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Cập nhật lại số lượng hiển thị trên Badge
     updateCartBadge();
 
-    // Xử lý hiển thị Toast (clearTimeout để tránh lỗi chớp tắt khi click nhanh)
+    // Hiển thị Toast thông báo (Xử lý triệt để việc click liên tục)
     toast.textContent = "Đã thêm vào giỏ hàng";
     toast.classList.add("show-toast");
 
-    clearTimeout(toastTimeout);
+    // Nếu có một timeout cũ đang chạy, xóa nó đi để tính lại 2.5 giây từ đầu
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+
     toastTimeout = setTimeout(() => {
         toast.classList.remove("show-toast");
     }, 2500);
 });
+
+
+// =========================
+// CART BADGE (CẬP NHẬT SỐ LƯỢNG)
+// =========================
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Tính tổng số lượng sản phẩm trong giỏ
+    const totalQuantity = cart.reduce((total, item) => {
+        const qty = parseInt(item.quantity, 10) || 0;
+        return total + qty;
+    }, 0);
+
+    // Tìm badge (Hỗ trợ cả trường hợp chạy trong iframe `parent.document` hoặc trang thường `document`)
+    const badge = (typeof parent !== "undefined" && parent.document.querySelector(".cart-count"))
+        || document.querySelector(".cart-count");
+
+    if (badge) {
+        badge.textContent = totalQuantity;
+    }
+}
