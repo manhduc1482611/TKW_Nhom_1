@@ -22,7 +22,7 @@ body {
    BREADCRUMB
 ========================= */
 
-.breadcrumb{
+.breadcrumb {
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -30,15 +30,11 @@ body {
     padding: 12px 22px;
     border-radius: 40px;
     margin-bottom: 28px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     font-size: 14px;
 }
 
-.breadcrumb-wrapper {
-    text-align: center;
-}
-
-.breadcrumb a{
+.breadcrumb a {
     text-decoration: none;
     color: #ff4f8b;
     font-weight: 600;
@@ -46,30 +42,32 @@ body {
     align-items: center;
     gap: 8px;
 }
-.breadcrumb span{
+
+.breadcrumb span {
     color: #777;
 }
 
-/* ==================== HEADER ==================== */
-.page-header {
+.breadcrumb-wrapper {
     text-align: center;
-    margin-bottom: 50px;
+    padding: 20px 0 0;
+    margin-bottom: 40px;
 }
 
-.page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #5d4037;
+.breadcrumb-wrapper h1 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.breadcrumb-wrapper p {
+    font-size: 1rem;
+    color: #4a3b2f;
+    opacity: 0.7;
+    margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.page-divider {
-    width: 70px;
-    height: 3px;
-    background: #d4a373;
-    margin: 0 auto;
-    border-radius: 4px;
 }
 
 /* ==================== CARD NỘI DUNG ==================== */
@@ -93,7 +91,7 @@ body {
 }
 
 .text-strong {
-    color: #d4a373;
+    color: #ff4f8b;
     font-weight: 600;
 }
 
@@ -124,25 +122,19 @@ ul {
     list-style: none;
 }
 
-li {
-    color: #6d5d52;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 10px;
+.card li {
     position: relative;
     padding-left: 20px;
 }
 
-li::before {
+.card li::before {
     content: '•';
     position: absolute;
     left: 0;
     top: 0;
-    color: #d4a373;
+    color: #ff4f8b;
     font-size: 1.2rem;
-    line-height: 1.7;
 }
-
 
 /* ==================== QUY TRÌNH (KHÔNG CÓ Ô, CHỈ TEXT) ==================== */
 .process-item {
@@ -164,7 +156,7 @@ li::before {
 }
 
 .support-link {
-    color: #d4a373;
+    color: #ff4f8b;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -173,7 +165,7 @@ li::before {
 
 .support-link:hover {
     color: #5d4037;
-    border-bottom-color: #d4a373;
+    border-bottom-color: #ff4f8b;
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -206,13 +198,5 @@ li::before {
     
     .card {
         padding: 25px 18px;
-    }
-    
-    li {
-        font-size: 0.85rem;
-    }
-    
-    .intro-text::after {
-        width: 60px;
     }
 }
