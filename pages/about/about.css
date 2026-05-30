@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f8f4f0;
-    color: #5d4037;
+    background: linear-gradient(180deg, #fce8f0 0%, #fef4f7 15%, #fefaf7 40%);
+    color: #4a3b2f;
     line-height: 1.7;
 }
 
@@ -21,13 +21,45 @@ body {
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
-    color: #5d4037;
+    color: #4a3b2f;
 }
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb-wrapper {
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(180deg, #fce8f0 0%, #fef4f7 100%);
+}
+
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: white;
+    padding: 12px 22px;
+    border-radius: 40px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #ff4f8b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb span {
+    color: #777;
+}
+
 
 /* ==================== HERO ==================== */
 .hero {
     height: 90vh;
-    background: linear-gradient(rgba(248, 244, 240, 0.75), rgba(248, 244, 240, 0.75)),
+    background: linear-gradient(rgba(252, 232, 240, 0.75), rgba(254, 244, 247, 0.75)),
     url('../../assets/images/background/AboutBackground.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
@@ -42,7 +74,7 @@ h1, h2, h3 {
     transition: all 1s ease-out;
     font-size: 3.6rem;
     margin-bottom: 20px;
-    color: #5d4037;
+    color: #4a3b2f;
 }
 
 .hero-content p {
@@ -56,25 +88,24 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-
-/* NÚT LIÊN HỆ NGAY (GIỮ NGUYÊN THEO YÊU CẦU) */
 .btn-contact {
     display: inline-block;
     padding: 16px 45px;
-    background-color: #333;
+    background-color: #ff4f8b;
     color: #fff;
     text-decoration: none;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 1px solid #333;
+    border: 1px solid #ff4f8b;
+    border-radius: 0;
     transition: all 0.4s ease;
     margin-top: 10px;
 }
 
 .btn-contact:hover {
     background-color: transparent;
-    color: #333;
+    color: #ff4f8b;
 }
 
 /* ==================== ABOUT ==================== */
@@ -82,7 +113,7 @@ h1, h2, h3 {
     background-color: #fff;
     border-radius: 24px;
     padding: 60px 0;
-    box-shadow: 0 10px 30px rgba(212, 163, 115, 0.1);
+    box-shadow: 0 10px 30px rgba(255, 79, 139, 0.08);
 }
 
 .about-wrapper {
@@ -94,7 +125,7 @@ h1, h2, h3 {
 .about-text h2 {
     font-size: 2.4rem;
     margin-bottom: 20px;
-    color: #5d4037;
+    color: #4a3b2f;
 }
 
 .about-text p {
@@ -103,27 +134,26 @@ h1, h2, h3 {
     margin-bottom: 30px;
 }
 
-/* Nút Đến trang đặt hàng - Phong cách giống Tài khoản */
 .btn-order {
     display: inline-block;
     padding: 16px 45px;
-    background-color: #333;
+    background-color: #ff4f8b;
     color: #fff;
     text-decoration: none;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 1px solid #333;
+    border: 1px solid #ff4f8b;
+    border-radius: 0;
     transition: all 0.4s ease;
     margin-top: 25px;
 }
 
 .btn-order:hover {
     background-color: transparent;
-    color: #333;
+    color: #ff4f8b;
 }
 
-/* 2 Hình ảnh trong About */
 .about-images {
     position: relative;
     width: 380px;
@@ -135,7 +165,7 @@ h1, h2, h3 {
     position: absolute;
     width: 260px;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(93, 64, 55, 0.25);
+    box-shadow: 0 15px 35px rgba(255, 79, 139, 0.2);
     transition: all 0.5s ease;
 }
 
@@ -159,17 +189,15 @@ h1, h2, h3 {
 }
 
 /* ==================== DANH MỤC NỔI BẬT ==================== */
-
 .section-title {
     text-align: center;
     margin-bottom: 60px;
     font-size: 2.2rem;
-    color: #5d4037;
+    color: #4a3b2f;
     position: relative;
     font-family: 'Playfair Display', serif;
 }
 
-/* Dòng kẻ nhỏ phía dưới chữ */
 .section-title::after {
     content: '';
     position: absolute;
@@ -178,7 +206,7 @@ h1, h2, h3 {
     transform: translateX(-50%);
     width: 70px;
     height: 3px;
-    background: #d4a373; 
+    background: #ff4f8b;
     border-radius: 4px;
 }
 
@@ -193,43 +221,54 @@ h1, h2, h3 {
     gap: 20px;
 }
 
+/* CARD: Đồng bộ đổ bóng mặc định và chuyển động mượt 0.35s như news-card */
 .category-card {
     background: #ffffff;
-    border-radius: 20px; /* Bo góc toàn bộ khối */
-    overflow: hidden;    /* Quan trọng: Cắt ảnh thừa để khớp với bo góc của card */
-    box-shadow: 0 10px 25px rgba(212, 163, 115, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06); 
+    border: 1px solid #fce8f0;
     display: flex;
     flex-direction: column;
+    transition: 0.35s; 
 }
 
+/* CARD HOVER: Phóng lên nhẹ, nhấc lên và đổ bóng tối dịu y hệt trang news */
 .category-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(212, 163, 115, 0.18);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.12); 
 }
 
-
-/* Phần ảnh: Không còn bo góc riêng lẻ ở dưới */
 .product-image {
     width: 100%;
+    overflow: hidden; /* Giữ ảnh không tràn viền card khi zoom */
 }
 
+/* IMAGE: Tạo nền tảng zoom mượt 0.45s như trang news */
 .product-image img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    display: block; /* Loại bỏ khoảng trống nhỏ dưới ảnh */
+    display: block;
+    transition: 0.45s; 
 }
 
-/* Phần nội dung bên dưới */
+/* IMAGE HOVER: Phóng to ảnh 1.06 lần khi hover vào card như trang news */
+.category-card:hover .product-image img {
+    transform: scale(1.06); 
+}
+
 .category-info {
     padding: 20px 15px 25px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .category-info h3 {
     font-size: 1.1rem;
-    color: #e67e22; /* Màu cam nâu thương hiệu */
+    color: #ff4f8b;
     margin-bottom: 10px;
     font-family: 'Playfair Display', serif;
 }
@@ -241,19 +280,27 @@ h1, h2, h3 {
     margin-bottom: 15px;
 }
 
+/* BUTTON XEM THÊM: Nút vuông, tạo hiệu ứng chuyển dịch gap mượt mà 0.3s */
 .btn-xemthem {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #5d4037;
+    color: #4a3b2f;
     text-decoration: none;
-    transition: color 0.3s;
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.3s; 
 }
 
+/* BUTTON HOVER: Đổi màu chữ sang hồng và kéo giãn mũi tên rộng ra y hệt news */
+.category-card:hover .btn-xemthem,
 .btn-xemthem:hover {
-    color: #e67e22;
+    color: #ff4f8b;
+    gap: 12px; 
 }
 
-/* Tối ưu hiển thị di động */
 @media (max-width: 1024px) {
     .category-grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -263,7 +310,7 @@ h1, h2, h3 {
 
 /* ========== GIÁ TRỊ CAM KẾT ========== */
 .commitment {
-    background-color: #fef3ec;
+    background-color: #fef0f5;
     padding: 70px 0;
     margin-top: 40px;
 }
@@ -297,7 +344,7 @@ h1, h2, h3 {
     transform: translateX(-50%);
     width: 70px;
     height: 3px;
-    background: #d9b48b;
+    background: #ff4f8b;
     border-radius: 4px;
 }
 
@@ -315,7 +362,7 @@ h1, h2, h3 {
 
 .commitment-card .icon {
     font-size: 2.5rem;
-    color: #cc9c6e;
+    color: #ff4f8b;
     margin-bottom: 20px;
 }
 
@@ -333,7 +380,6 @@ h1, h2, h3 {
     line-height: 1.5;
 }
 
-/* Responsive cho cam kết */
 @media (max-width: 768px) {
     .commitment-list {
         flex-direction: column;

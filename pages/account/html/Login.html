@@ -8,41 +8,54 @@
     <link rel="stylesheet" href="../css/RegisterNLogin.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-box" style="display: block;">
-            <div id="messageBox" class="message"></div>
+    <div class="auth-wrapper">
+        <div class="breadcrumb-bar">
+            <div class="breadcrumb">
+                <a href="../../../index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Trang chủ
+                </a>
+                <span>/</span>
+                <span>Đăng nhập</span>
+            </div>
+        </div>
+        <h1 class="page-title">Đăng nhập</h1>
+        <div class="container">
+            <div class="form-box" style="display: block;">
+                <div id="messageBox" class="message"></div>
 
-            <form id="loginForm">
-                <h2>Đăng nhập</h2>
-                
-                <input type="email" id="loginEmail" placeholder="Địa chỉ Email" required>
-                <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
+                <form id="loginForm">
+                    <h2>Đăng nhập</h2>
+                    
+                    <input type="email" id="loginEmail" placeholder="Địa chỉ Email" required>
+                    <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
 
-                <div style="text-align: right; margin-top: 8px;">
-                    <a href="forgotpassword.html" style="font-size: 13px; color: #888; text-decoration: none;">Quên mật khẩu?</a>
-                </div>
+                    <div style="text-align: right; margin-top: 8px;">
+                        <a href="forgotpassword.html" style="font-size: 13px; color: #888; text-decoration: none;">Quên mật khẩu?</a>
+                    </div>
 
-                <button type="submit">Đăng nhập</button>
+                    <button type="submit">Đăng nhập</button>
 
-                <div class="form-footer">
-                    <p>Chưa có tài khoản? <a href="../html/Register.html">Đăng ký ngay</a></p>
-                </div>
+                    <div class="form-footer">
+                        <p>Chưa có tài khoản? <a href="../html/Register.html">Đăng ký ngay</a></p>
+                    </div>
 
-                <div class="divider">
-                    <span>Hoặc</span>
-                </div>
+                    <div class="divider">
+                        <span>Hoặc</span>
+                    </div>
 
-                <div class="social-login">
-                    <button type="button" class="social-btn google" onclick="loginWithGoogle()">
-                        <i class="fab fa-google"></i>
-                        <span>Đăng nhập với Google</span>
-                    </button>
-                    <button type="button" class="social-btn facebook" onclick="loginWithFacebook()">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Đăng nhập với Facebook</span>
-                    </button>
-                </div>
-            </form>
+                    <div class="social-login">
+                        <button type="button" class="social-btn google" onclick="loginWithGoogle()">
+                            <i class="fab fa-google"></i>
+                            <span>Đăng nhập với Google</span>
+                        </button>
+                        <button type="button" class="social-btn facebook" onclick="loginWithFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Đăng nhập với Facebook</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <script type="module" src="/src/js/main.js"></script>
