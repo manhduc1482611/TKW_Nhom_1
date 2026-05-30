@@ -49,6 +49,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 statusText = "Hết giờ hôm nay";
                 statusClass = "ended";
             }
+        } else if (type === 'yearly-monthly') {
+            const targetMonth = parseInt(box.getAttribute('data-month'));
+            const startDay = parseInt(box.getAttribute('data-start-day'));
+            const endDay = parseInt(box.getAttribute('data-end-day'));
+            
+            if (currentMonth === targetMonth && currentDate >= startDay && currentDate <= endDay) {
+                isActive = true;
+            } else if (currentMonth < targetMonth || (currentMonth === targetMonth && currentDate < startDay)) {
+                statusText = "Sắp diễn ra";
+                statusClass = "upcoming";
+            } else {
+                statusText = "Đã kết thúc";
+                statusClass = "ended";
+            }
         }
 
         const statusElement = box.querySelector('.promo-status');
@@ -77,33 +91,30 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on the button, open the modal
-    btn.onclick = function() {
-    modal.style.display = "block";
+    if (btn) {
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
     }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-    modal.style.display = "none";
+    if (span) {
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-    }
+});
 
-// Hàm copy mã (giữ nguyên)
+// Hàm copy mã (để ở ngoài để global)
 function copyCode(elementId) {
     const codeText = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(codeText).then(() => alert("Đã copy thành công mã: " + codeText));
 }
-});
