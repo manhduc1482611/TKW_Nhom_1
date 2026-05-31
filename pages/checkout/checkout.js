@@ -104,6 +104,9 @@ function renderCheckoutSummary(cart, shipping, discount, promoName = "") {
         // Khớp thuộc tính cấu trúc dữ liệu ảnh và hãng từ trang chi tiết sản phẩm / giỏ hàng
         const itemImage = item.image || '/src/images/placeholder.png';
         const itemBrand = item.brand || 'BeautyStore';
+        const itemVolume = item.volume
+            ? `<span>Dung tích: ${item.volume}</span>`
+            : "";
 
         htmlContent += `
             <div class="order-item">
@@ -115,6 +118,7 @@ function renderCheckoutSummary(cart, shipping, discount, promoName = "") {
                     </div>
                     <div class="item-footer">
                         <span>Thương hiệu: ${itemBrand}</span>
+                        ${itemVolume}
                         <span>SL: ${qty}</span>
                     </div>
                 </div>
