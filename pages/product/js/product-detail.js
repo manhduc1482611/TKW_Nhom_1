@@ -581,6 +581,32 @@ addCartBtn.addEventListener("click", () => {
     }, 2500);
 });
 
+// =========================
+// BUY NOW (MUA NGAY)
+// =========================
+buyNowBtn.addEventListener("click", () => {
+    if (!currentProduct) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingProduct = cart.find(item => item.id === currentProduct.id);
+
+    if (!existingProduct) {
+        cart.push({
+            id: currentProduct.id,
+            name: currentProduct.name,
+            brand: currentProduct.brand,
+            image: currentProduct.images ? currentProduct.images[0] : "",
+            price: currentProduct.salePrice,
+            quantity: 1
+        });
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartBadge();
+    }
+
+    window.location.href = "/pages/cart/cart.html";
+});
+
 
 // =========================
 // CART BADGE (CẬP NHẬT SỐ LƯỢNG)
