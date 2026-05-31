@@ -39,16 +39,16 @@
                 <h1 class="product-name" id="productName"></h1>
                 <p class="product-characteristics" id="productCharacteristics"></p>
 
-                <div class="product-rating">
+                <a href="#productReviews" class="product-rating">
                     <div class="stars">
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
                     </div>
                     <span id="ratingText"></span>
-                </div>
+                </a>
 
                 <div class="product-price">
                     <span class="sale-price" id="salePrice"></span>
@@ -98,6 +98,149 @@
             <p id="productUsage"></p>
         </div>
     </section>
+
+    <section class="review-section" id="productReviews">
+        <h2>ĐÁNH GIÁ THỰC TẾ TỪ KHÁCH HÀNG</h2>
+        <div class="review-title-line"></div>
+
+        <div class="review-summary">
+            <div class="review-score">
+                <strong>4.5</strong>
+                <div class="review-score-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p>Dựa trên 2 nhận xét</p>
+            </div>
+
+            <div class="review-bars">
+                <div class="review-bar-row">
+                    <span>5 <i class="fa-solid fa-star"></i></span>
+                    <div class="review-bar"><span style="width: 50%;"></span></div>
+                    <strong>1</strong>
+                </div>
+                <div class="review-bar-row">
+                    <span>4 <i class="fa-solid fa-star"></i></span>
+                    <div class="review-bar"><span style="width: 50%;"></span></div>
+                    <strong>1</strong>
+                </div>
+                <div class="review-bar-row">
+                    <span>3 <i class="fa-solid fa-star"></i></span>
+                    <div class="review-bar"><span style="width: 0%;"></span></div>
+                    <strong>0</strong>
+                </div>
+                <div class="review-bar-row">
+                    <span>2 <i class="fa-solid fa-star"></i></span>
+                    <div class="review-bar"><span style="width: 0%;"></span></div>
+                    <strong>0</strong>
+                </div>
+                <div class="review-bar-row">
+                    <span>1 <i class="fa-solid fa-star"></i></span>
+                    <div class="review-bar"><span style="width: 0%;"></span></div>
+                    <strong>0</strong>
+                </div>
+            </div>
+
+            <div class="review-action">
+                <p>Bạn đã mua sản phẩm này?</p>
+                <button type="button" id="reviewWriteBtn">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    Viết đánh giá
+                </button>
+                <div class="review-notice" id="reviewNotice">
+                    Bạn cần mua hàng để đánh giá sản phẩm.
+                </div>
+            </div>
+        </div>
+
+        <div class="review-photo-box">
+            <h3><i class="fa-solid fa-camera"></i> Hình ảnh từ người mua</h3>
+            <div class="buyer-photo">Xứng đáng<br>10 điểm</div>
+        </div>
+
+        <div class="review-filter">
+            <span>Lọc theo:</span>
+            <button class="active" type="button" data-filter="all">Tất cả</button>
+            <button type="button" data-filter="image">Có hình ảnh</button>
+            <button type="button" data-filter="5">5 Sao</button>
+            <button type="button" data-filter="4">4 Sao</button>
+            <button type="button" data-filter="3">3 Sao</button>
+            <button type="button" data-filter="2">2 Sao</button>
+            <button type="button" data-filter="1">1 Sao</button>
+        </div>
+
+        <div class="review-list">
+            <article class="review-item" data-rating="5" data-has-image="false">
+                <div class="review-avatar">VS</div>
+                <div class="review-body">
+                    <div class="review-head">
+                        <div>
+                            <h3>Nguyễn Hương Giang</h3>
+                            <p><i class="fa-solid fa-circle-check"></i> Đã mua hàng</p>
+                        </div>
+                        <time>31/05/2026</time>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">
+                        Sản phẩm rất tuyệt vời! Chất lượng tốt, giao hàng nhanh. Mình rất hài lòng và sẽ tiếp tục ủng hộ shop.
+                    </p>
+                    <button class="review-helpful" type="button">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        Hữu ích (12)
+                    </button>
+                    <div class="shop-reply">
+                        <div>
+                            <span>Shop phản hồi</span>
+                            <time>31/05/2026</time>
+                        </div>
+                        <p>Cảm ơn bạn đã ủng hộ shop!</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="review-item" data-rating="4" data-has-image="true">
+                <div class="review-avatar second">TS</div>
+                <div class="review-body">
+                    <div class="review-head">
+                        <div>
+                            <h3>Lupita Jones</h3>
+                            <p><i class="fa-solid fa-circle-check"></i> Đã mua hàng</p>
+                        </div>
+                        <time>31/05/2026</time>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="review-text">
+                        Hàng chất lượng, đóng gói kỹ, dùng rất ổn. 10 điểm xứng đáng.
+                    </p>
+                    <div class="review-image">Xứng đáng<br>10 điểm</div>
+                    <button class="review-helpful" type="button">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        Hữu ích (5)
+                    </button>
+                </div>
+            </article>
+
+            <div class="review-empty" id="reviewEmpty">
+                Chưa có đánh giá phù hợp với bộ lọc này.
+            </div>
+        </div>
+    </section>
+
     <div id="chatbot"></div>
     <div id="footer"></div>
 

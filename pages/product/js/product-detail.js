@@ -94,6 +94,21 @@ const addCartBtn = document.getElementById(
 const toast = document.querySelector(
     "#toast"
 );
+const reviewWriteBtn = document.getElementById(
+    "reviewWriteBtn"
+);
+const reviewNotice = document.getElementById(
+    "reviewNotice"
+);
+const reviewFilterButtons = document.querySelectorAll(
+    ".review-filter button"
+);
+const reviewItems = document.querySelectorAll(
+    ".review-item"
+);
+const reviewEmpty = document.getElementById(
+    "reviewEmpty"
+);
 // =========================
 // GLOBAL
 // =========================
@@ -108,25 +123,6 @@ let currentProduct = null;
 function formatPrice(price) {
 
     return price.toLocaleString("vi-VN") + "đ";
-
-}
-
-
-// =========================
-// RANDOM RATING
-// =========================
-
-function generateRandomRating() {
-
-    const rating = (
-        Math.random() * (5 - 4.5) + 4.5
-    ).toFixed(1);
-
-    const reviews = Math.floor(
-        Math.random() * (200 - 50) + 50
-    );
-
-    return `${rating} | ${reviews} đánh giá`;
 
 }
 
@@ -219,9 +215,8 @@ function renderProduct(product) {
     stockStatus.textContent =
         `Còn ${product.stock} sản phẩm`;
 
-    // random rating
     ratingText.textContent =
-        generateRandomRating();
+        "4.5 | 2 đánh giá";
 
     // content
     productDescription.textContent =
@@ -606,6 +601,58 @@ buyNowBtn.addEventListener("click", () => {
 
     window.location.href = "/pages/cart/cart.html";
 });
+
+
+// =========================
+// REVIEW ACTIONS
+// =========================
+reviewFilterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        reviewFilterButtons.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+        let visibleCount = 0;
+
+        reviewItems.forEach(item => {
+            const rating = item.dataset.rating;
+            const hasImage = item.dataset.hasImage === "true";
+            const isVisible =
+                filter === "all"
+                || (filter === "image" && hasImage)
+                || rating === filter;
+
+            item.style.display = isVisible ? "flex" : "none";
+
+            if (isVisible) {
+                visibleCount++;
+            }
+        });
+
+        if (reviewEmpty) {
+            reviewEmpty.style.display = visibleCount === 0 ? "block" : "none";
+        }
+    });
+});
+
+if (reviewWriteBtn && reviewNotice) {
+    let reviewNoticeTimeout = null;
+
+    reviewWriteBtn.addEventListener("click", () => {
+        reviewNotice.classList.add("show-review-notice");
+
+        if (reviewNoticeTimeout) {
+            clearTimeout(reviewNoticeTimeout);
+        }
+
+        reviewNoticeTimeout = setTimeout(() => {
+            reviewNotice.classList.remove("show-review-notice");
+        }, 2500);
+    });
+}
 
 
 // =========================
