@@ -12,14 +12,15 @@
 
 /* --- Topbar --- */
 .topbar {
-    background-color: #ffffff; /* Chuyển thành nền trắng để đồng bộ với menu */
-    color: #666; /* Chữ xám thanh lịch, không quá gắt */
+    background-color: #2a2525; /* Xám than có pha chút sắc nâu/đỏ cho ấm áp */
+    color: #f0f0f0; /* Chữ màu trắng xám */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 5%; /* Thu nhỏ chiều cao lại một chút cho thanh thoát */
+    padding: 10px 5%; 
     font-size: 0.85rem;
-    border-bottom: 1px solid #fce4e8; /* Đường viền hồng siêu nhạt để phân cách */
+    letter-spacing: 0.5px; 
+    border-bottom: none; /* Tone tối thì không cần đường viền phân cách nữa */
 }
 
 .topbar-left {
@@ -35,7 +36,7 @@
 }
 
 .topbar-left i {
-    color: var(--primary-color);
+    color: #d4a373;
     font-size: 0.9rem; /* Tăng nhẹ kích thước icon để cân đối với chữ */
 }
 
@@ -45,17 +46,17 @@
 }
 
 .topbar-right a {
-    color: #666;
+    color: #f0f0f0; /* Chữ màu sáng để nổi trên nền tối */
     text-decoration: none;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 6px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .topbar-right a:hover {
-    color: var(--primary-color);
+    color: #d4a373; /* Chuyển sang màu vàng đồng/hồng khi hover */
 }
 
 /* --- Header Main --- */

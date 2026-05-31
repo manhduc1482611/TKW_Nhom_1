@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CHATBOT WIDGET STYLE - ĐỨC TÙNG BEAUTY
+   CHATBOT WIDGET STYLE - NGHIEN BEAUTY (ĐÃ FIX LỖI KHUYẾT KHUNG)
    ========================================================================== */
 
 .chatbot-wrapper {
@@ -37,13 +37,23 @@
     border: 2px solid #fff; border-radius: 50%;
 }
 
+/* KHUNG CHATBOT - Thay đổi kích thước cố định bằng kích thước linh hoạt giới hạn */
 .chatbot-box {
-    position: absolute; bottom: 75px; right: 0;
-    width: 380px; height: 560px;
-    background: #fff; border-radius: 16px;
+    position: absolute; 
+    bottom: 75px; 
+    right: 0;
+    width: 360px;                  /* Chiều rộng chuẩn trên Desktop */
+    max-width: calc(100vw - 60px);  /* Giới hạn không tràn mép màn hình trái */
+    height: 520px;                 /* Chiều cao chuẩn trên Desktop */
+    max-height: calc(100vh - 140px);/* Giới hạn không tràn hoặc bị khuyết cạnh trên */
+    background: #fff; 
+    border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    display: flex; flex-direction: column; overflow: hidden;
-    opacity: 0; visibility: hidden;
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden;
+    opacity: 0; 
+    visibility: hidden;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
@@ -168,4 +178,31 @@
 .chatbot-messages::-webkit-scrollbar, .chatbot-options::-webkit-scrollbar { width: 4px; }
 .chatbot-messages::-webkit-scrollbar-thumb, .chatbot-options::-webkit-scrollbar-thumb {
     background: #e0e0e0; border-radius: 4px;
+}
+
+/* --- TỰ ĐỘNG THU NHỎ TRÊN ĐIỆN THOẠI ĐỂ KHÔNG BỊ TRÀN/KHUYẾT --- */
+@media (max-width: 576px) {
+    .chatbot-wrapper {
+        bottom: 15px;
+        right: 15px;
+    }
+    .chatbot-toggle-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+    }
+    .chatbot-box {
+        bottom: 65px;
+        width: calc(100vw - 30px);
+        height: 70vh;
+        max-height: 460px;
+        border-radius: 12px;
+    }
+    .chatbot-messages {
+        padding: 12px 15px;
+    }
+    .chatbot-options {
+        padding: 8px 15px;
+        max-height: 110px;
+    }
 }
