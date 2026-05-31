@@ -25,6 +25,8 @@ const sortPrice = document.getElementById("sortPrice");
 
 const pagination = document.getElementById("pagination");
 
+const suggestionList = document.getElementById("suggestionList");
+
 const categoryItems = document.querySelectorAll(
     ".sidebar-box li"
 );
@@ -294,6 +296,8 @@ function applyFilters(){
 
     renderPagination();
 
+    renderSuggestions();
+
 }
 
 
@@ -413,6 +417,92 @@ function renderProducts(){
                 </div>
 
             </div>
+
+        `;
+
+    });
+
+}
+
+
+// =========================
+// RENDER RELATED PRODUCTS
+// =========================
+
+function renderSuggestions(){
+
+    if(!suggestionList){
+
+        return;
+
+    }
+
+    let suggestedProducts = [...allProducts];
+
+    if(currentCategory !== "all"){
+
+        suggestedProducts = suggestedProducts.filter(product => {
+
+            return product.category === currentCategory;
+
+        });
+
+    }
+
+    suggestedProducts = suggestedProducts.sort((a, b) => {
+
+        return b.stock - a.stock;
+
+    });
+
+    // lấy 9 sản phẩm để sidebar kéo dài gần bằng lưới sản phẩm trước phân trang
+    const slicedProducts = suggestedProducts.slice(0, productsPerPage);
+
+    if(slicedProducts.length === 0){
+
+        suggestionList.innerHTML = `
+        
+            <p class="suggestion-empty">
+                Chưa có sản phẩm gợi ý.
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+    suggestionList.innerHTML = "";
+
+    slicedProducts.forEach(product => {
+
+        suggestionList.innerHTML += `
+
+            <a
+                href="./product-detail.html?id=${product.id}"
+                class="related-card"
+            >
+
+                <img
+                    src="${product.images[0]}"
+                    alt="${product.name}"
+                >
+
+                <div class="related-info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <div class="related-price">
+                        ${formatPrice(
+                            product.salePrice
+                        )}
+                    </div>
+
+                </div>
+
+            </a>
 
         `;
 
