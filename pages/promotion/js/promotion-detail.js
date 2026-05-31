@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
             timeText: "Không giới hạn thời gian",
             desc: "Ưu đãi đặc biệt dành riêng cho khách hàng mới lần đầu trải nghiệm mua sắm tại hệ thống website Nghien Beauty.",
             img: "../../../assets/images/Promotion/LANDAU.png",
-            code: "AUTO",
-            isAuto: true,
+            code: "LANDAU", // Sửa từ "AUTO" thành "WELCOME10"
+            isAuto: false,     // Sửa từ true thành false
             tableDetails: [
                 { criteria: "Đối tượng và điều kiện áp dụng", rules: "Khách hàng mới đăng ký tài khoản và thực hiện đơn hàng đầu tiên tại cửa hàng." },
-                { criteria: "Mức giảm giá", rules: "Giảm 10% cho toàn bộ sản phẩm và miễn phí vận chuyển." },
+                { criteria: "Mức giảm giá", rules: "Giảm 10% cho toàn bộ sản phẩm." },
                 { criteria: "Sản phẩm áp dụng", rules: "Toàn bộ danh mục mỹ phẩm, Skincare, Makeup đang bán tại website." },
-            ]
-        },
+    ]
+},
         {
             id: "laroche",
             title: "Tuần Lễ Thương Hiệu La Roche-Posay",

@@ -1,6 +1,7 @@
 //const IS_TESTING = true; 
 //if (IS_TESTING) return { valid: true, promo };
 const PROMO_DATA = {
+    "LANDAU": { type: 'always', discountRate: 0.10, name: "Ghé Thăm Lần Đầu" },
     "LAROCHE": { type: 'yearly-monthly', month: 6, startDay: 1, endDay: 30, discountRate: 0.05, isBrandSpecific: true, brand: 'La Roche-Posay', name: "Tuần lễ La Roche-Posay" },
     "VALENTINE20": { type: 'yearly', month: 2, date: 14, discountRate: 0.20, minOrder: 300000, name: "Valentine 14/2" },
     "FLASHSALE": { type: 'daily', startHour: 0, endHour: 23, discountRate: 0.30, minOrder: 500000, name: "Flash Sale Giờ Vàng" },
