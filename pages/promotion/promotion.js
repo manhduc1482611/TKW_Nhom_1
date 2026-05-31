@@ -75,12 +75,16 @@ document.addEventListener("DOMContentLoaded", function() {
             statusElement.textContent = statusText;
             statusElement.classList.add("st-" + statusClass);
             box.classList.add("disabled-box");
+            
+            // Xử lý khóa nút Copy đối với các mã nhập tay khi chưa đến thời gian hoặc đã hết hạn
             if (buttonElement) {
                 buttonElement.disabled = true;
-                buttonElement.textContent = "Chưa mở";
+                buttonElement.textContent = (statusClass === "upcoming") ? "Chưa mở" : "Hết hạn";
                 buttonElement.style.background = "#ccc";
                 buttonElement.style.cursor = "not-allowed";
             }
+            
+            // Xử lý text hiển thị đối với mã "Ghé thăm lần đầu" (Tự động áp dụng) nếu bị khóa
             const autoTextElement = box.querySelector('.box-action.auto .code-text');
             const autoIcon = box.querySelector('.box-action.auto i');
             if (autoTextElement) {
@@ -90,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Code xử lý Modal cũ của bạn
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
@@ -113,8 +118,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Hàm copy mã (để ở ngoài để global)
+// Hàm copy mã toàn cục
 function copyCode(elementId) {
     const codeText = document.getElementById(elementId).innerText;
-    navigator.clipboard.writeText(codeText).then(() => alert("Đã copy thành công mã: " + codeText));
+    navigator.clipboard.writeText(codeText).then(() => {
+        alert("Đã copy thành công mã: " + codeText);
+    }).catch(err => {
+        console.error('Lỗi khi sao chép mã: ', err);
+    });
 }
