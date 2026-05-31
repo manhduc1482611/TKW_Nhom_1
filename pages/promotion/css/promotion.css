@@ -89,7 +89,6 @@ body {
 
 /* BOX MÃ GIẢM GIÁ */
 .promo-box {
-  cursor: pointer;
   background: white;
   border-radius: 20px;
   overflow: hidden;

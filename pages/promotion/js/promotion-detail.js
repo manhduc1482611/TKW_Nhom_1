@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
             isAuto: false,
             tableDetails: [
                 { criteria: "Đối tượng và điều kiện áp dụng", rules: "Áp dụng cho đơn hàng có tổng trị giá từ 500.000đ trở lên." },
-                { criteria: "Mức giảm giá", rules: "Giảm sốc trực tiếp 20% tổng hóa đơn cho các sản phẩm hợp lệ trong khung giờ vàng." },
+                { criteria: "Mức giảm giá", rules: "Giảm sốc trực tiếp 30% tổng hóa đơn cho các sản phẩm hợp lệ trong khung giờ vàng." },
                 { criteria: "Quà tặng đi kèm", rules: "Mỗi khách hàng chỉ được mua tối đa 2 sản phẩm cùng loại trong một phiên Flash Sale." }
             ]
         }
