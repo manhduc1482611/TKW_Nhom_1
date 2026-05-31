@@ -172,12 +172,10 @@ function isSameCartItem(item, cartKey) {
 
     }
 
-    const defaultVolume = (
-        currentProduct.volumes
-        &&
-        currentProduct.volumes.length > 0
-    )
-        ? currentProduct.volumes[0]
+    const sorted = getSortedVolumes(currentProduct);
+
+    const defaultVolume = sorted.length > 0
+        ? sorted[0]
         : "Default";
 
     return currentVolume === defaultVolume;
@@ -369,31 +367,129 @@ function renderThumbnails(product) {
 
 
 // =========================
-// VOLUME
+// VOLUME — sắp xếp nhỏ → lớn (trái → phải) khớp logic giá theo index
 // =========================
 
-function renderVolumes(product) {
+function parseVolumeValue(volume) {
 
-    volumeOptions.innerHTML = "";
+    const text = String(volume).trim().toLowerCase();
+    const match = text.match(
+        /(\d+(?:[.,]\d+)?)\s*(ml|l|g|kg|gr|oz)?/
+    );
 
-    currentVolume = (
-        product.volumes
-        &&
-        product.volumes.length > 0
-    )
-        ? product.volumes[0]
-        : "Default";
+    if (!match) {
 
-    // nếu không có volume
+        return {
+            sortValue: Number.MAX_SAFE_INTEGER,
+            label: volume
+        };
+
+    }
+
+    const amount = parseFloat(
+        match[1].replace(",", ".")
+    );
+
+    const unit = match[2] || "ml";
+
+    const toBaseUnit = {
+        ml: amount,
+        l: amount * 1000,
+        g: amount,
+        gr: amount,
+        kg: amount * 1000,
+        oz: amount * 29.5735
+    };
+
+    const liquidUnits = ["ml", "l", "oz"];
+    const isLiquid = liquidUnits.includes(unit);
+
+    return {
+        sortValue: toBaseUnit[unit] ?? amount,
+        isLiquid,
+        unit,
+        label: volume
+    };
+
+}
+
+
+function sortVolumesAscending(volumes) {
+
+    return [...volumes].sort((a, b) => {
+
+        const va = parseVolumeValue(a);
+        const vb = parseVolumeValue(b);
+
+        if (va.isLiquid !== vb.isLiquid) {
+
+            return va.isLiquid ? -1 : 1;
+
+        }
+
+        if (va.sortValue !== vb.sortValue) {
+
+            return va.sortValue - vb.sortValue;
+
+        }
+
+        return String(a).localeCompare(String(b), "vi");
+
+    });
+
+}
+
+
+function getSortedVolumes(product) {
+
     if (
         !product.volumes
         ||
         product.volumes.length === 0
     ) {
 
-        const button = document.createElement(
-            "button"
-        );
+        return [];
+
+    }
+
+    return sortVolumesAscending(product.volumes);
+
+}
+
+
+function applyVolumePrice(volumeIndex, basePrice, baseOldPrice) {
+
+    const multiplier = 1 + (volumeIndex * 0.5);
+
+    const newSalePrice = Math.round(
+        basePrice * multiplier
+    );
+
+    const newOldPrice = Math.round(
+        baseOldPrice * multiplier
+    );
+
+    currentSalePrice = newSalePrice;
+
+    salePrice.textContent = formatPrice(newSalePrice);
+
+    oldPrice.textContent = formatPrice(newOldPrice);
+
+}
+
+
+function renderVolumes(product) {
+
+    volumeOptions.innerHTML = "";
+
+    const sortedVolumes = getSortedVolumes(product);
+
+    // nếu không có volume
+    if (sortedVolumes.length === 0) {
+
+        currentVolume = "Default";
+
+        const button = document.createElement("button");
 
         button.classList.add(
             "volume-btn",
@@ -408,87 +504,60 @@ function renderVolumes(product) {
 
     }
 
-    // giá gốc
+    currentVolume = sortedVolumes[0];
+
     const basePrice = product.salePrice;
 
     const baseOldPrice = product.price;
 
-    // render volume
-    product.volumes.forEach(
-        (volume, index) => {
+    applyVolumePrice(0, basePrice, baseOldPrice);
 
-            const button = document.createElement(
-                "button"
+    sortedVolumes.forEach((volume, index) => {
+
+        const button = document.createElement("button");
+
+        button.classList.add("volume-btn");
+
+        button.dataset.volumeIndex = String(index);
+
+        if (index === 0) {
+
+            button.classList.add("active-volume");
+
+        }
+
+        button.innerText = volume;
+
+        button.addEventListener("click", () => {
+
+            document
+                .querySelectorAll(".volume-btn")
+                .forEach(btn => {
+
+                    btn.classList.remove("active-volume");
+
+                });
+
+            button.classList.add("active-volume");
+
+            currentVolume = volume;
+
+            const volumeIndex = parseInt(
+                button.dataset.volumeIndex,
+                10
+            ) || 0;
+
+            applyVolumePrice(
+                volumeIndex,
+                basePrice,
+                baseOldPrice
             );
-
-            button.classList.add(
-                "volume-btn"
-            );
-
-            if (index === 0) {
-
-                button.classList.add(
-                    "active-volume"
-                );
-
-            }
-
-            button.innerText = volume;
-
-            button.addEventListener("click", () => {
-
-                document
-                    .querySelectorAll(
-                        ".volume-btn"
-                    )
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "active-volume"
-                        );
-
-                    });
-
-                button.classList.add(
-                    "active-volume"
-                );
-
-                currentVolume = volume;
-
-                // =====================
-                // PRICE LOGIC
-                // =====================
-
-                const multiplier =
-                    1 + (index * 0.5);
-
-                const newSalePrice =
-                    Math.round(
-                        basePrice * multiplier
-                    );
-
-                const newOldPrice =
-                    Math.round(
-                        baseOldPrice * multiplier
-                    );
-
-                currentSalePrice = newSalePrice;
-
-                salePrice.textContent =
-                    formatPrice(
-                        newSalePrice
-                    );
-
-                oldPrice.textContent =
-                    formatPrice(
-                        newOldPrice
-                    );
-
-            });
-
-            volumeOptions.appendChild(button);
 
         });
+
+        volumeOptions.appendChild(button);
+
+    });
 
 }
 
