@@ -1,13 +1,43 @@
 // ==========================================
+// HÀM HIGHLIGHT MENU HIỆN TẠI (ACTIVE MENU)
+// ==========================================
+function highlightActiveMenu() {
+    let currentPath = window.location.pathname;
+    const menuLinks = document.querySelectorAll('.page-menu > ul > li > a');
+
+    // Chuẩn hóa đường dẫn gốc
+    if (currentPath === '/' || currentPath === '') {
+        currentPath = '/index.html';
+    }
+
+    menuLinks.forEach(link => {
+        let linkPath = new URL(link.href, window.location.origin).pathname;
+        
+        if (linkPath === '/' || linkPath === '') {
+            linkPath = '/index.html';
+        }
+
+        // 1. Highlight khi ở chính xác trang đó
+        if (currentPath === linkPath) {
+            link.classList.add('active');
+        } 
+        // 2. Highlight cả menu cha nếu đang xem trang con (VD: ở trong /pages/product/)
+        else if (linkPath !== '/index.html' && currentPath.includes(linkPath.substring(0, linkPath.lastIndexOf('/')))) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ==========================================
 // HÀM ĐỒNG BỘ BADGE GIỎ HÀNG (DÙNG CHUNG)
 // ==========================================
 function updateCartBadge() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     
-    // SỬA LỖI 1: Lấy số lượng loại sản phẩm (Ví dụ: 3 sản phẩm khác nhau -> hiện số 3)
+    // Lấy số lượng loại sản phẩm trong giỏ hàng
     const totalItems = cart.length; 
 
-    // Nếu bạn muốn hiện tổng số món (1+1+4=6) thì mở comment dòng dưới và xóa dòng trên:
+    // Nếu bạn muốn hiện tổng số món (VD: mua 2 sữa rửa mặt + 3 toner = 5) thì mở comment dòng dưới và xóa dòng trên:
     // const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity, 10) || 0), 0);
 
     const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
@@ -16,19 +46,23 @@ function updateCartBadge() {
     }
 }
 
-// SỬA LỖI 2: Cơ chế tự động kiểm tra và nạp số giỏ hàng liên tục khi load trang
+// ==========================================
+// CHẠY SCRIPTS KHI LOAD TRANG
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     updateCartBadge();
+    highlightActiveMenu();
 
-    // Đề phòng Header được load chậm bằng async/fetch: Cứ 200ms kiểm tra lại, thấy thẻ badge là nạp số ngay
+    // Xử lý an toàn khi Header được nhúng bằng js/fetch chậm hơn body
     let checkExist = setInterval(() => {
         const badge = parent.document.querySelector(".cart-count") || document.querySelector(".cart-count");
         if (badge) {
             updateCartBadge();
-            clearInterval(checkExist); // Tìm thấy rồi thì dừng lại
+            highlightActiveMenu();
+            clearInterval(checkExist); 
         }
     }, 200);
 
-    // Tự động dừng kiểm tra sau 3 giây để tránh tốn tài nguyên máy
+    // Tự động dừng vòng lặp sau 3 giây để tối ưu hiệu suất
     setTimeout(() => clearInterval(checkExist), 3000);
 });
