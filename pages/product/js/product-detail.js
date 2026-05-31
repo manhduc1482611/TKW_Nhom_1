@@ -605,53 +605,74 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================
-// ADD TO CART (THÊM VÀO GIỎ)
+// ADD / UPDATE CART (DÙNG CHUNG)
+// replaceQuantity: true = đặt đúng số lượng đang chọn (Mua ngay)
+// replaceQuantity: false = cộng thêm vào giỏ (Thêm vào giỏ)
 // =========================
-addCartBtn.addEventListener("click", () => {
-    if (!currentProduct) return;
+function addCurrentProductToCart(replaceQuantity = false) {
 
-    // Lấy giỏ hàng hiện tại
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Ép kiểu currentQuantity về số để tránh lỗi cộng chuỗi (Ví dụ: 1 + "2" = "12")
-    const quantityToAdd = parseInt(currentQuantity, 10) || 1;
+    const quantity = parseInt(currentQuantity, 10) || 1;
 
     const cartKey = createCartKey(
         currentProduct.id,
         currentVolume
     );
 
-    // Kiểm tra đúng sản phẩm + đúng dung tích đã tồn tại trong giỏ chưa
     const existingProduct = cart.find(item => {
 
         return isSameCartItem(item, cartKey);
 
     });
 
-    // Nếu đã có trong giỏ
     if (existingProduct) {
-        const currentQty = parseInt(existingProduct.quantity, 10) || 0;
+
         updateExistingCartItemInfo(existingProduct, cartKey);
-        existingProduct.quantity = currentQty + quantityToAdd;
+
+        if (replaceQuantity) {
+
+            existingProduct.quantity = quantity;
+
+        }
+        else {
+
+            const currentQty = parseInt(existingProduct.quantity, 10) || 0;
+
+            existingProduct.quantity = currentQty + quantity;
+
+        }
+
     }
-    // Nếu chưa có
     else {
+
         cart.push(
-            getCartItemFromCurrentProduct(quantityToAdd)
+            getCartItemFromCurrentProduct(quantity)
         );
+
     }
 
-    // Lưu lại vào localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Cập nhật lại số lượng hiển thị trên Badge
     updateCartBadge();
 
-    // Hiển thị Toast thông báo (Xử lý triệt để việc click liên tục)
+}
+
+
+// =========================
+// ADD TO CART (THÊM VÀO GIỎ)
+// =========================
+addCartBtn.addEventListener("click", () => {
+
+    if (!currentProduct) return;
+
+    addCurrentProductToCart(false);
+
+    if (!toast) return;
+
     toast.textContent = "Đã thêm vào giỏ hàng";
     toast.classList.add("show-toast");
 
-    // Nếu có một timeout cũ đang chạy, xóa nó đi để tính lại 2.5 giây từ đầu
     if (toastTimeout) {
         clearTimeout(toastTimeout);
     }
@@ -659,41 +680,21 @@ addCartBtn.addEventListener("click", () => {
     toastTimeout = setTimeout(() => {
         toast.classList.remove("show-toast");
     }, 2500);
+
 });
+
 
 // =========================
 // BUY NOW (MUA NGAY)
 // =========================
 buyNowBtn.addEventListener("click", () => {
+
     if (!currentProduct) return;
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const cartKey = createCartKey(
-        currentProduct.id,
-        currentVolume
-    );
-
-    const existingProduct = cart.find(item => {
-
-        return isSameCartItem(item, cartKey);
-
-    });
-
-    if (existingProduct) {
-        updateExistingCartItemInfo(existingProduct, cartKey);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartBadge();
-    }
-    else {
-        cart.push(
-            getCartItemFromCurrentProduct(1)
-        );
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartBadge();
-    }
+    addCurrentProductToCart(true);
 
     window.location.href = "/pages/cart/cart.html";
+
 });
 
 
