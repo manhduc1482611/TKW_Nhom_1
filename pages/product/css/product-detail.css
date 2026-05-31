@@ -776,6 +776,13 @@ html{
     );
 }
 
+.review-avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .review-body{
     flex: 1;
 }
@@ -818,19 +825,6 @@ html{
     margin-bottom: 18px;
 }
 
-.review-helpful{
-    border: none;
-    background: transparent;
-    color: #526275;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.review-helpful i{
-    margin-right: 6px;
-}
-
 .shop-reply{
     margin-top: 24px;
     padding: 22px;
@@ -864,6 +858,17 @@ html{
 
 .review-image{
     margin-bottom: 18px;
+    display: block;
+    object-fit: cover;
+    padding: 0;
+    text-shadow: none;
+}
+
+.buyer-photo{
+    display: block;
+    object-fit: cover;
+    padding: 0;
+    text-shadow: none;
 }
 
 .review-empty{

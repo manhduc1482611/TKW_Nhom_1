@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let statusText = "";
         let statusClass = "";
 
+        // Kiểm tra loại điều kiện thời gian của từng Voucher
         if (type === 'always') {
             isActive = true;
         } else if (type === 'monthly') {
@@ -65,18 +66,23 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
+        // Cập nhật giao diện Trạng thái / Nút bấm tương ứng
         const statusElement = box.querySelector('.promo-status');
         const buttonElement = box.querySelector('.btn-copy');
 
         if (isActive) {
-            statusElement.textContent = "Đang diễn ra";
-            statusElement.classList.add("st-active");
+            if (statusElement) {
+                statusElement.textContent = "Đang diễn ra";
+                statusElement.classList.add("st-active");
+            }
         } else {
-            statusElement.textContent = statusText;
-            statusElement.classList.add("st-" + statusClass);
+            if (statusElement) {
+                statusElement.textContent = statusText;
+                statusElement.classList.add("st-" + statusClass);
+            }
             box.classList.add("disabled-box");
             
-            // Xử lý khóa nút Copy đối với các mã nhập tay khi chưa đến thời gian hoặc đã hết hạn
+            // Khóa nút copy nếu chưa đến thời gian hoặc hết hạn
             if (buttonElement) {
                 buttonElement.disabled = true;
                 buttonElement.textContent = (statusClass === "upcoming") ? "Chưa mở" : "Hết hạn";
@@ -84,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 buttonElement.style.cursor = "not-allowed";
             }
             
-            // Xử lý text hiển thị đối với mã "Ghé thăm lần đầu" (Tự động áp dụng) nếu bị khóa
+            // Xử lý text hiển thị mã tự động áp dụng
             const autoTextElement = box.querySelector('.box-action.auto .code-text');
             const autoIcon = box.querySelector('.box-action.auto i');
             if (autoTextElement) {
@@ -92,37 +98,55 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (autoIcon) autoIcon.className = "fas fa-lock";
             }
         }
+
+        // Bắt sự kiện click vào hộp khuyến mãi để chuyển sang trang detail
+        box.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-copy') || e.target.closest('.btn-copy')) {
+                return; 
+            }
+            const promoId = box.getAttribute('id');
+            if (promoId) {
+                window.location.href = `./promotion-detail.html?id=${promoId}`;
+            }
+        });
     });
 
-    // Code xử lý Modal cũ của bạn
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
+    // ==========================================
+    // 2. XỬ LÝ MODAL THÔNG BÁO
+    // ==========================================
+    const modal = document.getElementById("myModal");
+    const btn = document.getElementById("myBtn");
+    const span = document.getElementsByClassName("close")[0];
 
-    if (btn) {
+    if (btn && modal) {
         btn.onclick = function() {
             modal.style.display = "block";
         }
     }
 
-    if (span) {
+    if (span && modal) {
         span.onclick = function() {
             modal.style.display = "none";
         }
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (modal && event.target == modal) {
             modal.style.display = "none";
         }
     }
 });
 
-// Hàm copy mã toàn cục
+// ==========================================
+// 3. HÀM COPY MÃ TOÀN CỤC
+// ==========================================
 function copyCode(elementId) {
-    const codeText = document.getElementById(elementId).innerText;
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    const codeText = element.innerText;
     navigator.clipboard.writeText(codeText).then(() => {
-        alert("Đã copy thành công mã: " + codeText);
+        alert("Nghien Beauty: Đã copy thành công mã: " + codeText);
     }).catch(err => {
         console.error('Lỗi khi sao chép mã: ', err);
     });

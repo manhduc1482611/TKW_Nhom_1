@@ -10,22 +10,8 @@
 <body>
     <div id="header"></div>
 
-  <!-- BANNER -->
-  <section class="news-banner">
-    <div class="breadcrumb">
-      <a href="../../../index.html">
-        <i class="fa-solid fa-house"></i>
-        Trang chủ
-      </a>
-      <span>/</span>
-      <span id="breadcrumbTitle">Tài khoản</span>
-    </div>
-    <h1>TÀI KHOẢN</h1>
-  </section>
-
 <div class="dashboard-container">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="user-info">
             <div class="avatar"><span id="user-avatar">?</span></div>
@@ -39,16 +25,18 @@
         </nav>
     </aside>
 
-    <!-- MAIN -->
     <main class="main-content">
         <div class="header-content">
             <div class="welcome-text">
                 <h2 id="welcome-title">Xin chào!</h2>
                 <p>Chào mừng bạn đến bảng điều khiển.</p>
             </div>
+            <a href="/index.html" class="home-btn">
+                <i class="fas fa-arrow-left"></i>
+                Trở về trang chủ
+            </a>
         </div>
 
-        <!-- TAB: THÔNG TIN CHUNG -->
         <div class="tab-page active" id="tab-thongtin">
             <section class="section">
                 <h3 class="section-title"><i class="fas fa-user-circle"></i> Thông tin chung</h3>
@@ -70,7 +58,6 @@
             </section>
         </div>
 
-        <!-- TAB: CHỈNH SỬA HỒ SƠ -->
         <div class="tab-page" id="tab-chinhsua">
             <section class="section">
                 <h3 class="section-title"><i class="fas fa-user-pen"></i> Chỉnh sửa hồ sơ</h3>
@@ -99,7 +86,6 @@
     </main>
 </div>
 
-<!-- MODAL XÁC NHẬN ĐĂNG XUẤT -->
 <div id="logoutModal" class="modal-overlay">
     <div class="modal-box">
         <i class="fas fa-right-from-bracket modal-icon"></i>

@@ -7,7 +7,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* ===== BODY & BACKGROUND ===== */
 body {
     display: flex !important;
     flex-direction: column !important;
@@ -16,49 +15,45 @@ body {
     min-height: 100vh !important;
     background: linear-gradient(180deg, #fce8f0 0%, #fef4f7 40%, #fefaf7 100%) !important;
     padding: 30px 16px !important;
+    position: relative !important;
 }
 
-/* ===== AUTH WRAPPER – bọc breadcrumb + title + form ===== */
+.back-home-circle {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 46px;
+    height: 46px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff4f8b;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(255, 79, 139, 0.12);
+    border: 1px solid #fce8f0;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+
+.back-home-circle:hover {
+    background-color: #ff4f8b;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 79, 139, 0.25);
+}
+
 .auth-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     max-width: 460px;
+    margin-top: 40px;
 }
 
-/* ===== BREADCRUMB ===== */
-.breadcrumb-bar {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 40px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    font-size: 13px;
-}
-
-.breadcrumb a {
-    text-decoration: none;
-    color: #ff4f8b;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.breadcrumb span {
-    color: #999;
-}
-
-/* ===== PAGE TITLE ===== */
 .page-title {
     font-size: 28px;
     font-weight: 900;
@@ -69,7 +64,6 @@ body {
     text-align: center;
 }
 
-/* ===== CONTAINER & FORM BOX ===== */
 .container {
     margin: 0;
     width: 100%;
@@ -93,7 +87,6 @@ body {
     display: block;
 }
 
-/* ===== HEADINGS ===== */
 h2 {
     font-size: 24px;
     font-weight: 800;
@@ -102,7 +95,6 @@ h2 {
     color: #1a1a1a;
 }
 
-/* ===== INPUTS ===== */
 input {
     width: 100%;
     padding: 13px 16px;
@@ -127,7 +119,6 @@ input::placeholder {
     color: #b0a098;
 }
 
-/* ===== BUTTONS ===== */
 button {
     width: 100%;
     padding: 14px;
@@ -155,7 +146,6 @@ button:active {
     transform: translateY(0);
 }
 
-/* ===== LINKS & PARAGRAPHS ===== */
 p {
     font-size: 14px;
     text-align: center;
@@ -174,7 +164,6 @@ p a:hover {
     text-decoration: underline;
 }
 
-/* ===== QUÊN MẬT KHẨU INLINE LINK ===== */
 div[style*="text-align: right"] {
     margin-top: 8px;
 }
@@ -191,7 +180,6 @@ div[style*="text-align: right"] a:hover {
     color: #ff4f8b !important;
 }
 
-/* ===== DIVIDER ===== */
 .divider {
     display: flex;
     align-items: center;
@@ -212,7 +200,6 @@ div[style*="text-align: right"] a:hover {
     font-size: 13px;
 }
 
-/* ===== SOCIAL LOGIN ===== */
 .social-login {
     display: flex;
     flex-direction: column;
@@ -257,7 +244,6 @@ div[style*="text-align: right"] a:hover {
 .social-btn.facebook i { color: white; }
 .social-btn.facebook:hover { background: #166fe5; border-color: #166fe5; }
 
-/* ===== MESSAGE BOX ===== */
 .message {
     padding: 12px 16px;
     border-radius: 12px;
@@ -281,15 +267,14 @@ div[style*="text-align: right"] a:hover {
     border: 1px solid #ffb3d1;
 }
 
-/* ===== ANIMATION ===== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 520px) {
+    .back-home-circle { top: 16px; left: 16px; width: 38px; height: 38px; font-size: 16px; }
     .form-box { padding: 28px 20px; }
     h2 { font-size: 20px; }
-    .page-title { font-size: 22px; }
+    .page-title { font-size: 22px; margin-top: 20px; }
 }

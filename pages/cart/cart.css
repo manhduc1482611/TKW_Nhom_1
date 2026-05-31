@@ -188,6 +188,13 @@
     font-size: 14px;
 }
 
+.cart-item-details .volume {
+    display: block;
+    color: var(--text-gray);
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
 /* Khối điều chỉnh số lượng (+ / -) */
 .cart-item-qty {
     display: flex;

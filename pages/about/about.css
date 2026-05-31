@@ -12,66 +12,6 @@ body {
     line-height: 1.7;
 }
 
-/* BANNER & BREADCRUMB */
-.about-banner {
-    padding: 30px 20px 20px;
-    text-align: center;               
-    background: linear-gradient(to bottom, #fff1f6, #f6f6f6);
-    display: flex;
-    flex-direction: column;
-    align-items: center;           
-}
-
-.about-banner h1 {
-    font-size: 44px;
-    font-weight: 800;
-    color: #222;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-
-.about-banner p {
-    color: #888;
-    font-size: 16px;
-}
-
-.breadcrumb-wrapper {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    background: #fff1f6;
-}
-
-.breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;                         
-    background-color: white;
-    padding: 15px 60px;
-    border-radius: 40px;
-    margin-bottom: 28px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    font-size: 14px;
-}
-
-.breadcrumb a {
-    text-decoration: none;
-    color: #ff4f8b;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.3s;
-}
-
-.breadcrumb a:hover {
-    color: #ff7aa8;
-}
-
-.breadcrumb span {
-    color: #777;
-}
-
 /* CONTAINER NỘI BỘ KHỐI */
 .container {
     max-width: 1200px;

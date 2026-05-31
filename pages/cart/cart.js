@@ -51,6 +51,7 @@ function renderCart() {
         const qty = parseInt(item.quantity, 10) || 1;
         const price = parseFloat(item.price) || 0;
         const itemTotal = price * qty;
+        const itemKey = item.cartKey || String(item.id);
 
         totalItems += qty;
         subtotal += itemTotal;
@@ -62,21 +63,22 @@ function renderCart() {
                     <div class="cart-item-details">
                         <span class="brand">${item.brand || 'BeautyStore'}</span>
                         <h4>${item.name}</h4>
+                        ${item.volume ? `<span class="volume">Dung tích: ${item.volume}</span>` : ""}
                         <span class="price">${price.toLocaleString('vi-VN')}đ</span>
                     </div>
                 </div>
                 
                 <div class="cart-item-qty">
-                    <button class="btn-qty-minus" data-id="${item.id}">-</button>
+                    <button class="btn-qty-minus" data-key="${itemKey}">-</button>
                     <span>${qty}</span>
-                    <button class="btn-qty-plus" data-id="${item.id}">+</button>
+                    <button class="btn-qty-plus" data-key="${itemKey}">+</button>
                 </div>
 
                 <div class="cart-item-total">
                     ${itemTotal.toLocaleString('vi-VN')}đ
                 </div>
 
-                <button class="btn-delete-item" data-id="${item.id}">
+                <button class="btn-delete-item" data-key="${itemKey}">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -98,9 +100,12 @@ function handleCartActions(e) {
     if (!target) return;
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const productId = target.dataset.id;
+    const itemKey = target.dataset.key;
     
-    const productIndex = cart.findIndex(item => String(item.id) === String(productId));
+    const productIndex = cart.findIndex(item => {
+        const currentKey = item.cartKey || String(item.id);
+        return currentKey === itemKey;
+    });
     if (productIndex === -1) return;
 
     // Nút Tăng Số Lượng
