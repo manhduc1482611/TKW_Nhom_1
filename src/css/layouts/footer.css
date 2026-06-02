@@ -7,6 +7,35 @@
     padding-top: 60px;
     margin-top: auto; /* Đẩy footer xuống đáy trang nếu nội dung ngắn */
     border-top: 3px solid var(--primary-color); /* Đường viền hồng tinh tế ở trên cùng */
+    position: relative; /* THÊM: Cần thiết để định vị nút cuộn lên đầu trang */
+}
+
+/* --- NÚT LÊN ĐẦU TRANG (SCROLL TO TOP) --- */
+.scroll-to-top {
+    position: absolute;
+    top: 20px; /* Thay vì -25px, đổi thành 20px để hạ nút xuống nằm hẳn trong footer */
+    right: 2%; /* Căn lề phải thẳng hàng với nội dung */
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+/* Hiệu ứng khi hover */
+.scroll-to-top:hover {
+    transform: translateY(-4px); /* Nảy nhẹ lên khi di chuột vào */
+    box-shadow: 0 6px 15px rgba(255, 77, 141, 0.4);
+    filter: brightness(1.1);
 }
 
 /* --- Bố cục dạng Grid chia đều 4 cột --- */
@@ -53,7 +82,7 @@
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 20px;
-    font-family: 'Playfair Display', Arial, sans-serif; /* Hoặc font chữ thương hiệu của bạn */
+    font-family: 'Playfair Display', Arial, sans-serif;
     letter-spacing: 1px;
 }
 
@@ -154,17 +183,22 @@
 @media (max-width: 768px) {
     .footer {
         padding-top: 40px;
-    }
-    
+    }    
     .footer-container {
         gap: 30px;
-    }
-    
+    }   
     .footer-col h3 {
         margin-bottom: 18px;
-    }
-    
+    } 
     .footer-bottom {
         margin-top: 40px;
+    }
+    /* Thu nhỏ nút một chút trên giao diện di động để cân đối hơn */
+    .scroll-to-top {
+        width: 44px;
+        height: 44px;
+        top: 15px;
+        right: 5%;
+        font-size: 1rem;
     }
 }

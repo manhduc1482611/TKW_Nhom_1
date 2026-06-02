@@ -137,6 +137,83 @@ body{
 
 
 /* =========================
+   SIDEBAR SUGGESTIONS
+========================= */
+
+.sidebar-suggestions{
+    margin-top: 22px;
+    background-color: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+}
+
+.sidebar-suggestions h3{
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #222;
+}
+
+.sidebar-suggestions .related-list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-suggestions .related-card{
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.sidebar-suggestions .related-card:hover{
+    transform: translateY(-2px);
+}
+
+.sidebar-suggestions .related-card img{
+    width: 85px;
+    height: 85px;
+    flex-shrink: 0;
+    object-fit: contain;
+    background-color: #fff5f8;
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.sidebar-suggestions .related-info{
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-suggestions .related-info h3{
+    color: #222;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sidebar-suggestions .related-price{
+    color: #ff2f68;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.suggestion-empty{
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================
    CONTENT
 ========================= */
 
@@ -426,6 +503,11 @@ body{
         width: 100%;
     }
 
+    .sidebar-suggestions .related-list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .products-banner h1{
         font-size: 44px;
     }
@@ -458,6 +540,10 @@ body{
     }
 
     .products-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-suggestions .related-list{
         grid-template-columns: 1fr;
     }
 

@@ -18,24 +18,28 @@ body {
     padding: 60px 24px;
 }
 
-/* ==================== HEADER ==================== */
+/* ==================== PAGE HEADER ==================== */
 .page-header {
     text-align: center;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .page-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #5d4037;
-    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
 }
 
 .page-divider {
     width: 70px;
     height: 3px;
-    background: #d4a373;
+    background: #ff4f8b;
     margin: 0 auto;
     border-radius: 4px;
 }
@@ -61,7 +65,7 @@ body {
 }
 
 .text-strong {
-    color: #d4a373;
+    color: #ff4f8b;
     font-weight: 600;
 }
 
@@ -78,7 +82,7 @@ body {
 }
 
 .step-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: #5d4037;
@@ -92,25 +96,19 @@ ul {
     list-style: none;
 }
 
-li {
-    color: #6d5d52;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 10px;
+.card li {
     position: relative;
     padding-left: 20px;
 }
 
-li::before {
+.card li::before {
     content: '•';
     position: absolute;
     left: 0;
     top: 0;
-    color: #d4a373;
+    color: #ff4f8b;
     font-size: 1.2rem;
-    line-height: 1.7;
 }
-
 
 /* ==================== QUY TRÌNH (KHÔNG CÓ Ô, CHỈ TEXT) ==================== */
 .process-item {
@@ -132,7 +130,7 @@ li::before {
 }
 
 .support-link {
-    color: #d4a373;
+    color: #ff4f8b;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -141,7 +139,7 @@ li::before {
 
 .support-link:hover {
     color: #5d4037;
-    border-bottom-color: #d4a373;
+    border-bottom-color: #ff4f8b;
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -174,13 +172,5 @@ li::before {
     
     .card {
         padding: 25px 18px;
-    }
-    
-    li {
-        font-size: 0.85rem;
-    }
-    
-    .intro-text::after {
-        width: 60px;
     }
 }

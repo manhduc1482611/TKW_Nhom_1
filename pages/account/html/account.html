@@ -9,9 +9,9 @@
 </head>
 <body>
     <div id="header"></div>
+
 <div class="dashboard-container">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="user-info">
             <div class="avatar"><span id="user-avatar">?</span></div>
@@ -20,26 +20,23 @@
         </div>
         <nav class="menu">
             <a class="menu-item active" data-tab="thongtin"><i class="fas fa-user"></i> Thông tin chung</a>
-            <a class="menu-item" data-tab="giohang"><i class="fas fa-cart-shopping"></i> Giỏ hàng</a>
             <a class="menu-item" data-tab="chinhsua"><i class="fas fa-pen"></i> Chỉnh sửa hồ sơ</a>
             <a class="menu-item logout"><i class="fas fa-right-from-bracket"></i> Đăng xuất</a>
         </nav>
     </aside>
 
-    <!-- MAIN -->
     <main class="main-content">
         <div class="header-content">
             <div class="welcome-text">
                 <h2 id="welcome-title">Xin chào!</h2>
                 <p>Chào mừng bạn đến bảng điều khiển.</p>
             </div>
-            <a href="../../../index.html" class="home-btn">
+            <a href="/index.html" class="home-btn">
                 <i class="fas fa-arrow-left"></i>
                 Trở về trang chủ
             </a>
         </div>
 
-        <!-- TAB: THÔNG TIN CHUNG -->
         <div class="tab-page active" id="tab-thongtin">
             <section class="section">
                 <h3 class="section-title"><i class="fas fa-user-circle"></i> Thông tin chung</h3>
@@ -61,20 +58,6 @@
             </section>
         </div>
 
-
-        <!-- TAB: GIỎ HÀNG -->
-        <div class="tab-page" id="tab-giohang">
-            <section class="section">
-                <h3 class="section-title"><i class="fas fa-shopping-cart"></i> Giỏ hàng</h3>
-                <div class="empty-state">
-                    <i class="fas fa-cart-shopping"></i>
-                    <p>Giỏ hàng của bạn đang trống.</p>
-                    <a href="../../product/html/products.html" class="action-link">Mua hàng ngay</a>
-                </div>
-            </section>
-        </div>
-
-        <!-- TAB: CHỈNH SỬA HỒ SƠ -->
         <div class="tab-page" id="tab-chinhsua">
             <section class="section">
                 <h3 class="section-title"><i class="fas fa-user-pen"></i> Chỉnh sửa hồ sơ</h3>
@@ -103,7 +86,6 @@
     </main>
 </div>
 
-<!-- MODAL XÁC NHẬN ĐĂNG XUẤT -->
 <div id="logoutModal" class="modal-overlay">
     <div class="modal-box">
         <i class="fas fa-right-from-bracket modal-icon"></i>

@@ -1,10 +1,16 @@
 :root {
-    --primary-color: #ff4d8d;
-    --primary-hover: #e03c7a;
-    --primary-light: #ffe6f0;
-    --text-color: #333;
-    --bg-light: #fff;
-    --bg-page: #f5f7fa;
-    --bg-dark: #222;
-    --text-gray: #ccc;
+    /* Màu hồng chủ đạo mới - Hồng đào thanh lịch, rất hợp mỹ phẩm */
+    --primary-color: #ff7597;       /* Hồng đào chính (mềm mại, tươi tắn) */
+    --primary-hover: #e65c7e;       /* Hồng đậm hơn một chút khi hover */
+    --primary-light: #fff0f3;       /* Hồng siêu nhạt làm nền hoặc highlight nhẹ */
+    
+    /* Màu chữ và trung tính (Neutral colors) */
+    --text-color: #2b2b2b;          /* Màu chữ chính - đen than nhẹ giúp dịu mắt */
+    --text-gray: #757575;           /* Màu chữ phụ, icon hoặc topbar text */
+    --border-color: #eee0e3;        /* Màu viền hồng nhạt siêu mịn */
+    
+    /* Màu nền (Background colors) */
+    --bg-light: #ffffff;            /* Nền trắng tinh khôi */
+    --bg-page: #fcf8f9;             /* Nền trang có chút ánh hồng phấn cực sang */
+    --bg-dark: #1a1a1a;             /* Nền topbar hoặc footer - đen luxury */
 }
