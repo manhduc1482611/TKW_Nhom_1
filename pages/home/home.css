@@ -1,5 +1,5 @@
 /* =========================================
-   CONTAINER - Căn giữa, có lề 2 bên
+   CONTAINER
 ========================================= */
 .container {
   max-width: 1280px;
@@ -46,7 +46,6 @@
   z-index: 2;
 }
 
-/* Nút mũi tên */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -73,7 +72,6 @@
 .slider-btn--prev { left: 16px; }
 .slider-btn--next { right: 16px; }
 
-/* Dots */
 .slider-dots {
   position: absolute;
   bottom: 16px;
@@ -97,7 +95,6 @@
   transform: scale(1.3);
 }
 
-
 /* =========================================
    SECTION HEADER
 ========================================= */
@@ -116,13 +113,8 @@
 .section-header h2 {
   font-size: 1.9rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-color);
   margin-bottom: 0.5rem;
-}
-.section-sub { color: #999; font-size: 0.95rem; }
-
-/* Tiêu đề có đường gạch ngang 2 bên */
-.section-header h2 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,14 +133,17 @@
 .section-header h2::after {
   background: linear-gradient(90deg, #f3d7dd, transparent);
 }
-
+.section-sub {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
 
 /* =========================================
-   SECTION WRAPPER - Khung chứa từng vùng
+   SECTION WRAPPER
 ========================================= */
 .section-box {
   background: #fff;
-  border: 1px solid #f0e4e8;
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   margin-bottom: 1.5rem;
@@ -160,30 +155,34 @@
   background: #fffaf8;
 }
 
-
 /* =========================================
    CATEGORIES
 ========================================= */
-.categories-section {
-  padding: 0 0 1.5rem;
-}
+.categories-section { padding: 0 0 1.5rem; }
 
 .categories-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
-.category-item { text-align: center; text-decoration: none; }
+.category-item {
+  text-align: center;
+  text-decoration: none;
+  flex: 1;
+  min-width: 140px;
+  max-width: 180px;
+}
 
 .category-circle {
-  width: 130px; height: 130px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   overflow: hidden;
-  background: #fff1f4;
+  background: var(--primary-light);
   border: 2px solid #f3d7dd;
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 0.8rem;
@@ -192,7 +191,8 @@
 }
 .category-circle:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(255, 77, 141, 0.18);
+  box-shadow: 0 10px 25px rgba(255, 117, 151, 0.25);
+  border-color: var(--primary-color);
 }
 .category-img {
   width: 100%; height: 100%;
@@ -201,11 +201,10 @@
 }
 .category-circle:hover .category-img { transform: scale(1.08); }
 .category-name {
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--primary-color);
   font-weight: 600;
 }
-
 
 /* =========================================
    BRANDS
@@ -230,17 +229,16 @@
   border-radius: 16px;
   padding: 0.9rem;
   text-align: center;
-  border: 1px solid #f0e4e8;
+  border: 1px solid var(--border-color);
   transition: 0.3s;
   cursor: pointer;
   text-decoration: none;
 }
 .brand-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(255, 77, 141, 0.10);
+  box-shadow: 0 10px 24px rgba(255, 117, 151, 0.15);
   border-color: var(--primary-color);
 }
-
 .brand-img-wrap {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -258,9 +256,8 @@
 .brand-name {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
 }
-
 
 /* =========================================
    PROMO BANNERS
@@ -283,32 +280,23 @@
   transform: translateY(-5px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
-
 .promo-banner-1 { background: #f5efe5; }
 .promo-banner-2 { background: linear-gradient(90deg, #fff5f7, #ffd9e4); }
 .promo-banner-2 .promo-img { mix-blend-mode: darken; opacity: 0.92; }
 
 .promo-content { width: 40%; z-index: 2; }
-.promo-sale { font-size: 1rem; color: #666; margin-bottom: 0.8rem; }
+.promo-sale {
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
 .promo-content h3 {
   font-size: 2rem;
   line-height: 1.2;
-  margin-bottom: 1.2rem;
+  color: var(--text-color);
   font-family: 'Cormorant Garamond', serif;
 }
-
-.promo-btn {
-  border: none;
-  background: var(--primary-color);
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 40px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-.promo-btn:hover { background: var(--primary-hover); }
-
 .promo-image {
   width: 60%; height: 100%;
   display: flex; align-items: center; justify-content: flex-end;
@@ -322,7 +310,6 @@
   opacity: 0.96;
 }
 
-
 /* =========================================
    BEST SELLERS
 ========================================= */
@@ -334,7 +321,7 @@
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid #f0e4e8;
+  border: 1px solid var(--border-color);
   transition: 0.3s;
   text-decoration: none;
   color: inherit;
@@ -342,10 +329,9 @@
 }
 .best-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(255, 77, 141, 0.12);
+  box-shadow: 0 12px 28px rgba(255, 117, 151, 0.15);
   border-color: var(--primary-color);
 }
-
 .best-img-wrap { position: relative; padding: 0.8rem; }
 .best-img {
   width: 100%; height: 200px;
@@ -354,7 +340,6 @@
   transition: 0.4s;
 }
 .best-card:hover .best-img { transform: scale(1.04); }
-
 .best-badge {
   position: absolute;
   top: 1.2rem; left: 1.2rem;
@@ -365,27 +350,25 @@
   padding: 0.3rem 0.8rem;
   border-radius: 30px;
 }
-
 .best-info { padding: 0 1rem 1.2rem; }
 .best-name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
   line-height: 1.4;
-  color: #222;
+  color: var(--text-color);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .best-price {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 0.3rem;
 }
 .best-stars { color: #f4b400; font-size: 0.85rem; letter-spacing: 1px; }
-
 
 /* =========================================
    NEWS
@@ -397,7 +380,7 @@
 .news-card {
   display: block;
   background: #fff;
-  border: 1px solid #f0e4e8;
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   overflow: hidden;
   transition: 0.3s;
@@ -406,20 +389,18 @@
 }
 .news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(255, 77, 141, 0.10);
+  box-shadow: 0 12px 28px rgba(255, 117, 151, 0.12);
   border-color: var(--primary-color);
 }
-
 .news-img-wrap { overflow: hidden; }
 .news-img { width: 100%; height: 220px; object-fit: cover; transition: 0.4s; display: block; }
 .news-card:hover .news-img { transform: scale(1.05); }
-
 .news-content { padding: 1.2rem; }
 .news-title {
   font-size: 1rem;
   line-height: 1.45;
   font-weight: 600;
-  color: #111;
+  color: var(--text-color);
   margin-bottom: 0.6rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -428,14 +409,13 @@
 }
 .news-desc {
   font-size: 0.88rem;
-  color: #888;
+  color: var(--text-gray);
   line-height: 1.7;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 .news-btn-wrap { text-align: center; margin-top: 2rem; }
 .news-btn {
   display: inline-block;
@@ -453,9 +433,8 @@
   color: #fff;
 }
 
-
 /* =========================================
-   PAGE WRAPPER - padding tổng cho toàn trang
+   SPACING
 ========================================= */
 .hero,
 .categories-section,
@@ -466,14 +445,55 @@
   padding-left: 0;
   padding-right: 0;
 }
+.categories-section,
+.brands-section,
+.promo-section,
+.best-section,
+.news-section { margin-top: 0; }
 
-/* Khoảng cách giữa các section */
-.categories-section { margin-top: 0; }
-.brands-section     { margin-top: 0; }
-.promo-section      { margin-top: 0; }
-.best-section       { margin-top: 0; }
-.news-section       { margin-top: 0; }
-
+/* =========================================
+   POPUP
+========================================= */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.popup-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.popup-box {
+  position: relative;
+  max-width: 360px;
+  width: 90%;
+}
+.popup-img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+.popup-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 
 /* =========================================
    RESPONSIVE
@@ -491,7 +511,6 @@
 @media (max-width: 768px) {
   .main-nav, .search-form { display: none; }
   .hamburger { display: flex; }
-
   .container { padding: 0 12px; }
   .section-box { padding: 1.5rem 1rem; }
 
@@ -499,8 +518,8 @@
   .slider-btn { width: 34px; height: 34px; font-size: 1.3rem; }
   .slider-dot { width: 8px; height: 8px; }
 
-  .categories-grid { gap: 1rem; justify-content: center; }
-  .category-circle { width: 80px; height: 80px; }
+  .categories-grid { gap: 1rem; }
+  .category-circle { width: 100px; height: 100px; }
 
   .brand-card { width: 110px; padding: 0.7rem; }
   .brand-name { font-size: 0.78rem; }

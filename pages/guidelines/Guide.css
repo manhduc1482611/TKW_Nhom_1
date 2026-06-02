@@ -6,10 +6,10 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #fefaf7;
-    color: #4a3b2f;
-    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f6f6f6;
+    color: #333;
+    line-height: 1.7;
 }
 
 .container {
@@ -18,60 +18,30 @@ body {
     padding: 60px 24px;
 }
 
-/* =========================
-   BREADCRUMB
-========================= */
-
-.breadcrumb-wrapper {
+/* ==================== PAGE HEADER ==================== */
+.page-header {
     text-align: center;
-    padding: 20px 0 0;
-}
-
-.breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background-color: white;
-    padding: 12px 22px;
-    border-radius: 40px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    font-size: 14px;
-}
-
-.breadcrumb a {
-    text-decoration: none;
-    color: #ff4f8b;
-    font-weight: 600;
+    margin-bottom: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
 }
 
-.breadcrumb span {
-    color: #777;
+.page-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
 }
 
-.breadcrumb-wrapper {
-    text-align: center;
-    padding: 20px 0 0;
-    margin-bottom: 40px;
-}
-
-.breadcrumb-wrapper h1 {
-    font-size: 38px;
-    font-weight: 900;
-    color: #1a1a1a;
-    letter-spacing: 2px;
-    margin-top: 20px;
-    text-transform: uppercase;
-}
-
-.breadcrumb-wrapper p {
-    font-size: 1rem;
-    color: #4a3b2f;
-    opacity: 0.7;
-    margin-top: 10px;
-    margin-bottom: 20px;
+.page-divider {
+    width: 70px;
+    height: 3px;
+    background: #ff4f8b;
+    margin: 0 auto;
+    border-radius: 4px;
 }
 
 /* ==================== CARD NỘI DUNG ==================== */
@@ -113,7 +83,7 @@ body {
 }
 
 .step-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: #5d4037;

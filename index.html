@@ -10,6 +10,17 @@
 </head>
 
 <body>
+
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <button class="popup-close" id="popupClose">&times;</button>
+      <a href="/pages/promotion/html/promotion.html">
+        <img src="/assets/images/popup/popup.png" alt="Khuyến mãi" class="popup-img">
+      </a>
+    </div>
+  </div>
+
   <div id="header"></div>
 
   <!-- HERO -->
@@ -33,9 +44,9 @@
     <div class="container">
       <div class="section-box section-box--pink">
         <div class="section-header">
-          <p class="section-tag">Categories</p>
-          <h2>Shop By Category</h2>
-          <p class="section-sub">Discover skincare essentials for every routine.</p>
+          <p class="section-tag">Danh mục</p>
+          <h2>Mua Theo Danh Mục</h2>
+          <p class="section-sub">Khám phá các sản phẩm skincare cho từng bước chăm sóc da.</p>
         </div>
         <div class="categories-grid" id="categoriesGrid"></div>
       </div>
@@ -47,9 +58,9 @@
     <div class="container">
       <div class="section-box">
         <div class="section-header">
-          <p class="section-tag">Brands</p>
-          <h2>Trusted Skincare Brands</h2>
-          <p class="section-sub">Discover famous skincare brands loved worldwide.</p>
+          <p class="section-tag">Thương Hiệu</p>
+          <h2>Thương Hiệu Uy Tín</h2>
+          <p class="section-sub">Các thương hiệu skincare nổi tiếng được tin dùng trên toàn thế giới.</p>
         </div>
         <div class="brands-slider">
           <div class="brands-track" id="brandsTrack"></div>
@@ -63,28 +74,26 @@
     <div class="container">
       <div class="section-box section-box--gray">
         <div class="section-header">
-          <p class="section-tag">Promotions</p>
+          <p class="section-tag">Khuyến Mãi</p>
           <h2>Ưu Đãi Đặc Biệt</h2>
         </div>
         <div class="promo-grid">
           <div class="promo-banner promo-banner-1">
             <div class="promo-content">
-              <p class="promo-sale">Up to 25% Off</p>
+              <p class="promo-sale">Giảm đến 25%</p>
               <h3>Eucerin Skincare<br>For Healthy Skin</h3>
-              <button class="promo-btn">Shop Now</button>
             </div>
             <div class="promo-image">
-              <img src="/src/assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
+              <img src="/assets/images/home/pic/ecurin1.jpg" alt="Eucerin Banner" class="promo-img">
             </div>
           </div>
           <div class="promo-banner promo-banner-2">
             <div class="promo-content">
-              <p class="promo-sale">Up to 30% Off</p>
+              <p class="promo-sale">Giảm đến 30%</p>
               <h3>Senka Skincare<br>For Dewy Skin</h3>
-              <button class="promo-btn">Shop Now</button>
             </div>
             <div class="promo-image">
-              <img src="/src/assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
+              <img src="/assets/images/home/pic/senka_1.jpg" alt="Senka Banner" class="promo-img">
             </div>
           </div>
         </div>
@@ -97,9 +106,9 @@
     <div class="container">
       <div class="section-box section-box--pink">
         <div class="section-header">
-          <p class="section-tag">Best Sellers</p>
-          <h2>Featured Skincare Products</h2>
-          <p class="section-sub">Top 5 best-selling skincare essentials loved by customers.</p>
+          <p class="section-tag">Bán Chạy</p>
+          <h2>Sản Phẩm Nổi Bật</h2>
+          <p class="section-sub">Top 5 sản phẩm skincare bán chạy nhất được khách hàng yêu thích.</p>
         </div>
         <div class="best-grid" id="bestGrid"></div>
       </div>
@@ -111,7 +120,7 @@
     <div class="container">
       <div class="section-box">
         <div class="section-header">
-          <p class="section-tag">Tin tức</p>
+          <p class="section-tag">Tin Tức</p>
           <h2>Bài Viết & Khuyến Mãi</h2>
           <p class="section-sub">Cập nhật xu hướng skincare và ưu đãi mới nhất.</p>
         </div>
@@ -128,6 +137,7 @@
   <script type="module" src="/src/js/main.js"></script>
   <script src="/src/js/layouts/header.js"></script>
   <script src="/pages/home/home.js"></script>
+
 </body>
 
 </html>

@@ -411,3 +411,61 @@
         margin-right: 0;
     }
 }
+
+/* --- Promo cho cart --- */
+.active-promo-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff5f8;
+    border: 1px dashed var(--primary-color);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.promo-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.active-promo-icon {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.promo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.promo-title-code {
+    font-size: 13px;
+    color: var(--text-color);
+}
+
+.promo-title-code strong {
+    color: var(--primary-hover);
+}
+
+.promo-desc-short {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.btn-remove-promo {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-gray);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.btn-remove-promo:hover {
+    color: #ef4444;
+}
