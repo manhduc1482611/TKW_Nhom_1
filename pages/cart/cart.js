@@ -12,10 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkoutBtn) {
         checkoutBtn.addEventListener("click", () => {
             if (!checkoutBtn.disabled) {
-                window.location.href = "/pages/checkout/checkout.html";
+                // Kiểm tra xem đã đăng nhập chưa (lấy dữ liệu từ localStorage)
+                const currentUser = localStorage.getItem('currentUser');
+
+                if (currentUser) {
+                    // 1. ĐÃ ĐĂNG NHẬP: Dẫn đến trang thanh toán
+                    window.location.href = "/pages/checkout/checkout.html";
+                } else {
+                    // 2. CHƯA ĐĂNG NHẬP: Thông báo và dẫn đến trang đăng nhập
+                    alert("Vui lòng đăng nhập tài khoản để tiến hành thanh toán!");
+                    window.location.href = "/pages/account/html/Login.html";
+                }
             }
         });
-    }
+    } s
 });
 
 // ==========================================
@@ -23,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 function renderCart() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
+
     const emptyState = document.getElementById("emptyCartState");
     const filledState = document.getElementById("filledCartState");
     const container = document.getElementById("cartItemsContainer");
@@ -34,8 +44,8 @@ function renderCart() {
     if (cart.length === 0) {
         emptyState.style.display = "block";
         filledState.style.display = "none";
-        updateSummary(0, 0); 
-        updateHeaderBadge();  
+        updateSummary(0, 0);
+        updateHeaderBadge();
         return;
     }
 
@@ -96,12 +106,12 @@ function renderCart() {
 // HÀM XỬ LÝ CLICK (TĂNG/GIẢM/XÓA)
 // ==========================================
 function handleCartActions(e) {
-    const target = e.target.closest("button"); 
+    const target = e.target.closest("button");
     if (!target) return;
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const itemKey = target.dataset.key;
-    
+
     const productIndex = cart.findIndex(item => {
         const currentKey = item.cartKey || String(item.id);
         return currentKey === itemKey;
@@ -111,7 +121,7 @@ function handleCartActions(e) {
     // Nút Tăng Số Lượng
     if (target.classList.contains("btn-qty-plus")) {
         cart[productIndex].quantity = (parseInt(cart[productIndex].quantity, 10) || 1) + 1;
-    } 
+    }
     // Nút Giảm Số Lượng
     else if (target.classList.contains("btn-qty-minus")) {
         const currentQty = parseInt(cart[productIndex].quantity, 10) || 1;
@@ -120,7 +130,7 @@ function handleCartActions(e) {
         } else {
             cart.splice(productIndex, 1);
         }
-    } 
+    }
     // Nút Xóa Sản Phẩm
     else if (target.classList.contains("btn-delete-item")) {
         cart.splice(productIndex, 1);
@@ -156,10 +166,10 @@ function updateSummary(totalItems, subtotal) {
 function updateHeaderBadge() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalQuantity = cart.reduce((total, item) => total + (parseInt(item.quantity, 10) || 0), 0);
-    
-    const headerBadge = (typeof parent !== "undefined" && parent.document.querySelector(".cart-count")) 
-                        || document.querySelector(".cart-count");
-                        
+
+    const headerBadge = (typeof parent !== "undefined" && parent.document.querySelector(".cart-count"))
+        || document.querySelector(".cart-count");
+
     if (headerBadge) {
         headerBadge.textContent = totalQuantity;
     }

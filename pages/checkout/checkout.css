@@ -147,12 +147,12 @@ select.checkout-input {
     background: var(--primary-light);
 }
 
-/* Khu vực thông tin Tài khoản + Hình ảnh mã QR aaa.jpg */
+/* Khu vực thông tin Tài khoản + Hình ảnh mã QR */
 .bank-details {
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px dashed var(--border-color);
-    display: block; /* Mặc định hiển thị bằng JS */
+    display: block;
 }
 
 .bank-text {
@@ -253,40 +253,150 @@ select.checkout-input {
     color: var(--text-gray);
 }
 
-/* Hộp Voucher Giảm Giá */
-.promo-box {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
+/* ==========================================================================
+   BỔ SUNG: KHU VỰC DANH SÁCH MÃ GIẢM GIÁ (ĐỔ DATA TỪ PROMOTIONS.JSON)
+   ========================================================================== */
+.available-promotions-section {
+    margin-bottom: 20px;
+    padding: 14px;
+    background: #fff9fa;
+    border: 1px solid #ffe3e7;
+    border-radius: 10px;
 }
 
-.promo-box input {
-    flex: 1;
-    padding: 10px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+.promotions-title {
     font-size: 13px;
-    outline: none;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.promo-box input:focus {
+.promotions-title i {
+    color: var(--primary-color);
+}
+
+.promotions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 190px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.promotions-list::-webkit-scrollbar {
+    width: 4px;
+}
+.promotions-list::-webkit-scrollbar-thumb {
+    background: #ffd0d6;
+    border-radius: 10px;
+}
+
+/* Style cho từng tấm thẻ Voucher */
+.promo-coupon-card {
+    display: flex;
+    align-items: center;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 10px 12px;
+    gap: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.promo-coupon-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 3px 10px rgba(255, 117, 151, 0.12);
+    transform: translateY(-1px);
+}
+
+.coupon-left-icon {
+    font-size: 16px;
+    color: var(--primary-color);
+    background: var(--primary-light);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.coupon-mid-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.coupon-name-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.coupon-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.coupon-rate-tag {
+    background: var(--primary-color);
+    color: var(--bg-light);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 10px;
+    line-height: 1.2;
+}
+
+.coupon-code-text {
+    font-size: 11px;
+    color: var(--text-gray);
+}
+
+.coupon-code-text strong {
+    color: var(--primary-hover);
+    background: var(--primary-light);
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.btn-use-coupon {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-use-coupon:hover {
+    background: var(--primary-color);
+    color: var(--bg-light);
+}
+
+.promo-coupon-card.selected-coupon {
+    background: #fff0f2;
     border-color: var(--primary-color);
 }
 
-.btn-apply {
-    background: var(--primary-color);
-    color: var(--bg-light);
-    border: none;
-    padding: 0 16px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-apply:hover {
+.promo-coupon-card.selected-coupon .btn-use-coupon {
     background: var(--primary-hover);
+    color: var(--bg-light);
+    border-color: var(--primary-hover);
 }
 
 /* Khối Hóa Đơn Tính Tiền */
@@ -329,7 +439,6 @@ select.checkout-input {
     font-weight: 700;
 }
 
-/* Nút Hoàn Tất Đơn Hàng */
 .btn-order-now {
     width: 100%;
     background: var(--primary-color);
@@ -349,7 +458,6 @@ select.checkout-input {
     transform: translateY(-1px);
 }
 
-/* Responsive di động mượt mà */
 @media (max-width: 992px) {
     .checkout-grid {
         grid-template-columns: 1fr;
