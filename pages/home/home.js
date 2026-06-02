@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
      DATA
   ========================================= */
   const categories = [
-    { name: "Cleanser",       img: "assets/images/home/pic/srm.jpg",         category: "Sữa rửa mặt"    },
-    { name: "Micellar Water", img: "assets/images/home/pic/nuoctaytrang.jpg", category: "Nước tẩy trang" },
+    { name: "Sữa Rửa Mặt",   img: "assets/images/home/pic/srm.jpg",         category: "Sữa rửa mặt"    },
+    { name: "Nước Tẩy Trang", img: "assets/images/home/pic/nuoctaytrang.jpg", category: "Nước tẩy trang" },
     { name: "Toner",          img: "assets/images/home/pic/toner.jpg",        category: "Tonner"          },
-    { name: "Sunscreen",      img: "assets/images/home/pic/kcn.jpg",          category: "Kem chống nắng" },
-    { name: "Moisturizer",    img: "assets/images/home/pic/kemduong.jpg",     category: "Kem dưỡng"      },
+    { name: "Kem Chống Nắng", img: "assets/images/home/pic/kcn.jpg",          category: "Kem chống nắng" },
+    { name: "Kem Dưỡng",      img: "assets/images/home/pic/kemduong.jpg",     category: "Kem dưỡng"      },
   ];
 
   const brands = [
@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const bestSellers = [
-    { id: 1,  name: "Sữa rửa mặt",                                                               price: "$22.00",  badge: "Best Seller", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
-    { id: 21, name: "Kem dưỡng La Roche-Posay Cicaplast Baume B5+",                              price: "365.000", badge: "Hot",          img: "assets/images/products/kem-duong/21.1.jpg" },
-    { id: 41, name: "Nước cân bằng Bioderma",                                                    price: "360.000", badge: "Trending",     img: "assets/images/products/toner/41.1.jpg" },
-    { id: 61, name: "Kem Chống Nắng Skin1004 Madagascar Centella Air-Fit Suncream Plus",          price: "465.000", badge: "Popular",      img: "assets/images/products/kem-chong-nang/61.1.jpg" },
-    { id: 81, name: "Nước Tẩy Trang Cocoon Bí Đao",                                              price: "299.000", badge: "New",          img: "assets/images/products/nuoc-tay-trang/81.1.jpg" },
+    { id: 1,  name: "Sữa rửa mặt",                                                      price: "$22.00",  badge: "Bán Chạy", img: "assets/images/products/sua-rua-mat/1.1.jpg" },
+    { id: 21, name: "Kem dưỡng La Roche-Posay Cicaplast Baume B5+",                     price: "365.000", badge: "Hot",       img: "assets/images/products/kem-duong/21.1.jpg" },
+    { id: 41, name: "Nước cân bằng Bioderma",                                           price: "360.000", badge: "Xu Hướng", img: "assets/images/products/toner/41.1.jpg" },
+    { id: 61, name: "Kem Chống Nắng Skin1004 Madagascar Centella Air-Fit Suncream Plus", price: "465.000", badge: "Phổ Biến", img: "assets/images/products/kem-chong-nang/61.1.jpg" },
+    { id: 81, name: "Nước Tẩy Trang Cocoon Bí Đao",                                     price: "299.000", badge: "Mới",      img: "assets/images/products/nuoc-tay-trang/81.1.jpg" },
   ];
 
   const news = [
@@ -234,7 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let sliderTimer;
 
   if (banners.length && dotsContainer) {
-    // Tạo dots
     banners.forEach((_, i) => {
       const dot = document.createElement("button");
       dot.className = "slider-dot" + (i === 0 ? " active" : "");
@@ -263,4 +262,27 @@ document.addEventListener("DOMContentLoaded", () => {
     resetTimer();
   }
 
+});
+
+/* =========================================
+   POPUP
+========================================= */
+setTimeout(() => {
+  document.getElementById("popupOverlay").classList.add("active");
+}, 1000);
+
+document.getElementById("popupClose").addEventListener("click", (e) => {
+  e.stopPropagation();
+  document.getElementById("popupOverlay").classList.remove("active");
+});
+
+document.getElementById("popupOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "popupOverlay") {
+    document.getElementById("popupOverlay").classList.remove("active");
+  }
+});
+
+document.querySelector(".popup-box a").addEventListener("click", (e) => {
+  e.stopPropagation();
+  window.location.href = "/pages/promotion/html/promotion.html";
 });

@@ -5,7 +5,7 @@
     "category": "Skincare Tips",
     "date": "15/05/2025",
     "author": "Nghien Beauty",
-    "img": "../../../assets/images/home/pic/tintuc1.png",
+    "img":  "/assets/images/news/tintuc1.png",
     "desc": "Dùng kem chống nắng đúng cách sẽ giúp da luôn khỏe mạnh, hạn chế lão hóa và bảo vệ da trước tia UV.",
     "content": [
       {
@@ -32,7 +32,7 @@
     "category": "Thành Phần",
     "date": "10/05/2025",
     "author": "Nghien Beauty",
-    "img": "../../../assets/images/home/pic/tintuc2.png",
+    "img": "/assets/images/news/tintuc2.png",
     "desc": "Serum Vitamin C hỗ trợ phục hồi da, làm sáng da và giúp da căng bóng tự nhiên hơn mỗi ngày.",
     "content": [
       {
@@ -59,7 +59,7 @@
     "category": "Skincare Routine",
     "date": "05/05/2025",
     "author": "Nghien Beauty",
-    "img": "../../../assets/images/home/pic/tintuc3.jpg",
+    "img": "/assets/images/news/tintuc3.jpg",
     "desc": "Các bước chăm sóc da cơ bản giúp giảm kích ứng, phục hồi và bảo vệ làn da nhạy cảm hiệu quả.",
     "content": [
       {

@@ -48,7 +48,7 @@ async function fetchNews() {
 // RENDER ARTICLE
 // =========================
 function renderArticle(article) {
-  breadcrumbTitle.textContent = article.title;
+  breadcrumbTitle.textContent = "Tin tức chi tiết";
   articleImg.src              = article.img;
   articleImg.alt              = article.title;
   articleCategory.textContent = article.category;
