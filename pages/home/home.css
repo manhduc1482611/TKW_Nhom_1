@@ -284,9 +284,16 @@
 .promo-banner-2 { background: linear-gradient(90deg, #fff5f7, #ffd9e4); }
 .promo-banner-2 .promo-img { mix-blend-mode: darken; opacity: 0.92; }
 
-.promo-content { width: 40%; z-index: 2; }
+.promo-content {
+  width: 40%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
 .promo-sale {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
   font-weight: 600;
   margin-bottom: 0.8rem;
