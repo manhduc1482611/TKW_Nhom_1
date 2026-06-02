@@ -54,6 +54,17 @@
     gap: 6px;
     font-weight: 400;
 }
+/* Thêm đoạn này vào cuối file header.css */
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px; /* Giúp tên tài khoản và nút Đăng xuất cách nhau ra */
+}
+
+#header-logout-btn {
+    cursor: pointer;
+}
 
 .topbar-right a:hover {
     color: #d4a373; /* Chuyển sang màu vàng đồng/hồng khi hover */
