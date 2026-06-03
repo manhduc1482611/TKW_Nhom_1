@@ -96,9 +96,9 @@
     "salePrice": 320000,
     "stock": 200,
     "volumes": [
+      "50ml",
       "200ml",
-      "400ml",
-      "50ml"
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/sua-rua-mat/5.1.jpg",
@@ -234,9 +234,9 @@
     "salePrice": 280000,
     "stock": 300,
     "volumes": [
+      "125ml",
       "250ml",
-      "500ml",
-      "125ml"
+      "500ml"
     ],
     "images": [
       "../../../assets/images/products/sua-rua-mat/11.1.jpg",
@@ -1007,8 +1007,8 @@
     "salePrice": 300000,
     "stock": 160,
     "volumes": [
-      "250ml",
-      "100ml"
+      "100ml",
+      "250ml"
     ],
     "images": [
       "../../../assets/images/products/toner/46.1.jpg",
@@ -1074,8 +1074,8 @@
     "salePrice": 185000,
     "stock": 180,
     "volumes": [
-      "170ml",
-      "100ml"
+      "100ml",
+      "170ml"
     ],
     "images": [
       "../../../assets/images/products/toner/49.1.jpg",
@@ -1097,8 +1097,8 @@
     "salePrice": 200000,
     "stock": 150,
     "volumes": [
-      "170ml",
-      "100ml"
+      "100ml",
+      "170ml"
     ],
     "images": [
       "../../../assets/images/products/toner/50.1.jpg",
@@ -1782,8 +1782,8 @@
     "salePrice": 199000,
     "stock": 277,
     "volumes": [
-      "500ml",
-      "140ml"
+      "140ml",
+      "500ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/81.1.jpg",
@@ -1805,8 +1805,8 @@
     "salePrice": 344000,
     "stock": 344,
     "volumes": [
-      "400ml",
-      "75ml"
+      "75ml",
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/82.1.jpg",
@@ -1850,9 +1850,9 @@
     "salePrice": 408000,
     "stock": 312,
     "volumes": [
-      "400ml",
+      "50ml",
       "200ml",
-      "50ml"
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/84.1.jpg",
@@ -1940,9 +1940,9 @@
     "salePrice": 368000,
     "stock": 313,
     "volumes": [
-      "500ml",
+      "100ml",
       "250ml",
-      "100ml"
+      "500ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/88.1.jpg",
@@ -2009,8 +2009,8 @@
     "salePrice": 346000,
     "stock": 269,
     "volumes": [
-      "400ml",
-      "200ml"
+      "200ml",
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/91.1.jpg",
@@ -2032,9 +2032,9 @@
     "salePrice": 286000,
     "stock": 304,
     "volumes": [
-      "500ml",
+      "140ml",
       "310ml",
-      "140ml"
+      "500ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/92.1.jpg",
@@ -2078,8 +2078,8 @@
     "salePrice": 346000,
     "stock": 312,
     "volumes": [
-      "400ml",
-      "200ml"
+      "200ml",
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/94.1.jpg",
@@ -2101,8 +2101,8 @@
     "salePrice": 196000,
     "stock": 200,
     "volumes": [
-      "400ml",
-      "230ml"
+      "230ml",
+      "400ml"
     ],
     "images": [
       "../../../assets/images/products/nuoc-tay-trang/95.1.jpg",

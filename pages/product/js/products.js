@@ -1,780 +1,387 @@
-// =========================
-// GET BRAND FROM URL
-// (khi click từ trang chủ vào)
-// =========================
+// =====================================================
+// PRODUCT LIST PAGE
+// Trang danh sách sản phẩm
+// =====================================================
 
-const urlParams = new URLSearchParams(
-    window.location.search
-);
+// Read filter values from URL.
+// Đọc giá trị lọc từ URL khi người dùng bấm từ trang khác sang.
+const urlParams = new URLSearchParams(window.location.search);
+const brandFromUrl = urlParams.get("brand");
+const categoryFromUrl = urlParams.get("category");
 
-const brandFromUrl    = urlParams.get("brand");    // vd: "La Roche-Posay"
-const categoryFromUrl = urlParams.get("category"); // vd: "Sữa rửa mặt"
-
-
-// =========================
-// ELEMENTS
-// =========================
-
+// DOM elements.
+// Các phần tử HTML cần dùng trong trang.
 const productsGrid = document.getElementById("productsGrid");
-
 const searchInput = document.getElementById("searchInput");
-
 const brandFilter = document.getElementById("brandFilter");
-
 const sortPrice = document.getElementById("sortPrice");
-
 const pagination = document.getElementById("pagination");
-
 const suggestionList = document.getElementById("suggestionList");
-
-const categoryItems = document.querySelectorAll(
-    ".sidebar-box li"
-);
+const categoryItems = document.querySelectorAll(".sidebar-box li");
 const pageTitle = document.getElementById("pageTitle");
-
 const toolbarTitle = document.getElementById("toolbarTitle");
+const breadcrumbTitle = document.getElementById("breadcrumbTitle");
 
-const breadcrumbTitle = document.getElementById(
-    "breadcrumbTitle"
-);
-
-
-// =========================
-// DATA
-// =========================
-
+// Page state.
+// Trạng thái hiện tại của trang.
 let allProducts = [];
-
 let filteredProducts = [];
-
 let currentPage = 1;
+let currentCategory = "all";
 
 const productsPerPage = 9;
 
-let currentCategory = "all";
-
-
-// =========================
-// FORMAT PRICE
-// =========================
-
-function formatPrice(price){
-
+// Format number to Vietnamese currency.
+// Định dạng số thành tiền Việt Nam.
+function formatPrice(price) {
     return price.toLocaleString("vi-VN") + "đ";
-
 }
 
-
-// =========================
-// LOADING
-// =========================
-
-function renderLoading(){
-
+function renderLoading() {
     productsGrid.innerHTML = `
-    
         <div class="empty-message">
             Đang tải sản phẩm...
         </div>
-
     `;
-
 }
 
+function renderEmpty(message) {
+    productsGrid.innerHTML = `
+        <div class="empty-message">
+            ${message}
+        </div>
+    `;
+}
 
-// =========================
-// FETCH PRODUCTS
-// =========================
+// Update page titles when category or brand changes.
+// Cập nhật tiêu đề trang khi đổi danh mục hoặc thương hiệu.
+function updatePageTitle(title, breadcrumb = title) {
+    pageTitle.textContent = title.toUpperCase();
+    toolbarTitle.textContent = title;
+    breadcrumbTitle.textContent = breadcrumb;
+}
 
-async function fetchProducts(){
-
-    try{
-
+// Load products from JSON file.
+// Tải dữ liệu sản phẩm từ file JSON.
+async function fetchProducts() {
+    try {
         renderLoading();
 
-        const response = await fetch(
-            "/data/products.json"
-        );
-
+        const response = await fetch("/data/products.json");
         const data = await response.json();
 
         allProducts = data;
-
-        // ================================
-        // NẾU CÓ BRAND TỪ URL → set vào
-        // dropdown và cập nhật tiêu đề
-        // ================================
-        if(brandFromUrl){
-
-            // Tìm option khớp với tên brand (so sánh không phân biệt hoa thường)
-            const matchedOption = Array.from(brandFilter.options).find(opt =>
-                opt.value.toLowerCase() === brandFromUrl.toLowerCase()
-            );
-
-            if(matchedOption){
-
-                brandFilter.value = matchedOption.value;
-
-                // Cập nhật tiêu đề trang
-                pageTitle.textContent = matchedOption.value.toUpperCase();
-                toolbarTitle.textContent = matchedOption.value;
-                breadcrumbTitle.textContent = matchedOption.value;
-
-            }
-
-        }
-
-        // ================================
-        // NẾU CÓ CATEGORY TỪ URL → set vào
-        // sidebar và cập nhật tiêu đề
-        // ================================
-        if(categoryFromUrl){
-
-            // Map tên category → text sidebar
-            const categoryMap = {
-                "Sữa rửa mặt":   "Sữa rửa mặt",
-                "Nước tẩy trang": "Nước tẩy trang",
-                "Tonner":         "Tonner",
-                "Kem chống nắng": "Kem chống nắng",
-                "Kem dưỡng":      "Kem dưỡng",
-            };
-
-            currentCategory = categoryFromUrl;
-
-            // Active đúng li trong sidebar
-            categoryItems.forEach(item => {
-                item.classList.remove("active-category");
-                const text = item.innerText.trim();
-                // match tên hiển thị sidebar với category
-                const matchText = categoryMap[categoryFromUrl];
-                if(text === matchText || text === categoryFromUrl){
-                    item.classList.add("active-category");
-                }
-            });
-
-            const displayName = categoryMap[categoryFromUrl] || categoryFromUrl;
-            pageTitle.textContent    = displayName.toUpperCase();
-            toolbarTitle.textContent = displayName;
-            breadcrumbTitle.textContent = displayName;
-
-        }
-
+        setInitialFiltersFromUrl();
         applyFilters();
-
     }
-
-    catch(error){
-
+    catch (error) {
         console.log(error);
-
-        productsGrid.innerHTML = `
-        
-            <div class="empty-message">
-                Không thể tải sản phẩm.
-            </div>
-
-        `;
-
+        renderEmpty("Không thể tải sản phẩm.");
     }
-
 }
 
-
-// =========================
-// APPLY FILTERS
-// =========================
-
-function applyFilters(){
-
-    filteredProducts = [...allProducts];
-
-    // =====================
-    // SEARCH
-    // =====================
-
-    const keyword = searchInput.value
-        .toLowerCase()
-        .trim();
-
-    if(keyword !== ""){
-
-        filteredProducts = filteredProducts.filter(product => {
-
-            return (
-                product.name
-                    .toLowerCase()
-                    .includes(keyword)
-
-                ||
-
-                product.brand
-                    .toLowerCase()
-                    .includes(keyword)
-
-                ||
-
-                product.characteristics
-                    .toLowerCase()
-                    .includes(keyword)
-            );
-
+// Apply brand/category from URL if present.
+// Áp dụng thương hiệu/danh mục từ URL nếu có.
+function setInitialFiltersFromUrl() {
+    if (brandFromUrl) {
+        const matchedOption = Array.from(brandFilter.options).find(option => {
+            return option.value.toLowerCase() === brandFromUrl.toLowerCase();
         });
 
+        if (matchedOption) {
+            brandFilter.value = matchedOption.value;
+            updatePageTitle(matchedOption.value);
+        }
     }
 
+    if (categoryFromUrl) {
+        currentCategory = categoryFromUrl;
+        updateActiveCategory(categoryFromUrl);
+        updatePageTitle(categoryFromUrl);
+    }
+}
 
-    // =====================
-    // CATEGORY
-    // =====================
+// Highlight active category in sidebar.
+// Đánh dấu danh mục đang được chọn ở sidebar.
+function updateActiveCategory(categoryName) {
+    categoryItems.forEach(item => {
+        const text = item.innerText.trim();
+        item.classList.toggle("active-category", text === categoryName);
+    });
+}
 
-    if(currentCategory !== "all"){
+// Filter, search and sort products.
+// Lọc, tìm kiếm và sắp xếp sản phẩm.
+function applyFilters() {
+    const keyword = searchInput.value.toLowerCase().trim();
+    const selectedBrand = brandFilter.value;
+    const selectedSort = sortPrice.value;
 
-        filteredProducts = filteredProducts.filter(product => {
+    filteredProducts = allProducts.filter(product => {
+        const matchSearch =
+            keyword === ""
+            || product.name.toLowerCase().includes(keyword)
+            || product.brand.toLowerCase().includes(keyword)
+            || product.characteristics.toLowerCase().includes(keyword);
 
-            return product.category === currentCategory;
+        const matchCategory =
+            currentCategory === "all"
+            || product.category === currentCategory;
 
-        });
+        const matchBrand =
+            selectedBrand === "all"
+            || product.brand === selectedBrand;
 
+        return matchSearch && matchCategory && matchBrand;
+    });
+
+    if (selectedSort === "low-high") {
+        filteredProducts.sort((a, b) => a.salePrice - b.salePrice);
+    }
+    else if (selectedSort === "high-low") {
+        filteredProducts.sort((a, b) => b.salePrice - a.salePrice);
     }
 
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-    // =====================
-    // BRAND
-    // =====================
-
-    const brand = brandFilter.value;
-
-    if(brand !== "all"){
-
-        filteredProducts = filteredProducts.filter(product => {
-
-            return product.brand === brand;
-
-        });
-
-    }
-
-
-    // =====================
-    // SORT
-    // =====================
-
-    const sort = sortPrice.value;
-
-    if(sort === "low-high"){
-
-        filteredProducts.sort((a, b) => {
-
-            return a.salePrice - b.salePrice;
-
-        });
-
-    }
-
-    else if(sort === "high-low"){
-
-        filteredProducts.sort((a, b) => {
-
-            return b.salePrice - a.salePrice;
-
-        });
-
-    }
-
-
-    // =====================
-    // RESET PAGE
-    // =====================
-
-    if(currentPage > Math.ceil(filteredProducts.length / productsPerPage)){
-
+    if (currentPage > totalPages) {
         currentPage = 1;
-
     }
 
     renderProducts();
-
     renderPagination();
-
     renderSuggestions();
-
 }
 
-
-// =========================
-// RENDER PRODUCTS
-// =========================
-
-function renderProducts(){
-
+// Render product cards for current page.
+// Hiển thị danh sách sản phẩm theo trang hiện tại.
+function renderProducts() {
     productsGrid.innerHTML = "";
 
-    // empty
-    if(filteredProducts.length === 0){
-
-        productsGrid.innerHTML = `
-        
-            <div class="empty-message">
-                Không tìm thấy sản phẩm phù hợp.
-            </div>
-
-        `;
-
+    if (filteredProducts.length === 0) {
+        renderEmpty("Không tìm thấy sản phẩm phù hợp.");
         return;
-
     }
 
-    // pagination
     const start = (currentPage - 1) * productsPerPage;
-
     const end = start + productsPerPage;
+    const currentProducts = filteredProducts.slice(start, end);
 
-    const currentProducts = filteredProducts.slice(
-        start,
-        end
-    );
-
-    // render
     currentProducts.forEach(product => {
-
         const discount = Math.round(
-
-            ((product.price - product.salePrice)
-            / product.price) * 100
-
+            ((product.price - product.salePrice) / product.price) * 100
         );
 
         productsGrid.innerHTML += `
-
             <div class="product-card">
-
-                <!-- IMAGE -->
                 <div class="product-image">
-
                     <a href="./product-detail.html?id=${product.id}">
-
-                        <img
-                            src="${product.images[0]}"
-                            alt="${product.name}"
-                        >
-
+                        <img src="${product.images[0]}" alt="${product.name}">
                     </a>
-
-                    <span class="discount-badge">
-
-                        -${discount}%
-
-                    </span>
-
+                    <span class="discount-badge">-${discount}%</span>
                 </div>
 
-                <!-- INFO -->
                 <div class="product-info">
-
-                    <p class="product-brand">
-
-                        ${product.brand}
-
-                    </p>
-
-                    <h3 class="product-name">
-
-                        ${product.name}
-
-                    </h3>
-
-                    <p class="product-characteristics">
-
-                        ${product.characteristics}
-
-                    </p>
+                    <p class="product-brand">${product.brand}</p>
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-characteristics">${product.characteristics}</p>
 
                     <div class="product-price">
-
-                        <span class="sale-price">
-
-                            ${formatPrice(product.salePrice)}
-
-                        </span>
-
-                        <span class="old-price">
-
-                            ${formatPrice(product.price)}
-
-                        </span>
-
+                        <span class="sale-price">${formatPrice(product.salePrice)}</span>
+                        <span class="old-price">${formatPrice(product.price)}</span>
                     </div>
 
-                    <a
-                        href="./product-detail.html?id=${product.id}"
-                        class="detail-btn"
-                    >
-
+                    <a href="./product-detail.html?id=${product.id}" class="detail-btn">
                         Xem chi tiết
-
                     </a>
-
                 </div>
-
             </div>
-
         `;
-
     });
-
 }
 
-
-// =========================
-// RENDER RELATED PRODUCTS
-// =========================
-
-function renderSuggestions(){
-
-    if(!suggestionList){
-
+// Render suggested products in sidebar.
+// Hiển thị sản phẩm gợi ý ở cột bên trái.
+function renderSuggestions() {
+    if (!suggestionList) {
         return;
-
     }
 
     let suggestedProducts = [...allProducts];
 
-    if(currentCategory !== "all"){
-
+    if (currentCategory !== "all") {
         suggestedProducts = suggestedProducts.filter(product => {
-
             return product.category === currentCategory;
-
         });
-
     }
 
-    suggestedProducts = suggestedProducts.sort((a, b) => {
+    suggestedProducts.sort((a, b) => b.stock - a.stock);
 
-        return b.stock - a.stock;
-
-    });
-
-    // lấy 9 sản phẩm để sidebar kéo dài gần bằng lưới sản phẩm trước phân trang
+    // Use productsPerPage so the sidebar is close to the product grid height.
+    // Dùng productsPerPage để phần gợi ý kéo dài gần bằng lưới sản phẩm.
     const slicedProducts = suggestedProducts.slice(0, productsPerPage);
 
-    if(slicedProducts.length === 0){
-
+    if (slicedProducts.length === 0) {
         suggestionList.innerHTML = `
-        
             <p class="suggestion-empty">
                 Chưa có sản phẩm gợi ý.
             </p>
-
         `;
-
         return;
-
     }
 
     suggestionList.innerHTML = "";
 
     slicedProducts.forEach(product => {
-
         suggestionList.innerHTML += `
-
-            <a
-                href="./product-detail.html?id=${product.id}"
-                class="related-card"
-            >
-
-                <img
-                    src="${product.images[0]}"
-                    alt="${product.name}"
-                >
+            <a href="./product-detail.html?id=${product.id}" class="related-card">
+                <img src="${product.images[0]}" alt="${product.name}">
 
                 <div class="related-info">
-
-                    <h3>
-                        ${product.name}
-                    </h3>
-
+                    <h3>${product.name}</h3>
                     <div class="related-price">
-                        ${formatPrice(
-                            product.salePrice
-                        )}
+                        ${formatPrice(product.salePrice)}
                     </div>
-
                 </div>
-
             </a>
-
         `;
-
     });
-
 }
 
-
-// =========================
-// PAGINATION
-// =========================
-
-function renderPagination(){
-
+// Render pagination buttons.
+// Hiển thị các nút phân trang.
+function renderPagination() {
     pagination.innerHTML = "";
 
-    const totalPages = Math.ceil(
-        filteredProducts.length / productsPerPage
-    );
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-    // không cần pagination
-    if(totalPages <= 1){
-
+    if (totalPages <= 1) {
         return;
-
     }
 
-    // =====================
-    // CREATE BUTTON
-    // =====================
-
-    function createButton(text, page, active = false){
-
-        const button = document.createElement("button");
-
-        button.innerText = text;
-
-        if(active){
-
-            button.classList.add("active");
-
-        }
-
-        button.addEventListener("click", () => {
-
-            currentPage = page;
-
-            renderProducts();
-
-            renderPagination();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        });
-
-        pagination.appendChild(button);
-
+    if (currentPage > 1) {
+        createPageButton("← Trang trước", currentPage - 1);
     }
 
-    // =====================
-    // PREVIOUS
-    // =====================
+    createPageButton(1, 1, currentPage === 1);
 
-    if(currentPage > 1){
-
-        createButton(
-            "← Trang trước",
-            currentPage - 1
-        );
-
+    if (currentPage > 3) {
+        createDots();
     }
 
-    // =====================
-    // FIRST PAGE
-    // =====================
-
-    createButton(
-        1,
-        1,
-        currentPage === 1
-    );
-
-    // =====================
-    // DOTS LEFT
-    // =====================
-
-    if(currentPage > 3){
-
-        const dots = document.createElement("span");
-
-        dots.innerText = "...";
-
-        pagination.appendChild(dots);
-
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+        createPageButton(i, i, currentPage === i);
     }
 
-    // =====================
-    // PAGES AROUND CURRENT
-    // =====================
-
-    for(
-        let i = Math.max(2, currentPage - 1);
-
-        i <= Math.min(totalPages - 1, currentPage + 1);
-
-        i++
-    ){
-
-        createButton(
-            i,
-            i,
-            currentPage === i
-        );
-
+    if (currentPage < totalPages - 2) {
+        createDots();
     }
 
-    // =====================
-    // DOTS RIGHT
-    // =====================
-
-    if(currentPage < totalPages - 2){
-
-        const dots = document.createElement("span");
-
-        dots.innerText = "...";
-
-        pagination.appendChild(dots);
-
+    if (totalPages > 1) {
+        createPageButton(totalPages, totalPages, currentPage === totalPages);
     }
 
-    // =====================
-    // LAST PAGE
-    // =====================
-
-    if(totalPages > 1){
-
-        createButton(
-            totalPages,
-            totalPages,
-            currentPage === totalPages
-        );
-
+    if (currentPage < totalPages) {
+        createPageButton("Trang sau →", currentPage + 1);
     }
-
-    // =====================
-    // NEXT
-    // =====================
-
-    if(currentPage < totalPages){
-
-        createButton(
-            "Trang sau →",
-            currentPage + 1
-        );
-
-    }
-
 }
 
+function createPageButton(text, page, active = false) {
+    const button = document.createElement("button");
 
-// =========================
-// SIDEBAR CATEGORY
-// =========================
+    button.innerText = text;
 
-categoryItems.forEach(item => {
+    if (active) {
+        button.classList.add("active");
+    }
 
-    item.addEventListener("click", () => {
+    button.addEventListener("click", () => {
+        currentPage = page;
+        renderProducts();
+        renderPagination();
 
-        // active
-        categoryItems.forEach(li => {
-
-            li.classList.remove("active-category");
-
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
-
-        item.classList.add("active-category");
-
-        // category
-        const text = item.innerText.trim();
-
-        switch(text){
-
-            case "Sữa rửa mặt":
-                currentCategory = "Sữa rửa mặt";
-                break;
-
-            case "Tonner":
-                currentCategory = "Tonner";
-                break;
-
-            case "Kem dưỡng":
-                currentCategory = "Kem dưỡng";
-                break;
-
-            case "Kem chống nắng":
-                currentCategory = "Kem chống nắng";
-                break;
-
-            case "Nước tẩy trang":
-                currentCategory = "Nước tẩy trang";
-                break;
-
-            default:
-                currentCategory = "all";
-
-        }
-
-        // update titles
-        let displayTitle = text;
-
-        if(text === "Tất cả sản phẩm"){
-            displayTitle = "Tất cả sản phẩm";
-        }
-
-        pageTitle.textContent = displayTitle.toUpperCase();
-        toolbarTitle.textContent = displayTitle;
-        breadcrumbTitle.textContent = displayTitle;
-
-        currentPage = 1;
-
-        applyFilters();
-
     });
 
+    pagination.appendChild(button);
+}
+
+function createDots() {
+    const dots = document.createElement("span");
+    dots.innerText = "...";
+    pagination.appendChild(dots);
+}
+
+// Convert sidebar text to category value.
+// Đổi chữ ở sidebar thành giá trị danh mục dùng để lọc.
+function getCategoryFromText(text) {
+    switch (text) {
+        case "Sữa rửa mặt":
+        case "Tonner":
+        case "Kem dưỡng":
+        case "Kem chống nắng":
+        case "Nước tẩy trang":
+            return text;
+        default:
+            return "all";
+    }
+}
+
+// Sidebar category click.
+// Xử lý khi bấm danh mục bên trái.
+categoryItems.forEach(item => {
+    item.addEventListener("click", () => {
+        const text = item.innerText.trim();
+
+        categoryItems.forEach(li => li.classList.remove("active-category"));
+        item.classList.add("active-category");
+
+        currentCategory = getCategoryFromText(text);
+        currentPage = 1;
+
+        if (currentCategory === "all") {
+            updatePageTitle("Tất cả sản phẩm", "Sản phẩm");
+        }
+        else {
+            updatePageTitle(currentCategory);
+        }
+
+        applyFilters();
+    });
 });
 
-
-// =========================
-// EVENTS
-// =========================
-
+// Search input event.
+// Sự kiện tìm kiếm sản phẩm.
 searchInput.addEventListener("input", () => {
-
     currentPage = 1;
-
     applyFilters();
-
 });
 
+// Brand select event.
+// Sự kiện lọc theo thương hiệu.
 brandFilter.addEventListener("change", () => {
-
     currentPage = 1;
 
-    // Cập nhật tiêu đề khi đổi brand thủ công
-    const selectedBrand = brandFilter.value;
-
-    if(selectedBrand === "all"){
-        pageTitle.textContent = "TẤT CẢ SẢN PHẨM";
-        toolbarTitle.textContent = "Tất cả sản phẩm";
-        breadcrumbTitle.textContent = "Sản phẩm";
-    } else {
-        pageTitle.textContent = selectedBrand.toUpperCase();
-        toolbarTitle.textContent = selectedBrand;
-        breadcrumbTitle.textContent = selectedBrand;
+    if (brandFilter.value === "all") {
+        updatePageTitle("Tất cả sản phẩm", "Sản phẩm");
+    }
+    else {
+        updatePageTitle(brandFilter.value);
     }
 
     applyFilters();
-
 });
 
+// Sort select event.
+// Sự kiện sắp xếp theo giá.
 sortPrice.addEventListener("change", () => {
-
+    currentPage = 1;
     applyFilters();
-
 });
 
-
-// =========================
-// INIT
-// =========================
-
+// Start page.
+// Khởi chạy trang.
 fetchProducts();
