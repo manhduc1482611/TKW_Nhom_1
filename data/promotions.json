@@ -1,0 +1,41 @@
+{
+    "LANDAU": {
+        "type": "always",
+        "discountRate": 0.1,
+        "name": "Ghé Thăm Lần Đầu"
+    },
+    "LAROCHE": {
+        "type": "yearly-monthly",
+        "month": 6,
+        "startDay": 1,
+        "endDay": 30,
+        "discountRate": 0.05,
+        "isBrandSpecific": true,
+        "brand": "La Roche-Posay",
+        "name": "Tuần lễ La Roche-Posay"
+    },
+    "VALENTINE20": {
+        "type": "yearly",
+        "month": 2,
+        "date": 14,
+        "discountRate": 0.2,
+        "minOrder": 300000,
+        "name": "Valentine 14/2"
+    },
+    "FLASHSALE": {
+        "type": "daily",
+        "startHour": 0,
+        "endHour": 23,
+        "discountRate": 0.3,
+        "minOrder": 500000,
+        "name": "Flash Sale Giờ Vàng"
+    },
+    "WOMEN83": {
+        "type": "yearly",
+        "month": 3,
+        "date": 8,
+        "discountRate": 0.15,
+        "minOrder": 200000,
+        "name": "Quốc tế Phụ nữ 8/3"
+    }
+}

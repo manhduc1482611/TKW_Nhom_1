@@ -56,14 +56,16 @@ body {
 
 .article-hero {
   position: relative;
-  height: 420px;
+  height: auto;
+  width: 100%;
   overflow: hidden;
 }
 
 .article-hero img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .article-category {
@@ -80,9 +82,17 @@ body {
 }
 
 /* TRẠNG THÁI BADGE ĐỘNG */
-.st-active { background: linear-gradient(to right, #2e7d32, #4caf50); }
-.st-upcoming { background: linear-gradient(to right, #e65100, #ff9800); }
-.st-ended { background: linear-gradient(to right, #c62828, #ef5350); }
+.st-active { 
+  background: linear-gradient(to right, #2e7d32, #4caf50); 
+}
+
+.st-upcoming { 
+  background: linear-gradient(to right, #e65100, #ff9800); 
+}
+
+.st-ended { 
+  background: linear-gradient(to right, #c62828, #ef5350); 
+}
 
 .article-meta {
   display: flex;

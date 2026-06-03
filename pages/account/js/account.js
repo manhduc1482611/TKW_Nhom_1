@@ -1,15 +1,15 @@
-// ===== KIỂM TRA ĐĂNG NHẬP =====
+// ===== KIỂM TRA ĐĂNG NHẬP HỆ THỐNG =====
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 if (!currentUser) {
     window.location.href = 'Login.html';
 }
 
-// ===== HIỂN THỊ THÔNG TIN USER =====
+// ===== HIỂN THỊ THÔNG TIN USER ĐĂNG NHẬP =====
 function loadUserInfo() {
     if (!currentUser) return;
 
-    // Sidebar
+    // Ảnh đại diện Sidebar lấy chữ cái đầu
     const avatarEl = document.querySelector('#user-avatar');
     const initial = currentUser.fullname ? currentUser.fullname.charAt(0).toUpperCase() : '?';
     if (avatarEl) avatarEl.textContent = initial;
@@ -20,46 +20,87 @@ function loadUserInfo() {
     const userEmailEl = document.getElementById('user-email');
     if (userEmailEl) userEmailEl.textContent = currentUser.email || 'Chưa cập nhật';
 
-    // Header welcome
+    // Tiêu đề Welcome
     const welcomeTitle = document.getElementById('welcome-title');
     if (welcomeTitle) welcomeTitle.textContent = `Xin chào, ${currentUser.fullname || 'bạn'}!`;
 
-    // Tab thông tin chung
+    // Điền text vào Tab thông tin chung
     document.getElementById('display-name').textContent    = currentUser.fullname || 'Chưa cập nhật';
     document.getElementById('display-email').textContent   = currentUser.email    || 'Chưa cập nhật';
     document.getElementById('display-phone').textContent   = currentUser.phone    || 'Chưa cập nhật';
     document.getElementById('display-address').textContent = currentUser.address  || 'Chưa cập nhật';
 
-    // Pre-fill form chỉnh sửa
+    // Đẩy sẵn text vào form input chỉnh sửa
     document.getElementById('input-name').value    = currentUser.fullname || '';
     document.getElementById('input-email').value   = currentUser.email    || '';
     document.getElementById('input-phone').value   = currentUser.phone    || '';
     document.getElementById('input-address').value = currentUser.address  || '';
 }
 
-// ===== CHUYỂN TAB =====
-function switchTab(tabName) {
-    document.querySelectorAll('.tab-page').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+// ===== LẤY ĐƠN HÀNG VÀ TỰ ĐỘNG GÁN TRẠNG THÁI "ĐANG XỬ LÝ" =====
+function loadUserOrders() {
+    const tableBody = document.getElementById("orders-list-body");
+    if (!tableBody || !currentUser) return;
 
-    const targetTab = document.getElementById('tab-' + tabName);
-    if (targetTab) targetTab.classList.add('active');
+    // Lấy toàn bộ danh sách đơn hàng đã được checkout.js lưu
+    const allOrders = JSON.parse(localStorage.getItem("ordersList")) || [];
 
-    const targetMenu = document.querySelector(`.menu-item[data-tab="${tabName}"]`);
-    if (targetMenu) targetMenu.classList.add('active');
+    // Chỉ lọc ra những đơn hàng trùng với Email của tài khoản đang đăng nhập hiện tại
+    const myOrders = allOrders.filter(order => order.customer && order.customer.email === currentUser.email);
+
+    if (myOrders.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" class="no-orders-text">Bạn chưa thực hiện đơn hàng nào!</td></tr>`;
+        return;
+    }
+
+    // Sắp xếp đơn hàng mới đặt nhất lên trên cùng đầu tiên
+    myOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    tableBody.innerHTML = myOrders.map(order => {
+        // Chuyển đổi định dạng ISO time sang hiển thị giờ/ngày/tháng thân thiện
+        const orderDate = new Date(order.createdAt).toLocaleDateString('vi-VN', {
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit'
+        });
+
+        // Nối chuỗi danh sách sản phẩm trong đơn hàng
+        const itemsSummary = order.items.map(item => `${item.name} (x${item.quantity})`).join(", ");
+        
+        // Cấu hình nhãn trạng thái đơn hàng mặc định khi vừa thanh toán xong
+        let statusText = order.status || "Đang xử lý";
+        let statusClass = "status-processing";
+
+        if (statusText === "Đã hoàn thành" || statusText === "Thành công") {
+            statusClass = "status-completed";
+        }
+
+        return `
+            <tr>
+                <td><strong>${order.id}</strong></td>
+                <td>${orderDate}</td>
+                <td class="product-cell-ellipsis" title="${itemsSummary}">${itemsSummary}</td>
+                <td style="color: #ff4f8b; font-weight: 600;">${order.summary.totalPayment.toLocaleString('vi-VN')}đ</td>
+                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+            </tr>
+        `;
+    }).join('');
 }
 
-// ===== LƯU HỒ SƠ =====
+// ===== XỬ LÝ LƯU THAY ĐỔI HỒ SƠ CÁ NHÂN =====
 function saveProfile() {
     const updatedUser = {
-        ...currentUser,
         fullname: document.getElementById('input-name').value.trim(),
         email:    document.getElementById('input-email').value.trim(),
         phone:    document.getElementById('input-phone').value.trim(),
         address:  document.getElementById('input-address').value.trim(),
     };
 
-    // Cập nhật trong mảng users
+    if (!updatedUser.fullname) {
+        alert("Họ và tên không được để trống!");
+        return;
+    }
+
+    // Cập nhật trong mảng danh sách người dùng tổng cục
     let users = JSON.parse(localStorage.getItem('users')) || [];
     const idx = users.findIndex(u => u.email === currentUser.email);
     if (idx !== -1) {
@@ -67,21 +108,25 @@ function saveProfile() {
         localStorage.setItem('users', JSON.stringify(users));
     }
 
-    // Cập nhật currentUser
+    // Đồng bộ cập nhật vào phiên đang đăng nhập
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
 
-    // Reload lại thông tin hiển thị
+    // Cập nhật lại Object hiện tại và vẽ lại giao diện thông tin mới
     Object.assign(currentUser, updatedUser);
     loadUserInfo();
+    loadUserOrders();
 
-    alert("Lưu thay đổi thành công!");
+    alert("Lưu thay đổi thông tin tài khoản thành công!");
     switchTab('thongtin');
 }
 
-// ===== ĐĂNG XUẤT =====
-document.querySelector('.logout').addEventListener('click', function() {
-    document.getElementById('logoutModal').classList.add('active');
-});
+// ===== XỬ LÝ HỘP THOẠI ĐĂNG XUẤT =====
+const logoutBtn = document.querySelector('.logout');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+        document.getElementById('logoutModal').classList.add('active');
+    });
+}
 
 function closeLogoutModal() {
     document.getElementById('logoutModal').classList.remove('active');
@@ -92,17 +137,34 @@ function confirmLogout() {
     window.location.href = 'Login.html';
 }
 
-// Đóng modal khi click ra ngoài
-document.getElementById('logoutModal').addEventListener('click', function(e) {
-    if (e.target === this) closeLogoutModal();
-});
+const logoutModal = document.getElementById('logoutModal');
+if (logoutModal) {
+    logoutModal.addEventListener('click', function(e) {
+        if (e.target === this) closeLogoutModal();
+    });
+}
 
-// ===== GẮN SỰ KIỆN MENU =====
-document.querySelectorAll('.menu-item[data-tab]').forEach(item => {
+// ===== LOGIC CHUYỂN ĐỔI TAB NỘI DUNG =====
+function switchTab(tabId) {
+    document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+    const activeMenu = document.querySelector(`.menu-item[data-tab="${tabId}"]`);
+    if (activeMenu) activeMenu.classList.add('active');
+
+    const activeContent = document.getElementById(`tab-${tabId}`);
+    if (activeContent) activeContent.classList.add('active');
+}
+
+document.querySelectorAll('.menu-item:not(.logout)').forEach(item => {
     item.addEventListener('click', function() {
-        switchTab(this.dataset.tab);
+        const tabId = this.getAttribute('data-tab');
+        switchTab(tabId);
     });
 });
 
-// ===== KHỞI CHẠY =====
-loadUserInfo();
+// ===== KHỞI ĐỘNG KHI TẢI XONG TRANG =====
+document.addEventListener("DOMContentLoaded", () => {
+    loadUserInfo();
+    loadUserOrders();
+});

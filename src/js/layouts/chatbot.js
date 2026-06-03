@@ -37,7 +37,7 @@ chatbotCloseBtn.addEventListener("click", function () {
 // 3. Khởi tạo lời chào ban đầu cho chatbot
 function initChatbot() {
     chatbotMessages.innerHTML = "";
-    addMessage("Xin chào quý khách thân yêu! Mình là trợ lý Nghien Beauty hỗ trợ 24/7. Bạn có thể <b>nhập câu hỏi</b> vào ô chat hoặc <b>click chọn chủ đề nhanh</b> nhé:", "bot");
+    addMessage("Xin chào quý khách thân yêu! Mình là trợ lý Nghien Skincare hỗ trợ 24/7. Bạn có thể <b>nhập câu hỏi</b> vào ô chat hoặc <b>click chọn chủ đề nhanh</b> nhé:", "bot");
     showMainQuestions();
 }
 
@@ -74,21 +74,18 @@ function showMainQuestions() {
     });
 }
 
-// 5. Xử lý khi nhấn CÂU HỎI CHÍNH (VD: 1) -> Bot trả lời câu 1 -> Sau đó hiện nút 1.1, 1.2...
+// 5. Xử lý khi nhấn CÂU HỎI CHÍNH -> Bot trả lời -> Hiện danh sách câu hỏi phụ
 function handleMainQuestionSelect(mainItem) {
     addMessage(mainItem.q, "user");
     const indicator = showTypingIndicator();
 
     setTimeout(() => {
         indicator.remove();
-        // Trả lời cho câu hỏi chính
         addMessage(mainItem.a, "bot");
         
-        // Xóa rỗng để chuẩn bị đề xuất câu hỏi con
         chatbotOptions.innerHTML = "";
         const subQuestions = chatbotData.sub_questions[mainItem.id] || [];
         
-        // Đề xuất thêm các câu 1.1, 1.2, 1.3...
         subQuestions.forEach(item => {
             const btn = document.createElement("button");
             btn.classList.add("option-btn");
@@ -103,14 +100,13 @@ function handleMainQuestionSelect(mainItem) {
     }, 600);
 }
 
-// 6. Xử lý khi lựa chọn CÂU HỎI CON (VD: 1.1)
+// 6. Xử lý khi lựa chọn CÂU HỎI CON
 function handleSubQuestionSelect(subId, question, answer, parentMainItem) {
     addMessage(`[Q.${subId}] ${question}`, "user");
     const indicator = showTypingIndicator();
 
     setTimeout(() => {
         indicator.remove();
-        // Trả lời câu hỏi con
         addMessage(answer, "bot");
         
         chatbotOptions.innerHTML = "";
@@ -119,7 +115,6 @@ function handleSubQuestionSelect(subId, question, answer, parentMainItem) {
         askMoreBtn.classList.add("option-btn");
         askMoreBtn.innerText = `🔄 Xem các câu hỏi khác của mục [${parentMainItem.id}]`;
         askMoreBtn.addEventListener("click", function () {
-            // Quay lại hiển thị danh sách 1.1, 1.2...
             chatbotOptions.innerHTML = "";
             const subQuestions = chatbotData.sub_questions[parentMainItem.id] || [];
             subQuestions.forEach(item => {

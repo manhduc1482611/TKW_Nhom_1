@@ -15,51 +15,66 @@
         <div class="checkout-grid">
             
             <section class="checkout-section">
-                <h2 class="section-title"><i class="fa-solid fa-location-dot"></i> Thông tin giao hàng</h2>
+                <h2 class="section-title">
+                    <i class="fa-solid fa-location-dot"></i> Thông tin giao hàng
+                </h2>
+                
                 <div class="form-group">
                     <label for="customerName">Người nhận</label>
-                    <input type="text" id="customerName" class="checkout-input" value="Nguyễn Mỹ Linh">
+                    <input type="text" id="customerName" class="checkout-input" placeholder="Nhập họ và tên người nhận..." value="">
                 </div>
+                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="customerPhone">Số điện thoại</label>
-                        <input type="text" id="customerPhone" class="checkout-input" placeholder="09xxxxxxxx" value="0912345678">
+                        <input type="text" id="customerPhone" class="checkout-input" placeholder="09xxxxxxxx" value="">
                     </div>
                     <div class="form-group">
                         <label for="customerEmail">Email</label>
-                        <input type="email" id="customerEmail" class="checkout-input" value="mylinh.user@gmail.com">
+                        <input type="email" id="customerEmail" class="checkout-input" placeholder="name@domain.com" value="">
                     </div>
                 </div>
+                
                 <div class="form-row">
                     <div class="form-group">
                         <label>Thành phố</label>
-                        <input type="text" class="checkout-input" value="Hà Nội" readonly>
+                        <input type="text" class="checkout-input" value="Hà Nội" readonly style="background-color: #f5f5f5; cursor: not-allowed;">
                     </div>
                     <div class="form-group">
                         <label for="customerDistrict">Quận (Nội thành)</label>
                         <select class="checkout-input" id="customerDistrict">
-                            <option value="Hoàn Kiếm">Hoàn Kiếm</option>
                             <option value="Ba Đình">Ba Đình</option>
+                            <option value="Bắc Từ Liêm">Bắc Từ Liêm</option>
+                            <option value="Cầu Giấy">Cầu Giấy</option>
                             <option value="Đống Đa">Đống Đa</option>
                             <option value="Hai Bà Trưng">Hai Bà Trưng</option>
-                            <option value="Cầu Giấy">Cầu Giấy</option>
+                            <option value="Hà Đông">Hà Đông</option>
+                            <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+                            <option value="Hoàng Mai">Hoàng Mai</option>
+                            <option value="Long Biên">Long Biên</option>
+                            <option value="Nam Từ Liêm">Nam Từ Liêm</option>
                             <option value="Tây Hồ">Tây Hồ</option>
+                            <option value="Thanh Xuân">Thanh Xuân</option>
                         </select>
                         <small class="note-text">Chú ý: Tiệm chỉ giao hỏa tốc trong nội thành Hà Nội</small>
                     </div>
                 </div>
+                
                 <div class="form-group">
                     <label for="customerAddress">Địa chỉ chi tiết</label>
-                    <input type="text" id="customerAddress" class="checkout-input" placeholder="Số nhà, ngõ, tên tòa nhà..." value="Số 12 Tràng Tiền">
+                    <input type="text" id="customerAddress" class="checkout-input" placeholder="Số nhà, ngõ, tên tòa nhà/chung cư..." value="">
                 </div>
+                
                 <div class="form-group">
                     <label for="orderNote">Ghi chú đơn hàng</label>
-                    <textarea id="orderNote" class="checkout-input" rows="3" placeholder="Ghi chú về thời gian nhận hàng hoặc lưu ý cho shipper..."></textarea>
+                    <textarea id="orderNote" class="checkout-input" rows="3" placeholder="Ghi chú về thời gian nhận hàng hoặc lưu ý riêng cho shipper..."></textarea>
                 </div>
             </section>
 
             <section class="checkout-section">
-                <h2 class="section-title"><i class="fa-solid fa-credit-card"></i> Vận chuyển & Thanh toán</h2>
+                <h2 class="section-title">
+                    <i class="fa-solid fa-credit-card"></i> Vận chuyển & Thanh toán
+                </h2>
 
                 <label class="sub-label">Đơn vị vận chuyển</label>
                 <div class="method-card shipping-card active">
@@ -108,10 +123,7 @@
                 
                 <div id="checkoutItemsContainer" class="checkout-items-list"></div>
 
-                <div class="promo-box">
-                    <input type="text" id="promoInput" placeholder="Mã ưu đãi (Thử: BEAUTY)">
-                    <button type="button" id="btnApplyPromo" class="btn-apply">Áp dụng</button>
-                </div>
+                <div id="promotionsListContainer"></div>
 
                 <div class="price-summary-block">
                     <div class="price-row">
@@ -136,10 +148,11 @@
             </aside>
         </div>
     </main>
+
     <div id="chatbot"></div>
     <div id="footer"></div>
+
     <script type="module" src="/src/js/main.js"></script>
-    <script src="checkout-promo.js"></script>
     <script src="checkout.js"></script>
 </body>
 </html>
