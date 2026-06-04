@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng - BeautyStore</title>
+    <title>Giỏ hàng - Nghien Skincare</title>
     <link rel="stylesheet" href="/src/css/main.css">
     <link rel="stylesheet" href="cart.css">
 </head>
@@ -61,12 +61,31 @@
         </div>
     </main>
 
+    <!-- Modal thông báo yêu cầu đăng nhập xịn mịn -->
+    <div id="loginAuthModal" class="auth-modal-overlay" style="display: none;">
+        <div class="auth-modal-box">
+            <button class="auth-modal-close" id="closeAuthModalBtn">&times;</button>
+            
+            <div class="auth-modal-body">
+                <div class="auth-modal-icon">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h2>Yêu cầu đăng nhập</h2>
+                <p>Bạn cần đăng nhập tài khoản Nghien Skincare để tiến hành đặt hàng và nhận nhiều ưu đãi hấp dẫn.</p>
+            </div>
+            
+            <div class="auth-modal-actions">
+                <button class="btn-modal-secondary" id="skipAuthModalBtn">Để sau</button>
+                <a href="/pages/account/html/Login.html" class="btn-primary btn-modal-primary">Đăng nhập ngay</a>
+            </div>
+        </div>
+    </div>
+
     <div id="chatbot"></div>
     <div id="footer"></div>
 
-    <script src="../cart/cart-promo.js"></script>
-    <script src="../../src/js/main.js"></script>
-    <script src="../cart/cart.js"></script>
+    <script type="module" src="../../src/js/main.js"></script>
+    <script src="cart.js"></script>
 </body>
 
 </html>

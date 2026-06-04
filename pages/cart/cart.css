@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CART PAGE STYLES (BeautyStore Pink-Peach Theme Sync)
+   CART PAGE STYLES (Nghien Skincare Pink-Peach Theme Sync)
    Đồng bộ hoàn toàn với variables.css, typography.css, và reset.css
    ========================================================================== */
 
@@ -7,7 +7,6 @@
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-    /* typography.css đã tự động lo phần font-family, màu chữ và nền var(--bg-page) cho body */
 }
 
 /* Nút quay lại danh mục sản phẩm */
@@ -74,7 +73,7 @@
     width: 380px;
     flex-shrink: 0;
     position: sticky;
-    top: 20px; /* Tự động ghim khung tóm tắt khi cuộn trang dọc sản phẩm dài */
+    top: 20px;
 }
 
 /* Khung trạng thái Giỏ hàng trống */
@@ -135,7 +134,7 @@
     box-shadow: 0 4px 15px rgba(238, 224, 227, 0.25);
 }
 
-/* --- ĐỒNG BỘ CSS CHO SẢN PHẨM (Xử lý thay thế style inline trong JS) --- */
+/* --- CHI TIẾT SẢN PHẨM TRONG GIỎ --- */
 .cart-item {
     display: flex;
     align-items: center;
@@ -195,7 +194,7 @@
     margin-bottom: 4px;
 }
 
-/* Khối điều chỉnh số lượng (+ / -) */
+/* Khối số lượng (+ / -) */
 .cart-item-qty {
     display: flex;
     align-items: center;
@@ -242,7 +241,7 @@
     margin-right: 20px;
 }
 
-/* Nút xóa sản phẩm (Thùng rác) */
+/* Nút xóa sản phẩm */
 .btn-delete-item {
     background: none;
     border: none;
@@ -255,7 +254,7 @@
 }
 
 .btn-delete-item:hover {
-    color: #ef4444; /* Giữ màu đỏ cảnh báo nguy hiểm khi xóa */
+    color: #ef4444; 
     background-color: #fff0f0;
 }
 
@@ -288,50 +287,6 @@
     font-weight: 500;
 }
 
-.summary-row.discount .value {
-    color: #10b981; /* Giữ màu xanh lá cho phần ưu đãi/giảm giá */
-    font-weight: 600;
-}
-
-/* Khung nhập Voucher Mã ưu đãi */
-.promo-code-box {
-    display: flex;
-    margin: 25px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-}
-
-.promo-code-box input {
-    flex: 1;
-    border: none;
-    padding: 12px 15px;
-    outline: none;
-    font-size: 13px;
-    background-color: var(--bg-light);
-    color: var(--text-color);
-}
-
-.promo-code-box input::placeholder {
-    color: var(--text-gray);
-    opacity: 0.6;
-}
-
-.promo-code-box button {
-    background-color: var(--primary-color);
-    color: var(--bg-light);
-    border: none;
-    padding: 0 22px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.promo-code-box button:hover {
-    background-color: var(--primary-hover);
-}
-
 /* Tổng tiền chốt đơn */
 .summary-total {
     display: flex;
@@ -354,7 +309,7 @@
     font-weight: 700;
 }
 
-/* Nút thanh toán (Hỗ trợ cả logic class .active lẫn thuộc tính disabled chuẩn) */
+/* Nút thanh toán */
 .btn-checkout {
     width: 100%;
     background-color: var(--border-color); 
@@ -368,21 +323,19 @@
     transition: all 0.2s ease;
 }
 
-.btn-checkout.active,
 .btn-checkout:not(:disabled) {
     background-color: var(--primary-color);
     color: var(--bg-light);
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 117, 151, 0.3); /* Hiệu ứng shadow hồng phát sáng nhẹ */
+    box-shadow: 0 4px 12px rgba(255, 117, 151, 0.3);
 }
 
-.btn-checkout.active:hover,
 .btn-checkout:not(:disabled):hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
 }
 
-/* --- TỐI ƯU RESPONSIVE CHO TRÊN ĐIỆN THOẠI --- */
+/* --- TỐI ƯU RESPONSIVE --- */
 @media (max-width: 900px) {
     .cart-container {
         margin: 20px auto;
@@ -412,60 +365,118 @@
     }
 }
 
-/* --- Promo cho cart --- */
-.active-promo-banner {
+/* ==========================================================================
+   MODAL YÊU CẦU ĐĂNG NHẬP (Giao diện mới nâng cấp)
+   ========================================================================== */
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(5px); /* Làm mờ hậu cảnh nền kính hiện đại */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: #fff5f8;
-    border: 1px dashed var(--primary-color);
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin: 15px 0;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease-out;
 }
 
-.promo-info-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.auth-modal-box {
+    background-color: var(--bg-light);
+    width: 90%;
+    max-width: 400px;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(255, 117, 151, 0.15);
+    text-align: center;
+    animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.active-promo-icon {
+.auth-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.auth-modal-close:hover {
     color: var(--primary-color);
-    font-size: 16px;
 }
 
-.promo-meta {
+.auth-modal-icon {
+    width: 68px;
+    height: 68px;
+    background-color: #fff0f3; 
+    color: var(--primary-color);
+    font-size: 30px;
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    border: 1px dashed var(--primary-color);
 }
 
-.promo-title-code {
-    font-size: 13px;
+.auth-modal-body h2 {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.auth-modal-body p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.auth-modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-modal-secondary {
+    flex: 1;
+    background-color: #f3f4f6;
+    color: var(--text-gray);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-modal-secondary:hover {
+    background-color: #e5e7eb;
     color: var(--text-color);
 }
 
-.promo-title-code strong {
-    color: var(--primary-hover);
+.btn-modal-primary {
+    flex: 1;
+    padding: 12px !important;
+    font-size: 14px !important;
+    text-align: center;
 }
 
-.promo-desc-short {
-    font-size: 12px;
-    color: var(--text-gray);
+/* Animations định hình hiệu ứng */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.btn-remove-promo {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: var(--text-gray);
-    cursor: pointer;
-    line-height: 1;
-    padding: 0 4px;
-    transition: color 0.2s;
-}
-
-.btn-remove-promo:hover {
-    color: #ef4444;
+@keyframes slideUp {
+    from { transform: translateY(25px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }

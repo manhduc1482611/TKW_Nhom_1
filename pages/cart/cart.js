@@ -7,25 +7,43 @@ document.addEventListener("DOMContentLoaded", () => {
         container.addEventListener("click", handleCartActions);
     }
 
-    // Xử lý nút thanh toán
+    // Xử lý nút thanh toán và Modal đăng nhập
     const checkoutBtn = document.getElementById("checkoutBtn");
-    if (checkoutBtn) {
+    const authModal = document.getElementById("loginAuthModal");
+    const closeAuthModalBtn = document.getElementById("closeAuthModalBtn");
+    const skipAuthModalBtn = document.getElementById("skipAuthModalBtn");
+
+    if (checkoutBtn && authModal) {
+        // Mở modal khi chưa đăng nhập
         checkoutBtn.addEventListener("click", () => {
             if (!checkoutBtn.disabled) {
-                // Kiểm tra xem đã đăng nhập chưa (lấy dữ liệu từ localStorage)
                 const currentUser = localStorage.getItem('currentUser');
 
                 if (currentUser) {
                     // 1. ĐÃ ĐĂNG NHẬP: Dẫn đến trang thanh toán
                     window.location.href = "/pages/checkout/checkout.html";
                 } else {
-                    // 2. CHƯA ĐĂNG NHẬP: Thông báo và dẫn đến trang đăng nhập
-                    alert("Vui lòng đăng nhập tài khoản để tiến hành thanh toán!");
-                    window.location.href = "/pages/account/html/Login.html";
+                    // 2. CHƯA ĐĂNG NHẬP: Hiển thị khung thông báo tùy chỉnh
+                    authModal.style.display = "flex";
                 }
             }
         });
-    } s
+
+        // Hàm đóng modal nhanh
+        const hideModal = () => {
+            authModal.style.display = "none";
+        };
+
+        if (closeAuthModalBtn) closeAuthModalBtn.addEventListener("click", hideModal);
+        if (skipAuthModalBtn) skipAuthModalBtn.addEventListener("click", hideModal);
+
+        // Đóng modal khi nhấn ra vùng trống bên ngoài
+        window.addEventListener("click", (e) => {
+            if (e.target === authModal) {
+                hideModal();
+            }
+        });
+    }
 });
 
 // ==========================================
@@ -71,7 +89,7 @@ function renderCart() {
                 <div class="cart-item-info">
                     <img src="${item.image || '/src/images/placeholder.png'}" alt="${item.name}">
                     <div class="cart-item-details">
-                        <span class="brand">${item.brand || 'BeautyStore'}</span>
+                        <span class="brand">${item.brand || 'Nghien Skincare'}</span>
                         <h4>${item.name}</h4>
                         ${item.volume ? `<span class="volume">Dung tích: ${item.volume}</span>` : ""}
                         <span class="price">${price.toLocaleString('vi-VN')}đ</span>
@@ -162,7 +180,6 @@ function updateSummary(totalItems, subtotal) {
     }
 }
 
-// Đồng bộ số lượng hiển thị lên badge chung của hệ thống
 function updateHeaderBadge() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalQuantity = cart.reduce((total, item) => total + (parseInt(item.quantity, 10) || 0), 0);
