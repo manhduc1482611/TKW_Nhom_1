@@ -1,7 +1,94 @@
+// ==========================================================================
+// CÁC HÀM TIỆN ÍCH HIỂN THỊ THÔNG BÁO GIAO DIỆN ĐẸP (CUSTOM NOTIFICATIONS)
+// ==========================================================================
+
+// 1. Toast thông báo áp dụng mã giảm giá thành công mượt mà (Màu xanh/hồng)
+function showPromoToast(code, discountPercent) {
+    let container = document.querySelector('.beauty-toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'beauty-toast-container';
+        document.body.appendChild(container);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = 'beauty-toast';
+    toast.innerHTML = `
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <div class="toast-content">
+            <div class="toast-title">Áp dụng voucher thành công!</div>
+            <div class="toast-desc">Mã <strong>${code}</strong> giúp bạn tiết kiệm thêm <strong>${discountPercent}%</strong>.</div>
+        </div>
+    `;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+    }, 3500);
+}
+
+// 2. Toast thông báo LỖI (Màu đỏ)
+function showErrorToast(title, message) {
+    let container = document.querySelector('.beauty-toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'beauty-toast-container';
+        document.body.appendChild(container);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = 'beauty-toast error'; // Gắn thêm class error để đổi sang màu đỏ
+    toast.innerHTML = `
+        <i class="fa-solid fa-circle-xmark toast-icon"></i>
+        <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-desc">${message}</div>
+        </div>
+    `;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+    }, 4500); // Lỗi thì để lâu thêm xíu cho khách kịp đọc
+}
+
+// 3. Hộp thoại Modal báo đặt đơn hàng thành công cao cấp
+function showOrderSuccessModal(orderId, totalAmount) {
+    const overlay = document.createElement('div');
+    overlay.className = 'beauty-modal-overlay';
+    overlay.innerHTML = `
+        <div class="beauty-modal-card">
+            <div class="success-icon-wrapper">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <h3 class="modal-order-title">Đặt Hàng Thành Công!</h3>
+            <p class="modal-order-desc">
+                Cảm ơn bạn đã lựa chọn mua sắm tại BeautyStore.<br>
+                Mã đơn hàng của bạn là <strong>${orderId}</strong> với tổng thanh toán là <strong>${totalAmount.toLocaleString('vi-VN')}đ</strong>.<br>
+                Tiệm đang chuẩn bị gửi đơn tốc hành đến bạn!
+            </p>
+            <button type="button" class="btn-modal-home" id="btnGoHome">
+                Tiếp tục mua sắm <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    document.getElementById('btnGoHome').addEventListener('click', () => {
+        window.location.href = "/index.html";
+    });
+}
+
+// ==========================================================================
+// LUỒNG XỬ LÝ CHÍNH CỦA TRANG THANH TOÁN KHI DOM SẴN SÀNG
+// ==========================================================================
 document.addEventListener("DOMContentLoaded", async () => {
-    // =========================================================
     // 1. ĐỒNG BỘ THÔNG TIN TÀI KHOẢN VÀO FORM THANH TOÁN
-    // =========================================================
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
         const nameInput = document.getElementById("customerName");
@@ -18,13 +105,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const SHIPPING_FEE = 20000;
     let currentDiscount = 0;
     let promoCodeApplied = "";
-    let PROMO_DATA = {}; // Lưu trữ dữ liệu tải từ promotions.json
+    let PROMO_DATA = {}; 
 
     // 2. KIỂM TRA GIỎ HÀNG THỰC TẾ TRONG LOCALSTORAGE
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length === 0) {
         alert("Giỏ hàng của bạn đang trống! Vui lòng quay lại thêm mỹ phẩm vào giỏ.");
-        window.location.href = "cart.html";
+        window.location.href = "../cart/cart.html";
         return;
     }
 
@@ -45,10 +132,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Lỗi kết nối tệp khuyến mãi:", error);
         }
         
-        // Vẽ danh sách voucher lên giao diện
         renderPromotionsUI();
         
-        // Kiểm tra xem khách hàng có áp dụng mã từ trước đó không
         const savedPromo = localStorage.getItem("appliedPromo");
         if (savedPromo && PROMO_DATA[savedPromo]) {
             applyPromoCodeSilent(savedPromo);
@@ -57,7 +142,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // 4. RENDER VÙNG VOUCHER THEO THIẾT KẾ CARD TICKET CHUẨN CSS
+    // 4. RENDER VÙNG VOUCHER THEO THIẾT KẾ CARD TICKET
     function renderPromotionsUI() {
         const container = document.getElementById("promotionsListContainer");
         if (!container || Object.keys(PROMO_DATA).length === 0) return;
@@ -95,7 +180,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         promoHTML += `</div></div>`;
         container.innerHTML = promoHTML;
 
-        // Gắn sự kiện nhấn tương tác cho từng nút "Dùng ngay"
         document.querySelectorAll(".btn-use-coupon").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const targetCode = e.target.getAttribute("data-code");
@@ -107,7 +191,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 5. KIỂM TRA ĐIỀU KIỆN ÁP DỤNG MÃ VOUCHER
     function checkPromoValidity(promoCode) {
         const promo = PROMO_DATA[promoCode];
-        if (!promo) return { valid: false, msg: "Mã giảm giá không hợp lệ hoặc đã hết hạn!" };
+        if (!promo) return { valid: false, msg: "Mã giảm giá không hợp lệ hoặc đã không còn tồn tại!" };
 
         const now = new Date();
         const currentMonth = now.getMonth() + 1;
@@ -116,19 +200,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         const subtotal = calculateSubtotal(cart);
 
         if (promo.type === 'yearly' && (currentMonth !== promo.month || currentDate !== promo.date)) {
-            return { valid: false, msg: `Mã này chỉ áp dụng vào ngày ${promo.date}/${promo.month} hằng năm!` };
+            return { valid: false, msg: `Rất tiếc! Mã này chỉ áp dụng duy nhất vào ngày ${promo.date}/${promo.month} hằng năm.` };
         }
         
         if (promo.type === 'yearly-monthly' && (currentMonth !== promo.month || currentDate < promo.startDay || currentDate > promo.endDay)) {
-            return { valid: false, msg: `Mã này chỉ hoạt động từ ngày ${promo.startDay} đến ngày ${promo.endDay} tháng ${promo.month}!` };
+            return { valid: false, msg: `Mã này chỉ có hiệu lực từ ngày ${promo.startDay} đến ngày ${promo.endDay} tháng ${promo.month}.` };
         }
 
         if (promo.type === 'daily' && (currentHour < promo.startHour || currentHour > promo.endHour)) {
-            return { valid: false, msg: `Mã chỉ áp dụng trong khung giờ vàng hằng ngày từ ${promo.startHour}h - ${promo.endHour}h!` };
+            return { valid: false, msg: `Rất tiếc! Khung giờ vàng áp dụng mã là từ ${promo.startHour}h - ${promo.endHour}h mỗi ngày.` };
         }
 
         if (promo.minOrder && subtotal < promo.minOrder) {
-            return { valid: false, msg: `Đơn hàng chưa đạt giá trị tối thiểu từ ${promo.minOrder.toLocaleString('vi-VN')}đ!` };
+            return { valid: false, msg: `Đơn hàng của bạn chưa đạt giá trị tối thiểu từ ${promo.minOrder.toLocaleString('vi-VN')}đ để dùng mã này.` };
         }
 
         if (promo.isBrandSpecific) {
@@ -139,14 +223,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return itemBrand.includes(targetBrand) || itemName.includes(targetBrand);
             });
             if (!hasBrandItem) {
-                return { valid: false, msg: `Mã này chỉ áp dụng khi mua sản phẩm của thương hiệu ${promo.brand}!` };
+                return { valid: false, msg: `Mã này chỉ áp dụng khi trong giỏ có sản phẩm của thương hiệu ${promo.brand}.` };
             }
         }
 
         return { valid: true, promo };
     }
 
-    // 6. XỬ LÝ KHI KÍCH HOẠT MÃ GIẢM GIÁ
+    // 6. XỬ LÝ KHI KÍCH HOẠT MÃ GIẢM GIÁ (Thành công / Lỗi)
     function processPromoApplication(code, showAlert = false) {
         const check = checkPromoValidity(code);
         if (check.valid) {
@@ -158,16 +242,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             renderCheckoutSummary(cart, SHIPPING_FEE, currentDiscount);
             updateActivePromoUIInCheckout(promoCodeApplied, currentDiscount);
             
-            // Đổi trạng thái hiển thị active trên danh sách thẻ
             document.querySelectorAll(".promo-coupon-card").forEach(c => c.classList.remove("selected-coupon"));
             const targetCard = document.getElementById(`card-${code}`);
             if (targetCard) targetCard.classList.add("selected-coupon");
 
             if (showAlert) {
-                alert(`Áp dụng mã ưu đãi ${promoCodeApplied} thành công! Bạn được giảm ${(check.promo.discountRate * 100)}% vào đơn hàng.`);
+                showPromoToast(promoCodeApplied, check.promo.discountRate * 100);
             }
         } else {
-            if (showAlert) alert(check.msg);
+            // Hiển thị TOAST LỖI thay vì alert
+            if (showAlert) {
+                showErrorToast("Chưa thể áp dụng mã", check.msg);
+            }
             localStorage.removeItem("appliedPromo");
         }
     }
@@ -176,7 +262,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         processPromoApplication(code, false);
     }
 
-    // 7. HIỂN THỊ BANNER THÔNG BÁO MÃ ĐÃ ÁP DỤNG TRÊN HÓA ĐƠN TÍNH TIỀN
+    // 7. HIỂN THỊ BANNER THÔNG BÁO MÃ ĐÃ ÁP DỤNG TRÊN HÓA ĐƠN
     function updateActivePromoUIInCheckout(appliedPromo, discount) {
         let activeBox = document.getElementById("activePromoBoxCheckout");
 
@@ -208,7 +294,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             <button type="button" class="btn-remove-promo" id="removePromoBtnCheckout" title="Hủy áp dụng mã này">&times;</button>
         `;
 
-        // Sự kiện gỡ bỏ mã giảm giá
         document.getElementById("removePromoBtnCheckout").addEventListener("click", () => {
             localStorage.removeItem("appliedPromo");
             document.querySelectorAll(".promo-coupon-card").forEach(c => c.classList.remove("selected-coupon"));
@@ -219,7 +304,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // 8. CÁC HÀM TRỢ GIÚP TÍNH TOÁN VÀ ĐỒNG BỘ HIỂN THỊ SẢN PHẨM (CHUẨN CLASS .order-item)
+    // 8. CÁC HÀM TRỢ GIÚP TÍNH TOÁN
     function calculateSubtotal(cartList) {
         return cartList.reduce((sum, item) => {
             const price = parseInt(item.price) || 0;
@@ -247,7 +332,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("checkoutTotalPay").textContent = Math.max(0, totalPay).toLocaleString('vi-VN') + "đ";
         document.getElementById("checkoutTotalItems").textContent = cartList.reduce((acc, item) => acc + (parseInt(item.quantity) || 1), 0);
 
-        // ĐỒNG BỘ HOÀN TOÀN cấu trúc HTML với hệ thống class sẵn có trong checkout.css
         const container = document.getElementById("checkoutItemsContainer");
         if (container) {
             container.innerHTML = cartList.map(item => `
@@ -298,7 +382,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (contentEl) contentEl.textContent = `BST DH${randomID}`;
     }
 
-    // 9. KHỞI CHẠY TIẾN TRÌNH LUỒNG DỮ LIỆU CHÍNH
+    // 9. KHỞI CHẠY TIẾN TRÌNH
     await loadAndInitializePromotions();
     generateTransferCode();
     setupPaymentToggle();
@@ -313,8 +397,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const note = document.getElementById("orderNote").value.trim();
         const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value || "COD";
 
+        // Thay alert báo thiếu thông tin bằng Toast Đỏ
         if (!name || !phone || !email || !address) {
-            alert("Vui lòng hoàn thiện tất cả các thông tin giao hàng bắt buộc!");
+            showErrorToast("Thiếu thông tin!", "Vui lòng nhập đầy đủ Tên, Số điện thoại, Email và Địa chỉ giao hàng để Tiệm ship hàng nhé!");
             return;
         }
 
@@ -340,7 +425,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.removeItem("cart");
         localStorage.removeItem("appliedPromo");
 
-        alert("🎉 Chúc mừng! Đơn hàng của bạn đã được khởi tạo và ghi nhận thành công trên hệ thống.");
-        window.location.href = "/index.html";
+        // Gọi Modal đặt hàng thành công
+        showOrderSuccessModal(orderId, totalPay);
     });
 });

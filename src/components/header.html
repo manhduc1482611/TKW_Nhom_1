@@ -2,7 +2,7 @@
     <div class="topbar">
         <div class="topbar-left">
             <span><i class="fa-solid fa-phone"></i> 0966 969 726</span>
-            <span><i class="fa-solid fa-envelope"></i> manhduc114488@gmail.com</span>
+            <span class="hide-on-mobile"><i class="fa-solid fa-envelope"></i> manhduc114488@gmail.com</span>
         </div>
         <div class="topbar-right" id="auth-container">
             <a href="/pages/account/html/login.html"><i class="fa-regular fa-user"></i> Tài khoản</a>
@@ -10,19 +10,34 @@
     </div>
 
     <div class="header-main">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Mở menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <div class="logo">
             <a href="/index.html">
                 <img src="/assets/images/home/logo/logo.png" alt="BeautyStore Logo" class="site-logo">
             </a>
         </div>
 
-        <nav class="page-menu">
-            <ul>
-                <li><a href="/index.html">Trang chủ</a></li>
-                <li><a href="/pages/about/about.html">Giới thiệu</a></li>
+        <div class="menu-overlay" id="menu-overlay"></div>
+
+        <nav class="page-menu" id="page-menu">
+            <div class="mobile-menu-header">
+                <h3>Menu</h3>
+                <button class="close-menu-btn" id="close-menu-btn" aria-label="Đóng menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <ul class="nav-list">
+                <li><a href="/index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="/pages/about/about.html" class="nav-link">Giới thiệu</a></li>
+                
                 <li id="shop-menu" class="has-submenu">
-                    <a href="/pages/product/html/products.html">Sản phẩm <i
-                            class="fa-solid fa-chevron-down menu-icon"></i></a>
+                    <a href="/pages/product/html/products.html" class="nav-link">
+                        Sản phẩm <i class="fa-solid fa-chevron-down menu-icon"></i>
+                    </a>
                     <ul class="submenu">
                         <li><a href="/pages/product/html/products.html?category=Sữa rửa mặt">Sữa rửa mặt</a></li>
                         <li><a href="/pages/product/html/products.html?category=Tonner">Tonner</a></li>
@@ -31,15 +46,17 @@
                         <li><a href="/pages/product/html/products.html?category=Nước tẩy trang">Nước tẩy trang</a></li>
                     </ul>
                 </li>
-                <li><a href="/pages/promotion/html/promotion.html">Khuyến mãi</a></li>
-                <li><a href="/pages/news/html/news.html">Tin tức</a></li>
-                <li><a href="/pages/contact/contact.html">Liên hệ</a></li>
+                
+                <li><a href="/pages/promotion/html/promotion.html" class="nav-link">Khuyến mãi</a></li>
+                <li><a href="/pages/news/html/news.html" class="nav-link">Tin tức</a></li>
+                <li><a href="/pages/contact/contact.html" class="nav-link">Liên hệ</a></li>
             </ul>
         </nav>
+        
         <div class="header-actions">
             <a href="/pages/cart/cart.html" class="cart-btn" aria-label="Giỏ hàng">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span class="cart-count">0</span>
+                <span class="cart-count" id="cart-badge">0</span>
             </a>
         </div>
     </div>

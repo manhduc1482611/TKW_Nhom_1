@@ -1,7 +1,21 @@
 /* =========================================
-   SITE HEADER - ĐÃ FIX LỖI
+   VARIABLES (Tùy chỉnh màu sắc hệ thống)
    ========================================= */
+:root {
+    --primary-color: #ff7597;
+    --primary-hover: #ff527a;
+    --primary-light: #fff0f3;
+    --text-color: #333333;
+    --bg-light: #ffffff;
+    --border-color: #eeeeee;
+    --topbar-bg: #2a2525;
+    --topbar-text: #f0f0f0;
+    --topbar-accent: #d4a373;
+}
 
+/* =========================================
+   SITE HEADER 
+   ========================================= */
 .site-header {
     background-color: var(--bg-light);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -12,21 +26,20 @@
 
 /* --- Topbar --- */
 .topbar {
-    background-color: #2a2525; /* Xám than có pha chút sắc nâu/đỏ cho ấm áp */
-    color: #f0f0f0; /* Chữ màu trắng xám */
+    background-color: var(--topbar-bg);
+    color: var(--topbar-text);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%; 
+    padding: 10px 5%;
     font-size: 0.85rem;
-    letter-spacing: 0.5px; 
-    border-bottom: none; /* Tone tối thì không cần đường viền phân cách nữa */
+    letter-spacing: 0.5px;
 }
 
 .topbar-left {
     display: flex;
     align-items: center;
-    gap: 25px; /* Giãn cách số điện thoại và email rộng ra một chút cho thoáng */
+    gap: 25px;
 }
 
 .topbar-left span {
@@ -36,8 +49,8 @@
 }
 
 .topbar-left i {
-    color: #d4a373;
-    font-size: 0.9rem; /* Tăng nhẹ kích thước icon để cân đối với chữ */
+    color: var(--topbar-accent);
+    font-size: 0.9rem;
 }
 
 .topbar-right {
@@ -46,7 +59,7 @@
 }
 
 .topbar-right a {
-    color: #f0f0f0; /* Chữ màu sáng để nổi trên nền tối */
+    color: var(--topbar-text);
     text-decoration: none;
     transition: color 0.3s ease;
     display: flex;
@@ -54,20 +67,9 @@
     gap: 6px;
     font-weight: 400;
 }
-/* Thêm đoạn này vào cuối file header.css */
-
-.topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 18px; /* Giúp tên tài khoản và nút Đăng xuất cách nhau ra */
-}
-
-#header-logout-btn {
-    cursor: pointer;
-}
 
 .topbar-right a:hover {
-    color: #d4a373; /* Chuyển sang màu vàng đồng/hồng khi hover */
+    color: var(--topbar-accent);
 }
 
 /* --- Header Main --- */
@@ -76,35 +78,33 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-}
-
-.logo, .logo a {
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
 .site-logo {
-    height: 55px; 
+    height: 55px;
     width: auto;
     object-fit: contain;
 }
 
-/* --- Navigation Menu --- */
-.page-menu {
-    display: flex;
-    align-items: center;
+/* --- Utilities (Ẩn element trên Desktop) --- */
+.mobile-menu-btn,
+.mobile-menu-header,
+.menu-overlay {
+    display: none;
 }
 
-.page-menu > ul {
+/* --- Navigation Menu (Desktop) --- */
+.nav-list {
     display: flex;
     align-items: center;
     gap: 32px;
-    list-style: none; /* Tránh lỗi hiển thị dấu chấm của list */
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.page-menu > ul > li > a {
+.nav-link {
     position: relative;
     text-decoration: none;
     color: var(--text-color);
@@ -117,24 +117,23 @@
     gap: 6px;
 }
 
-.page-menu > ul > li > a:hover {
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color);
 }
 
-/* HIỆU ỨNG MENU ACTIVE */
-.page-menu > ul > li > a.active {
-    color: var(--primary-color);
-}
-
-.page-menu > ul > li > a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px; /* Dời xuống dưới chữ 1 chút để không bị đè */
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    border-radius: 2px;
+/* Hiệu ứng gạch chân cho Desktop Menu Active */
+@media (min-width: 769px) {
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+    }
 }
 
 .menu-icon {
@@ -163,7 +162,7 @@
     padding: 6px 0;
     margin: 0;
     list-style: none;
-    border: 1px solid var(--border-color); 
+    border: 1px solid var(--border-color);
 }
 
 .has-submenu:hover .submenu {
@@ -180,7 +179,7 @@
     padding: 10px 20px;
     font-weight: 400;
     font-size: 0.9rem;
-    display: block; /* Fix lỗi khoảng click trên menu con */
+    display: block;
     color: var(--text-color);
     text-decoration: none;
     transition: all 0.3s ease;
@@ -193,11 +192,6 @@
 }
 
 /* --- Header Actions --- */
-.header-actions {
-    display: flex;
-    align-items: center;
-}
-
 .cart-btn {
     position: relative;
     text-decoration: none;
@@ -209,22 +203,22 @@
     align-items: center;
     transition: all 0.3s ease;
     background-color: var(--primary-color);
-    color: var(--bg-light); 
+    color: var(--bg-light);
     font-size: 1.3rem;
-    box-shadow: 0 4px 12px rgba(255, 117, 151, 0.35); 
+    box-shadow: 0 4px 12px rgba(255, 117, 151, 0.35);
 }
 
 .cart-btn:hover {
-    background-color: var(--primary-hover); 
+    background-color: var(--primary-hover);
     transform: scale(1.08);
-    box-shadow: 0 6px 15px rgba(255, 117, 151, 0.5); 
+    box-shadow: 0 6px 15px rgba(255, 117, 151, 0.5);
 }
 
 .cart-count {
     position: absolute;
     top: -2px;
     right: -2px;
-    background-color: var(--primary-hover); 
+    background-color: var(--primary-hover);
     color: var(--bg-light);
     font-size: 0.8rem;
     font-weight: 700;
@@ -234,5 +228,209 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--bg-light); 
+    border: 2px solid var(--bg-light);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================= */
+
+/* =========================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================= */
+
+/* Áp dụng cho màn hình từ 991px trở xuống (Bao gồm cả Máy tính bảng và Điện thoại) */
+@media (max-width: 991px) {
+    /* 1. ẨN GMAIL & SỐ ĐIỆN THOẠI - ĐẨY NÚT TÀI KHOẢN SANG BÊN PHẢI */
+    .topbar {
+        justify-content: flex-end; /* Đẩy tài khoản về sát bên phải */
+        padding: 8px 5%;
+    }
+    .topbar-left {
+        display: none !important; /* Ẩn hoàn toàn vùng chứa sđt và gmail */
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    /* 2. HIỆN VÀ LÀM NỔI BẬT NÚT 3 GẠCH (HAMBURGER MENU) */
+    .mobile-menu-btn {
+        display: block !important; /* Ép buộc hiển thị trên cả máy tính bảng */
+        background-color: var(--primary-light); /* Nền hồng nhạt */
+        color: var(--primary-color);           /* Icon màu hồng chủ đạo */
+        border: 1px solid var(--primary-color); /* Viền hồng nổi bật */
+        border-radius: 6px;                     /* Bo góc nhẹ hiện đại */
+        font-size: 1.3rem;                      
+        cursor: pointer;
+        padding: 6px 12px;                      /* Tạo khoảng trống cho nút */
+        order: -1;
+        z-index: 10;
+        transition: all 0.3s ease;              
+    }
+
+    /* Hiệu ứng khi nhấn/hover vào nút 3 gạch */
+    .mobile-menu-btn:hover, 
+    .mobile-menu-btn:active {
+        background-color: var(--primary-color); /* Nền hồng đậm */
+        color: var(--bg-light);                /* Chữ trắng */
+    }
+
+    /* Ẩn thanh menu ngang mặc định của Desktop */
+    .site-header .header-main > nav:not(.page-menu) {
+        display: none;
+    }
+
+    .header-main {
+        padding: 12px 5%;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .site-logo {
+        height: 45px;
+    }
+
+    /* Off-canvas Menu Mobile & Tablet */
+    .page-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        max-width: 85%;
+        height: 100vh;
+        background-color: var(--bg-light);
+        z-index: 1005;
+        display: flex;
+        flex-direction: column;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        overflow-y: auto;
+    }
+
+    .page-menu.open {
+        left: 0;
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: var(--primary-color);
+        color: var(--bg-light);
+        box-sizing: border-box;
+    }
+
+    .mobile-menu-header h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .close-menu-btn {
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: var(--bg-light);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .nav-list > li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+    }
+
+    /* Submenu Accordion cho Mobile & Tablet */
+    .has-submenu:hover .submenu {
+        transform: none; 
+    }
+
+    .submenu {
+        position: static;
+        transform: none !important;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+        display: none; 
+        background-color: #fafafa;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .has-submenu.open .submenu {
+        display: block !important;
+    }
+
+    .has-submenu.open .menu-icon {
+        transform: rotate(180deg);
+        color: var(--primary-color);
+    }
+
+    .submenu li {
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .submenu li:last-child {
+        border-bottom: none;
+    }
+
+    .submenu li a {
+        padding: 12px 20px 12px 40px;
+        font-weight: 500;
+    }
+
+    /* Menu Overlay */
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1004;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+    }
 }

@@ -20,7 +20,7 @@
     padding: 25px;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(238, 224, 227, 0.25); /* Đổ bóng hồng hào nhẹ */
+    box-shadow: 0 4px 15px rgba(238, 224, 227, 0.25);
 }
 
 .section-title {
@@ -140,7 +140,6 @@ select.checkout-input {
     color: var(--text-gray);
 }
 
-/* Trạng thái thẻ được Active chọn */
 .method-card.selected,
 .method-card.active {
     border-color: var(--primary-color);
@@ -253,9 +252,7 @@ select.checkout-input {
     color: var(--text-gray);
 }
 
-/* ==========================================================================
-   BỔ SUNG: KHU VỰC DANH SÁCH MÃ GIẢM GIÁ (ĐỔ DATA TỪ PROMOTIONS.JSON)
-   ========================================================================== */
+/* KHU VỰC DANH SÁCH MÃ GIẢM GIÁ */
 .available-promotions-section {
     margin-bottom: 20px;
     padding: 14px;
@@ -295,7 +292,6 @@ select.checkout-input {
     border-radius: 10px;
 }
 
-/* Style cho từng tấm thẻ Voucher */
 .promo-coupon-card {
     display: flex;
     align-items: center;
@@ -458,16 +454,7 @@ select.checkout-input {
     transform: translateY(-1px);
 }
 
-@media (max-width: 992px) {
-    .checkout-grid {
-        grid-template-columns: 1fr;
-    }
-    .checkout-container {
-        padding: 20px 15px;
-    }
-}
-
-/* --- Promo cho checkout --- */
+/* --- Banner Promo Cho Hóa Đơn --- */
 .active-promo-banner {
     display: flex;
     justify-content: space-between;
@@ -523,4 +510,172 @@ select.checkout-input {
 
 .btn-remove-promo:hover {
     color: #ef4444;
+}
+
+@media (max-width: 992px) {
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+    .checkout-container {
+        padding: 20px 15px;
+    }
+}
+
+/* ==========================================================================
+   CUSTOM BEAUTY NOTIFICATIONS (Toast & Modal Success)
+   ========================================================================== */
+
+/* 1. Style chung cho Toast Thông báo */
+.beauty-toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.beauty-toast {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #ffffff;
+    border-left: 5px solid var(--primary-color); /* Mặc định là màu hồng */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(255, 117, 151, 0.18);
+    min-width: 325px;
+    transform: translateX(120%);
+    animation: slideInToast 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transition: all 0.3s ease;
+}
+
+.beauty-toast.fade-out {
+    transform: translateX(120%);
+    opacity: 0;
+}
+
+.toast-icon {
+    font-size: 22px;
+    color: #10b981; /* Icon thành công xanh */
+}
+
+/* -- STYLE CHO TOAST LỖI THÊM VÀO -- */
+.beauty-toast.error {
+    border-left-color: #ef4444; /* Viền trái màu đỏ */
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
+}
+
+.beauty-toast.error .toast-icon {
+    color: #ef4444; /* Icon lỗi màu đỏ */
+}
+/* --------------------------------- */
+
+.toast-content .toast-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 2px;
+}
+
+.toast-content .toast-desc {
+    font-size: 12.5px;
+    color: var(--text-gray);
+    line-height: 1.4;
+}
+
+@keyframes slideInToast {
+    to { transform: translateX(0); }
+}
+
+/* 2. Style cho Modal Đặt Hàng Thành Công */
+.beauty-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    animation: fadeInBg 0.3s ease forwards;
+}
+
+.beauty-modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 460px;
+    padding: 35px 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(238, 224, 227, 0.6);
+    border: 1px solid var(--border-color);
+    transform: scale(0.7);
+    animation: scaleUpModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-icon-wrapper {
+    width: 75px;
+    height: 75px;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 20px;
+    animation: heartBeat 1.2s ease infinite;
+}
+
+.modal-order-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.modal-order-desc {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.modal-order-desc strong {
+    color: var(--primary-hover);
+}
+
+.btn-modal-home {
+    background: var(--primary-color);
+    color: var(--bg-light);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 117, 151, 0.3);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-modal-home:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Các Animation phụ trợ */
+@keyframes fadeInBg { to { opacity: 1; } }
+@keyframes scaleUpModal { to { transform: scale(1); } }
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
 }
