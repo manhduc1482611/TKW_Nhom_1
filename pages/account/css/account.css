@@ -311,6 +311,38 @@
     color: #2e7d32;
 }
 
+.status-cancelled {
+    background: #f5f5f5;
+    color: #757575;
+}
+
+/* Nút hủy đơn hàng */
+.btn-cancel-order {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 8px;
+    padding: 4px 10px;
+    background: #fff0f1;
+    color: #e04f5f;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel-order:hover {
+    background: #e04f5f;
+    color: #fff;
+    border-color: #e04f5f;
+}
+
+.orders-table td:last-child {
+    white-space: nowrap;
+}
+
 /* ==========================================================================
    FORM CHỈNH SỬA & INPUT
    ========================================================================== */

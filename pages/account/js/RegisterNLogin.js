@@ -42,6 +42,11 @@ if (registerForm) {
             return;
         }
 
+        if (!/\d/.test(password)) {
+            showMessage("Mật khẩu phải có ít nhất 1 chữ số!", "error");
+            return;
+        }
+
         // Kiểm tra email đã tồn tại
         let users = JSON.parse(localStorage.getItem('users')) || [];
         if (users.find(user => user.email === email)) {

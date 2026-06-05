@@ -110,6 +110,18 @@
         </main>
     </div>
 
+    <div id="cancelOrderModal" class="modal-overlay">
+        <div class="modal-box">
+            <i class="fas fa-ban modal-icon"></i>
+            <h3>Xác nhận hủy đơn hàng</h3>
+            <p>Bạn có chắc muốn hủy đơn hàng này không? Hành động này không thể hoàn tác.</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" onclick="closeCancelOrderModal()">Giữ đơn</button>
+                <button class="modal-btn confirm" onclick="confirmCancelOrder()">Xác nhận hủy</button>
+            </div>
+        </div>
+    </div>
+
     <div id="logoutModal" class="modal-overlay">
         <div class="modal-box">
             <i class="fas fa-right-from-bracket modal-icon"></i>

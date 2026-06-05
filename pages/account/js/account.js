@@ -74,13 +74,26 @@ function loadUserOrders() {
             statusClass = "status-completed";
         }
 
+        if (statusText === "Đã hủy") {
+            statusClass = "status-cancelled";
+        }
+
+        // Chỉ hiển thị nút hủy khi đơn hàng đang ở trạng thái "Đang xử lý"
+        const canCancel = statusText === "Đang xử lý";
+        const cancelBtn = canCancel
+            ? `<button class="btn-cancel-order" onclick="cancelOrder('${order.id}')"><i class="fas fa-times"></i> Hủy</button>`
+            : '';
+
         return `
             <tr>
                 <td><strong>${order.id}</strong></td>
                 <td>${orderDate}</td>
                 <td class="product-cell-ellipsis" title="${itemsSummary}">${itemsSummary}</td>
                 <td style="color: #ff4f8b; font-weight: 600;">${order.summary.totalPayment.toLocaleString('vi-VN')}đ</td>
-                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                <td>
+                    <span class="status-badge ${statusClass}">${statusText}</span>
+                    ${cancelBtn}
+                </td>
             </tr>
         `;
     }).join('');
@@ -118,6 +131,43 @@ function saveProfile() {
 
     alert("Lưu thay đổi thông tin tài khoản thành công!");
     switchTab('thongtin');
+}
+
+// ===== XỬ LÝ HỦY ĐƠN HÀNG =====
+let orderIdToCancel = null;
+
+function cancelOrder(orderId) {
+    orderIdToCancel = orderId;
+    document.getElementById('cancelOrderModal').classList.add('active');
+}
+
+function closeCancelOrderModal() {
+    orderIdToCancel = null;
+    document.getElementById('cancelOrderModal').classList.remove('active');
+}
+
+function confirmCancelOrder() {
+    if (!orderIdToCancel) return;
+
+    let allOrders = JSON.parse(localStorage.getItem("ordersList")) || [];
+    const idx = allOrders.findIndex(o => o.id === orderIdToCancel);
+
+    if (idx !== -1) {
+        allOrders[idx].status = "Đã hủy";
+        localStorage.setItem("ordersList", JSON.stringify(allOrders));
+    }
+
+    closeCancelOrderModal();
+    loadUserOrders();
+    alert(`Đơn hàng ${orderIdToCancel} đã được hủy thành công!`);
+    orderIdToCancel = null;
+}
+
+const cancelOrderModal = document.getElementById('cancelOrderModal');
+if (cancelOrderModal) {
+    cancelOrderModal.addEventListener('click', function(e) {
+        if (e.target === this) closeCancelOrderModal();
+    });
 }
 
 // ===== XỬ LÝ HỘP THOẠI ĐĂNG XUẤT =====
