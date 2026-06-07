@@ -40,7 +40,6 @@
                 </ul>
             </div>
 
-            <!-- Suggested products / Sản phẩm gợi ý -->
             <div class="sidebar-suggestions">
                 <h3>Sản phẩm gợi ý</h3>
                 <div class="related-list" id="suggestionList"></div>
@@ -54,6 +53,10 @@
                 </div>
 
                 <div class="toolbar-right">
+                    <button class="open-wheel-btn" id="openWheelBtn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Hôm nay makeup gì?
+                    </button>
+
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" id="searchInput" placeholder="Tìm sản phẩm...">
@@ -90,9 +93,43 @@
             <div class="pagination" id="pagination"></div>
         </section>
     </main>
+
     <div id="chatbot"></div>
     <div id="footer"></div>
 
+    <div class="wheel-overlay" id="wheelOverlay">
+        <div class="wheel-popup" id="wheelPopup">
+            <button class="close-popup-btn" id="closeWheelBtn">&times;</button>
+
+            <div class="wheel-main-zone">
+                <h3>Hôm nay nên makeup tone gì nhỉ?</h3>
+                <div class="wheel-outer">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel-canvas" id="makeupWheel">
+                        <div class="wheel-seg seg-1"><span>Tone Hồng</span></div>
+                        <div class="wheel-seg seg-2"><span>Tone Nâu Tây</span></div>
+                        <div class="wheel-seg seg-3"><span>Tone Cam Đào</span></div>
+                        <div class="wheel-seg seg-4"><span>Tone Đỏ Đất</span></div>
+                        <div class="wheel-seg seg-5"><span>Tone Cam Đất</span></div>
+                    </div>
+                </div>
+                <button class="wheel-spin-btn" id="spinMakeupBtn">QUAY NGẪU NHIÊN</button>
+                <div class="wheel-result" id="wheelResult"></div>
+            </div>
+
+            <div class="wheel-suggestions-zone" id="wheelSuggestionsZone">
+                <div class="tone-showcase">
+                    <img id="toneBannerImg" src="" alt="Tone Makeup">
+                    <h4 id="toneTitleText">Cánh hồng ngọt ngào</h4>
+                </div>
+                <h5>Sản phẩm gợi ý cho bạn:</h5>
+                <div class="wheel-products-list" id="wheelProductSuggestions">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/wheel.js"></script>
     <script type="module" src="/src/js/main.js"></script>
     <script src="../js/products.js"></script>
 </body>
