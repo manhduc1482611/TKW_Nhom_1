@@ -365,7 +365,7 @@
     border-radius: 8px;
     font-size: 14px;
     color: var(--text-color);
-    background-white: var(--bg-light);
+    background-color: var(--bg-light);
     transition: all 0.2s ease;
 }
 
@@ -498,4 +498,37 @@
 
 .modal-btn.confirm:hover {
     background: #c93b4a;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    background: linear-gradient(to right, #ff4f8b, #ff7aa8);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(255, 79, 139, 0.3);
+    z-index: 999999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px);
+    transition: all 0.35s ease;
+}
+
+.toast.show-toast {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.toast.toast-warning {
+    background: linear-gradient(to right, #ef4444, #f87171);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
 }

@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             btnCopy.addEventListener("click", function () {
                 navigator.clipboard.writeText(currentPromo.code).then(() => {
-                    alert("Nghien Beauty: Đã copy thành công mã " + currentPromo.code + " vào khay nhớ tạm!");
+                    showToast("Đã copy mã khuyến mãi!");
                 });
             });
         }
@@ -212,3 +212,24 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     });
 });
+
+// ==========================================
+// TOAST
+// ==========================================
+let toastTimeout = null;
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add("show-toast");
+
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("show-toast");
+    }, 2500);
+}

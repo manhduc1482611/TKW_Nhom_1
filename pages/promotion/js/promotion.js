@@ -143,11 +143,33 @@ document.addEventListener("DOMContentLoaded", function() {
 function copyCode(elementId) {
     const element = document.getElementById(elementId);
     if (!element) return;
-    
+
     const codeText = element.innerText;
     navigator.clipboard.writeText(codeText).then(() => {
-        alert("Nghien Beauty: Đã copy thành công mã: " + codeText);
+        showToast("Đã copy mã khuyến mãi!");
     }).catch(err => {
         console.error('Lỗi khi sao chép mã: ', err);
     });
+}
+
+
+// ==========================================
+// 4. TOAST
+// ==========================================
+let toastTimeout = null;
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add("show-toast");
+
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("show-toast");
+    }, 2500);
 }

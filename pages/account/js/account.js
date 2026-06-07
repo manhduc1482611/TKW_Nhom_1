@@ -159,7 +159,7 @@ function confirmCancelOrder() {
 
     closeCancelOrderModal();
     loadUserOrders();
-    alert(`Đơn hàng ${orderIdToCancel} đã được hủy thành công!`);
+    showToast("Đã hủy đơn hàng", "warning");
     orderIdToCancel = null;
 }
 
@@ -218,3 +218,30 @@ document.addEventListener("DOMContentLoaded", () => {
     loadUserInfo();
     loadUserOrders();
 });
+
+// ==========================================
+// TOAST
+// ==========================================
+let toastTimeout = null;
+
+function showToast(message, type = "success") {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.classList.remove("toast-warning");
+
+    if (type === "warning") {
+        toast.classList.add("toast-warning");
+    }
+
+    toast.textContent = message;
+    toast.classList.add("show-toast");
+
+    if (toastTimeout) {
+        clearTimeout(toastTimeout);
+    }
+
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove("show-toast");
+    }, 2500);
+}
