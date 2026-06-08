@@ -80,7 +80,6 @@ async function fetchProducts() {
     }
 }
 
-// Apply brand/category from URL if present.
 // Áp dụng thương hiệu/danh mục từ URL nếu có.
 function setInitialFiltersFromUrl() {
     if (brandFromUrl) {
@@ -134,7 +133,7 @@ function applyFilters() {
 
         return matchSearch && matchCategory && matchBrand;
     });
-
+// theo giá
     if (selectedSort === "low-high") {
         filteredProducts.sort((a, b) => a.salePrice - b.salePrice);
     }
