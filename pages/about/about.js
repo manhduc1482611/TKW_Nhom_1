@@ -1,7 +1,3 @@
-/* ============================================================
-   Beauty67 - Custom JavaScript
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero-content h1');
     if (heroTitle) {

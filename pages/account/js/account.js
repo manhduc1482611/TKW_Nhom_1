@@ -100,7 +100,6 @@ function loadUserOrders() {
 }
 
 // ===== XỬ LÝ LƯU THAY ĐỔI HỒ SƠ CÁ NHÂN =====
-// ===== XỬ LÝ LƯU THAY ĐỔI HỒ SƠ CÁ NHÂN =====
 function saveProfile() {
     const updatedUser = {
         fullname: document.getElementById('input-name').value.trim(),
