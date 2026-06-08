@@ -238,8 +238,6 @@ async function fetchProduct() {
     }
 
 }
-
-
 // =========================
 // RENDER PRODUCT
 // =========================
