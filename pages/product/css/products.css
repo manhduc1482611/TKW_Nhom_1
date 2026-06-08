@@ -534,10 +534,9 @@ body{
 
 
 /* ========================================================
-   CẬP NHẬT CHUẨN: CSS POPUP KHÔNG BỊ TRÀN KHUNG (NO HORIZONTAL SCROLL)
+   POPUP LAYOUT VÒNG QUAY MAKEUP
 ======================================================== */
 
-/* Đảm bảo tất cả phần tử của popup tính toán kích thước bao gồm cả padding và border */
 .wheel-overlay,
 .wheel-popup,
 .wheel-main-zone,
@@ -584,7 +583,7 @@ body{
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    padding: 15px; /* Khoảng cách an toàn chống chạm viền màn hình di động */
+    padding: 15px; 
 }
 
 .wheel-overlay.show {
@@ -592,13 +591,12 @@ body{
     pointer-events: auto;
 }
 
-/* Thùng Popup gốc khi chưa quay (Chỉ chứa vòng quay nhỏ gọn) */
 .wheel-popup {
     background-color: white;
     border-radius: 24px;
     width: 100%;
     max-width: 350px; 
-    max-height: 90vh; /* Không bao giờ vượt quá chiều cao màn hình */
+    max-height: 90vh; 
     padding: 30px 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     position: relative;
@@ -607,11 +605,10 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    overflow-y: auto; /* Nếu nội dung quá dài sẽ tự cuộn dọc bên trong popup */
-    overflow-x: hidden; /* Tuyệt đối chặn thanh cuộn ngang */
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
-/* Khi quay xong, mở rộng sang ngang thành 2 cột trên máy tính */
 .wheel-popup.expanded {
     max-width: 820px;
     flex-direction: row;
@@ -635,11 +632,10 @@ body{
     color: #ff4f8b;
 }
 
-/* Vùng 1: Khối trục xoay vòng quay */
 .wheel-main-zone {
     flex: 1;
     width: 100%;
-    min-width: 0; /* Khắc phục lỗi flexbox tự ý đẩy rộng chiều ngang */
+    min-width: 0; 
     text-align: center;
 }
 
@@ -705,18 +701,19 @@ body{
     transform-origin: 0% 100%;
 }
 
+/* FIX ĐẸP CHỮ: Khử lệch góc nghiêng skewY giúp chữ đứng thẳng cân đối giữa ô */
 .wheel-seg span {
     position: absolute;
-    left: 4px;
-    bottom: 28px;
+    left: 2px;
+    bottom: 26px;
     display: block;
-    width: 88px;
+    width: 90px;
     text-align: center;
-    transform: rotate(36deg);
+    transform: skewY(18deg) rotate(35deg); 
     color: white;
     font-weight: 700;
-    font-size: 10px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    font-size: 11px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .seg-1 { transform: rotate(0deg) skewY(-18deg); background-color: #ff9ebb; }
@@ -751,11 +748,10 @@ body{
     line-height: 1.5;
 }
 
-/* Vùng 2: Ảnh mẫu tone và Danh sách 5 sản phẩm gợi ý (Ẩn mặc định) */
 .wheel-suggestions-zone {
     flex: 1.2;
     width: 100%;
-    min-width: 0; /* Ép flex item tuân thủ thuộc tính chống tràn chữ bên dưới */
+    min-width: 0; 
     display: none;
     flex-direction: column;
     border-left: 1px solid #f0f0f0;
@@ -767,7 +763,6 @@ body{
     display: flex;
 }
 
-/* Khối hiển thị ảnh Banner đại diện cho Tone vừa quay trúng */
 .tone-showcase {
     display: flex;
     align-items: center;
@@ -781,11 +776,11 @@ body{
 #toneBannerImg {
     width: 55px;
     height: 55px;
-    object-fit: contain; /* Sửa từ cover thành contain */
+    object-fit: contain; 
     border-radius: 50%;
     border: 2px solid #ff4f8b;
     flex-shrink: 0;
-    background-color: #fff; /* Thêm nền trắng để nếu ảnh vuông/chữ nhật thì phần thừa vẫn đẹp */
+    background-color: #fff; 
 }
 
 #toneTitleText {
@@ -800,7 +795,6 @@ body{
     margin-bottom: 10px;
 }
 
-/* Khung cuộn chứa danh sách 5 món đồ */
 .wheel-products-list {
     display: flex;
     flex-direction: column;
@@ -810,7 +804,6 @@ body{
     padding-right: 4px;
 }
 
-/* Card sản phẩm thu nhỏ đặc thù bên trong Popup */
 .wheel-prod-card {
     display: flex;
     align-items: center;
@@ -841,7 +834,7 @@ body{
 
 .wheel-prod-details {
     flex: 1;
-    min-width: 0; /* Bắt buộc phải có để text-overflow bên dưới hoạt động */
+    min-width: 0; 
 }
 
 .wheel-prod-details h6 {
@@ -850,7 +843,7 @@ body{
     margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Tên dài tự thu gọn bằng dấu ba chấm (...) chứ không làm phình khung */
+    text-overflow: ellipsis; 
     text-transform: none;
 }
 
@@ -867,7 +860,7 @@ body{
 
 
 /* ========================================================
-   RESPONSIVE PHÂN CẤP: CHỐNG TRÀN NGANG TUYỆT ĐỐI TRÊN SMARTPHONE
+   RESPONSIVE PHÂN CẤP SMARTPHONE
 ======================================================== */
 
 @media(max-width: 1200px){
@@ -918,13 +911,12 @@ body{
     }
     .open-wheel-btn {
         width: 100%;
-        order: -1; /* Đẩy nút Vòng quay lên vị trí đầu tiên của Toolbar khi xem bằng điện thoại */
+        order: -1; 
     }
 
-    /* ĐỔI TRẠNG THÁI POPUP SANG DẠNG DỌC KHI ĐIỆN THOẠI NHỎ ĐỂ KHÔNG BỊ CUỘN NGANG */
     .wheel-popup.expanded {
-        flex-direction: column; /* Chuyển thành hàng dọc: vòng quay ở trên, sản phẩm ở dưới */
-        max-width: 350px; /* Ép chặt chiều rộng tối đa vừa vặn với màn hình mobile */
+        flex-direction: column; 
+        max-width: 350px; 
         width: 100%;
     }
     .wheel-suggestions-zone {
@@ -934,7 +926,7 @@ body{
         padding-top: 15px;
     }
     .wheel-products-list {
-        max-height: 220px; /* Giới hạn nhẹ chiều dài danh sách trên mobile để xem được toàn cục */
+        max-height: 220px; 
     }
 }
 
