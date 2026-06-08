@@ -501,34 +501,49 @@
 }
 
 /* =========================
-   TOAST
+   TOAST STYLING (NÂNG CẤP)
 ========================= */
-
 .toast {
     position: fixed;
     top: 120px;
     right: 30px;
-    background: linear-gradient(to right, #ff4f8b, #ff7aa8);
+    background: linear-gradient(135deg, #2e7d32, #4caf50); /* Đổi mặc định thành màu xanh lá (Success) */
     color: white;
-    padding: 16px 24px;
+    padding: 16px 28px;
     border-radius: 14px;
     font-size: 15px;
     font-weight: 600;
-    box-shadow: 0 10px 30px rgba(255, 79, 139, 0.3);
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.25);
     z-index: 999999;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(40px);
-    transition: all 0.35s ease;
+    transform: translateX(40px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng bounce nhẹ phóng khoáng */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Thêm icon dấu tích hoặc cảnh báo trước text thông báo */
+.toast::before {
+    font-family: "Font Awesome 5 Free", "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f058"; /* Icon check-circle */
+    font-size: 18px;
 }
 
 .toast.show-toast {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
 }
 
+/* Kiểu thông báo Warning (Lỗi trống tên / Hủy đơn) */
 .toast.toast-warning {
-    background: linear-gradient(to right, #ef4444, #f87171);
-    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, #ef4444, #f87171);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+}
+
+.toast.toast-warning::before {
+    content: "\f06a"; /* Icon exclamation-circle */
 }

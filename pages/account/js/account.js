@@ -100,6 +100,7 @@ function loadUserOrders() {
 }
 
 // ===== XỬ LÝ LƯU THAY ĐỔI HỒ SƠ CÁ NHÂN =====
+// ===== XỬ LÝ LƯU THAY ĐỔI HỒ SƠ CÁ NHÂN =====
 function saveProfile() {
     const updatedUser = {
         fullname: document.getElementById('input-name').value.trim(),
@@ -108,8 +109,9 @@ function saveProfile() {
         address:  document.getElementById('input-address').value.trim(),
     };
 
+    // Kiểm tra không để trống tên
     if (!updatedUser.fullname) {
-        alert("Họ và tên không được để trống!");
+        showToast("Họ và tên không được để trống!", "warning");
         return;
     }
 
@@ -129,8 +131,13 @@ function saveProfile() {
     loadUserInfo();
     loadUserOrders();
 
-    alert("Lưu thay đổi thông tin tài khoản thành công!");
-    switchTab('thongtin');
+    // Thay thế alert thành Toast thông báo thành công
+    showToast("Đã lưu thay đổi thông tin tài khoản thành công!", "success");
+    
+    // Chuyển về tab thông tin sau một khoảng thời gian ngắn để user kịp nhìn thông báo
+    setTimeout(() => {
+        switchTab('thongtin');
+    }, 500);
 }
 
 // ===== XỬ LÝ HỦY ĐƠN HÀNG =====
